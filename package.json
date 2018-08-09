@@ -1,0 +1,19 @@
+{
+  "name": "emuto",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.4.1",
+    "regenerator-runtime": "^0.12.0"
+  },
+  "dependencies": {
+    "parsimmon": "^1.12.0"
+  }
+}
