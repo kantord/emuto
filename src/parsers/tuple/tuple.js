@@ -2,13 +2,15 @@ import Parsimmon from 'parsimmon';
 
 import PrimitiveParser from '../primitive';
 
-export default Parsimmon.seq(
-  PrimitiveParser,
+const separator = Parsimmon.seq(
   Parsimmon.optWhitespace,
   Parsimmon.string(':'),
   Parsimmon.optWhitespace,
-  PrimitiveParser,
-).map(children => ({
-  type: 'tuple',
-  value: [children[0], children[4]],
-}));
+);
+
+export default Parsimmon.seq(PrimitiveParser, separator, PrimitiveParser).map(
+  children => ({
+    type: 'tuple',
+    value: [children[0], children[2]],
+  }),
+);
