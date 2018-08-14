@@ -1,4 +1,4 @@
-import primitive_parser from './parsers/primitive';
-import primitive_generator from './generators/primitive';
+import PrimitiveParser from './parsers/primitive'
+import PrimitiveGenerator from './generators/primitive'
 
-export default input => primitive_generator(primitive_parser.parse(input).value);
+export default input => PrimitiveGenerator(PrimitiveParser.parse(input).value)

@@ -1,20 +1,20 @@
-import execute from '../interpreter';
+import execute from '../interpreter'
 
 const tests = [
   {
     input: `null`,
-    output: null,
+    output: null
   },
   {
     input: `true`,
-    output: true,
-  },
-];
+    output: true
+  }
+]
 
 describe('interpreter', () => {
   tests.forEach(({input, output}) => {
     it(`executes ${input}`, () => {
-      expect(execute(input)).toEqual(output);
-    });
-  });
-});
+      expect(execute(input)).toEqual(output)
+    })
+  })
+})

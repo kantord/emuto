@@ -1,20 +1,20 @@
-import compile from '../compiler';
+import compile from '../compiler'
 
 const tests = [
   {
     input: `null`,
-    output: `null`,
+    output: `null`
   },
   {
     input: `true`,
-    output: `true`,
-  },
-];
+    output: `true`
+  }
+]
 
 describe('compiler', () => {
   tests.forEach(({input, output}) => {
     it(`compiles ${input}`, () => {
-      expect(compile(input)).toEqual(output);
-    });
-  });
-});
+      expect(compile(input)).toEqual(output)
+    })
+  })
+})
