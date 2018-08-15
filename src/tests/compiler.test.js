@@ -1,3 +1,5 @@
+// @flow
+
 import compile from '../compiler'
 
 const tests = [
@@ -12,7 +14,7 @@ const tests = [
 ]
 
 describe('compiler', () => {
-  tests.forEach(({input, output}) => {
+  tests.forEach(({input, output}: {input: string, output: string}) => {
     it(`compiles ${input}`, () => {
       expect(compile(input)).toEqual(output)
     })

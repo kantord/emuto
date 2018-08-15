@@ -1,3 +1,5 @@
+// @flow
+
 import execute from '../interpreter'
 
 const tests = [
@@ -12,7 +14,7 @@ const tests = [
 ]
 
 describe('interpreter', () => {
-  tests.forEach(({input, output}) => {
+  tests.forEach(({input, output}: {input: string, output: mixed}) => {
     it(`executes ${input}`, () => {
       expect(execute(input)).toEqual(output)
     })
