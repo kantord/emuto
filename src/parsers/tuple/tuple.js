@@ -1,7 +1,7 @@
 // @flow
 
 import Parsimmon from 'parsimmon'
-import type { NodeType } from '../types'
+import type { NodeType, PrimitiveNodeType } from '../../types'
 
 import PrimitiveParser from '../primitive'
 
@@ -12,7 +12,7 @@ const separator = Parsimmon.seq(
 )
 
 export default Parsimmon.seq(PrimitiveParser, separator, PrimitiveParser).map(
-  (children: [NodeType]): NodeType => ({
+  (children: [PrimitiveNodeType, NodeType, PrimitiveNodeType]): NodeType => ({
     type: 'tuple',
     value: [children[0], children[2]]
   })

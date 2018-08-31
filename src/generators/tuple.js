@@ -1,9 +1,9 @@
 // @flow
 
 import primitive from './primitive'
-import type {NodeType, GeneratedCodeType} from './types'
+import type {TupleNodeType, GeneratedCodeType} from '../types'
 
-export default ({value}: NodeType): GeneratedCodeType =>
-  (([left, right]: [NodeType]): GeneratedCodeType => `[${left},${right}]`)(
+export default ({value}: TupleNodeType): GeneratedCodeType =>
+  (([left, right]: Array<string>): GeneratedCodeType => `[${left},${right}]`)(
     value.map(primitive)
   )
