@@ -4,5 +4,6 @@ node_js:
 install:
   - yarn
 script:
-  - yarn test
   - yarn test:eslint
+  - yarn test:flow
+  - yarn test
