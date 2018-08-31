@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "yarn run babel src/ -- -d lib/",
+    "test:eslint": "yarn eslint src",
     "prepublish": "yarn run build"
   },
   "devDependencies": {
