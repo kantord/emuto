@@ -3,6 +3,7 @@
 import primitive from './primitive'
 import tuple from './tuple'
 import input from './input'
+import inputProp from './inputProp'
 import type {NodeType, GeneratedCodeType} from '../types'
 
 export default (node: NodeType): GeneratedCodeType => {
@@ -13,6 +14,8 @@ export default (node: NodeType): GeneratedCodeType => {
       return tuple(node)
     case 'input':
       return input(node)
+    case 'inputProp':
+      return inputProp(node)
     default:
       throw new Error(`Unknown node type '${node.type}'`)
   }

@@ -20,13 +20,33 @@ const tests = [
     sourceCode: `.`,
     input: 98,
     output: 98
+  },
+  {
+    sourceCode: `.bar`,
+    input: {bar: 4, baz: 'hello'},
+    output: 4
+  },
+  {
+    sourceCode: `.$shit`,
+    input: {$shit: null, baz: 'hello'},
+    output: null
   }
 ]
 
 describe('interpreter', () => {
-  tests.forEach(({sourceCode, output, input}: {sourceCode: string, output: mixed, input?: mixed}) => {
-    it(`executes ${sourceCode}`, () => {
-      expect(execute(sourceCode)(input)).toEqual(output)
-    })
-  })
+  tests.forEach(
+    ({
+      sourceCode,
+      output,
+      input
+    }: {
+      sourceCode: string,
+      output: mixed,
+      input?: mixed
+    }) => {
+      it(`executes ${sourceCode}`, () => {
+        expect(execute(sourceCode)(input)).toEqual(output)
+      })
+    }
+  )
 })

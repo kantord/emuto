@@ -15,7 +15,12 @@ export type InputNodeType = {|
   value: '.'
 |};
 
-export type NodeType = PrimitiveNodeType | TupleNodeType | InputNodeType;
+export type InputPropNodeType = {|
+  type: 'inputProp',
+  value: string
+|};
+
+export type NodeType = PrimitiveNodeType | TupleNodeType | InputNodeType | InputNodeType;
 
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
