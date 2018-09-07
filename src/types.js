@@ -12,6 +12,6 @@ export type TupleNodeType = {|
 
 export type NodeType = PrimitiveNodeType | TupleNodeType;
 
-export type OutputType = mixed;
+export type OutputType = (mixed) => mixed;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;
