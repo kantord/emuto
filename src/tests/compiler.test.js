@@ -5,11 +5,11 @@ import compile from '../compiler'
 const tests = [
   {
     input: `null`,
-    output: `null`
+    output: `(input => null)`
   },
   {
     input: `true`,
-    output: `true`
+    output: `(input => true)`
   }
 ]
 
