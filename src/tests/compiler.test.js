@@ -10,6 +10,10 @@ const tests = [
   {
     input: `true`,
     output: `(input => true)`
+  },
+  {
+    input: `.`,
+    output: `(input => input)`
   }
 ]
 
