@@ -4,19 +4,29 @@ import execute from '../interpreter'
 
 const tests = [
   {
-    input: `null`,
+    sourceCode: `null`,
     output: null
   },
   {
-    input: `true`,
+    sourceCode: `true`,
     output: true
+  },
+  {
+    sourceCode: `.`,
+    input: true,
+    output: true
+  },
+  {
+    sourceCode: `.`,
+    input: 98,
+    output: 98
   }
 ]
 
 describe('interpreter', () => {
-  tests.forEach(({input, output}: {input: string, output: mixed}) => {
-    it(`executes ${input}`, () => {
-      expect(execute(input)()).toEqual(output)
+  tests.forEach(({sourceCode, output, input}: {sourceCode: string, output: mixed, input?: mixed}) => {
+    it(`executes ${sourceCode}`, () => {
+      expect(execute(sourceCode)(input)).toEqual(output)
     })
   })
 })

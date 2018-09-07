@@ -10,8 +10,13 @@ export type TupleNodeType = {|
   value: [PrimitiveNodeType, PrimitiveNodeType]
 |};
 
-export type NodeType = PrimitiveNodeType | TupleNodeType;
+export type InputNodeType = {|
+  type: 'input',
+  value: '.'
+|};
 
-export type OutputType = (mixed) => mixed;
+export type NodeType = PrimitiveNodeType | TupleNodeType | InputNodeType;
+
+export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;
