@@ -2,7 +2,7 @@
 
 import primitive from './primitive'
 import tuple from './tuple'
-import type {NodeType, GeneratedCodeType} from './types'
+import type {NodeType, GeneratedCodeType} from '../types'
 
 export default (node: NodeType): GeneratedCodeType => {
   switch (node.type) {
@@ -10,5 +10,7 @@ export default (node: NodeType): GeneratedCodeType => {
       return primitive(node)
     case 'tuple':
       return tuple(node)
+    default:
+      throw new Error(`Unknown node type '${node.type}'`)
   }
 }
