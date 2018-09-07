@@ -1,7 +1,10 @@
-import input from '../input'
+import primitive from '../primitive'
 
-describe('input generator', () => {
-  it('.', () => {
-    expect(input({type: 'input', value: '.'})).toEqual('input')
+describe('primitive generator', () => {
+  it('null', () => {
+    expect(primitive({type: 'primitive', value: 'null'})).toEqual('null')
+  })
+  it('false', () => {
+    expect(primitive({type: 'primitive', value: 'false'})).toEqual('false')
   })
 })
