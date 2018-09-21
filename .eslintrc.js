@@ -14,6 +14,7 @@ module.exports = {
     },
   },
   rules: {
+    'no-console': 'error',
     'flowtype/boolean-style': [2, 'boolean'],
     'flowtype/define-flow-type': 1,
     'flowtype/delimiter-dangle': [2, 'never'],

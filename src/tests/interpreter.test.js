@@ -30,6 +30,10 @@ const tests = [
     sourceCode: `.$shit`,
     input: {$shit: null, baz: 'hello'},
     output: null
+  },
+  {
+    sourceCode: `[false, true]`,
+    output: [false, true]
   }
 ]
 
