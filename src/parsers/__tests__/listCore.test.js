@@ -39,4 +39,28 @@ describe('listCore parser', () => {
       ]
     })
   })
+  it('returns correct value', () => {
+    expect(parser.parse('true, [false, false]').value).toEqual({
+      type: 'listCore',
+      value: [
+        {
+          type: 'primitive',
+          value: 'true'
+        },
+        {
+          type: 'list',
+          value: [
+            {
+              type: 'primitive',
+              value: 'false'
+            },
+            {
+              type: 'primitive',
+              value: 'false'
+            }
+          ]
+        }
+      ]
+    })
+  })
 })

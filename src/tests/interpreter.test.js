@@ -34,6 +34,10 @@ const tests = [
   {
     sourceCode: `[false, true]`,
     output: [false, true]
+  },
+  {
+    sourceCode: `[[false], [true, null]]`,
+    output: [[false], [true, null]]
   }
 ]
 
