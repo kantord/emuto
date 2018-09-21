@@ -12,12 +12,12 @@ const tests = [
     output: true
   },
   {
-    sourceCode: `.`,
+    sourceCode: `$`,
     input: true,
     output: true
   },
   {
-    sourceCode: `.`,
+    sourceCode: `$`,
     input: 98,
     output: 98
   },
@@ -38,6 +38,19 @@ const tests = [
   {
     sourceCode: `[[false], [true, null]]`,
     output: [[false], [true, null]]
+  },
+  {
+    sourceCode: `false | true`,
+    output: true
+  },
+  {
+    sourceCode: `.foo | .bar`,
+    input: {
+      foo: {
+        bar: 'hello'
+      }
+    },
+    output: 'hello'
   }
 ]
 

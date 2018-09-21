@@ -6,31 +6,31 @@ describe('listCore parser', () => {
   })
 
   it('returns correct value', () => {
-    expect(parser.parse('.,.').value).toEqual({
+    expect(parser.parse('$,$').value).toEqual({
       type: 'listCore',
       value: [
         {
           type: 'input',
-          value: '.'
+          value: '$'
         },
         {
           type: 'input',
-          value: '.'
+          value: '$'
         }
       ]
     })
   })
   it('returns correct value', () => {
-    expect(parser.parse('.,., null').value).toEqual({
+    expect(parser.parse('$,$, null').value).toEqual({
       type: 'listCore',
       value: [
         {
           type: 'input',
-          value: '.'
+          value: '$'
         },
         {
           type: 'input',
-          value: '.'
+          value: '$'
         },
         {
           type: 'primitive',

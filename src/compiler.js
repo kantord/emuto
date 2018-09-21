@@ -5,6 +5,6 @@ import Generator from './generators/generator'
 import type {SourceCodeType, GeneratedCodeType} from './types'
 
 export default (input: SourceCodeType): GeneratedCodeType => {
-  const parsed = Parser.parse(input).value
-  return `(input => ${Generator(parsed)})`
+  const {value} = Parser.parse(input)
+  return `(input => ${Generator(value)})`
 }

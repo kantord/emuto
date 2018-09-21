@@ -12,7 +12,7 @@ export type TupleNodeType = {|
 
 export type InputNodeType = {|
   type: 'input',
-  value: '.'
+  value: '$'
 |};
 
 export type InputPropNodeType = {|
@@ -28,6 +28,14 @@ export type ListCoreNodeType = {|
 export type ListNodeType = {|
   type: 'list',
   value: Array<NodeType> // eslint-disable-line no-use-before-define
+|};
+
+export type PipeNodeType = {|
+  type: 'pipe',
+  value: {|
+    left: NodeType, // eslint-disable-line no-use-before-define
+    right: NodeType // eslint-disable-line no-use-before-define
+  |}
 |};
 
 export type NodeType =
