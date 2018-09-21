@@ -12,14 +12,13 @@ const tests = [
     output: `(input => true)`
   },
   {
-    input: `.`,
+    input: `$`,
     output: `(input => input)`
   },
   {
     input: `.hello`,
     output: `(input => input.hello)`
   }
-
 ]
 
 describe('compiler', () => {

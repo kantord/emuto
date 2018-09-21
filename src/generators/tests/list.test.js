@@ -8,11 +8,11 @@ describe('list generator', () => {
         value: [
           {
             type: 'input',
-            value: '.'
+            value: '$'
           },
           {
             type: 'input',
-            value: '.'
+            value: '$'
           },
           {
             type: 'list',
