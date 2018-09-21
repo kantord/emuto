@@ -20,7 +20,23 @@ export type InputPropNodeType = {|
   value: string
 |};
 
-export type NodeType = PrimitiveNodeType | TupleNodeType | InputNodeType | InputNodeType;
+export type ListCoreNodeType = {|
+  type: 'listCore',
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
+|};
+
+export type ListNodeType = {|
+  type: 'list',
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
+|};
+
+export type NodeType =
+  | PrimitiveNodeType
+  | TupleNodeType
+  | InputNodeType
+  | InputNodeType
+  | InputPropNodeType
+  | ListNodeType;
 
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
