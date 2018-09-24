@@ -51,6 +51,17 @@ const tests = [
       }
     },
     output: 'hello'
+  },
+  {
+    sourceCode: `.foo | .bar | .baz`,
+    input: {
+      foo: {
+        bar: {
+          baz: 'world'
+        }
+      }
+    },
+    output: 'world'
   }
 ]
 
