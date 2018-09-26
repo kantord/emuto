@@ -4,11 +4,12 @@ import primitive from './primitive'
 import tuple from './tuple'
 import input from './input'
 import inputProp from './inputProp'
+import valueProp from './valueProp'
 import list from './list'
 import pipe from './pipe'
 import type {NodeType, GeneratedCodeType} from '../types'
 
-export default (node: NodeType): GeneratedCodeType => {
+const Generator = (node: NodeType): GeneratedCodeType => {
   switch (node.type) {
     case 'primitive':
       return primitive(node)
@@ -22,7 +23,11 @@ export default (node: NodeType): GeneratedCodeType => {
       return list(node)
     case 'pipe':
       return pipe(node)
+    case 'valueProp':
+      return valueProp(Generator)(node)
     default:
       throw new Error(`Unknown node type '${node.type}'`)
   }
 }
+
+export default Generator

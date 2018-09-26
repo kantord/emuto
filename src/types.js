@@ -38,13 +38,23 @@ export type PipeNodeType = {|
   |}
 |};
 
+export type ValuePropNodeType = {|
+  type: 'valueProp',
+  value: {
+    left: NodeType, // eslint-disable-line no-use-before-define
+    right: string
+  }
+|};
+
 export type NodeType =
   | PrimitiveNodeType
   | TupleNodeType
   | InputNodeType
   | InputNodeType
   | InputPropNodeType
-  | ListNodeType;
+  | ListNodeType
+  | PipeNodeType
+  | ValuePropNodeType;
 
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;

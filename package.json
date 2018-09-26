@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest src",
     "build": "yarn run babel src/ -- -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",

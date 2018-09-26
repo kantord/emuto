@@ -5,10 +5,10 @@ import Parsimmon from 'parsimmon'
 import type {PipeNodeType, NodeType} from '../../types'
 
 const PipeParser = Parsimmon.lazy((): mixed => {
-  const ValueParser = require('../value').default
+  const SectionParser = require('../section').default
   const Parser = require('../parser').default
   return Parsimmon.seq(
-    ValueParser,
+    SectionParser,
     Parsimmon.regexp(/\s*\|\s*/),
     Parser
   ).map((value: [NodeType, mixed, NodeType]): PipeNodeType => ({

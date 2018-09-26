@@ -4,8 +4,8 @@ import PrimitiveParser from './primitive'
 import TupleParser from './tuple/tuple'
 import InputParser from './input'
 import InputPropParser from './inputProp'
+import ValuePropParser from './valueProp'
 import ListParser from './list'
-import PipeParser from './pipe/pipe'
 
 export default Parsimmon.alt(
   PrimitiveParser,
@@ -13,5 +13,5 @@ export default Parsimmon.alt(
   InputPropParser,
   InputParser,
   ListParser,
-  PipeParser
+  ValuePropParser
 )
