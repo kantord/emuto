@@ -32,8 +32,8 @@ const tests = [
     output: null
   },
   {
-    sourceCode: `[false, true]`,
-    output: [false, true]
+    sourceCode: `[0.14, true, "true 2"]`,
+    output: [0.14, true, 'true 2']
   },
   {
     sourceCode: `[[false], [true, null]]`,
