@@ -62,6 +62,24 @@ const tests = [
       }
     },
     output: 'world'
+  },
+  {
+    sourceCode: `.apple.pear`,
+    input: {
+      apple: {
+        pear: 42
+      }
+    },
+    output: 42
+  },
+  {
+    sourceCode: `.apple.pear.bar`,
+    input: {
+      apple: {
+        pear: {bar: false}
+      }
+    },
+    output: false
   }
 ]
 
