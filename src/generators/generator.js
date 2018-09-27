@@ -6,6 +6,7 @@ import input from './input'
 import inputProp from './inputProp'
 import valueProp from './valueProp'
 import list from './list'
+import object from './object'
 import pipe from './pipe'
 import type {NodeType, GeneratedCodeType} from '../types'
 
@@ -25,6 +26,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return pipe(node)
     case 'valueProp':
       return valueProp(Generator)(node)
+    case 'object':
+      return object(node)
     default:
       throw new Error(`Unknown node type '${node.type}'`)
   }

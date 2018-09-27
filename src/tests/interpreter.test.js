@@ -84,6 +84,19 @@ const tests = [
   {
     sourceCode: `null: true`,
     output: [null, true]
+  },
+  {
+    sourceCode: `{
+      "foo": [-42, $],
+      "bar": {
+        "message": "Hello World"
+      }
+    }`,
+    input: 42,
+    output: {
+      foo: [-42, 42],
+      bar: {message: 'Hello World'}
+    }
   }
 ]
 
