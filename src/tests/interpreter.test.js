@@ -80,6 +80,10 @@ const tests = [
       }
     },
     output: false
+  },
+  {
+    sourceCode: `null: true`,
+    output: [null, true]
   }
 ]
 
