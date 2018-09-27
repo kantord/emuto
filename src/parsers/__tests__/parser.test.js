@@ -48,9 +48,9 @@ describe('parser', () => {
   })
   it('throws correct message', () => {
     try {
-      parse('¡')
+      parse('¡foo123456789')
     } catch (e) {
-      expect(e.message).toEqual("Expected 'foo' or 'bar'")
+      expect(e.message).toEqual("Expected 'foo' or 'bar' on line 1 column 1, found '¡foo123456' instead")
     }
   })
 })

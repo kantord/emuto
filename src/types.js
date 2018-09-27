@@ -40,6 +40,11 @@ export type ListNodeType = {|
   value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
+export type ObjectNodeType = {|
+  type: 'object',
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
+|};
+
 export type PipeNodeType = {|
   type: 'pipe',
   value: {|
