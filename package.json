@@ -10,7 +10,7 @@
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
     "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix"
+      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -69,3 +69,4 @@ export type NodeType =
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;
+export type ParserType = SourceCodeType => ParserReturnValueType;
