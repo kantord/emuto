@@ -7,5 +7,5 @@ install:
 script:
   - yarn test:eslint
   - yarn test:flow
-  - yarn test
+  - yarn test --coverage
   - codecov
