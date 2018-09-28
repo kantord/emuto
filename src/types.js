@@ -1,5 +1,15 @@
 // @flow
 
+export type ParserReturnValueType = {|
+  status?: boolean,
+  index?: {|
+    line: number,
+    column: number
+  |},
+  expected?: Array<SourceCodeType>, // eslint-disable-line no-use-before-define
+  value: NodeType // eslint-disable-line no-use-before-define
+|};
+
 export type PrimitiveNodeType = {|
   type: 'primitive',
   value: string
