@@ -1,6 +1,6 @@
 {
   "name": "emuto",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -9,8 +9,9 @@
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0"
+    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -30,9 +31,12 @@
     "eslint-plugin-standard": "^3.1.0",
     "flow-bin": "^0.78.0",
     "jest": "^23.4.1",
-    "regenerator-runtime": "^0.12.0"
+    "regenerator-runtime": "^0.12.0",
+    "semantic-release": "^15.9.16",
+    "travis-deploy-once": "^5.0.9"
   },
   "dependencies": {
+    "flow": "^0.2.3",
     "parsimmon": "^1.12.0"
   },
   "config": {
@@ -43,5 +47,9 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kantord/emuto.git"
   }
 }
