@@ -103,4 +103,10 @@ describe('interpreter', () => {
       })
     }
   )
+
+  it('throws syntax error on invalid source code', () => {
+    expect(() => {
+      execute('¡')
+    }).toThrow(SyntaxError)
+  })
 })

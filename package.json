@@ -8,7 +8,9 @@
     "build": "yarn run babel src/ -- -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn run build",
+    "checks":
+      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
