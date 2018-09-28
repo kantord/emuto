@@ -3,7 +3,9 @@ node_js:
   - "8"
 install:
   - yarn
+  - npm install -g codecov
 script:
   - yarn test:eslint
   - yarn test:flow
   - yarn test
+  - codecov
