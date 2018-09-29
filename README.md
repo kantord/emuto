@@ -27,3 +27,5 @@ And return a result like this:
   "compressed_article_info": ["Hello World", "John Doe", 32]
 }
 ```
+
+Try it on RunKit: https://runkit.com/kantord/5baf626a6f9a9d001334e089
