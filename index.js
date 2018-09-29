@@ -1,3 +1,1 @@
-import interpreter from './src/interpreter';
-
-export default interpreter;
+module.exports.default = require('./lib/interpreter').default;
