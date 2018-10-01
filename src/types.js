@@ -40,6 +40,11 @@ export type ListNodeType = {|
   value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
+export type ParenthesesNodeType = {|
+  type: 'parentheses',
+  value: NodeType // eslint-disable-line no-use-before-define
+|};
+
 export type ObjectNodeType = {|
   type: 'object',
   value: Array<NodeType> // eslint-disable-line no-use-before-define
@@ -69,6 +74,8 @@ export type NodeType =
   | InputPropNodeType
   | ListNodeType
   | PipeNodeType
+  | ParenthesesNodeType
+  | ObjectNodeType
   | ValuePropNodeType;
 
 export type OutputType = mixed => mixed;
