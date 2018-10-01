@@ -97,6 +97,12 @@ const tests = [
       foo: [-42, 42],
       bar: {message: 'Hello World'}
     }
+  },
+  {
+    sourceCode: `{"foo": ("bar" | "baz")}`,
+    output: {
+      foo: 'baz'
+    }
   }
 ]
 
