@@ -1,9 +1,5 @@
 import Parsimmon from 'parsimmon'
-import ValuePropParser from './valueProp'
-import ValueParser from './value'
-import ObjectParser from './object'
+import ProjectionParser from './projection'
+import ProjectableParser from './projectable'
 
-export default Parsimmon.alt(
-  ValuePropParser,
-  Parsimmon.alt(ObjectParser, ValueParser)
-)
+export default Parsimmon.alt(ProjectionParser, ProjectableParser)

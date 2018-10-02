@@ -8,6 +8,7 @@ import valueProp from './valueProp'
 import list from './list'
 import parentheses from './parentheses'
 import object from './object'
+import projection from './projection'
 import pipe from './pipe'
 import type {NodeType, GeneratedCodeType} from '../types'
 
@@ -31,6 +32,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return object(node)
     case 'parentheses':
       return parentheses(node)
+    case 'projection':
+      return projection(Generator)(node)
     default:
       throw new Error(`Unknown node type '${node.type}'`)
   }

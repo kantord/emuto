@@ -103,6 +103,22 @@ const tests = [
     output: {
       foo: 'baz'
     }
+  },
+  {
+    sourceCode: `{"foo": ("bar" | "baz")}["foo"]`,
+    output: 'baz'
+  },
+  {
+    sourceCode: `[3, 2][0]`,
+    output: 3
+  },
+  {
+    sourceCode: `[3, 2][0] : [3, 2][1]`,
+    output: [3, 2]
+  },
+  {
+    sourceCode: `[3, 2][0] | [3, 2][1]`,
+    output: 2
   }
 ]
 
