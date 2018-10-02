@@ -6,5 +6,7 @@ import type {SourceCodeType, GeneratedCodeType} from './types'
 
 export default (input: SourceCodeType): GeneratedCodeType => {
   const {value} = parse(input)
-  return `(input => ${Generator(value)})`
+  return `(function(_) { return (function(input) { return ${Generator(
+    value
+  )}})})`
 }

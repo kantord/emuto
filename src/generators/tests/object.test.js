@@ -22,8 +22,6 @@ describe('object generator', () => {
           }
         ]
       })
-    ).toEqual(
-      '([["foo","bar"], ["baz",4]].reduce(function(a,b){a[b[0]]=b[1];return a;},{}))'
-    )
+    ).toEqual('(_.objectify([["foo","bar"], ["baz",4]]))')
   })
 })

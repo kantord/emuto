@@ -5,19 +5,19 @@ import compile from '../compiler'
 const tests = [
   {
     input: `null`,
-    output: `(input => null)`
+    output: `(function(_) { return (function(input) { return null})})`
   },
   {
     input: `true`,
-    output: `(input => true)`
+    output: `(function(_) { return (function(input) { return true})})`
   },
   {
     input: `$`,
-    output: `(input => input)`
+    output: `(function(_) { return (function(input) { return input})})`
   },
   {
     input: `.hello`,
-    output: `(input => input.hello)`
+    output: `(function(_) { return (function(input) { return input.hello})})`
   }
 ]
 
