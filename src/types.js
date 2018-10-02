@@ -66,6 +66,14 @@ export type ValuePropNodeType = {|
   }
 |};
 
+export type ProjectionNodeType = {|
+  type: 'projection',
+  value: {
+    left: NodeType, // eslint-disable-line no-use-before-define
+    right: ListNodeType // eslint-disable-line no-use-before-define
+  }
+|};
+
 export type NodeType =
   | PrimitiveNodeType
   | TupleNodeType
@@ -76,7 +84,8 @@ export type NodeType =
   | PipeNodeType
   | ParenthesesNodeType
   | ObjectNodeType
-  | ValuePropNodeType;
+  | ValuePropNodeType
+  | ProjectionNodeType;
 
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;

@@ -9,5 +9,9 @@ export default {
       a[b[0]] = b[1]
       return a
     },
-    {})
+    {}),
+  projection: (
+    left: Array<mixed> & {[string]: mixed},
+    right: Array<number & string>
+  ): mixed => left[right[0]]
 }
