@@ -28,4 +28,4 @@ And return a result like this:
 }
 ```
 
-Try it on RunKit: https://runkit.com/kantord/5baf626a6f9a9d001334e089
+[Click here to try it live](https://kantord.github.io/emuto-demo/)
