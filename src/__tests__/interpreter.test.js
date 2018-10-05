@@ -119,6 +119,11 @@ const tests = [
   {
     sourceCode: `[3, 2][0] | [3, 2][1]`,
     output: 2
+  },
+  {
+    sourceCode: `join " "`,
+    input: ['Hello', 'World'],
+    output: 'Hello World'
   }
 ]
 

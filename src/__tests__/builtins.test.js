@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection } = builtIns
+const { projection, join } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -27,6 +27,13 @@ describe('built ins', () => {
     it('handles falsy list items', () => {
       expect(projection([0], [0])).toEqual(0)
       expect(projection([false], [0])).toEqual(false)
+    })
+  })
+
+  describe('join', () => {
+    it('returns correct value', () => {
+      expect(join(' ')(['Hello', 'World'])).toEqual('Hello World')
+      expect(join(',')(['foo', 'World', ' '])).toEqual('foo,World, ')
     })
   })
 })

@@ -10,6 +10,7 @@ import parentheses from './parentheses'
 import object from './object'
 import projection from './projection'
 import pipe from './pipe'
+import functionCall from './functionCall'
 import type { NodeType, GeneratedCodeType } from '../types'
 
 const Generator = (node: NodeType): GeneratedCodeType => {
@@ -34,6 +35,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return parentheses(node)
     case 'projection':
       return projection(Generator)(node)
+    case 'functionCall':
+      return functionCall(Generator)(node)
     default:
       throw new Error(`Unknown node type '${node.type}'`)
   }
