@@ -9,15 +9,15 @@ describe('object generator', () => {
           {
             type: 'tuple',
             value: [
-              {type: 'primitive', value: '"foo"'},
-              {type: 'primitive', value: '"bar"'}
+              { type: 'primitive', value: '"foo"' },
+              { type: 'primitive', value: '"bar"' }
             ]
           },
           {
             type: 'tuple',
             value: [
-              {type: 'primitive', value: '"baz"'},
-              {type: 'primitive', value: '4'}
+              { type: 'primitive', value: '"baz"' },
+              { type: 'primitive', value: '4' }
             ]
           }
         ]

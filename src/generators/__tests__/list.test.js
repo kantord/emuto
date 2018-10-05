@@ -16,7 +16,7 @@ describe('list generator', () => {
           },
           {
             type: 'list',
-            value: [{type: 'primitive', value: 'null'}]
+            value: [{ type: 'primitive', value: 'null' }]
           }
         ]
       })

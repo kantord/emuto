@@ -32,7 +32,7 @@ describe('list parser', () => {
           type: 'input',
           value: '$'
         },
-        {type: 'primitive', value: 'null'}
+        { type: 'primitive', value: 'null' }
       ]
     })
   })

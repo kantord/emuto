@@ -2,7 +2,7 @@
 
 import Parsimmon from 'parsimmon'
 
-import type {PipeNodeType, NodeType} from '../../types'
+import type { PipeNodeType, NodeType } from '../../types'
 
 const PipeParser = Parsimmon.lazy((): mixed => {
   const TupleParser = require('../tuple/tuple').default

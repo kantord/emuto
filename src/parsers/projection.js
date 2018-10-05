@@ -2,7 +2,7 @@
 
 import Parsimmon from 'parsimmon'
 
-import type {ProjectionNodeType, NodeType, ListNodeType} from '../types'
+import type { ProjectionNodeType, NodeType, ListNodeType } from '../types'
 
 const ProjectionParser = Parsimmon.lazy((): mixed => {
   const ProjectableParser = require('./projectable').default

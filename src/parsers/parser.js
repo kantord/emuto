@@ -1,7 +1,7 @@
 // @flow
 
 import Program from './program'
-import type {SourceCodeType, ParserReturnValueType} from '../types'
+import type { SourceCodeType, ParserReturnValueType } from '../types'
 
 export default (sourceCode: SourceCodeType): ParserReturnValueType => {
   const results = Program.parse(sourceCode)

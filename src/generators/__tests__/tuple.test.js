@@ -3,8 +3,8 @@ import tuple from '../tuple'
 const tree = {
   type: 'tuple',
   value: [
-    {type: 'primitive', value: 'true'},
-    {type: 'primitive', value: 'false'}
+    { type: 'primitive', value: 'true' },
+    { type: 'primitive', value: 'false' }
   ]
 }
 

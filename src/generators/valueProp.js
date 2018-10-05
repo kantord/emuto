@@ -1,6 +1,6 @@
 // @flow
 
-import type {ValuePropNodeType, GeneratedCodeType, NodeType} from '../types'
+import type { ValuePropNodeType, GeneratedCodeType, NodeType } from '../types'
 
 export default (
   Generator: NodeType => GeneratedCodeType

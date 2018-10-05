@@ -2,7 +2,7 @@
 
 import Parsimmon from 'parsimmon'
 
-import type {ListCoreNodeType, NodeType} from '../types'
+import type { ListCoreNodeType, NodeType } from '../types'
 
 const ListCoreParser = Parsimmon.lazy(
   (): mixed => {

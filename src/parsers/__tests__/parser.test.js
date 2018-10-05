@@ -1,7 +1,7 @@
 // @flow
 
 import parse from '../parser'
-import type {ParserReturnValueType} from '../../types'
+import type { ParserReturnValueType } from '../../types'
 
 type ParserModuleType = {
   parse: () => ParserReturnValueType
@@ -10,7 +10,7 @@ type ParserModuleType = {
 jest.mock('../program', (): ParserModuleType => ({
   parse: (): ParserReturnValueType => ({
     status: false,
-    index: {line: 1, column: 1},
+    index: { line: 1, column: 1 },
     expected: ["'foo'", "'bar'"],
     value: {
       type: 'primitive',

@@ -1,7 +1,7 @@
 // @flow
 
 import Parsimmon from 'parsimmon'
-import type {NodeType, PrimitiveNodeType, ParserType} from '../../types'
+import type { NodeType, PrimitiveNodeType, ParserType } from '../../types'
 
 export default Parsimmon.lazy((): ParserType => {
   const SectionParser = require('../section').default

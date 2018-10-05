@@ -1,8 +1,8 @@
 // @flow
 
-import type {PipeNodeType, GeneratedCodeType} from '../types'
+import type { PipeNodeType, GeneratedCodeType } from '../types'
 
-export default ({value}: PipeNodeType): GeneratedCodeType => {
+export default ({ value }: PipeNodeType): GeneratedCodeType => {
   const Generator = require('./generator').default
   const compiledLeft = Generator(value.left)
   const compiledRight = Generator(value.right)

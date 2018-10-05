@@ -11,8 +11,8 @@ describe('tuple parser', () => {
     expect(parser.parse('true: false').value).toEqual({
       type: 'tuple',
       value: [
-        {type: 'primitive', value: 'true'},
-        {type: 'primitive', value: 'false'}
+        { type: 'primitive', value: 'true' },
+        { type: 'primitive', value: 'false' }
       ]
     })
   })
@@ -20,8 +20,8 @@ describe('tuple parser', () => {
     expect(parser.parse('null: null').value).toEqual({
       type: 'tuple',
       value: [
-        {type: 'primitive', value: 'null'},
-        {type: 'primitive', value: 'null'}
+        { type: 'primitive', value: 'null' },
+        { type: 'primitive', value: 'null' }
       ]
     })
   })

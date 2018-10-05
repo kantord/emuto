@@ -1,5 +1,5 @@
 // @flow
 
-import type {InputNodeType, GeneratedCodeType} from '../types'
+import type { InputNodeType, GeneratedCodeType } from '../types'
 
-export default ({value}: InputNodeType): GeneratedCodeType => 'input'
+export default ({ value }: InputNodeType): GeneratedCodeType => 'input'

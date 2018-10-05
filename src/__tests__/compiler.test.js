@@ -22,7 +22,7 @@ const tests = [
 ]
 
 describe('compiler', () => {
-  tests.forEach(({input, output}: {input: string, output: string}) => {
+  tests.forEach(({ input, output }: {input: string, output: string}) => {
     it(`compiles ${input}`, () => {
       expect(compile(input)).toEqual(output)
     })

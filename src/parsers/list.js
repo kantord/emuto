@@ -3,7 +3,7 @@
 import Parsimmon from 'parsimmon'
 
 import ListCoreParser from './listCore'
-import type {ListNodeType} from '../types'
+import type { ListNodeType } from '../types'
 
 export default Parsimmon.seq(
   Parsimmon.string('['),

@@ -10,7 +10,7 @@ import parentheses from './parentheses'
 import object from './object'
 import projection from './projection'
 import pipe from './pipe'
-import type {NodeType, GeneratedCodeType} from '../types'
+import type { NodeType, GeneratedCodeType } from '../types'
 
 const Generator = (node: NodeType): GeneratedCodeType => {
   switch (node.type) {
