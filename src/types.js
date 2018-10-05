@@ -79,6 +79,14 @@ export type FunctionCallNodeType = {|
   }
 |};
 
+export type FunctionCallLambdaNodeType = {|
+  type: 'functionCallLambda',
+  value: {
+    left: IdentifierNodeType,
+    right: NodeType // eslint-disable-line no-use-before-define
+  }
+|};
+
 export type ProjectionNodeType = {|
   type: 'projection',
   value: {
@@ -98,6 +106,8 @@ export type NodeType =
   | ParenthesesNodeType
   | ObjectNodeType
   | ValuePropNodeType
+  | FunctionCallNodeType
+  | FunctionCallLambdaNodeType
   | ProjectionNodeType;
 
 export type OutputType = mixed => mixed;
