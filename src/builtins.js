@@ -36,5 +36,8 @@ export default {
   projection: (left: ProjectableType, right: ProjectionRulesType): mixed =>
     right.length === 1
       ? handleProjection(left)(right)[0]
-      : handleProjection(left)(right)
+      : handleProjection(left)(right),
+  join: (separator: string): ((Array<string>) => string) => (
+    input: Array<string>
+  ): string => input.join(separator)
 }

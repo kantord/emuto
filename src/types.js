@@ -15,6 +15,11 @@ export type PrimitiveNodeType = {|
   value: string
 |};
 
+export type IdentifierNodeType = {|
+  type: 'identifier',
+  value: string
+|};
+
 export type TupleNodeType = {|
   type: 'tuple',
   value: [PrimitiveNodeType, PrimitiveNodeType]
@@ -63,6 +68,14 @@ export type ValuePropNodeType = {|
   value: {
     left: NodeType, // eslint-disable-line no-use-before-define
     right: string
+  }
+|};
+
+export type FunctionCallNodeType = {|
+  type: 'functionCall',
+  value: {
+    left: IdentifierNodeType,
+    right: NodeType // eslint-disable-line no-use-before-define
   }
 |};
 
