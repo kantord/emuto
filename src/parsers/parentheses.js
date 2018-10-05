@@ -2,7 +2,7 @@
 
 import Parsimmon from 'parsimmon'
 
-import type {ParenthesesNodeType, ParserType} from '../types'
+import type { ParenthesesNodeType, ParserType } from '../types'
 
 export default Parsimmon.lazy((): ParserType => {
   const ProgramParser = require('./program').default

@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const {projection} = builtIns
+const { projection } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -8,10 +8,10 @@ describe('built ins', () => {
       expect(projection([1, 2], [1])).toEqual(2)
     })
     it('handles string', () => {
-      expect(projection({foo: 'bar'}, ['foo'])).toEqual('bar')
+      expect(projection({ foo: 'bar' }, ['foo'])).toEqual('bar')
     })
     it('handles list of strings', () => {
-      expect(projection({foo: 'bar'}, ['foo', 'baz'])).toEqual(['bar', null])
+      expect(projection({ foo: 'bar' }, ['foo', 'baz'])).toEqual(['bar', null])
     })
     it('handles negative numbers', () => {
       expect(projection([1, 2, 3], [-1])).toEqual(3)

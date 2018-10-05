@@ -3,7 +3,7 @@
 import Parsimmon from 'parsimmon'
 import TupleParser from './tuple/tuple'
 import PipeParser from './pipe/pipe'
-import type {NodeType} from '../types'
+import type { NodeType } from '../types'
 
 export default Parsimmon.seq(
   Parsimmon.optWhitespace,

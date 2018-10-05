@@ -1,7 +1,7 @@
 // @flow
 
 import Parsimmon from 'parsimmon'
-import type {NodeType, ValuePropNodeType} from '../types'
+import type { NodeType, ValuePropNodeType } from '../types'
 
 const valueProp = Parsimmon.lazy((): mixed => {
   const ValueParser = require('./value').default

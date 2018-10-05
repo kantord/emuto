@@ -23,12 +23,12 @@ const tests = [
   },
   {
     sourceCode: `.bar`,
-    input: {bar: 4, baz: 'hello'},
+    input: { bar: 4, baz: 'hello' },
     output: 4
   },
   {
     sourceCode: `.$shit`,
-    input: {$shit: null, baz: 'hello'},
+    input: { $shit: null, baz: 'hello' },
     output: null
   },
   {
@@ -76,7 +76,7 @@ const tests = [
     sourceCode: `.apple.pear.bar`,
     input: {
       apple: {
-        pear: {bar: false}
+        pear: { bar: false }
       }
     },
     output: false
@@ -95,7 +95,7 @@ const tests = [
     input: 42,
     output: {
       foo: [-42, 42],
-      bar: {message: 'Hello World'}
+      bar: { message: 'Hello World' }
     }
   },
   {

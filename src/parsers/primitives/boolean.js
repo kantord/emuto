@@ -1,6 +1,6 @@
 // @flow
 
-import type {NodeType} from '../../types'
+import type { NodeType } from '../../types'
 import Parsimmon from 'parsimmon'
 
 const TrueParser = Parsimmon.string('true')

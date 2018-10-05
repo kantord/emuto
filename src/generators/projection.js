@@ -1,6 +1,6 @@
 // @flow
 
-import type {ProjectionNodeType, GeneratedCodeType, NodeType} from '../types'
+import type { ProjectionNodeType, GeneratedCodeType, NodeType } from '../types'
 
 export default (
   Generator: NodeType => GeneratedCodeType

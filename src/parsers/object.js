@@ -3,7 +3,7 @@
 import Parsimmon from 'parsimmon'
 
 import ListCoreParser from './listCore'
-import type {ObjectNodeType} from '../types'
+import type { ObjectNodeType } from '../types'
 
 export default Parsimmon.seq(
   Parsimmon.regexp(/\s*\{\s*/),

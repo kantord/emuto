@@ -9,8 +9,8 @@ describe('pipe parser', () => {
     expect(parser.parse(codeExamples[0]).value).toEqual({
       type: 'pipe',
       value: {
-        left: {type: 'input', value: '$'},
-        right: {type: 'primitive', value: 'false'}
+        left: { type: 'input', value: '$' },
+        right: { type: 'primitive', value: 'false' }
       }
     })
   })

@@ -1,7 +1,7 @@
 // @flow
 
 import parser from '../../primitive'
-import type {SourceCodeType, ParserType} from '../../../types'
+import type { SourceCodeType, ParserType } from '../../../types'
 
 const testExample = (parser: ParserType): (SourceCodeType => void) => (
   example: SourceCodeType
