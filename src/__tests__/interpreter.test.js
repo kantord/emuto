@@ -124,6 +124,11 @@ const tests = [
     sourceCode: `join " "`,
     input: ['Hello', 'World'],
     output: 'Hello World'
+  },
+  {
+    sourceCode: `map \\" "`,
+    input: ['Hello', 'World'],
+    output: [' ', ' ']
   }
 ]
 

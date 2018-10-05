@@ -39,5 +39,8 @@ export default {
       : handleProjection(left)(right),
   join: (separator: string): ((Array<string>) => string) => (
     input: Array<string>
-  ): string => input.join(separator)
+  ): string => input.join(separator),
+  map: (f: mixed => mixed): ((Array<mixed>) => Array<mixed>) => (
+    input: Array<mixed>
+  ): Array<mixed> => input.map(f)
 }

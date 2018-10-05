@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection, join } = builtIns
+const { projection, join, map } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -34,6 +34,15 @@ describe('built ins', () => {
     it('returns correct value', () => {
       expect(join(' ')(['Hello', 'World'])).toEqual('Hello World')
       expect(join(',')(['foo', 'World', ' '])).toEqual('foo,World, ')
+    })
+  })
+
+  describe('map', () => {
+    it('returns correct value', () => {
+      const id = a => a; // eslint-disable-line
+      const foo = a => 'foo'; // eslint-disable-line
+      expect(map(id)(['Hello', 'World'])).toEqual(['Hello', 'World'])
+      expect(map(foo)(['Hello', 'World'])).toEqual(['foo', 'foo'])
     })
   })
 })
