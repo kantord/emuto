@@ -2,6 +2,9 @@
 
 emuto is a lightweight JSON processor inspired by and nearly porting [jq](https://stedolan.github.io/jq/)
 
+emuto is written in JavaScript and can be used in the browser and in node as
+well.
+
 The following emuto script
 
 ```javascript
@@ -30,7 +33,77 @@ And return a result like this:
 
 ## Try emuto
 
-<iframe 
+<iframe
     style="width: 100%; height: 30em; border: 0;"
     src="https://kantord.github.io/emuto-demo/">
 </iframe>
+
+## Documentation
+
+### Basic filters
+
+#### Identity `$`
+
+Takes an input and returns it unchanged.
+
+#### Simple property accessor `.foo`, `.foo.bar`
+
+Retrieves a certain property of the input.
+
+`.foo.bar` is equivalent to `.foo | .bar`
+
+#### Projection using property accessors `$[3]`, `$[0, -1]`, `$["foo", "bar"]`
+
+Retrieve a single element from an object or array, or retrieve a list of
+elements.
+
+When the projection has a single element (e. g. `$["name"]`) that property is
+returned.
+
+In any other case, a list of each requested element is returned.
+
+
+### Functions
+
+#### `join`
+
+Takes an array as input and joins them into a single string using the supplied
+separator.
+
+Input:
+
+```
+["Hello", "World!"] | join " "
+```
+
+Output:
+
+```json
+"Hello World!"
+```
+
+#### `map \`
+
+Takes an array as input and joins them into a single string using the supplied
+separator.
+
+Input:
+
+```
+["Hello", "World!"] | map \{"word": $}
+```
+
+Output:
+
+```json
+[
+  { "word": "Hello"},
+  { "word": "World!"},
+]
+```
+
+### Chaining filters
+You can combine two filters by using the pipe syntax, e. q. `.foo | .bar`
+
+The first filter (`.foo`) will receive the input and transform it; the second
+filter (`.bar`) will take the output of the first function and transform it.
