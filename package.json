@@ -1,24 +1,28 @@
 {
   "name": "emuto",
   "version": "0.0.0-development",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "license": "MIT",
   "scripts": {
     "test": "jest src",
-    "build": "yarn run babel src/ -- -d lib/",
+    "build": "yarn webpack",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
+    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "cz-conventional-changelog": "^2.1.0",
@@ -34,7 +38,9 @@
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.12.1",
     "semantic-release": "^15.9.17",
-    "travis-deploy-once": "^5.0.9"
+    "travis-deploy-once": "^5.0.9",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "flow": "^0.2.3",
