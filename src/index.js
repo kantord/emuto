@@ -1,3 +1,3 @@
-import interpreter from './interpreter';
+import interpreter from './interpreter'
 
-export default interpreter;
+export default interpreter
