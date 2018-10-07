@@ -5,12 +5,16 @@
   "module": "src/index.js",
   "license": "MIT",
   "scripts": {
+    "analyze": "yarn build --json | tac | tac | tail -n +3 > stats.json",
+    "analyze-bundle":
+      "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest src",
     "build": "yarn webpack",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
+    "checks":
+      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
@@ -26,6 +30,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "cz-conventional-changelog": "^2.1.0",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "^5.6.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-flowtype": "^2.50.3",
@@ -40,6 +45,7 @@
     "semantic-release": "^15.9.17",
     "travis-deploy-once": "^5.0.9",
     "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {

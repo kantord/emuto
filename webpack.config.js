@@ -1,3 +1,4 @@
+var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 var path = require('path');
 
 module.exports = {
@@ -9,6 +10,15 @@ module.exports = {
     library: 'emuto',
     libraryTarget: 'umd',
   },
+  externals: /buffer/,
+  plugins: [
+    new DuplicatePackageCheckerPlugin({
+      verbose: true,
+      emitError: true,
+      showHelp: true,
+      strict: true,
+    }),
+  ],
   module: {
     rules: [
       {
