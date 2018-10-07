@@ -14,7 +14,7 @@ const FunctionCallLambdaParser = Parsimmon.lazy((): mixed => {
   return Parsimmon.seq(
     IdentifierParser,
     Parsimmon.optWhitespace,
-    Parsimmon.string('\\'),
+    Parsimmon.alt(Parsimmon.regexp(/\$\s*=>\s*/), Parsimmon.string('\\')),
     Parsimmon.optWhitespace,
     ProgramParser
   ).map(

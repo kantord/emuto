@@ -62,7 +62,6 @@ returned.
 
 In any other case, a list of each requested element is returned.
 
-
 ### Functions
 
 #### `join`
@@ -90,19 +89,19 @@ separator.
 Input:
 
 ```
-["Hello", "World!"] | map \{"word": $}
+["Hello", "World!"] | map $ => {"word": $}
 ```
 
 Output:
 
 ```json
-[
-  { "word": "Hello"},
-  { "word": "World!"},
-]
+[{"word": "Hello"}, {"word": "World!"}]
 ```
 
+Alternatively, you can also use this syntax: `["Hello", "World!"] | map \ {"word": $}`
+
 ### Chaining filters
+
 You can combine two filters by using the pipe syntax, e. q. `.foo | .bar`
 
 The first filter (`.foo`) will receive the input and transform it; the second

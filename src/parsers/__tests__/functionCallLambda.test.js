@@ -4,6 +4,21 @@ describe('functionCallLambda parser', () => {
   it('parses map \\"foo"', () => {
     expect(parser.parse('map \\"foo"').status).toBe(true)
   })
+  it('parses map \\ "foo"', () => {
+    expect(parser.parse('map \\ "foo"').status).toBe(true)
+  })
+
+  it('parses map $ => "foo"', () => {
+    expect(parser.parse('map $ => "foo"').status).toBe(true)
+  })
+
+  it('parses map $ =>"foo"', () => {
+    expect(parser.parse('map $ =>"foo"').status).toBe(true)
+  })
+
+  it('parses map $=>"foo"', () => {
+    expect(parser.parse('map $=>"foo"').status).toBe(true)
+  })
 
   it('returns correct value', () => {
     expect(parser.parse('map \\["a", "b"]').value).toEqual({
