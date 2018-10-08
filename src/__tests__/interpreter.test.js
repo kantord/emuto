@@ -1,6 +1,7 @@
 // @flow
 
 import execute from '../interpreter'
+import compile from '../compiler'
 
 const tests = [
   {
@@ -145,6 +146,10 @@ describe('interpreter', () => {
     }) => {
       it(`executes ${sourceCode}`, () => {
         expect(execute(sourceCode)(input)).toEqual(output)
+      })
+
+      it(`correct target code ${sourceCode}`, () => {
+        expect(compile(sourceCode)).toMatchSnapshot()
       })
     }
   )
