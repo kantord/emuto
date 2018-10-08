@@ -1,4 +1,4 @@
-# emuto ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)
+# emuto ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)  ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/emuto.svg)
 
 emuto is a lightweight JSON processor inspired by and nearly porting [jq](https://stedolan.github.io/jq/)
 
