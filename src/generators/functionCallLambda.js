@@ -11,6 +11,6 @@ export default (
 ): (FunctionCallLambdaNodeType => GeneratedCodeType) => ({
   value
 }: FunctionCallLambdaNodeType): GeneratedCodeType =>
-  `_.${value.left.value}(function(input) {return ${Generator(
+  `(_.${value.left.value}(function(input) {return ${Generator(
     value.right
-  )}})(input)`
+  )}})(input))`

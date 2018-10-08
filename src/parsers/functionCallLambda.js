@@ -9,14 +9,14 @@ import type {
 } from '../types'
 
 const FunctionCallLambdaParser = Parsimmon.lazy((): mixed => {
-  const ProgramParser = require('./program').default
+  const TupleParser = require('./tuple/tuple').default
   const IdentifierParser = require('./identifier').default
   return Parsimmon.seq(
     IdentifierParser,
     Parsimmon.optWhitespace,
     Parsimmon.alt(Parsimmon.regexp(/\$\s*=>\s*/), Parsimmon.string('\\')),
     Parsimmon.optWhitespace,
-    ProgramParser
+    TupleParser
   ).map(
     ([left, _, __, ___, right]: [
       IdentifierNodeType,
