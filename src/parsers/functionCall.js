@@ -2,17 +2,25 @@
 
 import Parsimmon from 'parsimmon'
 
-import type { FunctionCallNodeType, NodeType, IdentifierNodeType } from '../types'
+import type {
+  FunctionCallNodeType,
+  NodeType,
+  IdentifierNodeType
+} from '../types'
 
 const FunctionCallParser = Parsimmon.lazy((): mixed => {
-  const ProgramParser = require('./program').default
+  const TupleParser = require('./tuple/tuple').default
   const IdentifierParser = require('./identifier').default
   return Parsimmon.seq(
     IdentifierParser,
     Parsimmon.optWhitespace,
-    ProgramParser
+    TupleParser
   ).map(
-    ([left, _, right]: [IdentifierNodeType, mixed, NodeType]): FunctionCallNodeType => ({
+    ([left, _, right]: [
+      IdentifierNodeType,
+      mixed,
+      NodeType
+    ]): FunctionCallNodeType => ({
       type: 'functionCall',
       value: {
         left,

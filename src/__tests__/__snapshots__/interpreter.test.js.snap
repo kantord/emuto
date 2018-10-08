@@ -37,16 +37,777 @@ exports[`interpreter correct target code {"foo": ("bar" | "baz")} 1`] = `"(funct
 
 exports[`interpreter correct target code {"foo": ("bar" | "baz")}["foo"] 1`] = `"(function(_) { return (function(input) { return _.projection((_.objectify([[\\"foo\\",((function (input) {return \\"baz\\"})(\\"bar\\"))]])), [\\"foo\\"])})})"`;
 
+exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.objectify([[\\"new\\",input]]))})((_.objectify([[\\"original\\",input.foo]])))})})"`;
+
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
 exports[`interpreter correct target code join " " 1`] = `"(function(_) { return (function(input) { return _.join(\\" \\")(input)})})"`;
 
-exports[`interpreter correct target code map \\" " | map $ => [$] 1`] = `"(function(_) { return (function(input) { return _.map(function(input) {return (function (input) {return _.map(function(input) {return [input]})(input)})(\\" \\")})(input)})})"`;
+exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`] = `"(function(_) { return (function(input) { return (function (input) {return \\"foo\\"})((_.map(function(input) {return (_.objectify([[\\"original\\",input.foo]]))})(input)))})})"`;
 
-exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return _.map(function(input) {return \\" \\"})(input)})})"`;
+exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return (_.objectify([[\\"new\\",input]]))})(input))})((_.map(function(input) {return (_.objectify([[\\"original\\",input.foo]]))})(input)))})})"`;
+
+exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return (_.map(function(input) {return \\" \\"})(input))})})"`;
 
 exports[`interpreter correct target code null 1`] = `"(function(_) { return (function(input) { return null})})"`;
 
 exports[`interpreter correct target code null: true 1`] = `"(function(_) { return (function(input) { return [null,true]})})"`;
 
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
+
+exports[`interpreter correct target tree $ 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "input",
+    "value": "$",
+  },
+}
+`;
+
+exports[`interpreter correct target tree $ 2`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "input",
+    "value": "$",
+  },
+}
+`;
+
+exports[`interpreter correct target tree .$shit 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "inputProp",
+    "value": ".$shit",
+  },
+}
+`;
+
+exports[`interpreter correct target tree .apple.pear 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "valueProp",
+    "value": Object {
+      "left": Object {
+        "type": "inputProp",
+        "value": ".apple",
+      },
+      "right": ".pear",
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree .apple.pear.bar 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "valueProp",
+    "value": Object {
+      "left": Object {
+        "type": "inputProp",
+        "value": ".apple",
+      },
+      "right": ".pear.bar",
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree .bar 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "inputProp",
+    "value": ".bar",
+  },
+}
+`;
+
+exports[`interpreter correct target tree .foo | .bar | .baz 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "inputProp",
+        "value": ".foo",
+      },
+      "right": Object {
+        "type": "pipe",
+        "value": Object {
+          "left": Object {
+            "type": "inputProp",
+            "value": ".bar",
+          },
+          "right": Object {
+            "type": "inputProp",
+            "value": ".baz",
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree .foo | .bar 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "inputProp",
+        "value": ".foo",
+      },
+      "right": Object {
+        "type": "inputProp",
+        "value": ".bar",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [[false], [true, null]] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "list",
+    "value": Array [
+      Object {
+        "type": "list",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "false",
+          },
+        ],
+      },
+      Object {
+        "type": "list",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "true",
+          },
+          Object {
+            "type": "primitive",
+            "value": "null",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [0.14, true, "true 2"] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "list",
+    "value": Array [
+      Object {
+        "type": "primitive",
+        "value": "0.14",
+      },
+      Object {
+        "type": "primitive",
+        "value": "true",
+      },
+      Object {
+        "type": "primitive",
+        "value": "\\"true 2\\"",
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [3, 2][0] : [3, 2][1] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "tuple",
+    "value": Array [
+      Object {
+        "type": "projection",
+        "value": Object {
+          "left": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "3",
+              },
+              Object {
+                "type": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          "right": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "0",
+              },
+            ],
+          },
+        },
+      },
+      Object {
+        "type": "projection",
+        "value": Object {
+          "left": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "3",
+              },
+              Object {
+                "type": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          "right": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "1",
+              },
+            ],
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [3, 2][0] | [3, 2][1] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "projection",
+        "value": Object {
+          "left": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "3",
+              },
+              Object {
+                "type": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          "right": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "0",
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "type": "projection",
+        "value": Object {
+          "left": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "3",
+              },
+              Object {
+                "type": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          "right": Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "1",
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [3, 2][0] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "projection",
+    "value": Object {
+      "left": Object {
+        "type": "list",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "3",
+          },
+          Object {
+            "type": "primitive",
+            "value": "2",
+          },
+        ],
+      },
+      "right": Object {
+        "type": "list",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "0",
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree {
+      "foo": [-42, $],
+      "bar": {
+        "message": "Hello World"
+      }
+    } 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "object",
+    "value": Array [
+      Object {
+        "type": "tuple",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "\\"foo\\"",
+          },
+          Object {
+            "type": "list",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "-42",
+              },
+              Object {
+                "type": "input",
+                "value": "$",
+              },
+            ],
+          },
+        ],
+      },
+      Object {
+        "type": "tuple",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "\\"bar\\"",
+          },
+          Object {
+            "type": "object",
+            "value": Array [
+              Object {
+                "type": "tuple",
+                "value": Array [
+                  Object {
+                    "type": "primitive",
+                    "value": "\\"message\\"",
+                  },
+                  Object {
+                    "type": "primitive",
+                    "value": "\\"Hello World\\"",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree {"foo": ("bar" | "baz")} 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "object",
+    "value": Array [
+      Object {
+        "type": "tuple",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "\\"foo\\"",
+          },
+          Object {
+            "type": "parentheses",
+            "value": Object {
+              "type": "pipe",
+              "value": Object {
+                "left": Object {
+                  "type": "primitive",
+                  "value": "\\"bar\\"",
+                },
+                "right": Object {
+                  "type": "primitive",
+                  "value": "\\"baz\\"",
+                },
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree {"foo": ("bar" | "baz")}["foo"] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "projection",
+    "value": Object {
+      "left": Object {
+        "type": "object",
+        "value": Array [
+          Object {
+            "type": "tuple",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "\\"foo\\"",
+              },
+              Object {
+                "type": "parentheses",
+                "value": Object {
+                  "type": "pipe",
+                  "value": Object {
+                    "left": Object {
+                      "type": "primitive",
+                      "value": "\\"bar\\"",
+                    },
+                    "right": Object {
+                      "type": "primitive",
+                      "value": "\\"baz\\"",
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+      "right": Object {
+        "type": "list",
+        "value": Array [
+          Object {
+            "type": "primitive",
+            "value": "\\"foo\\"",
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree {"original": $.foo} | {"new": $} 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "object",
+        "value": Array [
+          Object {
+            "type": "tuple",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "\\"original\\"",
+              },
+              Object {
+                "type": "valueProp",
+                "value": Object {
+                  "left": Object {
+                    "type": "input",
+                    "value": "$",
+                  },
+                  "right": ".foo",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      "right": Object {
+        "type": "object",
+        "value": Array [
+          Object {
+            "type": "tuple",
+            "value": Array [
+              Object {
+                "type": "primitive",
+                "value": "\\"new\\"",
+              },
+              Object {
+                "type": "input",
+                "value": "$",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree false | true 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "primitive",
+        "value": "false",
+      },
+      "right": Object {
+        "type": "primitive",
+        "value": "true",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree join " " 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "functionCall",
+    "value": Object {
+      "left": Object {
+        "type": "identifier",
+        "value": "join",
+      },
+      "right": Object {
+        "type": "primitive",
+        "value": "\\" \\"",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map $ => {"original": $.foo} | "foo" 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "type": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "type": "object",
+            "value": Array [
+              Object {
+                "type": "tuple",
+                "value": Array [
+                  Object {
+                    "type": "primitive",
+                    "value": "\\"original\\"",
+                  },
+                  Object {
+                    "type": "valueProp",
+                    "value": Object {
+                      "left": Object {
+                        "type": "input",
+                        "value": "$",
+                      },
+                      "right": ".foo",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "type": "primitive",
+        "value": "\\"foo\\"",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "pipe",
+    "value": Object {
+      "left": Object {
+        "type": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "type": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "type": "object",
+            "value": Array [
+              Object {
+                "type": "tuple",
+                "value": Array [
+                  Object {
+                    "type": "primitive",
+                    "value": "\\"original\\"",
+                  },
+                  Object {
+                    "type": "valueProp",
+                    "value": Object {
+                      "left": Object {
+                        "type": "input",
+                        "value": "$",
+                      },
+                      "right": ".foo",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "type": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "type": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "type": "object",
+            "value": Array [
+              Object {
+                "type": "tuple",
+                "value": Array [
+                  Object {
+                    "type": "primitive",
+                    "value": "\\"new\\"",
+                  },
+                  Object {
+                    "type": "input",
+                    "value": "$",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map \\" " 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "functionCallLambda",
+    "value": Object {
+      "left": Object {
+        "type": "identifier",
+        "value": "map",
+      },
+      "right": Object {
+        "type": "primitive",
+        "value": "\\" \\"",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree null 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "primitive",
+    "value": "null",
+  },
+}
+`;
+
+exports[`interpreter correct target tree null: true 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "tuple",
+    "value": Array [
+      Object {
+        "type": "primitive",
+        "value": "null",
+      },
+      Object {
+        "type": "primitive",
+        "value": "true",
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree true 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "type": "primitive",
+    "value": "true",
+  },
+}
+`;

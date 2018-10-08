@@ -6,7 +6,7 @@ describe('functionCallLambda generator', () => {
   it('generates correct code', () => {
     const fakeGenerator = (
       { type } // eslint-disable-line flowtype/require-parameter-type
-    ): string => '[]'
+    ): string => 'input[0]'
     expect(
       functionCallLambda(fakeGenerator)({
         type: 'functionCallLambda',
@@ -21,6 +21,6 @@ describe('functionCallLambda generator', () => {
           }
         }
       })
-    ).toEqual('_.foo(function(input) {return []})(input)')
+    ).toEqual('(_.foo(function(input) {return input[0]})(input))')
   })
 })

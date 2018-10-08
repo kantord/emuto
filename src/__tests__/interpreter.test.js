@@ -2,6 +2,7 @@
 
 import execute from '../interpreter'
 import compile from '../compiler'
+import parse from '../parsers/parser'
 
 const tests = [
   {
@@ -130,6 +131,21 @@ const tests = [
     sourceCode: `map \\" "`,
     input: ['Hello', 'World'],
     output: [' ', ' ']
+  },
+  {
+    sourceCode: `{"original": $.foo} | {"new": $}`,
+    input: { foo: 42 },
+    output: { new: { original: 42 } }
+  },
+  {
+    sourceCode: `map $ => {"original": $.foo} | map $=> {"new": $}`,
+    input: [{ foo: 42 }, { foo: 'hello' }],
+    output: [{ new: { original: 42 } }, { new: { original: 'hello' } }]
+  },
+  {
+    sourceCode: `map $ => {"original": $.foo} | "foo"`,
+    input: [{ foo: 42 }, { foo: 'hello' }],
+    output: 'foo'
   }
 ]
 
@@ -150,6 +166,10 @@ describe('interpreter', () => {
 
       it(`correct target code ${sourceCode}`, () => {
         expect(compile(sourceCode)).toMatchSnapshot()
+      })
+
+      it(`correct target tree ${sourceCode}`, () => {
+        expect(parse(sourceCode)).toMatchSnapshot()
       })
     }
   )
