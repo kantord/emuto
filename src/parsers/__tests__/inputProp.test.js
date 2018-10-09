@@ -6,13 +6,13 @@ describe('. parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('.foo').value).toEqual({
-      type: 'inputProp',
+      name: 'inputProp',
       value: '.foo'
     })
   })
   it('returns correct value 2', () => {
     expect(parser.parse('.bar4').value).toEqual({
-      type: 'inputProp',
+      name: 'inputProp',
       value: '.bar4'
     })
   })

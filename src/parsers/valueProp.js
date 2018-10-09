@@ -9,7 +9,7 @@ const valueProp = P.lazy((): mixed => {
     ValueParser,
     P.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i)
   ).map(([left, right]: [NodeType, string]): ValuePropNodeType => ({
-    type: 'valueProp',
+    name: 'valueProp',
     value: {
       left,
       right

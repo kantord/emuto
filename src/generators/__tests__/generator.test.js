@@ -4,8 +4,8 @@ describe('generator', () => {
   it('throws error on unknown node types', () => {
     expect(() => {
       generator({
-        type: 'bullshit'
+        name: 'bullshit'
       })
-    }).toThrow("Unknown node type 'bullshit'")
+    }).toThrow("Unknown node name 'bullshit'")
   })
 })

@@ -13,7 +13,7 @@ jest.mock('../program', (): ParserModuleType => ({
     index: { line: 1, column: 1 },
     expected: ["'foo'", "'bar'"],
     value: {
-      type: 'primitive',
+      name: 'primitive',
       value: 'null'
     }
   })

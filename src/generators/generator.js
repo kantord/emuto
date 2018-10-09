@@ -15,7 +15,7 @@ import functionCallLambda from './functionCallLambda'
 import type { NodeType, GeneratedCodeType } from '../types'
 
 const Generator = (node: NodeType): GeneratedCodeType => {
-  switch (node.type) {
+  switch (node.name) {
     case 'primitive':
       return primitive(node)
     case 'tuple':
@@ -41,7 +41,7 @@ const Generator = (node: NodeType): GeneratedCodeType => {
     case 'functionCallLambda':
       return functionCallLambda(Generator)(node)
     default:
-      throw new Error(`Unknown node type '${node.type}'`)
+      throw new Error(`Unknown node name '${node.name}'`)
   }
 }
 

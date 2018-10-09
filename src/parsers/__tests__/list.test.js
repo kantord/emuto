@@ -7,14 +7,14 @@ describe('list parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('[$,$]').value).toEqual({
-      type: 'list',
+      name: 'list',
       value: [
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         }
       ]
@@ -22,17 +22,17 @@ describe('list parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('[$,$, null]').value).toEqual({
-      type: 'list',
+      name: 'list',
       value: [
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
-        { type: 'primitive', value: 'null' }
+        { name: 'primitive', value: 'null' }
       ]
     })
   })

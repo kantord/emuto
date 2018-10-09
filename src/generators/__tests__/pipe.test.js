@@ -4,14 +4,14 @@ describe('pipe generator', () => {
   it('generates correct code', () => {
     expect(
       pipe({
-        type: 'pipe',
+        name: 'pipe',
         value: {
           left: {
-            type: 'input',
+            name: 'input',
             value: '.'
           },
           right: {
-            type: 'primitive',
+            name: 'primitive',
             value: 'false'
           }
         }
@@ -21,14 +21,14 @@ describe('pipe generator', () => {
   it('generates correct code 2', () => {
     expect(
       pipe({
-        type: 'pipe',
+        name: 'pipe',
         value: {
           left: {
-            type: 'primitive',
+            name: 'primitive',
             value: 'true'
           },
           right: {
-            type: 'primitive',
+            name: 'primitive',
             value: 'null'
           }
         }

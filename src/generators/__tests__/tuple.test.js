@@ -1,10 +1,10 @@
 import tuple from '../tuple'
 
 const tree = {
-  type: 'tuple',
+  name: 'tuple',
   value: [
-    { type: 'primitive', value: 'true' },
-    { type: 'primitive', value: 'false' }
+    { name: 'primitive', value: 'true' },
+    { name: 'primitive', value: 'false' }
   ]
 }
 

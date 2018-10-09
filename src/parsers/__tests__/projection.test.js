@@ -19,26 +19,26 @@ describe('projection parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('[3, 2][3]').value).toEqual({
-      type: 'projection',
+      name: 'projection',
       value: {
         left: {
-          type: 'list',
+          name: 'list',
           value: [
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '3'
             },
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '2'
             }
           ]
         },
         right: {
-          type: 'list',
+          name: 'list',
           value: [
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '3'
             }
           ]

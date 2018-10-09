@@ -59,7 +59,7 @@ exports[`interpreter correct target tree $ 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "input",
+    "name": "input",
     "value": "$",
   },
 }
@@ -69,7 +69,7 @@ exports[`interpreter correct target tree $ 2`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "input",
+    "name": "input",
     "value": "$",
   },
 }
@@ -79,7 +79,7 @@ exports[`interpreter correct target tree .$shit 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "inputProp",
+    "name": "inputProp",
     "value": ".$shit",
   },
 }
@@ -89,10 +89,10 @@ exports[`interpreter correct target tree .apple.pear 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "valueProp",
+    "name": "valueProp",
     "value": Object {
       "left": Object {
-        "type": "inputProp",
+        "name": "inputProp",
         "value": ".apple",
       },
       "right": ".pear",
@@ -105,10 +105,10 @@ exports[`interpreter correct target tree .apple.pear.bar 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "valueProp",
+    "name": "valueProp",
     "value": Object {
       "left": Object {
-        "type": "inputProp",
+        "name": "inputProp",
         "value": ".apple",
       },
       "right": ".pear.bar",
@@ -121,7 +121,7 @@ exports[`interpreter correct target tree .bar 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "inputProp",
+    "name": "inputProp",
     "value": ".bar",
   },
 }
@@ -131,21 +131,21 @@ exports[`interpreter correct target tree .foo | .bar | .baz 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "inputProp",
+        "name": "inputProp",
         "value": ".foo",
       },
       "right": Object {
-        "type": "pipe",
+        "name": "pipe",
         "value": Object {
           "left": Object {
-            "type": "inputProp",
+            "name": "inputProp",
             "value": ".bar",
           },
           "right": Object {
-            "type": "inputProp",
+            "name": "inputProp",
             "value": ".baz",
           },
         },
@@ -159,14 +159,14 @@ exports[`interpreter correct target tree .foo | .bar 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "inputProp",
+        "name": "inputProp",
         "value": ".foo",
       },
       "right": Object {
-        "type": "inputProp",
+        "name": "inputProp",
         "value": ".bar",
       },
     },
@@ -178,26 +178,26 @@ exports[`interpreter correct target tree [[false], [true, null]] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "list",
+    "name": "list",
     "value": Array [
       Object {
-        "type": "list",
+        "name": "list",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "false",
           },
         ],
       },
       Object {
-        "type": "list",
+        "name": "list",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "true",
           },
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "null",
           },
         ],
@@ -211,18 +211,18 @@ exports[`interpreter correct target tree [0.14, true, "true 2"] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "list",
+    "name": "list",
     "value": Array [
       Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "0.14",
       },
       Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "true",
       },
       Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "\\"true 2\\"",
       },
     ],
@@ -234,29 +234,29 @@ exports[`interpreter correct target tree [3, 2][0] : [3, 2][1] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "tuple",
+    "name": "tuple",
     "value": Array [
       Object {
-        "type": "projection",
+        "name": "projection",
         "value": Object {
           "left": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "3",
               },
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "2",
               },
             ],
           },
           "right": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "0",
               },
             ],
@@ -264,26 +264,26 @@ Object {
         },
       },
       Object {
-        "type": "projection",
+        "name": "projection",
         "value": Object {
           "left": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "3",
               },
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "2",
               },
             ],
           },
           "right": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "1",
               },
             ],
@@ -299,29 +299,29 @@ exports[`interpreter correct target tree [3, 2][0] | [3, 2][1] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "projection",
+        "name": "projection",
         "value": Object {
           "left": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "3",
               },
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "2",
               },
             ],
           },
           "right": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "0",
               },
             ],
@@ -329,26 +329,26 @@ Object {
         },
       },
       "right": Object {
-        "type": "projection",
+        "name": "projection",
         "value": Object {
           "left": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "3",
               },
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "2",
               },
             ],
           },
           "right": Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "1",
               },
             ],
@@ -364,26 +364,26 @@ exports[`interpreter correct target tree [3, 2][0] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "projection",
+    "name": "projection",
     "value": Object {
       "left": Object {
-        "type": "list",
+        "name": "list",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "3",
           },
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "2",
           },
         ],
       },
       "right": Object {
-        "type": "list",
+        "name": "list",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "0",
           },
         ],
@@ -402,24 +402,24 @@ exports[`interpreter correct target tree {
 Object {
   "status": true,
   "value": Object {
-    "type": "object",
+    "name": "object",
     "value": Array [
       Object {
-        "type": "tuple",
+        "name": "tuple",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "\\"foo\\"",
           },
           Object {
-            "type": "list",
+            "name": "list",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "-42",
               },
               Object {
-                "type": "input",
+                "name": "input",
                 "value": "$",
               },
             ],
@@ -427,24 +427,24 @@ Object {
         ],
       },
       Object {
-        "type": "tuple",
+        "name": "tuple",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "\\"bar\\"",
           },
           Object {
-            "type": "object",
+            "name": "object",
             "value": Array [
               Object {
-                "type": "tuple",
+                "name": "tuple",
                 "value": Array [
                   Object {
-                    "type": "primitive",
+                    "name": "primitive",
                     "value": "\\"message\\"",
                   },
                   Object {
-                    "type": "primitive",
+                    "name": "primitive",
                     "value": "\\"Hello World\\"",
                   },
                 ],
@@ -462,26 +462,26 @@ exports[`interpreter correct target tree {"foo": ("bar" | "baz")} 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "object",
+    "name": "object",
     "value": Array [
       Object {
-        "type": "tuple",
+        "name": "tuple",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "\\"foo\\"",
           },
           Object {
-            "type": "parentheses",
+            "name": "parentheses",
             "value": Object {
-              "type": "pipe",
+              "name": "pipe",
               "value": Object {
                 "left": Object {
-                  "type": "primitive",
+                  "name": "primitive",
                   "value": "\\"bar\\"",
                 },
                 "right": Object {
-                  "type": "primitive",
+                  "name": "primitive",
                   "value": "\\"baz\\"",
                 },
               },
@@ -498,29 +498,29 @@ exports[`interpreter correct target tree {"foo": ("bar" | "baz")}["foo"] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "projection",
+    "name": "projection",
     "value": Object {
       "left": Object {
-        "type": "object",
+        "name": "object",
         "value": Array [
           Object {
-            "type": "tuple",
+            "name": "tuple",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "\\"foo\\"",
               },
               Object {
-                "type": "parentheses",
+                "name": "parentheses",
                 "value": Object {
-                  "type": "pipe",
+                  "name": "pipe",
                   "value": Object {
                     "left": Object {
-                      "type": "primitive",
+                      "name": "primitive",
                       "value": "\\"bar\\"",
                     },
                     "right": Object {
-                      "type": "primitive",
+                      "name": "primitive",
                       "value": "\\"baz\\"",
                     },
                   },
@@ -531,10 +531,10 @@ Object {
         ],
       },
       "right": Object {
-        "type": "list",
+        "name": "list",
         "value": Array [
           Object {
-            "type": "primitive",
+            "name": "primitive",
             "value": "\\"foo\\"",
           },
         ],
@@ -548,23 +548,23 @@ exports[`interpreter correct target tree {"original": $.foo} | {"new": $} 1`] = 
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "object",
+        "name": "object",
         "value": Array [
           Object {
-            "type": "tuple",
+            "name": "tuple",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "\\"original\\"",
               },
               Object {
-                "type": "valueProp",
+                "name": "valueProp",
                 "value": Object {
                   "left": Object {
-                    "type": "input",
+                    "name": "input",
                     "value": "$",
                   },
                   "right": ".foo",
@@ -575,17 +575,17 @@ Object {
         ],
       },
       "right": Object {
-        "type": "object",
+        "name": "object",
         "value": Array [
           Object {
-            "type": "tuple",
+            "name": "tuple",
             "value": Array [
               Object {
-                "type": "primitive",
+                "name": "primitive",
                 "value": "\\"new\\"",
               },
               Object {
-                "type": "input",
+                "name": "input",
                 "value": "$",
               },
             ],
@@ -601,14 +601,14 @@ exports[`interpreter correct target tree false | true 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "false",
       },
       "right": Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "true",
       },
     },
@@ -620,14 +620,14 @@ exports[`interpreter correct target tree join " " 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "functionCall",
+    "name": "functionCall",
     "value": Object {
       "left": Object {
-        "type": "identifier",
+        "name": "identifier",
         "value": "join",
       },
       "right": Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "\\" \\"",
       },
     },
@@ -639,30 +639,30 @@ exports[`interpreter correct target tree map $ => {"original": $.foo} | "foo" 1`
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "functionCallLambda",
+        "name": "functionCallLambda",
         "value": Object {
           "left": Object {
-            "type": "identifier",
+            "name": "identifier",
             "value": "map",
           },
           "right": Object {
-            "type": "object",
+            "name": "object",
             "value": Array [
               Object {
-                "type": "tuple",
+                "name": "tuple",
                 "value": Array [
                   Object {
-                    "type": "primitive",
+                    "name": "primitive",
                     "value": "\\"original\\"",
                   },
                   Object {
-                    "type": "valueProp",
+                    "name": "valueProp",
                     "value": Object {
                       "left": Object {
-                        "type": "input",
+                        "name": "input",
                         "value": "$",
                       },
                       "right": ".foo",
@@ -675,7 +675,7 @@ Object {
         },
       },
       "right": Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "\\"foo\\"",
       },
     },
@@ -687,30 +687,30 @@ exports[`interpreter correct target tree map $ => {"original": $.foo} | map $=> 
 Object {
   "status": true,
   "value": Object {
-    "type": "pipe",
+    "name": "pipe",
     "value": Object {
       "left": Object {
-        "type": "functionCallLambda",
+        "name": "functionCallLambda",
         "value": Object {
           "left": Object {
-            "type": "identifier",
+            "name": "identifier",
             "value": "map",
           },
           "right": Object {
-            "type": "object",
+            "name": "object",
             "value": Array [
               Object {
-                "type": "tuple",
+                "name": "tuple",
                 "value": Array [
                   Object {
-                    "type": "primitive",
+                    "name": "primitive",
                     "value": "\\"original\\"",
                   },
                   Object {
-                    "type": "valueProp",
+                    "name": "valueProp",
                     "value": Object {
                       "left": Object {
-                        "type": "input",
+                        "name": "input",
                         "value": "$",
                       },
                       "right": ".foo",
@@ -723,24 +723,24 @@ Object {
         },
       },
       "right": Object {
-        "type": "functionCallLambda",
+        "name": "functionCallLambda",
         "value": Object {
           "left": Object {
-            "type": "identifier",
+            "name": "identifier",
             "value": "map",
           },
           "right": Object {
-            "type": "object",
+            "name": "object",
             "value": Array [
               Object {
-                "type": "tuple",
+                "name": "tuple",
                 "value": Array [
                   Object {
-                    "type": "primitive",
+                    "name": "primitive",
                     "value": "\\"new\\"",
                   },
                   Object {
-                    "type": "input",
+                    "name": "input",
                     "value": "$",
                   },
                 ],
@@ -758,14 +758,14 @@ exports[`interpreter correct target tree map \\" " 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "functionCallLambda",
+    "name": "functionCallLambda",
     "value": Object {
       "left": Object {
-        "type": "identifier",
+        "name": "identifier",
         "value": "map",
       },
       "right": Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "\\" \\"",
       },
     },
@@ -777,7 +777,7 @@ exports[`interpreter correct target tree null 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "primitive",
+    "name": "primitive",
     "value": "null",
   },
 }
@@ -787,14 +787,14 @@ exports[`interpreter correct target tree null: true 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "tuple",
+    "name": "tuple",
     "value": Array [
       Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "null",
       },
       Object {
-        "type": "primitive",
+        "name": "primitive",
         "value": "true",
       },
     ],
@@ -806,7 +806,7 @@ exports[`interpreter correct target tree true 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "type": "primitive",
+    "name": "primitive",
     "value": "true",
   },
 }

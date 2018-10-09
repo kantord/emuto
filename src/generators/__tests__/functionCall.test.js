@@ -5,18 +5,18 @@ import functionCall from '../functionCall'
 describe('functionCall generator', () => {
   it('generates correct code', () => {
     const fakeGenerator = (
-      { type } // eslint-disable-line flowtype/require-parameter-type
+      { name } // eslint-disable-line flowtype/require-parameter-type
     ): string => '[]'
     expect(
       functionCall(fakeGenerator)({
-        type: 'functionCall',
+        name: 'functionCall',
         value: {
           left: {
-            type: 'identifier',
+            name: 'identifier',
             value: 'foo'
           },
           right: {
-            type: 'list',
+            name: 'list',
             value: []
           }
         }

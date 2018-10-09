@@ -8,6 +8,6 @@ import type { ListNodeType } from '../types'
 export default ListCoreParser.trim(P.optWhitespace)
   .wrap(P.string('['), P.string(']'))
   .map((value: ListNodeType): ListNodeType => ({
-    type: 'list',
+    name: 'list',
     value: value.value
   }))

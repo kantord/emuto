@@ -11,7 +11,7 @@ export default P.lazy((): ParserType => {
     ProgramParser,
     P.string(')')
   ).map((value: [mixed, ParenthesesNodeType, mixed]): ParenthesesNodeType => ({
-    type: 'parentheses',
+    name: 'parentheses',
     value: value[1]
   }))
 })

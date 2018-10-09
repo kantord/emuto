@@ -8,7 +8,7 @@ const FalseParser = P.string('false')
 
 export default P.alt(TrueParser, FalseParser).map(
   (value: string): NodeType => ({
-    type: 'primitive',
+    name: 'primitive',
     value
   })
 )

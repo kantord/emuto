@@ -12,7 +12,7 @@ const PipeParser = P.lazy((): mixed => {
     P.regexp(/\s*\|\s*/),
     ProgramParser
   ).map((value: [NodeType, mixed, NodeType]): PipeNodeType => ({
-    type: 'pipe',
+    name: 'pipe',
     value: {
       left: value[0],
       right: value[2]

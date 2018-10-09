@@ -6,7 +6,7 @@ describe('identifier parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('foobar_123').value).toEqual({
-      type: 'identifier',
+      name: 'identifier',
       value: 'foobar_123'
     })
   })

@@ -5,18 +5,18 @@ import functionCallLambda from '../functionCallLambda'
 describe('functionCallLambda generator', () => {
   it('generates correct code', () => {
     const fakeGenerator = (
-      { type } // eslint-disable-line flowtype/require-parameter-type
+      { name } // eslint-disable-line flowtype/require-parameter-type
     ): string => 'input[0]'
     expect(
       functionCallLambda(fakeGenerator)({
-        type: 'functionCallLambda',
+        name: 'functionCallLambda',
         value: {
           left: {
-            type: 'identifier',
+            name: 'identifier',
             value: 'foo'
           },
           right: {
-            type: 'list',
+            name: 'list',
             value: []
           }
         }

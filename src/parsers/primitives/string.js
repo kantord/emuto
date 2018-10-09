@@ -8,6 +8,6 @@ import type { NodeType } from '../../types'
 export default P.regexp(
   /("(((?=\\)\\(["\\\/bfnrt]|u[0-9a-fA-F]{4}))|[^"\\\0-\x1F\x7F]+)*")/
 ).map((value: string): NodeType => ({
-  type: 'primitive',
+  name: 'primitive',
   value
 }))

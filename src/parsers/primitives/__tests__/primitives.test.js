@@ -11,7 +11,7 @@ const testExample = (parser: ParserType): (SourceCodeType => void) => (
   })
   it('returns correct value', () => {
     expect(parser.parse(example).value).toEqual({
-      type: 'primitive',
+      name: 'primitive',
       value: example
     })
   })

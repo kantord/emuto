@@ -5,7 +5,7 @@ import type { InputNodeType } from '../types'
 
 export default P.string('$').map(
   (): InputNodeType => ({
-    type: 'input',
+    name: 'input',
     value: '$'
   })
 )

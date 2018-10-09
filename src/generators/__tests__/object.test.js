@@ -4,20 +4,20 @@ describe('object generator', () => {
   it('generates correct code', () => {
     expect(
       object({
-        type: 'object',
+        name: 'object',
         value: [
           {
-            type: 'tuple',
+            name: 'tuple',
             value: [
-              { type: 'primitive', value: '"foo"' },
-              { type: 'primitive', value: '"bar"' }
+              { name: 'primitive', value: '"foo"' },
+              { name: 'primitive', value: '"bar"' }
             ]
           },
           {
-            type: 'tuple',
+            name: 'tuple',
             value: [
-              { type: 'primitive', value: '"baz"' },
-              { type: 'primitive', value: '4' }
+              { name: 'primitive', value: '"baz"' },
+              { name: 'primitive', value: '4' }
             ]
           }
         ]

@@ -10,6 +10,6 @@ export default P.seq(
   ListCoreParser,
   P.regexp(/\s*\}\s*/)
 ).map((value: [mixed, ObjectNodeType, mixed]): ObjectNodeType => ({
-  type: 'object',
+  name: 'object',
   value: value[1].value
 }))

@@ -7,10 +7,10 @@ const codeExamples = ['$ | false', '.asd|.fgh']
 describe('pipe parser', () => {
   it('returns correct value', () => {
     expect(parser.parse(codeExamples[0]).value).toEqual({
-      type: 'pipe',
+      name: 'pipe',
       value: {
-        left: { type: 'input', value: '$' },
-        right: { type: 'primitive', value: 'false' }
+        left: { name: 'input', value: '$' },
+        right: { name: 'primitive', value: 'false' }
       }
     })
   })

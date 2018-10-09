@@ -6,7 +6,7 @@ describe('$ parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('$').value).toEqual({
-      type: 'input',
+      name: 'input',
       value: '$'
     })
   })
