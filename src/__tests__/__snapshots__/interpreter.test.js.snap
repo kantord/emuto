@@ -277,7 +277,17 @@ Object {
     "name": "tuple",
     "value": Array [
       Object {
+        "end": Object {
+          "column": 10,
+          "line": 1,
+          "offset": 9,
+        },
         "name": "projection",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -324,7 +334,17 @@ Object {
         },
       },
       Object {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
         "name": "projection",
+        "start": Object {
+          "column": 13,
+          "line": 1,
+          "offset": 12,
+        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -382,7 +402,17 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
+        "end": Object {
+          "column": 10,
+          "line": 1,
+          "offset": 9,
+        },
         "name": "projection",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -429,7 +459,17 @@ Object {
         },
       },
       "right": Object {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
         "name": "projection",
+        "start": Object {
+          "column": 13,
+          "line": 1,
+          "offset": 12,
+        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -484,7 +524,17 @@ exports[`interpreter correct target tree [3, 2][0] 1`] = `
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 10,
+      "line": 1,
+      "offset": 9,
+    },
     "name": "projection",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Object {
       "left": Object {
         "end": Object {
@@ -678,7 +728,17 @@ exports[`interpreter correct target tree {"foo": ("bar" | "baz")}["foo"] 1`] = `
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 32,
+      "line": 1,
+      "offset": 31,
+    },
     "name": "projection",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Object {
       "left": Object {
         "end": Object {
