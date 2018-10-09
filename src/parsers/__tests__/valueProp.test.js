@@ -8,7 +8,7 @@ describe('valueProp parser', () => {
     expect(parser.parse('.false.true.boo').status).toBe(true)
   })
   it('returns correct value', () => {
-    expect(parser.parse('.foo.bar').value).toEqual({
+    expect(parser.parse('.foo.bar').value).toMatchObject({
       name: 'valueProp',
       value: {
         left: {

@@ -89,7 +89,17 @@ exports[`interpreter correct target tree .apple.pear 1`] = `
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 12,
+      "line": 1,
+      "offset": 11,
+    },
     "name": "valueProp",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Object {
       "left": Object {
         "name": "inputProp",
@@ -105,7 +115,17 @@ exports[`interpreter correct target tree .apple.pear.bar 1`] = `
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 16,
+      "line": 1,
+      "offset": 15,
+    },
     "name": "valueProp",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Object {
       "left": Object {
         "name": "inputProp",
@@ -831,7 +851,17 @@ Object {
                 "value": "\\"original\\"",
               },
               Object {
+                "end": Object {
+                  "column": 19,
+                  "line": 1,
+                  "offset": 18,
+                },
                 "name": "valueProp",
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
                 "value": Object {
                   "left": Object {
                     "name": "input",
@@ -949,7 +979,17 @@ Object {
                     "value": "\\"original\\"",
                   },
                   Object {
+                    "end": Object {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
+                    },
                     "name": "valueProp",
+                    "start": Object {
+                      "column": 23,
+                      "line": 1,
+                      "offset": 22,
+                    },
                     "value": Object {
                       "left": Object {
                         "name": "input",
@@ -1007,7 +1047,17 @@ Object {
                     "value": "\\"original\\"",
                   },
                   Object {
+                    "end": Object {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
+                    },
                     "name": "valueProp",
+                    "start": Object {
+                      "column": 23,
+                      "line": 1,
+                      "offset": 22,
+                    },
                     "value": Object {
                       "left": Object {
                         "name": "input",
