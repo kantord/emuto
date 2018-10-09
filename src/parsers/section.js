@@ -1,10 +1,10 @@
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import ProjectionParser from './projection'
 import ProjectableParser from './projectable'
 import FunctionCallParser from './functionCall'
 import FunctionCallLambdaParser from './functionCallLambda'
 
-export default Parsimmon.alt(
+export default P.alt(
   FunctionCallLambdaParser,
   FunctionCallParser,
   ProjectionParser,

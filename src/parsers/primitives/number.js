@@ -1,9 +1,9 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import type { NodeType } from '../../types'
 
-export default Parsimmon.regexp(
+export default P.regexp(
   /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/
 ).map((value: string): NodeType => ({
   type: 'primitive',

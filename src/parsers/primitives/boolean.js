@@ -1,12 +1,12 @@
 // @flow
 
 import type { NodeType } from '../../types'
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 
-const TrueParser = Parsimmon.string('true')
-const FalseParser = Parsimmon.string('false')
+const TrueParser = P.string('true')
+const FalseParser = P.string('false')
 
-export default Parsimmon.alt(TrueParser, FalseParser).map(
+export default P.alt(TrueParser, FalseParser).map(
   (value: string): NodeType => ({
     type: 'primitive',
     value

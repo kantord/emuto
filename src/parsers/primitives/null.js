@@ -1,9 +1,9 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import type { NodeType } from '../../types'
 
-export default Parsimmon.string('null').map((): NodeType => ({
+export default P.string('null').map((): NodeType => ({
   type: 'primitive',
   value: 'null'
 }))
