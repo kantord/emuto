@@ -18,7 +18,7 @@ describe('projection parser', () => {
   })
 
   it('returns correct value', () => {
-    expect(parser.parse('[3, 2][3]').value).toEqual({
+    expect(parser.parse('[3, 2][3]').value).toMatchObject({
       name: 'projection',
       value: {
         left: {

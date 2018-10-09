@@ -1,5 +1,16 @@
 // @flow
 
+export type CodeLocationType = {|
+  column: number,
+  line: number,
+  offset: number
+|};
+
+export type NodeLocationType = {|
+  end?: CodeLocationType,
+  start?: CodeLocationType
+|};
+
 export type ParserReturnValueType = {|
   status?: boolean,
   index?: {|
@@ -42,7 +53,8 @@ export type ListCoreNodeType = {|
 
 export type ListNodeType = {|
   name: 'list',
-  value: Array<NodeType> // eslint-disable-line no-use-before-define
+  value: Array<NodeType>, // eslint-disable-line no-use-before-define
+  ...NodeLocationType
 |};
 
 export type ParenthesesNodeType = {|

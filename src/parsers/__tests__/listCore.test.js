@@ -6,7 +6,7 @@ describe('listCore parser', () => {
   })
 
   it('returns correct value', () => {
-    expect(parser.parse('$,$').value).toEqual({
+    expect(parser.parse('$,$').value).toMatchObject({
       name: 'listCore',
       value: [
         {
@@ -21,7 +21,7 @@ describe('listCore parser', () => {
     })
   })
   it('returns correct value', () => {
-    expect(parser.parse('$,$, null').value).toEqual({
+    expect(parser.parse('$,$, null').value).toMatchObject({
       name: 'listCore',
       value: [
         {
@@ -40,7 +40,7 @@ describe('listCore parser', () => {
     })
   })
   it('returns correct value', () => {
-    expect(parser.parse('true, [false, false]').value).toEqual({
+    expect(parser.parse('true, [false, false]').value).toMatchObject({
       name: 'listCore',
       value: [
         {
