@@ -542,7 +542,17 @@ exports[`interpreter correct target tree {
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 6,
+      "line": 6,
+      "offset": 86,
+    },
     "name": "object",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Array [
       Object {
         "name": "tuple",
@@ -584,7 +594,17 @@ Object {
             "value": "\\"bar\\"",
           },
           Object {
+            "end": Object {
+              "column": 8,
+              "line": 5,
+              "offset": 80,
+            },
             "name": "object",
+            "start": Object {
+              "column": 14,
+              "line": 3,
+              "offset": 38,
+            },
             "value": Array [
               Object {
                 "name": "tuple",
@@ -612,7 +632,17 @@ exports[`interpreter correct target tree {"foo": ("bar" | "baz")} 1`] = `
 Object {
   "status": true,
   "value": Object {
+    "end": Object {
+      "column": 25,
+      "line": 1,
+      "offset": 24,
+    },
     "name": "object",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
     "value": Array [
       Object {
         "name": "tuple",
@@ -651,7 +681,17 @@ Object {
     "name": "projection",
     "value": Object {
       "left": Object {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
         "name": "object",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
         "value": Array [
           Object {
             "name": "tuple",
@@ -711,7 +751,17 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
+        "end": Object {
+          "column": 20,
+          "line": 1,
+          "offset": 19,
+        },
         "name": "object",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
         "value": Array [
           Object {
             "name": "tuple",
@@ -735,7 +785,17 @@ Object {
         ],
       },
       "right": Object {
+        "end": Object {
+          "column": 33,
+          "line": 1,
+          "offset": 32,
+        },
         "name": "object",
+        "start": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
         "value": Array [
           Object {
             "name": "tuple",
@@ -809,7 +869,17 @@ Object {
             "value": "map",
           },
           "right": Object {
+            "end": Object {
+              "column": 29,
+              "line": 1,
+              "offset": 28,
+            },
             "name": "object",
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
             "value": Array [
               Object {
                 "name": "tuple",
@@ -857,7 +927,17 @@ Object {
             "value": "map",
           },
           "right": Object {
+            "end": Object {
+              "column": 29,
+              "line": 1,
+              "offset": 28,
+            },
             "name": "object",
+            "start": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
             "value": Array [
               Object {
                 "name": "tuple",
@@ -890,7 +970,17 @@ Object {
             "value": "map",
           },
           "right": Object {
+            "end": Object {
+              "column": 50,
+              "line": 1,
+              "offset": 49,
+            },
             "name": "object",
+            "start": Object {
+              "column": 40,
+              "line": 1,
+              "offset": 39,
+            },
             "value": Array [
               Object {
                 "name": "tuple",
