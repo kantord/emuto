@@ -4,19 +4,19 @@ describe('list generator', () => {
   it('generates correct code', () => {
     expect(
       list({
-        type: 'list',
+        name: 'list',
         value: [
           {
-            type: 'input',
+            name: 'input',
             value: '$'
           },
           {
-            type: 'input',
+            name: 'input',
             value: '$'
           },
           {
-            type: 'list',
-            value: [{ type: 'primitive', value: 'null' }]
+            name: 'list',
+            value: [{ name: 'primitive', value: 'null' }]
           }
         ]
       })

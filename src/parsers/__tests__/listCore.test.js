@@ -7,14 +7,14 @@ describe('listCore parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$,$').value).toEqual({
-      type: 'listCore',
+      name: 'listCore',
       value: [
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         }
       ]
@@ -22,18 +22,18 @@ describe('listCore parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('$,$, null').value).toEqual({
-      type: 'listCore',
+      name: 'listCore',
       value: [
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
         {
-          type: 'input',
+          name: 'input',
           value: '$'
         },
         {
-          type: 'primitive',
+          name: 'primitive',
           value: 'null'
         }
       ]
@@ -41,21 +41,21 @@ describe('listCore parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('true, [false, false]').value).toEqual({
-      type: 'listCore',
+      name: 'listCore',
       value: [
         {
-          type: 'primitive',
+          name: 'primitive',
           value: 'true'
         },
         {
-          type: 'list',
+          name: 'list',
           value: [
             {
-              type: 'primitive',
+              name: 'primitive',
               value: 'false'
             },
             {
-              type: 'primitive',
+              name: 'primitive',
               value: 'false'
             }
           ]

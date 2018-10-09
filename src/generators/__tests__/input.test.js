@@ -2,6 +2,6 @@ import input from '../input'
 
 describe('input generator', () => {
   it('$', () => {
-    expect(input({ type: 'input', value: '$' })).toEqual('input')
+    expect(input({ name: 'input', value: '$' })).toEqual('input')
   })
 })

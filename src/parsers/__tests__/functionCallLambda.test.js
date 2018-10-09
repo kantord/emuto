@@ -22,21 +22,21 @@ describe('functionCallLambda parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('map \\["a", "b"]').value).toEqual({
-      type: 'functionCallLambda',
+      name: 'functionCallLambda',
       value: {
         left: {
-          type: 'identifier',
+          name: 'identifier',
           value: 'map'
         },
         right: {
-          type: 'list',
+          name: 'list',
           value: [
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '"a"'
             },
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '"b"'
             }
           ]

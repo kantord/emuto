@@ -9,7 +9,7 @@ const ListCoreParser = P.lazy(
     const TupleParser = require('./tuple/tuple').default
     return P.sepBy(TupleParser, P.regexp(/\s*,\s*/)).map(
       (value: Array<NodeType>): ListCoreNodeType => ({
-        type: 'listCore',
+        name: 'listCore',
         value
       })
     )

@@ -17,7 +17,7 @@ const ProjectionParser = P.lazy((): mixed => {
       mixed,
       ListNodeType
     ]): ProjectionNodeType => ({
-      type: 'projection',
+      name: 'projection',
       value: {
         left,
         right

@@ -9,19 +9,19 @@ describe('tuple parser', () => {
   })
   it('returns correct value 1', () => {
     expect(parser.parse('true: false').value).toEqual({
-      type: 'tuple',
+      name: 'tuple',
       value: [
-        { type: 'primitive', value: 'true' },
-        { type: 'primitive', value: 'false' }
+        { name: 'primitive', value: 'true' },
+        { name: 'primitive', value: 'false' }
       ]
     })
   })
   it('returns correct value 2', () => {
     expect(parser.parse('null: null').value).toEqual({
-      type: 'tuple',
+      name: 'tuple',
       value: [
-        { type: 'primitive', value: 'null' },
-        { type: 'primitive', value: 'null' }
+        { name: 'primitive', value: 'null' },
+        { name: 'primitive', value: 'null' }
       ]
     })
   })

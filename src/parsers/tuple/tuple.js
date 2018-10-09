@@ -14,7 +14,7 @@ export default P.lazy((): ParserType => {
       (
         children: [PrimitiveNodeType, NodeType, PrimitiveNodeType]
       ): NodeType => ({
-        type: 'tuple',
+        name: 'tuple',
         value: [children[0], children[2]]
       })
     ),

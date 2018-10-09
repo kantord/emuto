@@ -7,21 +7,21 @@ describe('functionCall parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('replace ", ": "; "').value).toEqual({
-      type: 'functionCall',
+      name: 'functionCall',
       value: {
         left: {
-          type: 'identifier',
+          name: 'identifier',
           value: 'replace'
         },
         right: {
-          type: 'tuple',
+          name: 'tuple',
           value: [
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '", "'
             },
             {
-              type: 'primitive',
+              name: 'primitive',
               value: '"; "'
             }
           ]

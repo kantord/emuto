@@ -9,7 +9,7 @@ describe('boolean primitive parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('false').value).toEqual({
-      type: 'primitive',
+      name: 'primitive',
       value: 'false'
     })
   })

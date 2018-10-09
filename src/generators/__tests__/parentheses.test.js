@@ -4,9 +4,9 @@ describe('parentheses generator', () => {
   it('generates correct code', () => {
     expect(
       parentheses({
-        type: 'parentheses',
+        name: 'parentheses',
         value: {
-          type: 'primitive',
+          name: 'primitive',
           value: '"asd"'
         }
       })

@@ -9,10 +9,10 @@ describe('valueProp parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('.foo.bar').value).toEqual({
-      type: 'valueProp',
+      name: 'valueProp',
       value: {
         left: {
-          type: 'inputProp',
+          name: 'inputProp',
           value: '.foo'
         },
         right: '.bar'

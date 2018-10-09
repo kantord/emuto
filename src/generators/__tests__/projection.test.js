@@ -5,18 +5,18 @@ import projection from '../projection'
 describe('projection generator', () => {
   it('.foo.bar', () => {
     const fakeGenerator = (
-      { type } // eslint-disable-line flowtype/require-parameter-type
-    ): string => (type === 'inputProp' ? 'input.foo' : '[4]')
+      { name } // eslint-disable-line flowtype/require-parameter-type
+    ): string => (name === 'inputProp' ? 'input.foo' : '[4]')
     expect(
       projection(fakeGenerator)({
-        type: 'projection',
+        name: 'projection',
         value: {
           left: {
-            type: 'inputProp',
+            name: 'inputProp',
             value: '.foo'
           },
           right: {
-            type: 'list',
+            name: 'list',
             value: []
           }
         }

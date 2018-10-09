@@ -11,52 +11,52 @@ export type ParserReturnValueType = {|
 |};
 
 export type PrimitiveNodeType = {|
-  type: 'primitive',
+  name: 'primitive',
   value: string
 |};
 
 export type IdentifierNodeType = {|
-  type: 'identifier',
+  name: 'identifier',
   value: string
 |};
 
 export type TupleNodeType = {|
-  type: 'tuple',
+  name: 'tuple',
   value: [PrimitiveNodeType, PrimitiveNodeType]
 |};
 
 export type InputNodeType = {|
-  type: 'input',
+  name: 'input',
   value: '$'
 |};
 
 export type InputPropNodeType = {|
-  type: 'inputProp',
+  name: 'inputProp',
   value: string
 |};
 
 export type ListCoreNodeType = {|
-  type: 'listCore',
+  name: 'listCore',
   value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
 export type ListNodeType = {|
-  type: 'list',
+  name: 'list',
   value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
 export type ParenthesesNodeType = {|
-  type: 'parentheses',
+  name: 'parentheses',
   value: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type ObjectNodeType = {|
-  type: 'object',
+  name: 'object',
   value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
 export type PipeNodeType = {|
-  type: 'pipe',
+  name: 'pipe',
   value: {|
     left: NodeType, // eslint-disable-line no-use-before-define
     right: NodeType // eslint-disable-line no-use-before-define
@@ -64,7 +64,7 @@ export type PipeNodeType = {|
 |};
 
 export type ValuePropNodeType = {|
-  type: 'valueProp',
+  name: 'valueProp',
   value: {
     left: NodeType, // eslint-disable-line no-use-before-define
     right: string
@@ -72,7 +72,7 @@ export type ValuePropNodeType = {|
 |};
 
 export type FunctionCallNodeType = {|
-  type: 'functionCall',
+  name: 'functionCall',
   value: {
     left: IdentifierNodeType,
     right: NodeType // eslint-disable-line no-use-before-define
@@ -80,7 +80,7 @@ export type FunctionCallNodeType = {|
 |};
 
 export type FunctionCallLambdaNodeType = {|
-  type: 'functionCallLambda',
+  name: 'functionCallLambda',
   value: {
     left: IdentifierNodeType,
     right: NodeType // eslint-disable-line no-use-before-define
@@ -88,7 +88,7 @@ export type FunctionCallLambdaNodeType = {|
 |};
 
 export type ProjectionNodeType = {|
-  type: 'projection',
+  name: 'projection',
   value: {
     left: NodeType, // eslint-disable-line no-use-before-define
     right: ListNodeType // eslint-disable-line no-use-before-define

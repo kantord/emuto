@@ -6,7 +6,7 @@ describe('null primitive parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('null').value).toEqual({
-      type: 'primitive',
+      name: 'primitive',
       value: 'null'
     })
   })

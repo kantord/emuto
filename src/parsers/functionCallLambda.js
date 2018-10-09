@@ -25,7 +25,7 @@ const FunctionCallLambdaParser = P.lazy((): mixed => {
       mixed,
       NodeType
     ]): FunctionCallLambdaNodeType => ({
-      type: 'functionCallLambda',
+      name: 'functionCallLambda',
       value: {
         left,
         right
