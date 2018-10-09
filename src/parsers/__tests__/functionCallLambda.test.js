@@ -21,7 +21,7 @@ describe('functionCallLambda parser', () => {
   })
 
   it('returns correct value', () => {
-    expect(parser.parse('map \\["a", "b"]').value).toEqual({
+    expect(parser.parse('map \\["a", "b"]').value).toMatchObject({
       name: 'functionCallLambda',
       value: {
         left: {

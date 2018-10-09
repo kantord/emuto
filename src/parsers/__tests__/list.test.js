@@ -6,7 +6,7 @@ describe('list parser', () => {
   })
 
   it('returns correct value', () => {
-    expect(parser.parse('[$,$]').value).toEqual({
+    expect(parser.parse('[$,$]').value).toMatchObject({
       name: 'list',
       value: [
         {
@@ -21,7 +21,7 @@ describe('list parser', () => {
     })
   })
   it('returns correct value', () => {
-    expect(parser.parse('[$,$, null]').value).toEqual({
+    expect(parser.parse('[$,$, null]').value).toMatchObject({
       name: 'list',
       value: [
         {
