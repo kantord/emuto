@@ -5,11 +5,9 @@ import Parsimmon from 'parsimmon'
 import ListCoreParser from './listCore'
 import type { ListNodeType } from '../types'
 
-export default Parsimmon.seq(
-  Parsimmon.regexp(/\[\s*/),
-  ListCoreParser,
-  Parsimmon.regexp(/\s*\]/)
-).map((value: [mixed, ListNodeType, mixed]): ListNodeType => ({
-  type: 'list',
-  value: value[1].value
-}))
+export default ListCoreParser.trim(Parsimmon.optWhitespace)
+  .wrap(Parsimmon.string('['), Parsimmon.string(']'))
+  .map((value: ListNodeType): ListNodeType => ({
+    type: 'list',
+    value: value.value
+  }))
