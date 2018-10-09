@@ -2,28 +2,20 @@
 
 import P from 'parsimmon'
 
-import type { ProjectionNodeType, NodeType, ListNodeType } from '../types'
+import type { NodeType, ListNodeType } from '../types'
 
 const ProjectionParser = P.lazy((): mixed => {
   const ProjectableParser = require('./projectable').default
   const ListParser = require('./list').default
-  return P.seq(
-    ProjectableParser,
-    P.optWhitespace,
-    ListParser
-  ).map(
-    ([left, _, right]: [
-      NodeType,
-      mixed,
-      ListNodeType
-    ]): ProjectionNodeType => ({
-      name: 'projection',
-      value: {
-        left,
-        right
-      }
-    })
-  )
+  return P.seq(ProjectableParser.skip(P.optWhitespace), ListParser)
+    .map(([left, right]: [NodeType, ListNodeType]): {
+      left: NodeType,
+      right: ListNodeType
+    } => ({
+      left,
+      right
+    }))
+    .node('projection')
 })
 
 export default ProjectionParser
