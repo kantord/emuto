@@ -1,6 +1,6 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 
 import type {
   FunctionCallNodeType,
@@ -8,12 +8,12 @@ import type {
   IdentifierNodeType
 } from '../types'
 
-const FunctionCallParser = Parsimmon.lazy((): mixed => {
+const FunctionCallParser = P.lazy((): mixed => {
   const TupleParser = require('./tuple/tuple').default
   const IdentifierParser = require('./identifier').default
-  return Parsimmon.seq(
+  return P.seq(
     IdentifierParser,
-    Parsimmon.optWhitespace,
+    P.optWhitespace,
     TupleParser
   ).map(
     ([left, _, right]: [

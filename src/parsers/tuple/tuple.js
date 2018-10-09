@@ -1,14 +1,14 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import type { NodeType, PrimitiveNodeType, ParserType } from '../../types'
 
-export default Parsimmon.lazy((): ParserType => {
+export default P.lazy((): ParserType => {
   const SectionParser = require('../section').default
-  return Parsimmon.alt(
-    Parsimmon.seq(
+  return P.alt(
+    P.seq(
       SectionParser,
-      Parsimmon.regexp(/\s*:\s*/),
+      P.regexp(/\s*:\s*/),
       SectionParser
     ).map(
       (

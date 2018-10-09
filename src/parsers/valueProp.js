@@ -1,13 +1,13 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import type { NodeType, ValuePropNodeType } from '../types'
 
-const valueProp = Parsimmon.lazy((): mixed => {
+const valueProp = P.lazy((): mixed => {
   const ValueParser = require('./value').default
-  return Parsimmon.seq(
+  return P.seq(
     ValueParser,
-    Parsimmon.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i)
+    P.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i)
   ).map(([left, right]: [NodeType, string]): ValuePropNodeType => ({
     type: 'valueProp',
     value: {

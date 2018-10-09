@@ -1,9 +1,9 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 import type { InputNodeType } from '../types'
 
-export default Parsimmon.string('$').map(
+export default P.string('$').map(
   (): InputNodeType => ({
     type: 'input',
     value: '$'

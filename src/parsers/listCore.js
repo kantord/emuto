@@ -1,13 +1,13 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 
 import type { ListCoreNodeType, NodeType } from '../types'
 
-const ListCoreParser = Parsimmon.lazy(
+const ListCoreParser = P.lazy(
   (): mixed => {
     const TupleParser = require('./tuple/tuple').default
-    return Parsimmon.sepBy(TupleParser, Parsimmon.regexp(/\s*,\s*/)).map(
+    return P.sepBy(TupleParser, P.regexp(/\s*,\s*/)).map(
       (value: Array<NodeType>): ListCoreNodeType => ({
         type: 'listCore',
         value

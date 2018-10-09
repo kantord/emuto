@@ -1,15 +1,15 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 
 import type { ProjectionNodeType, NodeType, ListNodeType } from '../types'
 
-const ProjectionParser = Parsimmon.lazy((): mixed => {
+const ProjectionParser = P.lazy((): mixed => {
   const ProjectableParser = require('./projectable').default
   const ListParser = require('./list').default
-  return Parsimmon.seq(
+  return P.seq(
     ProjectableParser,
-    Parsimmon.optWhitespace,
+    P.optWhitespace,
     ListParser
   ).map(
     ([left, _, right]: [

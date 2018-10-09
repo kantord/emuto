@@ -1,15 +1,15 @@
 // @flow
 
-import Parsimmon from 'parsimmon'
+import P from 'parsimmon'
 
 import type { ParenthesesNodeType, ParserType } from '../types'
 
-export default Parsimmon.lazy((): ParserType => {
+export default P.lazy((): ParserType => {
   const ProgramParser = require('./program').default
-  return Parsimmon.seq(
-    Parsimmon.string('('),
+  return P.seq(
+    P.string('('),
     ProgramParser,
-    Parsimmon.string(')')
+    P.string(')')
   ).map((value: [mixed, ParenthesesNodeType, mixed]): ParenthesesNodeType => ({
     type: 'parentheses',
     value: value[1]
