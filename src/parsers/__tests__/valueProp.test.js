@@ -1,4 +1,4 @@
-import parser from '../valueProp'
+import parser from '../projection'
 
 describe('valueProp parser', () => {
   it('parses .bar.foo', () => {
