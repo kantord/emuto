@@ -13,6 +13,16 @@ type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
   | {name: 'valueProp', value: string};
 
+const packList = (x: ListNodeType): WrappedProjectionNodeType => ({
+  value: x,
+  name: 'projection'
+})
+
+const packProperty = (x: string): WrappedProjectionNodeType => ({
+  value: x,
+  name: 'valueProp'
+})
+
 const unpackOne = (
   projectable: ProjectableNodeType | ProjectionNodeType | ValuePropNodeType,
   projection: WrappedProjectionNodeType
@@ -43,20 +53,12 @@ const unpack = ([projectable, projections]: [
 
 const ProjectionParser = P.lazy((): mixed => {
   const ProjectableParser = require('./projectable').default
-  const ListParser = require('./list').default
-  const PropertyParser = P.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i)
+  const ListParser = require('./list').default.map(packList)
+  const PropertyParser = P.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i).map(packProperty)
+
   return P.seq(
     ProjectableParser.skip(P.optWhitespace),
-    P.alt(
-      ListParser.map((x: ListNodeType): WrappedProjectionNodeType => ({
-        value: x,
-        name: 'projection'
-      })),
-      PropertyParser.map((x: string): WrappedProjectionNodeType => ({
-        value: x,
-        name: 'valueProp'
-      }))
-    )
+    P.alt(ListParser, PropertyParser)
       .skip(P.optWhitespace)
       .atLeast(1)
   ).map(unpack)
