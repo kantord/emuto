@@ -1,8 +1,7 @@
 {
   "name": "emuto",
   "version": "0.0.0-development",
-  "main": "lib/index.js",
-  "module": "src/index.js",
+  "main": "lib/emuto.js",
   "license": "MIT",
   "scripts": {
     "analyze": "yarn build --json | tac | tac | tail -n +3 > stats.json",
