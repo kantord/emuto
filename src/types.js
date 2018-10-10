@@ -104,7 +104,8 @@ export type ProjectionNodeType = {|
   value: {
     left: NodeType, // eslint-disable-line no-use-before-define
     right: ListNodeType // eslint-disable-line no-use-before-define
-  }
+  },
+  ...?NodeLocationType
 |};
 
 export type NodeType =
@@ -121,6 +122,18 @@ export type NodeType =
   | FunctionCallNodeType
   | FunctionCallLambdaNodeType
   | ProjectionNodeType;
+
+export type ValueNodeType =
+  | PrimitiveNodeType
+  | InputPropNodeType
+  | InputNodeType
+  | ListNodeType
+  | ParenthesesNodeType;
+
+export type ProjectableNodeType =
+  | ValuePropNodeType
+  | ObjectNodeType
+  | ValueNodeType;
 
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
