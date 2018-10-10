@@ -18,6 +18,10 @@ exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { retu
 
 exports[`interpreter correct target code [[false], [true, null]] 1`] = `"(function(_) { return (function(input) { return [[false], [true, null]]})})"`;
 
+exports[`interpreter correct target code [0,1,"foo"][1,2][1,1][0] 1`] = `"(function(_) { return (function(input) { return _.projection(_.projection(_.projection([0, 1, \\"foo\\"], [1, 2]), [1, 1]), [0])})})"`;
+
+exports[`interpreter correct target code [0,1,2][1,2][1,1][0] 1`] = `"(function(_) { return (function(input) { return _.projection(_.projection(_.projection([0, 1, 2], [1, 2]), [1, 1]), [0])})})"`;
+
 exports[`interpreter correct target code [0.14, true, "true 2"] 1`] = `"(function(_) { return (function(input) { return [0.14, true, \\"true 2\\"]})})"`;
 
 exports[`interpreter correct target code [3, 2][0] : [3, 2][1] 1`] = `"(function(_) { return (function(input) { return [_.projection([3, 2], [0]),_.projection([3, 2], [1])]})})"`;
@@ -257,6 +261,232 @@ Object {
 }
 `;
 
+exports[`interpreter correct target tree [0,1,"foo"][1,2][1,1][0] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "projection",
+    "value": Object {
+      "left": Object {
+        "name": "projection",
+        "value": Object {
+          "left": Object {
+            "name": "projection",
+            "value": Object {
+              "left": Object {
+                "end": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "name": "list",
+                "start": Object {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "0",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"foo\\"",
+                  },
+                ],
+              },
+              "right": Object {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "name": "list",
+                "start": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
+            },
+          },
+          "right": Object {
+            "end": Object {
+              "column": 22,
+              "line": 1,
+              "offset": 21,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "1",
+              },
+              Object {
+                "name": "primitive",
+                "value": "1",
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "end": Object {
+          "column": 25,
+          "line": 1,
+          "offset": 24,
+        },
+        "name": "list",
+        "start": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
+        },
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "0",
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [0,1,2][1,2][1,1][0] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "projection",
+    "value": Object {
+      "left": Object {
+        "name": "projection",
+        "value": Object {
+          "left": Object {
+            "name": "projection",
+            "value": Object {
+              "left": Object {
+                "end": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "name": "list",
+                "start": Object {
+                  "column": 1,
+                  "line": 1,
+                  "offset": 0,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "0",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
+              "right": Object {
+                "end": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "name": "list",
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
+            },
+          },
+          "right": Object {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "1",
+              },
+              Object {
+                "name": "primitive",
+                "value": "1",
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "end": Object {
+          "column": 21,
+          "line": 1,
+          "offset": 20,
+        },
+        "name": "list",
+        "start": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "0",
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
 exports[`interpreter correct target tree [0.14, true, "true 2"] 1`] = `
 Object {
   "status": true,
@@ -297,17 +527,7 @@ Object {
     "name": "tuple",
     "value": Array [
       Object {
-        "end": Object {
-          "column": 10,
-          "line": 1,
-          "offset": 9,
-        },
         "name": "projection",
-        "start": Object {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -354,17 +574,7 @@ Object {
         },
       },
       Object {
-        "end": Object {
-          "column": 22,
-          "line": 1,
-          "offset": 21,
-        },
         "name": "projection",
-        "start": Object {
-          "column": 13,
-          "line": 1,
-          "offset": 12,
-        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -422,17 +632,7 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "end": Object {
-          "column": 10,
-          "line": 1,
-          "offset": 9,
-        },
         "name": "projection",
-        "start": Object {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -479,17 +679,7 @@ Object {
         },
       },
       "right": Object {
-        "end": Object {
-          "column": 22,
-          "line": 1,
-          "offset": 21,
-        },
         "name": "projection",
-        "start": Object {
-          "column": 13,
-          "line": 1,
-          "offset": 12,
-        },
         "value": Object {
           "left": Object {
             "end": Object {
@@ -544,17 +734,7 @@ exports[`interpreter correct target tree [3, 2][0] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "end": Object {
-      "column": 10,
-      "line": 1,
-      "offset": 9,
-    },
     "name": "projection",
-    "start": Object {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
     "value": Object {
       "left": Object {
         "end": Object {
@@ -748,17 +928,7 @@ exports[`interpreter correct target tree {"foo": ("bar" | "baz")}["foo"] 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "end": Object {
-      "column": 32,
-      "line": 1,
-      "offset": 31,
-    },
     "name": "projection",
-    "start": Object {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
     "value": Object {
       "left": Object {
         "end": Object {

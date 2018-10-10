@@ -146,6 +146,14 @@ const tests = [
     sourceCode: `map $ => {"original": $.foo} | "foo"`,
     input: [{ foo: 42 }, { foo: 'hello' }],
     output: 'foo'
+  },
+  {
+    sourceCode: `[0,1,2][1,2][1,1][0]`,
+    output: 2
+  },
+  {
+    sourceCode: `[0,1,"foo"][1,2][1,1][0]`,
+    output: 'foo'
   }
 ]
 
