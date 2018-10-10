@@ -154,6 +154,10 @@ const tests = [
   {
     sourceCode: `[0,1,"foo"][1,2][1,1][0]`,
     output: 'foo'
+  },
+  {
+    sourceCode: `{"foo": [{"bar": "baz"}]} | $.foo[0].bar`,
+    output: 'baz'
   }
 ]
 
