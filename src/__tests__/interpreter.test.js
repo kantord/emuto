@@ -199,6 +199,18 @@ const tests = [
   {
     sourceCode: `3 * 2 -1 > -1.34 * 3`,
     output: 3 * 2 - 1 > -1.34 * 3
+  },
+  {
+    sourceCode: `3 * 2 -1 == -1.34 * 3`,
+    output: 3 * 2 - 1 === -1.34 * 3
+  },
+  {
+    sourceCode: `3 * 2 -1 != -1.34 * 3`,
+    output: 3 * 2 - 1 !== -1.34 * 3
+  },
+  {
+    sourceCode: `"1" == 1`,
+    output: '1' === 1
   }
 ]
 
