@@ -158,6 +158,11 @@ const tests = [
   {
     sourceCode: `{"foo": [{"bar": "baz"}]} | $.foo[0].bar`,
     output: 'baz'
+  },
+  {
+    sourceCode: `sortBy \\.age | map \\.name`,
+    output: ['John', 'Mary'],
+    input: [{ name: 'John', age: 11 }, { name: 'Mary', age: 33 }]
   }
 ]
 

@@ -59,6 +59,8 @@ exports[`interpreter correct target code null 1`] = `"(function(_) { return (fun
 
 exports[`interpreter correct target code null: true 1`] = `"(function(_) { return (function(input) { return [null,true]})})"`;
 
+exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return input.name})(input))})((_.sortBy(function(input) {return input.age})(input)))})})"`;
+
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
 
 exports[`interpreter correct target tree $ 1`] = `
@@ -1398,6 +1400,43 @@ Object {
         "value": "true",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree sortBy \\.age | map \\.name 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "pipe",
+    "value": Object {
+      "left": Object {
+        "name": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "sortBy",
+          },
+          "right": Object {
+            "name": "inputProp",
+            "value": ".age",
+          },
+        },
+      },
+      "right": Object {
+        "name": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "name": "inputProp",
+            "value": ".name",
+          },
+        },
+      },
+    },
   },
 }
 `;
