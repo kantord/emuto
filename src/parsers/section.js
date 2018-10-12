@@ -1,12 +1,10 @@
 import P from 'parsimmon'
-import ProjectionParser from './projection'
-import ProjectableParser from './projectable'
 import FunctionCallParser from './functionCall'
 import FunctionCallLambdaParser from './functionCallLambda'
+import MultiplicativeParser from './multiplicative'
 
 export default P.alt(
   FunctionCallLambdaParser,
   FunctionCallParser,
-  ProjectionParser,
-  ProjectableParser
+  MultiplicativeParser
 )

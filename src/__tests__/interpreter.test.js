@@ -163,6 +163,10 @@ const tests = [
     sourceCode: `sortBy \\.age | map \\.name`,
     output: ['John', 'Mary'],
     input: [{ name: 'John', age: 11 }, { name: 'Mary', age: 33 }]
+  },
+  {
+    sourceCode: `8 * 3.14 / 2`,
+    output: 8 * 3.14 / 2
   }
 ]
 
