@@ -42,6 +42,26 @@ And return a result like this:
 
 ### Basic filters
 
+#### Operators
+
+##### Unary operators
+
+The following unary operators are supported:
+`!`, `+`, `-`
+
+Usage example:
+
+`-(.user.birth.year - 1990)`
+
+##### Binary operators
+
+The following binary operators are supported:
+`+`, `-`, `/`, `*`, `+`, `<`, `>`, `%`, `<=`, `>=`, `==`, `!=`, `||`, `&&`
+
+Usage example:
+
+`3 + 1 == 4 * 1`
+
 #### Identity `$`
 
 Takes an input and returns it unchanged.
