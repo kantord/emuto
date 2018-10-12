@@ -45,6 +45,8 @@ exports[`interpreter correct target code {"foo": [{"bar": "baz"}]} | $.foo[0].ba
 
 exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.objectify([[\\"new\\",input]]))})((_.objectify([[\\"original\\",input.foo]])))})})"`;
 
+exports[`interpreter correct target code 8 * 3.14 / 2 1`] = `"(function(_) { return (function(input) { return 8*3.14/2})})"`;
+
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
 exports[`interpreter correct target code join " " 1`] = `"(function(_) { return (function(input) { return _.join(\\" \\")(input)})})"`;
@@ -1165,6 +1167,57 @@ Object {
         ],
       },
     },
+  },
+}
+`;
+
+exports[`interpreter correct target tree 8 * 3.14 / 2 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "multiplicative",
+    "value": Array [
+      Object {
+        "name": "primitive",
+        "value": "8",
+      },
+      Object {
+        "end": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": "*",
+      },
+      Object {
+        "name": "primitive",
+        "value": "3.14",
+      },
+      Object {
+        "end": Object {
+          "column": 12,
+          "line": 1,
+          "offset": 11,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": "/",
+      },
+      Object {
+        "name": "primitive",
+        "value": "2",
+      },
+    ],
   },
 }
 `;

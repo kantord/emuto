@@ -108,6 +108,12 @@ export type ProjectionNodeType = {|
   ...?NodeLocationType
 |};
 
+export type OperationNodeType = {|
+  name: 'multiplicative',
+  value: Array<NodeType>, // eslint-disable-line no-use-before-define
+  ...?NodeLocationType
+|};
+
 export type NodeType =
   | PrimitiveNodeType
   | TupleNodeType
@@ -121,6 +127,7 @@ export type NodeType =
   | ValuePropNodeType
   | FunctionCallNodeType
   | FunctionCallLambdaNodeType
+  | OperationNodeType
   | ProjectionNodeType;
 
 export type ValueNodeType =
