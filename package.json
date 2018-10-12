@@ -8,7 +8,7 @@
     "analyze-bundle":
       "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest src",
-    "build": "yarn webpack",
+    "build": "yarn webpack && yarn babel src/ -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
@@ -21,7 +21,7 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.0.0",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
