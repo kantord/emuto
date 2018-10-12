@@ -87,6 +87,8 @@ exports[`interpreter correct target code 8314 % 34 -3 1`] = `"(function(_) { ret
 
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
+exports[`interpreter correct target code filter $ => .age >= 18 | map $ => .name 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return input.name})(input))})((_.filter(function(input) {return input.age>=18})(input)))})})"`;
+
 exports[`interpreter correct target code join " " 1`] = `"(function(_) { return (function(input) { return _.join(\\" \\")(input)})})"`;
 
 exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`] = `"(function(_) { return (function(input) { return (function (input) {return \\"foo\\"})((_.map(function(input) {return (_.objectify([[\\"original\\",input.foo]]))})(input)))})})"`;
@@ -3236,6 +3238,66 @@ Object {
       "right": Object {
         "name": "primitive",
         "value": "true",
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree filter $ => .age >= 18 | map $ => .name 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "pipe",
+    "value": Object {
+      "left": Object {
+        "name": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "filter",
+          },
+          "right": Object {
+            "name": "binaryOperation",
+            "value": Array [
+              Object {
+                "name": "inputProp",
+                "value": ".age",
+              },
+              Object {
+                "end": Object {
+                  "column": 21,
+                  "line": 1,
+                  "offset": 20,
+                },
+                "name": "primitive",
+                "start": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "value": ">=",
+              },
+              Object {
+                "name": "primitive",
+                "value": "18",
+              },
+            ],
+          },
+        },
+      },
+      "right": Object {
+        "name": "functionCallLambda",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "name": "inputProp",
+            "value": ".name",
+          },
+        },
       },
     },
   },

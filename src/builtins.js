@@ -51,5 +51,8 @@ export default {
       .sort(
         (a: mixed, b: mixed): 1 | 0 | -1 =>
           f(a) < f(b) ? -1 : f(a) > f(b) ? 1 : 0
-      )
+      ),
+  filter: (f: mixed => boolean): ((Array<mixed>) => Array<mixed>) => (
+    input: Array<mixed>
+  ): Array<mixed> => input.filter(f)
 }
