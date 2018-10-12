@@ -19,7 +19,7 @@ const BinaryOperatorParser = (
       (value: [NodeType, Array<NodeType>]): NodeType =>
         value[1].length > 0
           ? {
-            name: 'multiplicative',
+            name: 'binaryOperation',
             value: value[1].reduce(
               (a: Array<NodeType>, b: NodeType): Array<NodeType> =>
                 a.concat(b),

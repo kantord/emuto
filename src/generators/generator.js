@@ -41,7 +41,7 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return functionCall(Generator)(node)
     case 'functionCallLambda':
       return functionCallLambda(Generator)(node)
-    case 'multiplicative':
+    case 'binaryOperation':
       return binaryOperator(node)
     case 'operand':
       return primitive(node)

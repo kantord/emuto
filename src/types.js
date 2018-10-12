@@ -109,7 +109,7 @@ export type ProjectionNodeType = {|
 |};
 
 export type OperationNodeType = {|
-  name: 'multiplicative',
+  name: 'binaryOperation',
   value: Array<NodeType>, // eslint-disable-line no-use-before-define
   ...?NodeLocationType
 |};
