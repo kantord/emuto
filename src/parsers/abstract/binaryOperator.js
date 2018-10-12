@@ -10,7 +10,7 @@ const BinaryOperatorParser = (
 ): ParserType =>
   P.lazy((): mixed => {
     const OperatorParser_ = OperatorParser.trim(P.optWhitespace).node(
-      'operand'
+      'primitive'
     )
     return P.seq(
       OperandParser,

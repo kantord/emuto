@@ -227,6 +227,18 @@ const tests = [
   {
     sourceCode: `3 * 2 -1 > -1.34 * 3 && true`,
     output: 3 * 2 - 1 > -1.34 * 3 && true
+  },
+  {
+    sourceCode: `-(3 * 2) -1 > -1.34 * 3 && true`,
+    output: -(3 * 2) - 1 > -1.34 * 3 && true
+  },
+  {
+    sourceCode: `+(3 * 2) -1 > -1.34 * 3 && true`,
+    output: +(3 * 2) - 1 > -1.34 * 3 && true
+  },
+  {
+    sourceCode: `!(3 * 2 -1 > -1.34 * 3) && true`,
+    output: !(3 * 2 - 1 > -1.34 * 3) && true
   }
 ]
 

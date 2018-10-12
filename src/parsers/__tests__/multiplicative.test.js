@@ -14,7 +14,7 @@ describe('multiplicative parser', () => {
           value: '$'
         },
         {
-          name: 'operand',
+          name: 'primitive',
           value: '/'
         },
         {
@@ -34,7 +34,7 @@ describe('multiplicative parser', () => {
           value: '$'
         },
         {
-          name: 'operand',
+          name: 'primitive',
           value: '*'
         },
         {
@@ -42,7 +42,7 @@ describe('multiplicative parser', () => {
           value: '$'
         },
         {
-          name: 'operand',
+          name: 'primitive',
           value: '/'
         },
         {
