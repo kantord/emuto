@@ -42,5 +42,14 @@ export default {
   ): string => input.join(separator),
   map: (f: mixed => mixed): ((Array<mixed>) => Array<mixed>) => (
     input: Array<mixed>
-  ): Array<mixed> => input.map(f)
+  ): Array<mixed> => input.map(f),
+  sortBy: (f: <T>(mixed) => T): ((Array<mixed>) => Array<mixed>) => (
+    input: Array<mixed>
+  ): Array<mixed> =>
+    input
+      .slice()
+      .sort(
+        (a: mixed, b: mixed): 1 | 0 | -1 =>
+          f(a) < f(b) ? -1 : f(a) > f(b) ? 1 : 0
+      )
 }

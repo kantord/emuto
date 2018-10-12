@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection, join, map } = builtIns
+const { projection, join, map, sortBy } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -43,6 +43,27 @@ describe('built ins', () => {
       const foo = a => 'foo'; // eslint-disable-line
       expect(map(id)(['Hello', 'World'])).toEqual(['Hello', 'World'])
       expect(map(foo)(['Hello', 'World'])).toEqual(['foo', 'foo'])
+    })
+  })
+
+  describe('sortBy', () => {
+    it('returns correct value', () => {
+      const id = a => a; // eslint-disable-line
+      const foo = a => a.foo; // eslint-disable-line
+      expect(sortBy(id)(['c', 'a', 'b'])).toEqual(['a', 'b', 'c'])
+      expect(sortBy(foo)([{ foo: 3 }, { foo: -2 }, { foo: 0 }])).toEqual([
+        { foo: -2 },
+        { foo: 0 },
+        { foo: 3 }
+      ])
+    })
+
+    it('does not mutate original array', () => {
+      const id = a => a; // eslint-disable-line
+      const input = ['c', 'a', 'b']
+      const originalValue = input.slice()
+      sortBy(id)(input)
+      expect(input).toEqual(originalValue)
     })
   })
 })
