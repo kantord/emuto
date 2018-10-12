@@ -13,6 +13,7 @@ import pipe from './pipe'
 import functionCall from './functionCall'
 import functionCallLambda from './functionCallLambda'
 import binaryOperator from './binaryOperator'
+import unaryOperator from './unaryOperator'
 import type { NodeType, GeneratedCodeType } from '../types'
 
 const Generator = (node: NodeType): GeneratedCodeType => {
@@ -43,7 +44,9 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return functionCallLambda(Generator)(node)
     case 'binaryOperation':
       return binaryOperator(node)
-    case 'operand':
+    case 'unaryOperation':
+      return unaryOperator(node)
+    case 'operator':
       return primitive(node)
     default:
       throw new Error(`Unknown node name '${node.name}'`)

@@ -10,12 +10,12 @@ describe('binaryOperator generator', () => {
             name: 'input',
             value: '$'
           },
-          { name: 'operand', value: '+' },
+          { name: 'primitive', value: '+' },
           {
             name: 'input',
             value: '$'
           },
-          { name: 'operand', value: '-' },
+          { name: 'primitive', value: '-' },
           {
             name: 'input',
             value: '$'

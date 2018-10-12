@@ -114,6 +114,15 @@ export type OperationNodeType = {|
   ...?NodeLocationType
 |};
 
+export type UnaryOperationNodeType = {|
+  name: 'unaryOperation',
+  value: {
+    operator: PrimitiveNodeType,
+    operand: NodeType // eslint-disable-line no-use-before-define
+  },
+  ...?NodeLocationType
+|};
+
 export type NodeType =
   | PrimitiveNodeType
   | TupleNodeType
@@ -128,6 +137,7 @@ export type NodeType =
   | FunctionCallNodeType
   | FunctionCallLambdaNodeType
   | OperationNodeType
+  | UnaryOperationNodeType
   | ProjectionNodeType;
 
 export type ValueNodeType =
