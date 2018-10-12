@@ -46,8 +46,6 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return binaryOperator(node)
     case 'unaryOperation':
       return unaryOperator(node)
-    case 'operator':
-      return primitive(node)
     default:
       throw new Error(`Unknown node name '${node.name}'`)
   }
