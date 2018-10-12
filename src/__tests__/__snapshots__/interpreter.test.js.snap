@@ -4,6 +4,8 @@ exports[`interpreter correct target code $ 1`] = `"(function(_) { return (functi
 
 exports[`interpreter correct target code $ 2`] = `"(function(_) { return (function(input) { return input})})"`;
 
+exports[`interpreter correct target code (8 + 3.14) * 2 1`] = `"(function(_) { return (function(input) { return (8+3.14)*2})})"`;
+
 exports[`interpreter correct target code .$shit 1`] = `"(function(_) { return (function(input) { return input.$shit})})"`;
 
 exports[`interpreter correct target code .apple.pear 1`] = `"(function(_) { return (function(input) { return input.apple.pear})})"`;
@@ -47,6 +49,10 @@ exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = 
 
 exports[`interpreter correct target code 8 * 3.14 / 2 1`] = `"(function(_) { return (function(input) { return 8*3.14/2})})"`;
 
+exports[`interpreter correct target code 8 + 3.14 * 2 1`] = `"(function(_) { return (function(input) { return 8+3.14*2})})"`;
+
+exports[`interpreter correct target code 8 - (3.14 * 2) 1`] = `"(function(_) { return (function(input) { return 8-(3.14*2)})})"`;
+
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
 exports[`interpreter correct target code join " " 1`] = `"(function(_) { return (function(input) { return _.join(\\" \\")(input)})})"`;
@@ -81,6 +87,65 @@ Object {
   "value": Object {
     "name": "input",
     "value": "$",
+  },
+}
+`;
+
+exports[`interpreter correct target tree (8 + 3.14) * 2 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "binaryOperation",
+          "value": Array [
+            Object {
+              "name": "primitive",
+              "value": "8",
+            },
+            Object {
+              "end": Object {
+                "column": 6,
+                "line": 1,
+                "offset": 5,
+              },
+              "name": "operand",
+              "start": Object {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+              "value": "+",
+            },
+            Object {
+              "name": "primitive",
+              "value": "3.14",
+            },
+          ],
+        },
+      },
+      Object {
+        "end": Object {
+          "column": 14,
+          "line": 1,
+          "offset": 13,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "value": "*",
+      },
+      Object {
+        "name": "primitive",
+        "value": "2",
+      },
+    ],
   },
 }
 `;
@@ -1175,7 +1240,7 @@ exports[`interpreter correct target tree 8 * 3.14 / 2 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "name": "multiplicative",
+    "name": "binaryOperation",
     "value": Array [
       Object {
         "name": "primitive",
@@ -1216,6 +1281,121 @@ Object {
       Object {
         "name": "primitive",
         "value": "2",
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 8 + 3.14 * 2 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "primitive",
+        "value": "8",
+      },
+      Object {
+        "end": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": "+",
+      },
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "3.14",
+          },
+          Object {
+            "end": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "value": "*",
+          },
+          Object {
+            "name": "primitive",
+            "value": "2",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 8 - (3.14 * 2) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "primitive",
+        "value": "8",
+      },
+      Object {
+        "end": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": "-",
+      },
+      Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "binaryOperation",
+          "value": Array [
+            Object {
+              "name": "primitive",
+              "value": "3.14",
+            },
+            Object {
+              "end": Object {
+                "column": 13,
+                "line": 1,
+                "offset": 12,
+              },
+              "name": "operand",
+              "start": Object {
+                "column": 10,
+                "line": 1,
+                "offset": 9,
+              },
+              "value": "*",
+            },
+            Object {
+              "name": "primitive",
+              "value": "2",
+            },
+          ],
+        },
       },
     ],
   },

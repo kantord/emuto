@@ -167,6 +167,18 @@ const tests = [
   {
     sourceCode: `8 * 3.14 / 2`,
     output: 8 * 3.14 / 2
+  },
+  {
+    sourceCode: `8 + 3.14 * 2`,
+    output: 8 + 3.14 * 2
+  },
+  {
+    sourceCode: `(8 + 3.14) * 2`,
+    output: (8 + 3.14) * 2
+  },
+  {
+    sourceCode: `8 - (3.14 * 2)`,
+    output: 8 - 3.14 * 2
   }
 ]
 

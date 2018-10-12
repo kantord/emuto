@@ -7,7 +7,7 @@ describe('multiplicative parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$/$').value).toMatchObject({
-      name: 'multiplicative',
+      name: 'binaryOperation',
       value: [
         {
           name: 'input',
@@ -27,7 +27,7 @@ describe('multiplicative parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$*$ / 4').value).toMatchObject({
-      name: 'multiplicative',
+      name: 'binaryOperation',
       value: [
         {
           name: 'input',
