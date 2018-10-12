@@ -211,6 +211,22 @@ const tests = [
   {
     sourceCode: `"1" == 1`,
     output: '1' === 1
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3 || true`,
+    output: 3 * 2 - 1 > -1.34 * 3 || true
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3 || false`,
+    output: 3 * 2 - 1 > -1.34 * 3 || false
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3 && false`,
+    output: 3 * 2 - 1 > -1.34 * 3 && false
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3 && true`,
+    output: 3 * 2 - 1 > -1.34 * 3 && true
   }
 ]
 
