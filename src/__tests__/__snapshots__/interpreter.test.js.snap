@@ -47,6 +47,14 @@ exports[`interpreter correct target code {"foo": [{"bar": "baz"}]} | $.foo[0].ba
 
 exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.objectify([[\\"new\\",input]]))})((_.objectify([[\\"original\\",input.foo]])))})})"`;
 
+exports[`interpreter correct target code 3 * 2 -1 < -1.34 * 3 1`] = `"(function(_) { return (function(input) { return 3*2-1<-1.34*3})})"`;
+
+exports[`interpreter correct target code 3 * 2 -1 <= -1.34 * 3 1`] = `"(function(_) { return (function(input) { return 3*2-1<=-1.34*3})})"`;
+
+exports[`interpreter correct target code 3 * 2 -1 > -1.34 * 3 1`] = `"(function(_) { return (function(input) { return 3*2-1>-1.34*3})})"`;
+
+exports[`interpreter correct target code 3 * 2 -1 >= -1.34 * 3 1`] = `"(function(_) { return (function(input) { return 3*2-1>=-1.34*3})})"`;
+
 exports[`interpreter correct target code 8 * 3.14 / 2 1`] = `"(function(_) { return (function(input) { return 8*3.14/2})})"`;
 
 exports[`interpreter correct target code 8 + 3.14 * 2 1`] = `"(function(_) { return (function(input) { return 8+3.14*2})})"`;
@@ -1234,6 +1242,414 @@ Object {
         ],
       },
     },
+  },
+}
+`;
+
+exports[`interpreter correct target tree 3 * 2 -1 < -1.34 * 3 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "binaryOperation",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "3",
+              },
+              Object {
+                "end": Object {
+                  "column": 5,
+                  "line": 1,
+                  "offset": 4,
+                },
+                "name": "operand",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
+                },
+                "value": "*",
+              },
+              Object {
+                "name": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          Object {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "value": "-",
+          },
+          Object {
+            "name": "primitive",
+            "value": "1",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 12,
+          "line": 1,
+          "offset": 11,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": "<",
+      },
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "-1.34",
+          },
+          Object {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "value": "*",
+          },
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 3 * 2 -1 <= -1.34 * 3 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "binaryOperation",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "3",
+              },
+              Object {
+                "end": Object {
+                  "column": 5,
+                  "line": 1,
+                  "offset": 4,
+                },
+                "name": "operand",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
+                },
+                "value": "*",
+              },
+              Object {
+                "name": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          Object {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "value": "-",
+          },
+          Object {
+            "name": "primitive",
+            "value": "1",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 13,
+          "line": 1,
+          "offset": 12,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": "<=",
+      },
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "-1.34",
+          },
+          Object {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "value": "*",
+          },
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 3 * 2 -1 > -1.34 * 3 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "binaryOperation",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "3",
+              },
+              Object {
+                "end": Object {
+                  "column": 5,
+                  "line": 1,
+                  "offset": 4,
+                },
+                "name": "operand",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
+                },
+                "value": "*",
+              },
+              Object {
+                "name": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          Object {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "value": "-",
+          },
+          Object {
+            "name": "primitive",
+            "value": "1",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 12,
+          "line": 1,
+          "offset": 11,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": ">",
+      },
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "-1.34",
+          },
+          Object {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 17,
+              "line": 1,
+              "offset": 16,
+            },
+            "value": "*",
+          },
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 3 * 2 -1 >= -1.34 * 3 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "binaryOperation",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "3",
+              },
+              Object {
+                "end": Object {
+                  "column": 5,
+                  "line": 1,
+                  "offset": 4,
+                },
+                "name": "operand",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
+                },
+                "value": "*",
+              },
+              Object {
+                "name": "primitive",
+                "value": "2",
+              },
+            ],
+          },
+          Object {
+            "end": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "value": "-",
+          },
+          Object {
+            "name": "primitive",
+            "value": "1",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 13,
+          "line": 1,
+          "offset": 12,
+        },
+        "name": "operand",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": ">=",
+      },
+      Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "-1.34",
+          },
+          Object {
+            "end": Object {
+              "column": 21,
+              "line": 1,
+              "offset": 20,
+            },
+            "name": "operand",
+            "start": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "value": "*",
+          },
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+        ],
+      },
+    ],
   },
 }
 `;
