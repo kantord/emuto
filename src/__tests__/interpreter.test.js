@@ -183,6 +183,22 @@ const tests = [
   {
     sourceCode: `8314 % 34 -3`,
     output: 8314 % 34 - 3
+  },
+  {
+    sourceCode: `3 * 2 -1 <= -1.34 * 3`,
+    output: 3 * 2 - 1 <= -1.34 * 3
+  },
+  {
+    sourceCode: `3 * 2 -1 < -1.34 * 3`,
+    output: 3 * 2 - 1 < -1.34 * 3
+  },
+  {
+    sourceCode: `3 * 2 -1 >= -1.34 * 3`,
+    output: 3 * 2 - 1 >= -1.34 * 3
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3`,
+    output: 3 * 2 - 1 > -1.34 * 3
   }
 ]
 

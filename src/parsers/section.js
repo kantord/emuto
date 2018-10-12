@@ -1,10 +1,10 @@
 import P from 'parsimmon'
 import FunctionCallParser from './functionCall'
 import FunctionCallLambdaParser from './functionCallLambda'
-import AdditiveParser from './additive'
+import Boolean1Parser from './boolean1'
 
 export default P.alt(
   FunctionCallLambdaParser,
   FunctionCallParser,
-  AdditiveParser
+  Boolean1Parser
 )
