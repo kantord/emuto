@@ -247,6 +247,16 @@ const tests = [
       bar: 3
     },
     output: !(3 * 2 - 1 > -1.34 * 3) && true
+  },
+  {
+    sourceCode: `filter $ => .age >= 18 | map $ => .name`,
+    input: [
+      { name: 'John', age: 17 },
+      { name: 'Mary', age: 18 },
+      { name: 'Gabe', age: 19 },
+      { name: 'Franz', age: 8 }
+    ],
+    output: ['Mary', 'Gabe']
   }
 ]
 

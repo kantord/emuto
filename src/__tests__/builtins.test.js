@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection, join, map, sortBy } = builtIns
+const { projection, join, map, sortBy, filter } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -63,6 +63,24 @@ describe('built ins', () => {
       const input = ['c', 'a', 'b']
       const originalValue = input.slice()
       sortBy(id)(input)
+      expect(input).toEqual(originalValue)
+    })
+  })
+
+  describe('filter', () => {
+    it('returns correct value', () => {
+      const foo = a => a.foo >= 0; // eslint-disable-line
+      expect(filter(foo)([{ foo: 3 }, { foo: -2 }, { foo: 0 }])).toEqual([
+        { foo: 3 },
+        { foo: 0 }
+      ])
+    })
+
+    it('does not mutate original array', () => {
+      const f = a => a == 'a'; // eslint-disable-line
+      const input = ['c', 'a', 'b']
+      const originalValue = input.slice()
+      filter(f)(input)
       expect(input).toEqual(originalValue)
     })
   })

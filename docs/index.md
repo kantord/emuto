@@ -130,6 +130,17 @@ For example:
 sortBy $ => .age | map $ => .name
 ```
 
+#### `filter \`
+
+Takes an array as input and returns a new array with all elements that match
+the given criterion.
+
+For example:
+
+```
+filter $ => .age >= 18
+```
+
 ### Chaining filters
 
 You can combine two filters by using the pipe syntax, e. q. `.foo | .bar`
