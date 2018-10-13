@@ -62,6 +62,10 @@ Usage example:
 
 `3 + 1 == 4 * 1`
 
+The following Python-style operators are also available as an alternative:
+
+`or`, `and`
+
 #### Identity `$`
 
 Takes an input and returns it unchanged.

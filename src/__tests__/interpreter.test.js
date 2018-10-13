@@ -257,6 +257,14 @@ const tests = [
       { name: 'Franz', age: 8 }
     ],
     output: ['Mary', 'Gabe']
+  },
+  {
+    sourceCode: `3 * 2 -1 > -1.34 * 3 or true`,
+    output: 3 * 2 - 1 > -1.34 * 3 || true
+  },
+  {
+    sourceCode: `!(3 * 2 -1 > -1.34 * 3) and true`,
+    output: !(3 * 2 - 1 > -1.34 * 3) && true
   }
 ]
 
