@@ -1,6 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
+import crap from './crap'
 
 import type {
   NodeType,
@@ -11,7 +12,7 @@ import type {
 
 const UnaryOperatorParser = P.lazy((): ParserType => {
   const OperatorParser = P.oneOf('+-!')
-    .trim(P.optWhitespace)
+    .trim(crap)
     .node('primitive')
   const OperandParser = require('./operand').default
   return P.seq(OperatorParser.atLeast(1), OperandParser).map(

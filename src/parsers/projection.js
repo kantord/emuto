@@ -1,6 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
+import crap from './crap'
 
 import type {
   ListNodeType,
@@ -57,9 +58,9 @@ const ProjectionParser = P.lazy((): mixed => {
   const PropertyParser = P.regexp(/(\.[$A-Z_][0-9A-Z_$]*)+/i).map(packProperty)
 
   return P.seq(
-    ProjectableParser.skip(P.optWhitespace),
+    ProjectableParser.skip(crap),
     P.alt(ListParser, PropertyParser)
-      .skip(P.optWhitespace)
+      .skip(crap)
       .atLeast(1)
   ).map(unpack)
 })

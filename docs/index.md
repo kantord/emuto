@@ -151,3 +151,13 @@ You can combine two filters by using the pipe syntax, e. q. `.foo | .bar`
 
 The first filter (`.foo`) will receive the input and transform it; the second
 filter (`.bar`) will take the output of the first function and transform it.
+
+### Commenting your code
+
+You have to begin your comments with `//`. Everything until the end of the line
+is part of the comment. For example:
+
+```
+filter // Filtering stuff here
+    $ => .age >= 35
+```
