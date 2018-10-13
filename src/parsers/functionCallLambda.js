@@ -1,6 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
+import crap from './crap'
 
 import type {
   FunctionCallLambdaNodeType,
@@ -13,9 +14,15 @@ const FunctionCallLambdaParser = P.lazy((): mixed => {
   const IdentifierParser = require('./identifier').default
   return P.seq(
     IdentifierParser,
-    P.optWhitespace,
-    P.alt(P.regexp(/\$\s*=>\s*/), P.string('\\')),
-    P.optWhitespace,
+    crap,
+    P.alt(
+      P.string('$')
+        .then(crap)
+        .then(P.string('=>'))
+        .then(crap),
+      P.string('\\')
+    ),
+    crap,
     TupleParser
   ).map(
     ([left, _, __, ___, right]: [

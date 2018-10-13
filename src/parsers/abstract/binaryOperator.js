@@ -1,6 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
+import crap from '../crap'
 
 import type { NodeType, ParserType } from '../../types'
 
@@ -9,12 +10,12 @@ const BinaryOperatorParser = (
   OperatorParser: ParserType
 ): ParserType =>
   P.lazy((): mixed => {
-    const OperatorParser_ = OperatorParser.trim(P.optWhitespace).node(
+    const OperatorParser_ = OperatorParser.node(
       'primitive'
     )
     return P.seq(
       OperandParser,
-      P.seq(OperatorParser_, OperandParser).many()
+      P.seq(crap.then(OperatorParser_), crap.then(OperandParser)).many()
     ).map(
       (value: [NodeType, Array<NodeType>]): NodeType =>
         value[1].length > 0
