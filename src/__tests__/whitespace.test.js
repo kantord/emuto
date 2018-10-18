@@ -83,6 +83,17 @@ const examples = [
     34234 , //
     "Hello" //
     ] //
+    `,
+  `
+    // foo
+    ($foo + $bar // foo
+     where //foo
+       $foo = 3 //foo
+    )
+    where
+      $bar // foo
+        = // foo
+         4
     `
 ]
 

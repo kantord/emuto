@@ -14,12 +14,16 @@ import functionCall from './functionCall'
 import functionCallLambda from './functionCallLambda'
 import binaryOperator from './binaryOperator'
 import unaryOperator from './unaryOperator'
+import assignment from './assignment'
+import variable from './variable'
 import type { NodeType, GeneratedCodeType } from '../types'
 
 const Generator = (node: NodeType): GeneratedCodeType => {
   switch (node.name) {
     case 'primitive':
       return primitive(node)
+    case 'variable':
+      return variable(node)
     case 'tuple':
       return tuple(node)
     case 'input':
@@ -46,6 +50,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return binaryOperator(node)
     case 'unaryOperation':
       return unaryOperator(node)
+    case 'assignment':
+      return assignment(Generator)(node)
     default:
       throw new Error(`Unknown node name '${node.name}'`)
   }

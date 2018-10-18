@@ -265,6 +265,15 @@ const tests = [
   {
     sourceCode: `!(3 * 2 -1 > -1.34 * 3) and true`,
     output: !(3 * 2 - 1 > -1.34 * 3) && true
+  },
+  {
+    sourceCode: `3 + $foobar where $foobar = 4`,
+    output: 7
+  },
+  {
+    sourceCode: `(3 + $foobar | [$, $foobar]) where $foobar = $`,
+    input: 4,
+    output: [7, 4]
   }
 ]
 

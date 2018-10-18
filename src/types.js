@@ -26,6 +26,11 @@ export type PrimitiveNodeType = {|
   value: string
 |};
 
+export type VariableNodeType = {|
+  name: 'variable',
+  value: string
+|};
+
 export type IdentifierNodeType = {|
   name: 'identifier',
   value: string
@@ -123,8 +128,20 @@ export type UnaryOperationNodeType = {|
   ...?NodeLocationType
 |};
 
+export type AssignmentNodeValueType = {|
+  name: PrimitiveNodeType,
+  program: NodeType, // eslint-disable-line no-use-before-define
+  value: NodeType // eslint-disable-line no-use-before-define
+|};
+
+export type AssignmentNodeType = {|
+  name: 'assignment',
+  value: AssignmentNodeValueType
+|};
+
 export type NodeType =
   | PrimitiveNodeType
+  | VariableNodeType
   | TupleNodeType
   | InputNodeType
   | InputNodeType
