@@ -12,6 +12,8 @@ exports[`interpreter correct target code $ 1`] = `"(function(_) { return (functi
 
 exports[`interpreter correct target code $ 2`] = `"(function(_) { return (function(input) { return input})})"`;
 
+exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foobar', (input), _); return (((function (input) {return [input, _.get('foobar')]})(3+_.get('foobar'))))})())})})"`;
+
 exports[`interpreter correct target code (8 + 3.14) * 2 1`] = `"(function(_) { return (function(input) { return (8+3.14)*2})})"`;
 
 exports[`interpreter correct target code +(3 * 2) -1 > -1.34 * 3 && true 1`] = `"(function(_) { return (function(input) { return (+((3*2)))-1>-1.34*3&&true})})"`;
@@ -80,6 +82,8 @@ exports[`interpreter correct target code 3 * 2 -1 > -1.34 * 3 1`] = `"(function(
 exports[`interpreter correct target code 3 * 2 -1 > -1.34 * 3 or true 1`] = `"(function(_) { return (function(input) { return 3*2-1>-1.34*3||true})})"`;
 
 exports[`interpreter correct target code 3 * 2 -1 >= -1.34 * 3 1`] = `"(function(_) { return (function(input) { return 3*2-1>=-1.34*3})})"`;
+
+exports[`interpreter correct target code 3 + $foobar where $foobar = 4 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foobar', (4), _); return (3+_.get('foobar'))})())})})"`;
 
 exports[`interpreter correct target code 8 * 3.14 / 2 1`] = `"(function(_) { return (function(input) { return 8*3.14/2})})"`;
 
@@ -599,6 +603,113 @@ Object {
   "value": Object {
     "name": "input",
     "value": "$",
+  },
+}
+`;
+
+exports[`interpreter correct target tree (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 47,
+      "line": 1,
+      "offset": 46,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "name": Object {
+        "name": "identifier",
+        "value": "foobar",
+      },
+      "program": Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "pipe",
+          "value": Object {
+            "left": Object {
+              "name": "binaryOperation",
+              "value": Array [
+                Object {
+                  "name": "primitive",
+                  "value": "3",
+                },
+                Object {
+                  "end": Object {
+                    "column": 5,
+                    "line": 1,
+                    "offset": 4,
+                  },
+                  "name": "primitive",
+                  "start": Object {
+                    "column": 4,
+                    "line": 1,
+                    "offset": 3,
+                  },
+                  "value": "+",
+                },
+                Object {
+                  "end": Object {
+                    "column": 14,
+                    "line": 1,
+                    "offset": 13,
+                  },
+                  "name": "variable",
+                  "start": Object {
+                    "column": 6,
+                    "line": 1,
+                    "offset": 5,
+                  },
+                  "value": "$foobar",
+                },
+              ],
+            },
+            "right": Object {
+              "end": Object {
+                "column": 28,
+                "line": 1,
+                "offset": 27,
+              },
+              "name": "list",
+              "start": Object {
+                "column": 16,
+                "line": 1,
+                "offset": 15,
+              },
+              "value": Array [
+                Object {
+                  "name": "input",
+                  "value": "$",
+                },
+                Object {
+                  "end": Object {
+                    "column": 27,
+                    "line": 1,
+                    "offset": 26,
+                  },
+                  "name": "variable",
+                  "start": Object {
+                    "column": 20,
+                    "line": 1,
+                    "offset": 19,
+                  },
+                  "value": "$foobar",
+                },
+              ],
+            },
+          },
+        },
+      },
+      "value": Object {
+        "name": "input",
+        "value": "$",
+      },
+    },
   },
 }
 `;
@@ -3275,6 +3386,72 @@ Object {
         ],
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 3 + $foobar where $foobar = 4 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 30,
+      "line": 1,
+      "offset": 29,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "name": Object {
+        "name": "identifier",
+        "value": "foobar",
+      },
+      "program": Object {
+        "name": "binaryOperation",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+          Object {
+            "end": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+            "name": "primitive",
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+            "value": "+",
+          },
+          Object {
+            "end": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+            "name": "variable",
+            "start": Object {
+              "column": 5,
+              "line": 1,
+              "offset": 4,
+            },
+            "value": "$foobar",
+          },
+        ],
+      },
+      "value": Object {
+        "name": "primitive",
+        "value": "4",
+      },
+    },
   },
 }
 `;

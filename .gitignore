@@ -4,3 +4,4 @@
 /coverage/
 docs/_site
 stats.json
+/src/parsers/assignment.js=

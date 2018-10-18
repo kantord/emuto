@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection, join, map, sortBy, filter } = builtIns
+const { projection, join, map, sortBy, filter, get, assign } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -82,6 +82,25 @@ describe('built ins', () => {
       const originalValue = input.slice()
       filter(f)(input)
       expect(input).toEqual(originalValue)
+    })
+  })
+
+  describe('assignment', () => {
+    it('get fails without assignment', () => {
+      expect(() => {
+        get('foobar')
+      }).toThrow()
+    })
+
+    it('assign works', () => {
+      const context = {
+        get,
+        assign
+      }
+      let _ = assign('foobar', 3.14, context)
+      expect(_.get('foobar')).toEqual(3.14)
+      _ = _.assign('baz', 'Hello', _)
+      expect(_.get('baz')).toEqual('Hello')
     })
   })
 })

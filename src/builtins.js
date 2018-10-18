@@ -54,5 +54,15 @@ export default {
       ),
   filter: (f: mixed => boolean): ((Array<mixed>) => Array<mixed>) => (
     input: Array<mixed>
-  ): Array<mixed> => input.filter(f)
+  ): Array<mixed> => input.filter(f),
+  get: function (variable: string): mixed {
+    return this[`__var__${variable}`]
+  },
+  assign: function (
+    variable: string,
+    value: mixed,
+    context: {[string]: mixed}
+  ): {[string]: mixed} {
+    return Object.assign({}, context, { [`__var__${variable}`]: value })
+  }
 }
