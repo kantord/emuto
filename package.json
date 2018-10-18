@@ -41,7 +41,7 @@
     "flow-bin": "^0.83.0",
     "jest": "^23.6.0",
     "regenerator-runtime": "^0.12.1",
-    "semantic-release": "^15.9.17",
+    "semantic-release": "^15.10.3",
     "travis-deploy-once": "^5.0.9",
     "webpack": "^4.21.0",
     "webpack-bundle-analyzer": "^3.0.2",
