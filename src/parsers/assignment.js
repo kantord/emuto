@@ -7,29 +7,33 @@ import TupleParser from './tuple/tuple'
 import crap from './crap'
 
 import type {
-  AssignmentNodeValueType,
   NodeType,
-  PrimitiveNodeType
+  AssignmentNodeValueType,
+  AssignmentsType
 } from '../types'
+
+const Assignment = P.seq(
+  P.string('$').then(IdentifierParser),
+  P.string('=')
+    .trim(crap)
+    .then(OperandParser)
+)
+
+const Assignments = P.sepBy(Assignment, crap)
 
 export default P.seq(
   TupleParser,
-  crap
-    .then(P.string('where'))
-    .then(crap)
-    .then(P.string('$'))
-    .then(IdentifierParser),
-  crap.then(P.string('=')).then(OperandParser.trim(crap))
+  P.string('where')
+    .trim(crap)
+    .then(Assignments)
 )
   .map(
-    ([program, name, value]: [
+    ([program, assignments]: [
       NodeType,
-      PrimitiveNodeType,
-      NodeType
+      AssignmentsType
     ]): AssignmentNodeValueType => ({
       program,
-      name,
-      value
+      assignments
     })
   )
   .node('assignment')

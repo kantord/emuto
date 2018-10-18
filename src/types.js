@@ -129,9 +129,8 @@ export type UnaryOperationNodeType = {|
 |};
 
 export type AssignmentNodeValueType = {|
-  name: PrimitiveNodeType,
   program: NodeType, // eslint-disable-line no-use-before-define
-  value: NodeType // eslint-disable-line no-use-before-define
+  assignments: AssignmentsType // eslint-disable-line no-use-before-define
 |};
 
 export type AssignmentNodeType = {|
@@ -169,6 +168,8 @@ export type ProjectableNodeType =
   | ObjectNodeType
   | ValueNodeType;
 
+export type AssignmentType = [PrimitiveNodeType, NodeType];
+export type AssignmentsType = Array<AssignmentType>;
 export type OutputType = mixed => mixed;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;

@@ -25,19 +25,33 @@ describe('assignment generator', () => {
       assignment((): string => '3 + 4')({
         name: 'assignment',
         value: {
-          value: {
-            name: 'parentheses',
-            value: x
-          },
-          name: {
-            name: 'primitive',
-            value: 'a34234'
-          },
+          assignments: [
+            [
+              {
+                name: 'primitive',
+                value: 'a34234'
+              },
+              {
+                name: 'parentheses',
+                value: x
+              }
+            ],
+            [
+              {
+                name: 'primitive',
+                value: 'a'
+              },
+              {
+                name: 'parentheses',
+                value: x
+              }
+            ]
+          ],
           program: x
         }
       })
     ).toEqual(
-      "((function() {_ = _.assign('a34234', (3 + 4), _); return (3 + 4)})())"
+      "((function() {_ = _.assign('a34234', (3 + 4), _); _ = _.assign('a', (3 + 4), _); return (3 + 4)})())"
     )
   })
 })
