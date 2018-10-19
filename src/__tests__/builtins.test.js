@@ -9,7 +9,8 @@ const {
   get,
   assign,
   reverse,
-  reduce
+  reduce,
+  length
 } = builtIns
 
 describe('built ins', () => {
@@ -60,6 +61,13 @@ describe('built ins', () => {
     it('returns correct value', () => {
       const x = (a, b) => a * b + 1; // eslint-disable-line
       expect(reduce([x, 4])([1, 2])).toEqual(11)
+    })
+  })
+
+  describe('length', () => {
+    it('returns correct value', () => {
+      expect(length([1, 2])).toEqual(2)
+      expect(length([1, 2, 4])).toEqual(3)
     })
   })
 
