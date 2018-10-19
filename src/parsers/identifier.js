@@ -3,9 +3,9 @@
 import P from 'parsimmon'
 import type { IdentifierNodeType } from '../types'
 
-export default P.regexp(/[a-zA-Z][0-9a-zA-Z_$]*/).map(
-  (value: string): IdentifierNodeType => ({
-    name: 'identifier',
-    value
-  })
-)
+export default P.regexp(
+  /((?!null|false|true)[a-zA-Z][0-9a-zA-Z_$]*|(null|false|true)[0-9a-zA-Z_$])/
+).map((value: string): IdentifierNodeType => ({
+  name: 'identifier',
+  value
+}))

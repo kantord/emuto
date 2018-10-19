@@ -283,6 +283,14 @@ const tests = [
   {
     sourceCode: `([1] | map $foo | $[0]) where $foo = ($ => 4)`,
     output: 4
+  },
+  {
+    sourceCode: `([1] | foo 4) where $foo = ($ => $ => 4)`,
+    output: 4
+  },
+  {
+    sourceCode: `([1, 2] | foo) where $foo = $reverse`,
+    output: [2, 1]
   }
 ]
 

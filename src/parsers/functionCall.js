@@ -12,7 +12,7 @@ import type {
 const FunctionCallParser = P.lazy((): mixed => {
   const TupleParser = require('./tuple/tuple').default
   const IdentifierParser = require('./identifier').default
-  return P.seq(IdentifierParser, crap, TupleParser).map(
+  return P.seq(IdentifierParser, crap, TupleParser.atMost(1)).map(
     ([left, _, right]: [
       IdentifierNodeType,
       mixed,
@@ -21,7 +21,7 @@ const FunctionCallParser = P.lazy((): mixed => {
       name: 'functionCall',
       value: {
         left,
-        right
+        right: right[0] || null
       }
     })
   )

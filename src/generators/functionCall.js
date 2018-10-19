@@ -7,4 +7,6 @@ export default (
 ): (FunctionCallNodeType => GeneratedCodeType) => ({
   value
 }: FunctionCallNodeType): GeneratedCodeType =>
-  `_.${value.left.value}(${Generator(value.right)})(input)`
+  value.right
+    ? `_.${value.left.value}(${Generator(value.right)})(input)`
+    : `_.${value.left.value}(input)`
