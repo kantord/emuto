@@ -96,12 +96,9 @@ export type FunctionCallNodeType = {|
   }
 |};
 
-export type FunctionCallLambdaNodeType = {|
-  name: 'functionCallLambda',
-  value: {
-    left: IdentifierNodeType,
-    right: NodeType // eslint-disable-line no-use-before-define
-  }
+export type LambdaNodeType = {|
+  name: 'lambda',
+  value: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type ProjectionNodeType = {|
@@ -151,7 +148,7 @@ export type NodeType =
   | ObjectNodeType
   | ValuePropNodeType
   | FunctionCallNodeType
-  | FunctionCallLambdaNodeType
+  | LambdaNodeType
   | OperationNodeType
   | UnaryOperationNodeType
   | ProjectionNodeType;

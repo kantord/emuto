@@ -11,10 +11,10 @@ import object from './object'
 import projection from './projection'
 import pipe from './pipe'
 import functionCall from './functionCall'
-import functionCallLambda from './functionCallLambda'
 import binaryOperator from './binaryOperator'
 import unaryOperator from './unaryOperator'
 import assignment from './assignment'
+import lambda from './lambda'
 import variable from './variable'
 import type { NodeType, GeneratedCodeType } from '../types'
 
@@ -44,8 +44,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return projection(Generator)(node)
     case 'functionCall':
       return functionCall(Generator)(node)
-    case 'functionCallLambda':
-      return functionCallLambda(Generator)(node)
+    case 'lambda':
+      return lambda(node)
     case 'binaryOperation':
       return binaryOperator(node)
     case 'unaryOperation':

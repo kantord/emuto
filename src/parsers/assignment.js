@@ -1,7 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
-import OperandParser from './operand'
+import SectionParser from './section'
 import IdentifierParser from './identifier'
 import TupleParser from './tuple/tuple'
 import crap from './crap'
@@ -16,7 +16,7 @@ const Assignment = P.seq(
   P.string('$').then(IdentifierParser),
   P.string('=')
     .trim(crap)
-    .then(OperandParser)
+    .then(SectionParser)
 )
 
 const Assignments = P.sepBy(Assignment, crap)

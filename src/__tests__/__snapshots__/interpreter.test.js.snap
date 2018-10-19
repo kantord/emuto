@@ -14,6 +14,8 @@ exports[`interpreter correct target code $ 2`] = `"(function(_) { return (functi
 
 exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((_.get('x')+1)), _); return (((function (input) {return [input, _.get('foobar')]})(_.get('x')+_.get('foobar'))))})())})})"`;
 
+exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return 4}))), _); return (((function (input) {return (function (input) {return _.projection(input, [0])})(_.map(_.get('foo'))(input))})([1])))})())})})"`;
+
 exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foobar', (input), _); return (((function (input) {return [input, _.get('foobar')]})(3+_.get('foobar'))))})())})})"`;
 
 exports[`interpreter correct target code (8 + 3.14) * 2 1`] = `"(function(_) { return (function(input) { return (8+3.14)*2})})"`;
@@ -97,21 +99,21 @@ exports[`interpreter correct target code 8314 % 34 -3 1`] = `"(function(_) { ret
 
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
-exports[`interpreter correct target code filter $ => .age >= 18 | map $ => .name 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return input.name})(input))})((_.filter(function(input) {return input.age>=18})(input)))})})"`;
+exports[`interpreter correct target code filter $ => .age >= 18 | map $ => .name 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return input.name}))(input)})(_.filter((function(input) {return input.age>=18}))(input))})})"`;
 
 exports[`interpreter correct target code join " " 1`] = `"(function(_) { return (function(input) { return _.join(\\" \\")(input)})})"`;
 
-exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`] = `"(function(_) { return (function(input) { return (function (input) {return \\"foo\\"})((_.map(function(input) {return (_.objectify([[\\"original\\",input.foo]]))})(input)))})})"`;
+exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`] = `"(function(_) { return (function(input) { return (function (input) {return \\"foo\\"})(_.map((function(input) {return (_.objectify([[\\"original\\",input.foo]]))}))(input))})})"`;
 
-exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return (_.objectify([[\\"new\\",input]]))})(input))})((_.map(function(input) {return (_.objectify([[\\"original\\",input.foo]]))})(input)))})})"`;
+exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return (_.objectify([[\\"new\\",input]]))}))(input)})(_.map((function(input) {return (_.objectify([[\\"original\\",input.foo]]))}))(input))})})"`;
 
-exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return (_.map(function(input) {return \\" \\"})(input))})})"`;
+exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return _.map((function(input) {return \\" \\"}))(input)})})"`;
 
 exports[`interpreter correct target code null 1`] = `"(function(_) { return (function(input) { return null})})"`;
 
 exports[`interpreter correct target code null: true 1`] = `"(function(_) { return (function(input) { return [null,true]})})"`;
 
-exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.map(function(input) {return input.name})(input))})((_.sortBy(function(input) {return input.age})(input)))})})"`;
+exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return input.name}))(input)})(_.sortBy((function(input) {return input.age}))(input))})})"`;
 
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
 
@@ -767,6 +769,138 @@ Object {
                   "value": "$foobar",
                 },
               ],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 46,
+      "line": 1,
+      "offset": 45,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "foo",
+          },
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 45,
+                "line": 1,
+                "offset": 44,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 39,
+                "line": 1,
+                "offset": 38,
+              },
+              "value": Object {
+                "name": "primitive",
+                "value": "4",
+              },
+            },
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "pipe",
+          "value": Object {
+            "left": Object {
+              "end": Object {
+                "column": 5,
+                "line": 1,
+                "offset": 4,
+              },
+              "name": "list",
+              "start": Object {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+              "value": Array [
+                Object {
+                  "name": "primitive",
+                  "value": "1",
+                },
+              ],
+            },
+            "right": Object {
+              "name": "pipe",
+              "value": Object {
+                "left": Object {
+                  "name": "functionCall",
+                  "value": Object {
+                    "left": Object {
+                      "name": "identifier",
+                      "value": "map",
+                    },
+                    "right": Object {
+                      "end": Object {
+                        "column": 17,
+                        "line": 1,
+                        "offset": 16,
+                      },
+                      "name": "variable",
+                      "start": Object {
+                        "column": 12,
+                        "line": 1,
+                        "offset": 11,
+                      },
+                      "value": "$foo",
+                    },
+                  },
+                },
+                "right": Object {
+                  "name": "projection",
+                  "value": Object {
+                    "left": Object {
+                      "name": "input",
+                      "value": "$",
+                    },
+                    "right": Object {
+                      "end": Object {
+                        "column": 23,
+                        "line": 1,
+                        "offset": 22,
+                      },
+                      "name": "list",
+                      "start": Object {
+                        "column": 20,
+                        "line": 1,
+                        "offset": 19,
+                      },
+                      "value": Array [
+                        Object {
+                          "name": "primitive",
+                          "value": "0",
+                        },
+                      ],
+                    },
+                  },
+                },
+              },
             },
           },
         },
@@ -3881,51 +4015,77 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
             "value": "filter",
           },
           "right": Object {
-            "name": "binaryOperation",
-            "value": Array [
-              Object {
-                "name": "inputProp",
-                "value": ".age",
-              },
-              Object {
-                "end": Object {
-                  "column": 20,
-                  "line": 1,
-                  "offset": 19,
+            "end": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
+            },
+            "name": "lambda",
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "value": Object {
+              "name": "binaryOperation",
+              "value": Array [
+                Object {
+                  "name": "inputProp",
+                  "value": ".age",
                 },
-                "name": "primitive",
-                "start": Object {
-                  "column": 18,
-                  "line": 1,
-                  "offset": 17,
+                Object {
+                  "end": Object {
+                    "column": 20,
+                    "line": 1,
+                    "offset": 19,
+                  },
+                  "name": "primitive",
+                  "start": Object {
+                    "column": 18,
+                    "line": 1,
+                    "offset": 17,
+                  },
+                  "value": ">=",
                 },
-                "value": ">=",
-              },
-              Object {
-                "name": "primitive",
-                "value": "18",
-              },
-            ],
+                Object {
+                  "name": "primitive",
+                  "value": "18",
+                },
+              ],
+            },
           },
         },
       },
       "right": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
             "value": "map",
           },
           "right": Object {
-            "name": "inputProp",
-            "value": ".name",
+            "end": Object {
+              "column": 40,
+              "line": 1,
+              "offset": 39,
+            },
+            "name": "lambda",
+            "start": Object {
+              "column": 30,
+              "line": 1,
+              "offset": 29,
+            },
+            "value": Object {
+              "name": "inputProp",
+              "value": ".name",
+            },
           },
         },
       },
@@ -3960,7 +4120,7 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
@@ -3968,37 +4128,50 @@ Object {
           },
           "right": Object {
             "end": Object {
-              "column": 29,
+              "column": 30,
               "line": 1,
-              "offset": 28,
+              "offset": 29,
             },
-            "name": "object",
+            "name": "lambda",
             "start": Object {
-              "column": 10,
+              "column": 5,
               "line": 1,
-              "offset": 9,
+              "offset": 4,
             },
-            "value": Array [
-              Object {
-                "name": "tuple",
-                "value": Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "\\"original\\"",
-                  },
-                  Object {
-                    "name": "valueProp",
-                    "value": Object {
-                      "left": Object {
-                        "name": "input",
-                        "value": "$",
-                      },
-                      "right": ".foo",
-                    },
-                  },
-                ],
+            "value": Object {
+              "end": Object {
+                "column": 29,
+                "line": 1,
+                "offset": 28,
               },
-            ],
+              "name": "object",
+              "start": Object {
+                "column": 10,
+                "line": 1,
+                "offset": 9,
+              },
+              "value": Array [
+                Object {
+                  "name": "tuple",
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "\\"original\\"",
+                    },
+                    Object {
+                      "name": "valueProp",
+                      "value": Object {
+                        "left": Object {
+                          "name": "input",
+                          "value": "$",
+                        },
+                        "right": ".foo",
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
           },
         },
       },
@@ -4018,7 +4191,7 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
@@ -4026,42 +4199,55 @@ Object {
           },
           "right": Object {
             "end": Object {
-              "column": 29,
+              "column": 30,
               "line": 1,
-              "offset": 28,
+              "offset": 29,
             },
-            "name": "object",
+            "name": "lambda",
             "start": Object {
-              "column": 10,
+              "column": 5,
               "line": 1,
-              "offset": 9,
+              "offset": 4,
             },
-            "value": Array [
-              Object {
-                "name": "tuple",
-                "value": Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "\\"original\\"",
-                  },
-                  Object {
-                    "name": "valueProp",
-                    "value": Object {
-                      "left": Object {
-                        "name": "input",
-                        "value": "$",
-                      },
-                      "right": ".foo",
-                    },
-                  },
-                ],
+            "value": Object {
+              "end": Object {
+                "column": 29,
+                "line": 1,
+                "offset": 28,
               },
-            ],
+              "name": "object",
+              "start": Object {
+                "column": 10,
+                "line": 1,
+                "offset": 9,
+              },
+              "value": Array [
+                Object {
+                  "name": "tuple",
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "\\"original\\"",
+                    },
+                    Object {
+                      "name": "valueProp",
+                      "value": Object {
+                        "left": Object {
+                          "name": "input",
+                          "value": "$",
+                        },
+                        "right": ".foo",
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
           },
         },
       },
       "right": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
@@ -4073,27 +4259,40 @@ Object {
               "line": 1,
               "offset": 49,
             },
-            "name": "object",
+            "name": "lambda",
             "start": Object {
-              "column": 40,
+              "column": 36,
               "line": 1,
-              "offset": 39,
+              "offset": 35,
             },
-            "value": Array [
-              Object {
-                "name": "tuple",
-                "value": Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "\\"new\\"",
-                  },
-                  Object {
-                    "name": "input",
-                    "value": "$",
-                  },
-                ],
+            "value": Object {
+              "end": Object {
+                "column": 50,
+                "line": 1,
+                "offset": 49,
               },
-            ],
+              "name": "object",
+              "start": Object {
+                "column": 40,
+                "line": 1,
+                "offset": 39,
+              },
+              "value": Array [
+                Object {
+                  "name": "tuple",
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "\\"new\\"",
+                    },
+                    Object {
+                      "name": "input",
+                      "value": "$",
+                    },
+                  ],
+                },
+              ],
+            },
           },
         },
       },
@@ -4106,15 +4305,28 @@ exports[`interpreter correct target tree map \\" " 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "name": "functionCallLambda",
+    "name": "functionCall",
     "value": Object {
       "left": Object {
         "name": "identifier",
         "value": "map",
       },
       "right": Object {
-        "name": "primitive",
-        "value": "\\" \\"",
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "name": "lambda",
+        "start": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "value": Object {
+          "name": "primitive",
+          "value": "\\" \\"",
+        },
       },
     },
   },
@@ -4157,28 +4369,54 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
             "value": "sortBy",
           },
           "right": Object {
-            "name": "inputProp",
-            "value": ".age",
+            "end": Object {
+              "column": 14,
+              "line": 1,
+              "offset": 13,
+            },
+            "name": "lambda",
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "value": Object {
+              "name": "inputProp",
+              "value": ".age",
+            },
           },
         },
       },
       "right": Object {
-        "name": "functionCallLambda",
+        "name": "functionCall",
         "value": Object {
           "left": Object {
             "name": "identifier",
             "value": "map",
           },
           "right": Object {
-            "name": "inputProp",
-            "value": ".name",
+            "end": Object {
+              "column": 26,
+              "line": 1,
+              "offset": 25,
+            },
+            "name": "lambda",
+            "start": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
+            },
+            "value": Object {
+              "name": "inputProp",
+              "value": ".name",
+            },
           },
         },
       },
