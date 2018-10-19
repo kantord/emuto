@@ -12,7 +12,8 @@ const {
   reduce,
   length,
   keys,
-  values,
+  split,
+  values
 } = builtIns
 
 describe('built ins', () => {
@@ -47,6 +48,13 @@ describe('built ins', () => {
     it('returns correct value', () => {
       expect(join(' ')(['Hello', 'World'])).toEqual('Hello World')
       expect(join(',')(['foo', 'World', ' '])).toEqual('foo,World, ')
+    })
+  })
+
+  describe('split', () => {
+    it('returns correct value', () => {
+      expect(split(' ')('Hello World')).toEqual(['Hello', 'World'])
+      expect(split(',')('Hello World')).toEqual(['Hello World'])
     })
   })
 
