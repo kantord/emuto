@@ -65,5 +65,8 @@ export default {
   ): {[string]: mixed} {
     return Object.assign({}, context, { [variable]: value })
   },
-  reverse: (input: Array<mixed>): Array<mixed> => input.slice().reverse()
+  reverse: (input: Array<mixed>): Array<mixed> => input.slice().reverse(),
+  reduce: ([f, x]: [(mixed) => mixed, mixed]): ((Array<mixed>) => mixed) => (
+    input: Array<mixed>
+  ): mixed => input.reduce(f, x)
 }
