@@ -69,5 +69,6 @@ export default {
   reduce: ([f, x]: [(mixed) => mixed, mixed]): ((Array<mixed>) => mixed) => (
     input: Array<mixed>
   ): mixed => input.reduce(f, x),
-  length: (input: Array<mixed>): number => input.length
+  length: (input: Array<mixed>): number => input.length,
+  keys: (input: {[string]: mixed}): Array<string> => Object.keys(input)
 }
