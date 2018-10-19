@@ -81,5 +81,7 @@ export default {
 
   length: (input: Array<mixed>): number => input.length,
 
-  keys: (input: {[string]: mixed}): Array<string> => Object.keys(input)
+  keys: (input: {[string]: mixed}): Array<string> => Object.keys(input),
+
+  values: (input: {[string]: mixed}): Array<mixed> => Object.values(input)
 }
