@@ -13,7 +13,8 @@ const {
   length,
   keys,
   split,
-  values
+  values,
+  combinations
 } = builtIns
 
 describe('built ins', () => {
@@ -167,6 +168,26 @@ describe('built ins', () => {
       expect(_.get('foobar')).toEqual(3.14)
       _ = _.assign('baz', 'Hello', _)
       expect(_.get('baz')).toEqual('Hello')
+    })
+  })
+
+  describe('combinations', () => {
+    it('returns correct value', () => {
+      expect(combinations(2)('ABCD')).toEqual([
+        ['A', 'B'],
+        ['A', 'C'],
+        ['A', 'D'],
+        ['B', 'C'],
+        ['B', 'D'],
+        ['C', 'D']
+      ])
+
+      expect(combinations(3)([0, 1, 2, 3])).toEqual([
+        [0, 1, 2],
+        [0, 1, 3],
+        [0, 2, 3],
+        [1, 2, 3]
+      ])
     })
   })
 })

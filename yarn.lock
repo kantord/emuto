@@ -2,6 +2,25 @@
 # yarn lockfile v1
 
 
+"@aureooms/js-collections-deque@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@aureooms/js-collections-deque/-/js-collections-deque-3.1.0.tgz#2df0f28883f1367c979232d8c3964aede93d2ded"
+  integrity sha1-LfDyiIPxNnyXkjLYw5ZK7ek9Le0=
+  dependencies:
+    "@aureooms/js-error" "^3.0.0"
+
+"@aureooms/js-error@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@aureooms/js-error/-/js-error-3.0.0.tgz#c06a455569c4cb26c3792ab9c9f075da707823de"
+  integrity sha1-wGpFVWnEyybDeSq5yfB12nB4I94=
+
+"@aureooms/js-itertools@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@aureooms/js-itertools/-/js-itertools-3.4.0.tgz#2140cd62e5ae706402afef2e82f924658e0403e2"
+  integrity sha512-lVOnOr1Fo+fdaT20wBEz2q+KOQ145yFB0WNbqY6FkeB2xQrW+Xi9bzwG1kQ9fP5eOQnhyXvBdpYK90AkkZufmA==
+  dependencies:
+    "@aureooms/js-collections-deque" "^3.1.0"
+
 "@babel/cli@^7.1.2":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.1.2.tgz#fc2853ae96824b3779ca85de4fd025ce3cf62a5e"
