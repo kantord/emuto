@@ -1,6 +1,16 @@
 import builtIns from '../builtins'
 
-const { projection, join, map, sortBy, filter, get, assign, reverse } = builtIns
+const {
+  projection,
+  join,
+  map,
+  sortBy,
+  filter,
+  get,
+  assign,
+  reverse,
+  reduce
+} = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -43,6 +53,13 @@ describe('built ins', () => {
       const foo = a => 'foo'; // eslint-disable-line
       expect(map(id)(['Hello', 'World'])).toEqual(['Hello', 'World'])
       expect(map(foo)(['Hello', 'World'])).toEqual(['foo', 'foo'])
+    })
+  })
+
+  describe('reduce', () => {
+    it('returns correct value', () => {
+      const x = (a, b) => a * b + 1; // eslint-disable-line
+      expect(reduce([x, 4])([1, 2])).toEqual(11)
     })
   })
 
