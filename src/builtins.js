@@ -39,6 +39,10 @@ export default {
       ? handleProjection(left)(right)[0]
       : handleProjection(left)(right),
 
+  split: (separator: string): (string => Array<string>) => (
+    input: string
+  ): Array<string> => input.split(separator),
+
   join: (separator: string): ((Array<string>) => string) => (
     input: Array<string>
   ): string => input.join(separator),
