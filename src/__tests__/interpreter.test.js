@@ -279,6 +279,10 @@ const tests = [
     sourceCode: `($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1)`,
     input: 4,
     output: [7, 4]
+  },
+  {
+    sourceCode: `([1] | map $foo | $[0]) where $foo = ($ => 4)`,
+    output: 4
   }
 ]
 
