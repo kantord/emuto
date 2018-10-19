@@ -11,7 +11,8 @@ const {
   reverse,
   reduce,
   length,
-  keys
+  keys,
+  values,
 } = builtIns
 
 describe('built ins', () => {
@@ -77,6 +78,15 @@ describe('built ins', () => {
       expect(keys({})).toEqual([])
       expect(new Set(keys({ foo: 'bar', baz: 4 }))).toEqual(
         new Set(['foo', 'baz'])
+      )
+    })
+  })
+
+  describe('values', () => {
+    it('returns correct value', () => {
+      expect(values({})).toEqual([])
+      expect(new Set(values({ foo: 'bar', baz: 4 }))).toEqual(
+        new Set(['bar', 4])
       )
     })
   })
