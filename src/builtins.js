@@ -56,13 +56,14 @@ export default {
     input: Array<mixed>
   ): Array<mixed> => input.filter(f),
   get: function (variable: string): mixed {
-    return this[`__var__${variable}`]
+    return this[variable]
   },
   assign: function (
     variable: string,
     value: mixed,
     context: {[string]: mixed}
   ): {[string]: mixed} {
-    return Object.assign({}, context, { [`__var__${variable}`]: value })
-  }
+    return Object.assign({}, context, { [variable]: value })
+  },
+  reverse: (input: Array<mixed>): Array<mixed> => input.slice().reverse()
 }

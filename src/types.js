@@ -92,7 +92,7 @@ export type FunctionCallNodeType = {|
   name: 'functionCall',
   value: {
     left: IdentifierNodeType,
-    right: NodeType // eslint-disable-line no-use-before-define
+    right: ?NodeType // eslint-disable-line no-use-before-define
   }
 |};
 

@@ -14,6 +14,10 @@ exports[`interpreter correct target code $ 2`] = `"(function(_) { return (functi
 
 exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((_.get('x')+1)), _); return (((function (input) {return [input, _.get('foobar')]})(_.get('x')+_.get('foobar'))))})())})})"`;
 
+exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (_.get('reverse')), _); return (((function (input) {return _.foo(input)})([1, 2])))})())})})"`;
+
+exports[`interpreter correct target code ([1] | foo 4) where $foo = ($ => $ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return (function(input) {return 4})}))), _); return (((function (input) {return _.foo(4)(input)})([1])))})())})})"`;
+
 exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return 4}))), _); return (((function (input) {return (function (input) {return _.projection(input, [0])})(_.map(_.get('foo'))(input))})([1])))})())})})"`;
 
 exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foobar', (input), _); return (((function (input) {return [input, _.get('foobar')]})(3+_.get('foobar'))))})())})})"`;
@@ -769,6 +773,192 @@ Object {
                   "value": "$foobar",
                 },
               ],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree ([1, 2] | foo) where $foo = $reverse 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 37,
+      "line": 1,
+      "offset": 36,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "foo",
+          },
+          Object {
+            "end": Object {
+              "column": 37,
+              "line": 1,
+              "offset": 36,
+            },
+            "name": "variable",
+            "start": Object {
+              "column": 29,
+              "line": 1,
+              "offset": 28,
+            },
+            "value": "$reverse",
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "pipe",
+          "value": Object {
+            "left": Object {
+              "end": Object {
+                "column": 8,
+                "line": 1,
+                "offset": 7,
+              },
+              "name": "list",
+              "start": Object {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+              "value": Array [
+                Object {
+                  "name": "primitive",
+                  "value": "1",
+                },
+                Object {
+                  "name": "primitive",
+                  "value": "2",
+                },
+              ],
+            },
+            "right": Object {
+              "name": "functionCall",
+              "value": Object {
+                "left": Object {
+                  "name": "identifier",
+                  "value": "foo",
+                },
+                "right": null,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree ([1] | foo 4) where $foo = ($ => $ => 4) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 41,
+      "line": 1,
+      "offset": 40,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "foo",
+          },
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 40,
+                "line": 1,
+                "offset": 39,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 29,
+                "line": 1,
+                "offset": 28,
+              },
+              "value": Object {
+                "end": Object {
+                  "column": 40,
+                  "line": 1,
+                  "offset": 39,
+                },
+                "name": "lambda",
+                "start": Object {
+                  "column": 34,
+                  "line": 1,
+                  "offset": 33,
+                },
+                "value": Object {
+                  "name": "primitive",
+                  "value": "4",
+                },
+              },
+            },
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "pipe",
+          "value": Object {
+            "left": Object {
+              "end": Object {
+                "column": 5,
+                "line": 1,
+                "offset": 4,
+              },
+              "name": "list",
+              "start": Object {
+                "column": 2,
+                "line": 1,
+                "offset": 1,
+              },
+              "value": Array [
+                Object {
+                  "name": "primitive",
+                  "value": "1",
+                },
+              ],
+            },
+            "right": Object {
+              "name": "functionCall",
+              "value": Object {
+                "left": Object {
+                  "name": "identifier",
+                  "value": "foo",
+                },
+                "right": Object {
+                  "name": "primitive",
+                  "value": "4",
+                },
+              },
             },
           },
         },

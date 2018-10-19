@@ -5,6 +5,10 @@ describe('functionCall parser', () => {
     expect(parser.parse('join ", "').status).toBe(true)
   })
 
+  it('parses replace', () => {
+    expect(parser.parse('replace').status).toBe(true)
+  })
+
   it('returns correct value', () => {
     expect(parser.parse('replace ", ": "; "').value).toEqual({
       name: 'functionCall',
@@ -26,6 +30,19 @@ describe('functionCall parser', () => {
             }
           ]
         }
+      }
+    })
+  })
+
+  it('returns correct value', () => {
+    expect(parser.parse('reverse').value).toEqual({
+      name: 'functionCall',
+      value: {
+        left: {
+          name: 'identifier',
+          value: 'reverse'
+        },
+        right: null
       }
     })
   })

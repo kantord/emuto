@@ -1,6 +1,6 @@
 import builtIns from '../builtins'
 
-const { projection, join, map, sortBy, filter, get, assign } = builtIns
+const { projection, join, map, sortBy, filter, get, assign, reverse } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
@@ -63,6 +63,19 @@ describe('built ins', () => {
       const input = ['c', 'a', 'b']
       const originalValue = input.slice()
       sortBy(id)(input)
+      expect(input).toEqual(originalValue)
+    })
+  })
+
+  describe('reverse', () => {
+    it('returns correct value', () => {
+      expect(reverse(['c', 'a', 'b'])).toEqual(['b', 'a', 'c'])
+    })
+
+    it('does not mutate original array', () => {
+      const input = ['c', 'a', 'b']
+      const originalValue = input.slice()
+      reverse(input)
       expect(input).toEqual(originalValue)
     })
   })
