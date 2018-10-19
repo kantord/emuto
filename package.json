@@ -5,23 +5,21 @@
   "license": "MIT",
   "scripts": {
     "analyze": "yarn build --json | tac | tac | tail -n +3 > stats.json",
-    "analyze-bundle":
-      "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
+    "analyze-bundle": "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest ./src",
     "build": "yarn webpack && yarn babel src/ -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
+    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/cli": "^7.1.2",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -48,6 +46,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
+    "@aureooms/js-itertools": "^3.4.0",
     "flow": "^0.2.3",
     "parsimmon": "^1.12.0"
   },
@@ -60,7 +59,7 @@
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "testPathIgnorePatterns": [
-      "/node_modules/",
+      "/node_modules/(?!@auerooms)",
       "src/parsers/primitives/__tests__/tools.js",
       "<rootDir>/lib/"
     ]
