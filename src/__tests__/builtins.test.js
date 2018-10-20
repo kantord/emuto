@@ -14,7 +14,8 @@ const {
   keys,
   split,
   values,
-  combinations
+  combinations,
+  product
 } = builtIns
 
 describe('built ins', () => {
@@ -187,6 +188,18 @@ describe('built ins', () => {
         [0, 1, 3],
         [0, 2, 3],
         [1, 2, 3]
+      ])
+    })
+  })
+
+  describe('product', () => {
+    it('returns correct value', () => {
+      expect(product([['a', 'b'], []])).toEqual([])
+      expect(product([['a', 'b'], ['1', '2']])).toEqual([
+        ['a', '1'],
+        ['a', '2'],
+        ['b', '1'],
+        ['b', '2']
       ])
     })
   })
