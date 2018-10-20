@@ -247,7 +247,7 @@ You can use the where clause to reuse values:
 
 ```javascript
 $one + $two;
-where;
+where
     $one = 1
     $two = 2
 ```
