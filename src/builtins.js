@@ -1,6 +1,7 @@
 // @flow
 
 import { combinations } from '@aureooms/js-itertools/lib/map/combinations.js'
+import { product } from '@aureooms/js-itertools/lib/map/product.js'
 
 type ProjectableType = Array<mixed> & {[string]: mixed};
 type ProjectionRuleType = number & string;
@@ -93,5 +94,8 @@ export default {
 
   combinations: (r: number): Array<mixed> | (string => Array<Array<mixed>>) => (
     input: Array<mixed> | string
-  ): Array<Array<mixed>> => Array.from(combinations(input, r))
+  ): Array<Array<mixed>> => Array.from(combinations(input, r)),
+
+  product: (input: Array<mixed> | string): Array<Array<mixed>> =>
+    Array.from(product(input))
 }
