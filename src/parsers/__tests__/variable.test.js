@@ -18,7 +18,7 @@ describe('variable parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$').value).toMatchObject({
-      name: 'input',
+      name: 'variable',
       value: '$'
     })
   })

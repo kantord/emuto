@@ -41,11 +41,6 @@ export type TupleNodeType = {|
   value: [PrimitiveNodeType, PrimitiveNodeType]
 |};
 
-export type InputNodeType = {|
-  name: 'input',
-  value: '$'
-|};
-
 export type InputPropNodeType = {|
   name: 'inputProp',
   value: string
@@ -139,8 +134,6 @@ export type NodeType =
   | PrimitiveNodeType
   | VariableNodeType
   | TupleNodeType
-  | InputNodeType
-  | InputNodeType
   | InputPropNodeType
   | ListNodeType
   | PipeNodeType
@@ -151,12 +144,12 @@ export type NodeType =
   | LambdaNodeType
   | OperationNodeType
   | UnaryOperationNodeType
+  | AssignmentNodeType
   | ProjectionNodeType;
 
 export type ValueNodeType =
   | PrimitiveNodeType
   | InputPropNodeType
-  | InputNodeType
   | ListNodeType
   | ParenthesesNodeType;
 

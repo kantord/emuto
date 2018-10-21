@@ -10,7 +10,7 @@ describe('multiplicative parser', () => {
       name: 'binaryOperation',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
@@ -18,7 +18,7 @@ describe('multiplicative parser', () => {
           value: '/'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         }
       ]
@@ -30,7 +30,7 @@ describe('multiplicative parser', () => {
       name: 'binaryOperation',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
@@ -38,7 +38,7 @@ describe('multiplicative parser', () => {
           value: '*'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {

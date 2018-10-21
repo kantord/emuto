@@ -11,4 +11,7 @@ describe('variable generator', () => {
       `_.get('false')`
     )
   })
+  it('input', () => {
+    expect(variable({ name: 'variable', value: '$' })).toEqual(`input`)
+  })
 })

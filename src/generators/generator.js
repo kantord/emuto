@@ -2,7 +2,6 @@
 
 import primitive from './primitive'
 import tuple from './tuple'
-import input from './input'
 import inputProp from './inputProp'
 import valueProp from './valueProp'
 import list from './list'
@@ -26,8 +25,6 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return variable(node)
     case 'tuple':
       return tuple(node)
-    case 'input':
-      return input(node)
     case 'inputProp':
       return inputProp(node)
     case 'list':

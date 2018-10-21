@@ -10,11 +10,11 @@ describe('listCore parser', () => {
       name: 'listCore',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         }
       ]
@@ -25,11 +25,11 @@ describe('listCore parser', () => {
       name: 'listCore',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {

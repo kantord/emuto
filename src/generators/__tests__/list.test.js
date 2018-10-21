@@ -7,11 +7,11 @@ describe('list generator', () => {
         name: 'list',
         value: [
           {
-            name: 'input',
+            name: 'variable',
             value: '$'
           },
           {
-            name: 'input',
+            name: 'variable',
             value: '$'
           },
           {

@@ -10,11 +10,11 @@ describe('list parser', () => {
       name: 'list',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         }
       ]
@@ -25,11 +25,11 @@ describe('list parser', () => {
       name: 'list',
       value: [
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         {
-          name: 'input',
+          name: 'variable',
           value: '$'
         },
         { name: 'primitive', value: 'null' }

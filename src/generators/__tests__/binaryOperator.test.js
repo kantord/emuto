@@ -7,17 +7,17 @@ describe('binaryOperator generator', () => {
         name: 'additive',
         value: [
           {
-            name: 'input',
+            name: 'variable',
             value: '$'
           },
           { name: 'primitive', value: '+' },
           {
-            name: 'input',
+            name: 'variable',
             value: '$'
           },
           { name: 'primitive', value: '-' },
           {
-            name: 'input',
+            name: 'variable',
             value: '$'
           }
         ]

@@ -9,7 +9,7 @@ describe('pipe parser', () => {
     expect(parser.parse(codeExamples[0]).value).toMatchObject({
       name: 'pipe',
       value: {
-        left: { name: 'input', value: '$' },
+        left: { name: 'variable', value: '$' },
         right: { name: 'primitive', value: 'false' }
       }
     })

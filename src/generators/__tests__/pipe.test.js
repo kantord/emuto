@@ -7,8 +7,8 @@ describe('pipe generator', () => {
         name: 'pipe',
         value: {
           left: {
-            name: 'input',
-            value: '.'
+            name: 'variable',
+            value: '$'
           },
           right: {
             name: 'primitive',
