@@ -653,17 +653,7 @@ Object {
               "name": "binaryOperation",
               "value": Array [
                 Object {
-                  "end": Object {
-                    "column": 58,
-                    "line": 1,
-                    "offset": 57,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 55,
-                    "line": 1,
-                    "offset": 54,
-                  },
                   "value": "$x",
                 },
                 Object {
@@ -698,17 +688,7 @@ Object {
               "name": "binaryOperation",
               "value": Array [
                 Object {
-                  "end": Object {
-                    "column": 5,
-                    "line": 1,
-                    "offset": 4,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 2,
-                    "line": 1,
-                    "offset": 1,
-                  },
                   "value": "$x",
                 },
                 Object {
@@ -726,17 +706,7 @@ Object {
                   "value": "+",
                 },
                 Object {
-                  "end": Object {
-                    "column": 15,
-                    "line": 1,
-                    "offset": 14,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 7,
-                    "line": 1,
-                    "offset": 6,
-                  },
                   "value": "$foobar",
                 },
               ],
@@ -759,17 +729,7 @@ Object {
                   "value": "$",
                 },
                 Object {
-                  "end": Object {
-                    "column": 28,
-                    "line": 1,
-                    "offset": 27,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 21,
-                    "line": 1,
-                    "offset": 20,
-                  },
                   "value": "$foobar",
                 },
               ],
@@ -805,17 +765,7 @@ Object {
             "value": "foo",
           },
           Object {
-            "end": Object {
-              "column": 37,
-              "line": 1,
-              "offset": 36,
-            },
             "name": "variable",
-            "start": Object {
-              "column": 29,
-              "line": 1,
-              "offset": 28,
-            },
             "value": "$reverse",
           },
         ],
@@ -1047,17 +997,7 @@ Object {
                       "value": "map",
                     },
                     "right": Object {
-                      "end": Object {
-                        "column": 17,
-                        "line": 1,
-                        "offset": 16,
-                      },
                       "name": "variable",
-                      "start": Object {
-                        "column": 12,
-                        "line": 1,
-                        "offset": 11,
-                      },
                       "value": "$foo",
                     },
                   },
@@ -1155,17 +1095,7 @@ Object {
                   "value": "+",
                 },
                 Object {
-                  "end": Object {
-                    "column": 14,
-                    "line": 1,
-                    "offset": 13,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 6,
-                    "line": 1,
-                    "offset": 5,
-                  },
                   "value": "$foobar",
                 },
               ],
@@ -1188,17 +1118,7 @@ Object {
                   "value": "$",
                 },
                 Object {
-                  "end": Object {
-                    "column": 27,
-                    "line": 1,
-                    "offset": 26,
-                  },
                   "name": "variable",
-                  "start": Object {
-                    "column": 20,
-                    "line": 1,
-                    "offset": 19,
-                  },
                   "value": "$foobar",
                 },
               ],
@@ -3937,17 +3857,7 @@ Object {
             "value": "+",
           },
           Object {
-            "end": Object {
-              "column": 13,
-              "line": 1,
-              "offset": 12,
-            },
             "name": "variable",
-            "start": Object {
-              "column": 5,
-              "line": 1,
-              "offset": 4,
-            },
             "value": "$foobar",
           },
         ],
