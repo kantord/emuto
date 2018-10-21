@@ -6,8 +6,11 @@ describe('lambda generator', () => {
       lambda({
         name: 'lambda',
         value: {
-          name: 'primitive',
-          value: '4'
+          variable: 'input',
+          definition: {
+            name: 'primitive',
+            value: '4'
+          }
         }
       })
     ).toEqual(`(function(input) {return 4})`)
@@ -18,10 +21,30 @@ describe('lambda generator', () => {
       lambda({
         name: 'lambda',
         value: {
-          name: 'primitive',
-          value: '8'
+          variable: 'input',
+          definition: {
+            name: 'primitive',
+            value: '8'
+          }
         }
       })
     ).toEqual(`(function(input) {return 8})`)
+  })
+
+  it('returns correct code', () => {
+    expect(
+      lambda({
+        name: 'lambda',
+        value: {
+          variable: 'foobar3',
+          definition: {
+            name: 'primitive',
+            value: '8'
+          }
+        }
+      })
+    ).toEqual(
+      `(function(foobar3) {_ = _.assign('foobar3', foobar3, _); return 8})`
+    )
   })
 })

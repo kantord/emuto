@@ -91,9 +91,14 @@ export type FunctionCallNodeType = {|
   }
 |};
 
+export type LambdaNodeValueType = {|
+  variable: string,
+  definition: NodeType // eslint-disable-line no-use-before-define
+|};
+
 export type LambdaNodeType = {|
   name: 'lambda',
-  value: NodeType // eslint-disable-line no-use-before-define
+  value: LambdaNodeValueType
 |};
 
 export type ProjectionNodeType = {|

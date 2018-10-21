@@ -5,13 +5,15 @@
   "license": "MIT",
   "scripts": {
     "analyze": "yarn build --json | tac | tac | tail -n +3 > stats.json",
-    "analyze-bundle": "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
+    "analyze-bundle":
+      "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest ./src",
     "build": "yarn webpack && yarn babel src/ -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0",
+    "checks":
+      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0 && rm -r lib",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },

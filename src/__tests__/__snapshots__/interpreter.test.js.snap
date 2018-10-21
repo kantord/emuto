@@ -111,6 +111,8 @@ exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`
 
 exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return (_.objectify([[\\"new\\",input]]))}))(input)})(_.map((function(input) {return (_.objectify([[\\"original\\",input.foo]]))}))(input))})})"`;
 
+exports[`interpreter correct target code map $foo => [$foo] 1`] = `"(function(_) { return (function(input) { return _.map((function(foo) {_ = _.assign('foo', foo, _); return [_.get('foo')]}))(input)})})"`;
+
 exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return _.map((function(input) {return \\" \\"}))(input)})})"`;
 
 exports[`interpreter correct target code null 1`] = `"(function(_) { return (function(input) { return null})})"`;
@@ -853,21 +855,27 @@ Object {
                 "offset": 28,
               },
               "value": Object {
-                "end": Object {
-                  "column": 40,
-                  "line": 1,
-                  "offset": 39,
+                "definition": Object {
+                  "end": Object {
+                    "column": 40,
+                    "line": 1,
+                    "offset": 39,
+                  },
+                  "name": "lambda",
+                  "start": Object {
+                    "column": 34,
+                    "line": 1,
+                    "offset": 33,
+                  },
+                  "value": Object {
+                    "definition": Object {
+                      "name": "primitive",
+                      "value": "4",
+                    },
+                    "variable": "input",
+                  },
                 },
-                "name": "lambda",
-                "start": Object {
-                  "column": 34,
-                  "line": 1,
-                  "offset": 33,
-                },
-                "value": Object {
-                  "name": "primitive",
-                  "value": "4",
-                },
+                "variable": "input",
               },
             },
           },
@@ -955,8 +963,11 @@ Object {
                 "offset": 38,
               },
               "value": Object {
-                "name": "primitive",
-                "value": "4",
+                "definition": Object {
+                  "name": "primitive",
+                  "value": "4",
+                },
+                "variable": "input",
               },
             },
           },
@@ -4134,31 +4145,34 @@ Object {
               "offset": 7,
             },
             "value": Object {
-              "name": "binaryOperation",
-              "value": Array [
-                Object {
-                  "name": "inputProp",
-                  "value": ".age",
-                },
-                Object {
-                  "end": Object {
-                    "column": 20,
-                    "line": 1,
-                    "offset": 19,
+              "definition": Object {
+                "name": "binaryOperation",
+                "value": Array [
+                  Object {
+                    "name": "inputProp",
+                    "value": ".age",
                   },
-                  "name": "primitive",
-                  "start": Object {
-                    "column": 18,
-                    "line": 1,
-                    "offset": 17,
+                  Object {
+                    "end": Object {
+                      "column": 20,
+                      "line": 1,
+                      "offset": 19,
+                    },
+                    "name": "primitive",
+                    "start": Object {
+                      "column": 18,
+                      "line": 1,
+                      "offset": 17,
+                    },
+                    "value": ">=",
                   },
-                  "value": ">=",
-                },
-                Object {
-                  "name": "primitive",
-                  "value": "18",
-                },
-              ],
+                  Object {
+                    "name": "primitive",
+                    "value": "18",
+                  },
+                ],
+              },
+              "variable": "input",
             },
           },
         },
@@ -4183,8 +4197,11 @@ Object {
               "offset": 29,
             },
             "value": Object {
-              "name": "inputProp",
-              "value": ".name",
+              "definition": Object {
+                "name": "inputProp",
+                "value": ".name",
+              },
+              "variable": "input",
             },
           },
         },
@@ -4239,38 +4256,41 @@ Object {
               "offset": 4,
             },
             "value": Object {
-              "end": Object {
-                "column": 29,
-                "line": 1,
-                "offset": 28,
-              },
-              "name": "object",
-              "start": Object {
-                "column": 10,
-                "line": 1,
-                "offset": 9,
-              },
-              "value": Array [
-                Object {
-                  "name": "tuple",
-                  "value": Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "\\"original\\"",
-                    },
-                    Object {
-                      "name": "valueProp",
-                      "value": Object {
-                        "left": Object {
-                          "name": "variable",
-                          "value": "$",
-                        },
-                        "right": ".foo",
-                      },
-                    },
-                  ],
+              "definition": Object {
+                "end": Object {
+                  "column": 29,
+                  "line": 1,
+                  "offset": 28,
                 },
-              ],
+                "name": "object",
+                "start": Object {
+                  "column": 10,
+                  "line": 1,
+                  "offset": 9,
+                },
+                "value": Array [
+                  Object {
+                    "name": "tuple",
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "\\"original\\"",
+                      },
+                      Object {
+                        "name": "valueProp",
+                        "value": Object {
+                          "left": Object {
+                            "name": "variable",
+                            "value": "$",
+                          },
+                          "right": ".foo",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+              "variable": "input",
             },
           },
         },
@@ -4310,38 +4330,41 @@ Object {
               "offset": 4,
             },
             "value": Object {
-              "end": Object {
-                "column": 29,
-                "line": 1,
-                "offset": 28,
-              },
-              "name": "object",
-              "start": Object {
-                "column": 10,
-                "line": 1,
-                "offset": 9,
-              },
-              "value": Array [
-                Object {
-                  "name": "tuple",
-                  "value": Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "\\"original\\"",
-                    },
-                    Object {
-                      "name": "valueProp",
-                      "value": Object {
-                        "left": Object {
-                          "name": "variable",
-                          "value": "$",
-                        },
-                        "right": ".foo",
-                      },
-                    },
-                  ],
+              "definition": Object {
+                "end": Object {
+                  "column": 29,
+                  "line": 1,
+                  "offset": 28,
                 },
-              ],
+                "name": "object",
+                "start": Object {
+                  "column": 10,
+                  "line": 1,
+                  "offset": 9,
+                },
+                "value": Array [
+                  Object {
+                    "name": "tuple",
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "\\"original\\"",
+                      },
+                      Object {
+                        "name": "valueProp",
+                        "value": Object {
+                          "left": Object {
+                            "name": "variable",
+                            "value": "$",
+                          },
+                          "right": ".foo",
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+              "variable": "input",
             },
           },
         },
@@ -4366,34 +4389,87 @@ Object {
               "offset": 35,
             },
             "value": Object {
-              "end": Object {
-                "column": 50,
-                "line": 1,
-                "offset": 49,
-              },
-              "name": "object",
-              "start": Object {
-                "column": 40,
-                "line": 1,
-                "offset": 39,
-              },
-              "value": Array [
-                Object {
-                  "name": "tuple",
-                  "value": Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "\\"new\\"",
-                    },
-                    Object {
-                      "name": "variable",
-                      "value": "$",
-                    },
-                  ],
+              "definition": Object {
+                "end": Object {
+                  "column": 50,
+                  "line": 1,
+                  "offset": 49,
                 },
-              ],
+                "name": "object",
+                "start": Object {
+                  "column": 40,
+                  "line": 1,
+                  "offset": 39,
+                },
+                "value": Array [
+                  Object {
+                    "name": "tuple",
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "\\"new\\"",
+                      },
+                      Object {
+                        "name": "variable",
+                        "value": "$",
+                      },
+                    ],
+                  },
+                ],
+              },
+              "variable": "input",
             },
           },
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map $foo => [$foo] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "functionCall",
+    "value": Object {
+      "left": Object {
+        "name": "identifier",
+        "value": "map",
+      },
+      "right": Object {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "name": "lambda",
+        "start": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "value": Object {
+          "definition": Object {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 13,
+              "line": 1,
+              "offset": 12,
+            },
+            "value": Array [
+              Object {
+                "name": "variable",
+                "value": "$foo",
+              },
+            ],
+          },
+          "variable": "foo",
         },
       },
     },
@@ -4424,8 +4500,11 @@ Object {
           "offset": 4,
         },
         "value": Object {
-          "name": "primitive",
-          "value": "\\" \\"",
+          "definition": Object {
+            "name": "primitive",
+            "value": "\\" \\"",
+          },
+          "variable": "input",
         },
       },
     },
@@ -4488,8 +4567,11 @@ Object {
               "offset": 7,
             },
             "value": Object {
-              "name": "inputProp",
-              "value": ".age",
+              "definition": Object {
+                "name": "inputProp",
+                "value": ".age",
+              },
+              "variable": "input",
             },
           },
         },
@@ -4514,8 +4596,11 @@ Object {
               "offset": 19,
             },
             "value": Object {
-              "name": "inputProp",
-              "value": ".name",
+              "definition": Object {
+                "name": "inputProp",
+                "value": ".name",
+              },
+              "variable": "input",
             },
           },
         },

@@ -291,6 +291,11 @@ const tests = [
   {
     sourceCode: `([1, 2] | foo) where $foo = $reverse`,
     output: [2, 1]
+  },
+  {
+    sourceCode: `map $foo => [$foo]`,
+    input: [1, 2],
+    output: [[1], [2]]
   }
 ]
 
