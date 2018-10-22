@@ -9,14 +9,16 @@ describe('list parser', () => {
     expect(parser.parse('[$,$]').value).toMatchObject({
       name: 'list',
       value: [
-        {
-          name: 'variable',
-          value: '$'
-        },
-        {
-          name: 'variable',
-          value: '$'
-        }
+        [
+          {
+            name: 'variable',
+            value: '$'
+          },
+          {
+            name: 'variable',
+            value: '$'
+          }
+        ]
       ]
     })
   })
@@ -24,15 +26,17 @@ describe('list parser', () => {
     expect(parser.parse('[$,$, null]').value).toMatchObject({
       name: 'list',
       value: [
-        {
-          name: 'variable',
-          value: '$'
-        },
-        {
-          name: 'variable',
-          value: '$'
-        },
-        { name: 'primitive', value: 'null' }
+        [
+          {
+            name: 'variable',
+            value: '$'
+          },
+          {
+            name: 'variable',
+            value: '$'
+          },
+          { name: 'primitive', value: 'null' }
+        ]
       ]
     })
   })

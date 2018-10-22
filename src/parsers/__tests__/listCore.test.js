@@ -9,14 +9,16 @@ describe('listCore parser', () => {
     expect(parser.parse('$,$').value).toMatchObject({
       name: 'listCore',
       value: [
-        {
-          name: 'variable',
-          value: '$'
-        },
-        {
-          name: 'variable',
-          value: '$'
-        }
+        [
+          {
+            name: 'variable',
+            value: '$'
+          },
+          {
+            name: 'variable',
+            value: '$'
+          }
+        ]
       ]
     })
   })
@@ -24,18 +26,20 @@ describe('listCore parser', () => {
     expect(parser.parse('$,$, null').value).toMatchObject({
       name: 'listCore',
       value: [
-        {
-          name: 'variable',
-          value: '$'
-        },
-        {
-          name: 'variable',
-          value: '$'
-        },
-        {
-          name: 'primitive',
-          value: 'null'
-        }
+        [
+          {
+            name: 'variable',
+            value: '$'
+          },
+          {
+            name: 'variable',
+            value: '$'
+          },
+          {
+            name: 'primitive',
+            value: 'null'
+          }
+        ]
       ]
     })
   })
@@ -43,23 +47,27 @@ describe('listCore parser', () => {
     expect(parser.parse('true, [false, false]').value).toMatchObject({
       name: 'listCore',
       value: [
-        {
-          name: 'primitive',
-          value: 'true'
-        },
-        {
-          name: 'list',
-          value: [
-            {
-              name: 'primitive',
-              value: 'false'
-            },
-            {
-              name: 'primitive',
-              value: 'false'
-            }
-          ]
-        }
+        [
+          {
+            name: 'primitive',
+            value: 'true'
+          },
+          {
+            name: 'list',
+            value: [
+              [
+                {
+                  name: 'primitive',
+                  value: 'false'
+                },
+                {
+                  name: 'primitive',
+                  value: 'false'
+                }
+              ]
+            ]
+          }
+        ]
       ]
     })
   })

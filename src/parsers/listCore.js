@@ -10,7 +10,7 @@ const ListCoreParser = P.lazy((): mixed => {
   return P.sepBy(TupleParser, P.string(',').trim(crap)).map(
     (value: Array<NodeType>): ListCoreNodeType => ({
       name: 'listCore',
-      value
+      value: [value]
     })
   )
 })

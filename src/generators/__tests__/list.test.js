@@ -6,18 +6,20 @@ describe('list generator', () => {
       list({
         name: 'list',
         value: [
-          {
-            name: 'variable',
-            value: '$'
-          },
-          {
-            name: 'variable',
-            value: '$'
-          },
-          {
-            name: 'list',
-            value: [{ name: 'primitive', value: 'null' }]
-          }
+          [
+            {
+              name: 'variable',
+              value: '$'
+            },
+            {
+              name: 'variable',
+              value: '$'
+            },
+            {
+              name: 'list',
+              value: [[{ name: 'primitive', value: 'null' }]]
+            }
+          ]
         ]
       })
     ).toEqual('[input, input, [null]]')
