@@ -296,6 +296,11 @@ const tests = [
     sourceCode: `map $foo => [$foo]`,
     input: [1, 2],
     output: [[1], [2]]
+  },
+  {
+    sourceCode: `reduce ($a => $b => $a + $b): 0`,
+    input: [1, 2, -1, 3],
+    output: 5
   }
 ]
 

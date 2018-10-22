@@ -71,7 +71,7 @@ describe('built ins', () => {
 
   describe('reduce', () => {
     it('returns correct value', () => {
-      const x = (a, b) => a * b + 1; // eslint-disable-line
+      const x = a => b => a * b + 1; // eslint-disable-line
       expect(reduce([x, 4])([1, 2])).toEqual(11)
     })
   })
