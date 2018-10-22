@@ -17,7 +17,7 @@ describe('projection generator', () => {
           },
           right: {
             name: 'list',
-            value: []
+            value: [[]]
           }
         }
       })
