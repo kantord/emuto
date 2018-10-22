@@ -46,14 +46,17 @@ export type InputPropNodeType = {|
   value: string
 |};
 
+export type ListCoreSegmentType = Array<NodeType>; // eslint-disable-line no-use-before-define
+export type ListCoreValueType = Array<ListCoreSegmentType>;
+
 export type ListCoreNodeType = {|
   name: 'listCore',
-  value: [Array<NodeType>] // eslint-disable-line no-use-before-define
+  value: ListCoreValueType
 |};
 
 export type ListNodeType = {|
   name: 'list',
-  value: [Array<NodeType>], // eslint-disable-line no-use-before-define
+  value: ListCoreValueType, // eslint-disable-line no-use-before-define
   ...NodeLocationType
 |};
 
@@ -64,7 +67,7 @@ export type ParenthesesNodeType = {|
 
 export type ObjectNodeType = {|
   name: 'object',
-  value: [Array<NodeType>] // eslint-disable-line no-use-before-define
+  value: ListCoreValueType // eslint-disable-line no-use-before-define
 |};
 
 export type PipeNodeType = {|
