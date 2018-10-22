@@ -6,24 +6,34 @@ describe('object generator', () => {
       object({
         name: 'object',
         value: [
-          [
-            {
-              name: 'tuple',
-              value: [
-                { name: 'primitive', value: '"foo"' },
-                { name: 'primitive', value: '"bar"' }
-              ]
-            },
-            {
-              name: 'tuple',
-              value: [
-                { name: 'primitive', value: '"baz"' },
-                { name: 'primitive', value: '4' }
-              ]
+          {
+            name: 'simpleList',
+            value: [
+              {
+                name: 'tuple',
+                value: [
+                  { name: 'primitive', value: '"foo"' },
+                  { name: 'primitive', value: '"bar"' }
+                ]
+              },
+              {
+                name: 'tuple',
+                value: [
+                  { name: 'primitive', value: '"baz"' },
+                  { name: 'primitive', value: '4' }
+                ]
+              }
+            ]
+          },
+          {
+            name: 'spread',
+            value: {
+              name: 'variable',
+              value: '$'
             }
-          ]
+          }
         ]
       })
-    ).toEqual('(_.objectify([["foo","bar"], ["baz",4]]))')
+    ).toEqual('(_.objectify([["foo","bar"], ["baz",4]].concat(input)))')
   })
 })

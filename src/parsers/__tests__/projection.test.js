@@ -24,27 +24,33 @@ describe('projection parser', () => {
         left: {
           name: 'list',
           value: [
-            [
-              {
-                name: 'primitive',
-                value: '3'
-              },
-              {
-                name: 'primitive',
-                value: '2'
-              }
-            ]
+            {
+              name: 'simpleList',
+              value: [
+                {
+                  name: 'primitive',
+                  value: '3'
+                },
+                {
+                  name: 'primitive',
+                  value: '2'
+                }
+              ]
+            }
           ]
         },
         right: {
           name: 'list',
           value: [
-            [
-              {
-                name: 'primitive',
-                value: '3'
-              }
-            ]
+            {
+              name: 'simpleList',
+              value: [
+                {
+                  name: 'primitive',
+                  value: '3'
+                }
+              ]
+            }
           ]
         }
       }

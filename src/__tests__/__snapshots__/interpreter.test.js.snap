@@ -46,6 +46,8 @@ exports[`interpreter correct target code [0,1,2][1,2][1,1][0] 1`] = `"(function(
 
 exports[`interpreter correct target code [0.14, true, "true 2"] 1`] = `"(function(_) { return (function(input) { return [0.14, true, \\"true 2\\"]})})"`;
 
+exports[`interpreter correct target code [1, ...$, 3, ...$] 1`] = `"(function(_) { return (function(input) { return [1].concat(input).concat([3]).concat(input)})})"`;
+
 exports[`interpreter correct target code [3, 2][0] : [3, 2][1] 1`] = `"(function(_) { return (function(input) { return [_.projection([3, 2], [0]),_.projection([3, 2], [1])]})})"`;
 
 exports[`interpreter correct target code [3, 2][0] | [3, 2][1] 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.projection([3, 2], [1])})(_.projection([3, 2], [0]))})})"`;
@@ -728,16 +730,29 @@ Object {
                 "offset": 16,
               },
               "value": Array [
-                Array [
-                  Object {
-                    "name": "variable",
-                    "value": "$",
+                Object {
+                  "end": Object {
+                    "column": 28,
+                    "line": 1,
+                    "offset": 27,
                   },
-                  Object {
-                    "name": "variable",
-                    "value": "$foobar",
+                  "name": "simpleList",
+                  "start": Object {
+                    "column": 18,
+                    "line": 1,
+                    "offset": 17,
                   },
-                ],
+                  "value": Array [
+                    Object {
+                      "name": "variable",
+                      "value": "$",
+                    },
+                    Object {
+                      "name": "variable",
+                      "value": "$foobar",
+                    },
+                  ],
+                },
               ],
             },
           },
@@ -794,16 +809,29 @@ Object {
                 "offset": 1,
               },
               "value": Array [
-                Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "1",
+                Object {
+                  "end": Object {
+                    "column": 7,
+                    "line": 1,
+                    "offset": 6,
                   },
-                  Object {
-                    "name": "primitive",
-                    "value": "2",
+                  "name": "simpleList",
+                  "start": Object {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
                   },
-                ],
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "1",
+                    },
+                    Object {
+                      "name": "primitive",
+                      "value": "2",
+                    },
+                  ],
+                },
               ],
             },
             "right": Object {
@@ -905,12 +933,25 @@ Object {
                 "offset": 1,
               },
               "value": Array [
-                Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "1",
+                Object {
+                  "end": Object {
+                    "column": 4,
+                    "line": 1,
+                    "offset": 3,
                   },
-                ],
+                  "name": "simpleList",
+                  "start": Object {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "1",
+                    },
+                  ],
+                },
               ],
             },
             "right": Object {
@@ -999,12 +1040,25 @@ Object {
                 "offset": 1,
               },
               "value": Array [
-                Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "1",
+                Object {
+                  "end": Object {
+                    "column": 4,
+                    "line": 1,
+                    "offset": 3,
                   },
-                ],
+                  "name": "simpleList",
+                  "start": Object {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                  "value": Array [
+                    Object {
+                      "name": "primitive",
+                      "value": "1",
+                    },
+                  ],
+                },
               ],
             },
             "right": Object {
@@ -1043,12 +1097,25 @@ Object {
                         "offset": 19,
                       },
                       "value": Array [
-                        Array [
-                          Object {
-                            "name": "primitive",
-                            "value": "0",
+                        Object {
+                          "end": Object {
+                            "column": 22,
+                            "line": 1,
+                            "offset": 21,
                           },
-                        ],
+                          "name": "simpleList",
+                          "start": Object {
+                            "column": 21,
+                            "line": 1,
+                            "offset": 20,
+                          },
+                          "value": Array [
+                            Object {
+                              "name": "primitive",
+                              "value": "0",
+                            },
+                          ],
+                        },
                       ],
                     },
                   },
@@ -1136,16 +1203,29 @@ Object {
                 "offset": 15,
               },
               "value": Array [
-                Array [
-                  Object {
-                    "name": "variable",
-                    "value": "$",
+                Object {
+                  "end": Object {
+                    "column": 27,
+                    "line": 1,
+                    "offset": 26,
                   },
-                  Object {
-                    "name": "variable",
-                    "value": "$foobar",
+                  "name": "simpleList",
+                  "start": Object {
+                    "column": 17,
+                    "line": 1,
+                    "offset": 16,
                   },
-                ],
+                  "value": Array [
+                    Object {
+                      "name": "variable",
+                      "value": "$",
+                    },
+                    Object {
+                      "name": "variable",
+                      "value": "$foobar",
+                    },
+                  ],
+                },
               ],
             },
           },
@@ -1477,54 +1557,93 @@ Object {
       "offset": 0,
     },
     "value": Array [
-      Array [
-        Object {
-          "end": Object {
-            "column": 9,
-            "line": 1,
-            "offset": 8,
-          },
-          "name": "list",
-          "start": Object {
-            "column": 2,
-            "line": 1,
-            "offset": 1,
-          },
-          "value": Array [
-            Array [
+      Object {
+        "end": Object {
+          "column": 23,
+          "line": 1,
+          "offset": 22,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
               Object {
-                "name": "primitive",
-                "value": "false",
+                "end": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "false",
+                  },
+                ],
               },
             ],
-          ],
-        },
-        Object {
-          "end": Object {
-            "column": 23,
-            "line": 1,
-            "offset": 22,
           },
-          "name": "list",
-          "start": Object {
-            "column": 11,
-            "line": 1,
-            "offset": 10,
-          },
-          "value": Array [
-            Array [
+          Object {
+            "end": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 11,
+              "line": 1,
+              "offset": 10,
+            },
+            "value": Array [
               Object {
-                "name": "primitive",
-                "value": "true",
-              },
-              Object {
-                "name": "primitive",
-                "value": "null",
+                "end": Object {
+                  "column": 22,
+                  "line": 1,
+                  "offset": 21,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 12,
+                  "line": 1,
+                  "offset": 11,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "true",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "null",
+                  },
+                ],
               },
             ],
-          ],
-        },
-      ],
+          },
+        ],
+      },
     ],
   },
 }
@@ -1555,20 +1674,33 @@ Object {
                   "offset": 0,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "0",
+                  Object {
+                    "end": Object {
+                      "column": 11,
+                      "line": 1,
+                      "offset": 10,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "1",
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 2,
+                      "line": 1,
+                      "offset": 1,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "\\"foo\\"",
-                    },
-                  ],
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "0",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "1",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "\\"foo\\"",
+                      },
+                    ],
+                  },
                 ],
               },
               "right": Object {
@@ -1584,16 +1716,29 @@ Object {
                   "offset": 11,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "1",
+                  Object {
+                    "end": Object {
+                      "column": 16,
+                      "line": 1,
+                      "offset": 15,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "2",
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 13,
+                      "line": 1,
+                      "offset": 12,
                     },
-                  ],
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "1",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "2",
+                      },
+                    ],
+                  },
                 ],
               },
             },
@@ -1611,16 +1756,29 @@ Object {
               "offset": 16,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+              Object {
+                "end": Object {
+                  "column": 21,
+                  "line": 1,
+                  "offset": 20,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -1638,12 +1796,25 @@ Object {
           "offset": 21,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "primitive",
-              "value": "0",
+          Object {
+            "end": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 23,
+              "line": 1,
+              "offset": 22,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "0",
+              },
+            ],
+          },
         ],
       },
     },
@@ -1676,20 +1847,33 @@ Object {
                   "offset": 0,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "0",
+                  Object {
+                    "end": Object {
+                      "column": 7,
+                      "line": 1,
+                      "offset": 6,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "1",
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 2,
+                      "line": 1,
+                      "offset": 1,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "2",
-                    },
-                  ],
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "0",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "1",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "2",
+                      },
+                    ],
+                  },
                 ],
               },
               "right": Object {
@@ -1705,16 +1889,29 @@ Object {
                   "offset": 7,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "1",
+                  Object {
+                    "end": Object {
+                      "column": 12,
+                      "line": 1,
+                      "offset": 11,
                     },
-                    Object {
-                      "name": "primitive",
-                      "value": "2",
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 9,
+                      "line": 1,
+                      "offset": 8,
                     },
-                  ],
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "1",
+                      },
+                      Object {
+                        "name": "primitive",
+                        "value": "2",
+                      },
+                    ],
+                  },
                 ],
               },
             },
@@ -1732,16 +1929,29 @@ Object {
               "offset": 12,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+              Object {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -1759,12 +1969,25 @@ Object {
           "offset": 17,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "primitive",
-              "value": "0",
+          Object {
+            "end": Object {
+              "column": 20,
+              "line": 1,
+              "offset": 19,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "0",
+              },
+            ],
+          },
         ],
       },
     },
@@ -1788,20 +2011,126 @@ Object {
       "offset": 0,
     },
     "value": Array [
-      Array [
-        Object {
-          "name": "primitive",
-          "value": "0.14",
+      Object {
+        "end": Object {
+          "column": 22,
+          "line": 1,
+          "offset": 21,
         },
-        Object {
-          "name": "primitive",
-          "value": "true",
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
         },
-        Object {
-          "name": "primitive",
-          "value": "\\"true 2\\"",
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "0.14",
+          },
+          Object {
+            "name": "primitive",
+            "value": "true",
+          },
+          Object {
+            "name": "primitive",
+            "value": "\\"true 2\\"",
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [1, ...$, 3, ...$] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 19,
+      "line": 1,
+      "offset": 18,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "end": Object {
+          "column": 3,
+          "line": 1,
+          "offset": 2,
         },
-      ],
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "1",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "name": "spread",
+        "start": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "value": Object {
+          "name": "variable",
+          "value": "$",
+        },
+      },
+      Object {
+        "end": Object {
+          "column": 12,
+          "line": 1,
+          "offset": 11,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "value": Array [
+          Object {
+            "name": "primitive",
+            "value": "3",
+          },
+        ],
+      },
+      Object {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "name": "spread",
+        "start": Object {
+          "column": 14,
+          "line": 1,
+          "offset": 13,
+        },
+        "value": Object {
+          "name": "variable",
+          "value": "$",
+        },
+      },
     ],
   },
 }
@@ -1829,16 +2158,29 @@ Object {
               "offset": 0,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "3",
+              Object {
+                "end": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "2",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
             ],
           },
           "right": Object {
@@ -1854,12 +2196,25 @@ Object {
               "offset": 6,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "0",
+              Object {
+                "end": Object {
+                  "column": 9,
+                  "line": 1,
+                  "offset": 8,
                 },
-              ],
+                "name": "simpleList",
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "0",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -1880,16 +2235,29 @@ Object {
               "offset": 12,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "3",
+              Object {
+                "end": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "2",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
             ],
           },
           "right": Object {
@@ -1905,12 +2273,25 @@ Object {
               "offset": 18,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+              Object {
+                "end": Object {
+                  "column": 21,
+                  "line": 1,
+                  "offset": 20,
                 },
-              ],
+                "name": "simpleList",
+                "start": Object {
+                  "column": 20,
+                  "line": 1,
+                  "offset": 19,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -1942,16 +2323,29 @@ Object {
               "offset": 0,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "3",
+              Object {
+                "end": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "2",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 2,
+                  "line": 1,
+                  "offset": 1,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
             ],
           },
           "right": Object {
@@ -1967,12 +2361,25 @@ Object {
               "offset": 6,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "0",
+              Object {
+                "end": Object {
+                  "column": 9,
+                  "line": 1,
+                  "offset": 8,
                 },
-              ],
+                "name": "simpleList",
+                "start": Object {
+                  "column": 8,
+                  "line": 1,
+                  "offset": 7,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "0",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -1993,16 +2400,29 @@ Object {
               "offset": 12,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "3",
+              Object {
+                "end": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
                 },
-                Object {
-                  "name": "primitive",
-                  "value": "2",
+                "name": "simpleList",
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
                 },
-              ],
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "2",
+                  },
+                ],
+              },
             ],
           },
           "right": Object {
@@ -2018,12 +2438,25 @@ Object {
               "offset": 18,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "primitive",
-                  "value": "1",
+              Object {
+                "end": Object {
+                  "column": 21,
+                  "line": 1,
+                  "offset": 20,
                 },
-              ],
+                "name": "simpleList",
+                "start": Object {
+                  "column": 20,
+                  "line": 1,
+                  "offset": 19,
+                },
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                ],
+              },
             ],
           },
         },
@@ -2052,16 +2485,29 @@ Object {
           "offset": 0,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "primitive",
-              "value": "3",
+          Object {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
             },
-            Object {
-              "name": "primitive",
-              "value": "2",
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
             },
-          ],
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "3",
+              },
+              Object {
+                "name": "primitive",
+                "value": "2",
+              },
+            ],
+          },
         ],
       },
       "right": Object {
@@ -2077,12 +2523,25 @@ Object {
           "offset": 6,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "primitive",
-              "value": "0",
+          Object {
+            "end": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 8,
+              "line": 1,
+              "offset": 7,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "0",
+              },
+            ],
+          },
         ],
       },
     },
@@ -2111,81 +2570,120 @@ Object {
       "offset": 0,
     },
     "value": Array [
-      Array [
-        Object {
-          "name": "tuple",
-          "value": Array [
-            Object {
-              "name": "primitive",
-              "value": "\\"foo\\"",
-            },
-            Object {
-              "end": Object {
-                "column": 22,
-                "line": 2,
-                "offset": 23,
-              },
-              "name": "list",
-              "start": Object {
-                "column": 14,
-                "line": 2,
-                "offset": 15,
-              },
-              "value": Array [
-                Array [
-                  Object {
-                    "name": "primitive",
-                    "value": "-42",
-                  },
-                  Object {
-                    "name": "variable",
-                    "value": "$",
-                  },
-                ],
-              ],
-            },
-          ],
+      Object {
+        "end": Object {
+          "column": 8,
+          "line": 5,
+          "offset": 80,
         },
-        Object {
-          "name": "tuple",
-          "value": Array [
-            Object {
-              "name": "primitive",
-              "value": "\\"bar\\"",
-            },
-            Object {
-              "end": Object {
-                "column": 8,
-                "line": 5,
-                "offset": 80,
+        "name": "simpleList",
+        "start": Object {
+          "column": 7,
+          "line": 2,
+          "offset": 8,
+        },
+        "value": Array [
+          Object {
+            "name": "tuple",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "\\"foo\\"",
               },
-              "name": "object",
-              "start": Object {
-                "column": 14,
-                "line": 3,
-                "offset": 38,
-              },
-              "value": Array [
-                Array [
+              Object {
+                "end": Object {
+                  "column": 22,
+                  "line": 2,
+                  "offset": 23,
+                },
+                "name": "list",
+                "start": Object {
+                  "column": 14,
+                  "line": 2,
+                  "offset": 15,
+                },
+                "value": Array [
                   Object {
-                    "name": "tuple",
+                    "end": Object {
+                      "column": 21,
+                      "line": 2,
+                      "offset": 22,
+                    },
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 15,
+                      "line": 2,
+                      "offset": 16,
+                    },
                     "value": Array [
                       Object {
                         "name": "primitive",
-                        "value": "\\"message\\"",
+                        "value": "-42",
                       },
                       Object {
-                        "name": "primitive",
-                        "value": "\\"Hello World\\"",
+                        "name": "variable",
+                        "value": "$",
                       },
                     ],
                   },
                 ],
-              ],
-            },
-          ],
-        },
-      ],
+              },
+            ],
+          },
+          Object {
+            "name": "tuple",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "\\"bar\\"",
+              },
+              Object {
+                "end": Object {
+                  "column": 8,
+                  "line": 5,
+                  "offset": 80,
+                },
+                "name": "object",
+                "start": Object {
+                  "column": 14,
+                  "line": 3,
+                  "offset": 38,
+                },
+                "value": Array [
+                  Object {
+                    "end": Object {
+                      "column": 33,
+                      "line": 4,
+                      "offset": 72,
+                    },
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 9,
+                      "line": 4,
+                      "offset": 48,
+                    },
+                    "value": Array [
+                      Object {
+                        "name": "tuple",
+                        "value": Array [
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"message\\"",
+                          },
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"Hello World\\"",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 }
@@ -2207,33 +2705,46 @@ Object {
       "offset": 0,
     },
     "value": Array [
-      Array [
-        Object {
-          "name": "tuple",
-          "value": Array [
-            Object {
-              "name": "primitive",
-              "value": "\\"foo\\"",
-            },
-            Object {
-              "name": "parentheses",
-              "value": Object {
-                "name": "pipe",
+      Object {
+        "end": Object {
+          "column": 24,
+          "line": 1,
+          "offset": 23,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "name": "tuple",
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "\\"foo\\"",
+              },
+              Object {
+                "name": "parentheses",
                 "value": Object {
-                  "left": Object {
-                    "name": "primitive",
-                    "value": "\\"bar\\"",
-                  },
-                  "right": Object {
-                    "name": "primitive",
-                    "value": "\\"baz\\"",
+                  "name": "pipe",
+                  "value": Object {
+                    "left": Object {
+                      "name": "primitive",
+                      "value": "\\"bar\\"",
+                    },
+                    "right": Object {
+                      "name": "primitive",
+                      "value": "\\"baz\\"",
+                    },
                   },
                 },
               },
-            },
-          ],
-        },
-      ],
+            ],
+          },
+        ],
+      },
     ],
   },
 }
@@ -2258,33 +2769,46 @@ Object {
           "offset": 0,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "tuple",
-              "value": Array [
-                Object {
-                  "name": "primitive",
-                  "value": "\\"foo\\"",
-                },
-                Object {
-                  "name": "parentheses",
-                  "value": Object {
-                    "name": "pipe",
+          Object {
+            "end": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"foo\\"",
+                  },
+                  Object {
+                    "name": "parentheses",
                     "value": Object {
-                      "left": Object {
-                        "name": "primitive",
-                        "value": "\\"bar\\"",
-                      },
-                      "right": Object {
-                        "name": "primitive",
-                        "value": "\\"baz\\"",
+                      "name": "pipe",
+                      "value": Object {
+                        "left": Object {
+                          "name": "primitive",
+                          "value": "\\"bar\\"",
+                        },
+                        "right": Object {
+                          "name": "primitive",
+                          "value": "\\"baz\\"",
+                        },
                       },
                     },
                   },
-                },
-              ],
-            },
-          ],
+                ],
+              },
+            ],
+          },
         ],
       },
       "right": Object {
@@ -2300,12 +2824,25 @@ Object {
           "offset": 24,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "primitive",
-              "value": "\\"foo\\"",
+          Object {
+            "end": Object {
+              "column": 31,
+              "line": 1,
+              "offset": 30,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 26,
+              "line": 1,
+              "offset": 25,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "\\"foo\\"",
+              },
+            ],
+          },
         ],
       },
     },
@@ -2332,64 +2869,103 @@ Object {
           "offset": 0,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "tuple",
-              "value": Array [
-                Object {
-                  "name": "primitive",
-                  "value": "\\"foo\\"",
-                },
-                Object {
-                  "end": Object {
-                    "column": 25,
-                    "line": 1,
-                    "offset": 24,
+          Object {
+            "end": Object {
+              "column": 25,
+              "line": 1,
+              "offset": 24,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"foo\\"",
                   },
-                  "name": "list",
-                  "start": Object {
-                    "column": 9,
-                    "line": 1,
-                    "offset": 8,
-                  },
-                  "value": Array [
-                    Array [
+                  Object {
+                    "end": Object {
+                      "column": 25,
+                      "line": 1,
+                      "offset": 24,
+                    },
+                    "name": "list",
+                    "start": Object {
+                      "column": 9,
+                      "line": 1,
+                      "offset": 8,
+                    },
+                    "value": Array [
                       Object {
                         "end": Object {
                           "column": 24,
                           "line": 1,
                           "offset": 23,
                         },
-                        "name": "object",
+                        "name": "simpleList",
                         "start": Object {
                           "column": 10,
                           "line": 1,
                           "offset": 9,
                         },
                         "value": Array [
-                          Array [
-                            Object {
-                              "name": "tuple",
-                              "value": Array [
-                                Object {
-                                  "name": "primitive",
-                                  "value": "\\"bar\\"",
-                                },
-                                Object {
-                                  "name": "primitive",
-                                  "value": "\\"baz\\"",
-                                },
-                              ],
+                          Object {
+                            "end": Object {
+                              "column": 24,
+                              "line": 1,
+                              "offset": 23,
                             },
-                          ],
+                            "name": "object",
+                            "start": Object {
+                              "column": 10,
+                              "line": 1,
+                              "offset": 9,
+                            },
+                            "value": Array [
+                              Object {
+                                "end": Object {
+                                  "column": 23,
+                                  "line": 1,
+                                  "offset": 22,
+                                },
+                                "name": "simpleList",
+                                "start": Object {
+                                  "column": 11,
+                                  "line": 1,
+                                  "offset": 10,
+                                },
+                                "value": Array [
+                                  Object {
+                                    "name": "tuple",
+                                    "value": Array [
+                                      Object {
+                                        "name": "primitive",
+                                        "value": "\\"bar\\"",
+                                      },
+                                      Object {
+                                        "name": "primitive",
+                                        "value": "\\"baz\\"",
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
                         ],
                       },
                     ],
-                  ],
-                },
-              ],
-            },
-          ],
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
       "right": Object {
@@ -2421,12 +2997,25 @@ Object {
                   "offset": 33,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "0",
+                  Object {
+                    "end": Object {
+                      "column": 36,
+                      "line": 1,
+                      "offset": 35,
                     },
-                  ],
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 35,
+                      "line": 1,
+                      "offset": 34,
+                    },
+                    "value": Array [
+                      Object {
+                        "name": "primitive",
+                        "value": "0",
+                      },
+                    ],
+                  },
                 ],
               },
             },
@@ -2458,27 +3047,40 @@ Object {
           "offset": 0,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "tuple",
-              "value": Array [
-                Object {
-                  "name": "primitive",
-                  "value": "\\"original\\"",
-                },
-                Object {
-                  "name": "valueProp",
-                  "value": Object {
-                    "left": Object {
-                      "name": "variable",
-                      "value": "$",
-                    },
-                    "right": ".foo",
-                  },
-                },
-              ],
+          Object {
+            "end": Object {
+              "column": 19,
+              "line": 1,
+              "offset": 18,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"original\\"",
+                  },
+                  Object {
+                    "name": "valueProp",
+                    "value": Object {
+                      "left": Object {
+                        "name": "variable",
+                        "value": "$",
+                      },
+                      "right": ".foo",
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
       "right": Object {
@@ -2494,21 +3096,34 @@ Object {
           "offset": 22,
         },
         "value": Array [
-          Array [
-            Object {
-              "name": "tuple",
-              "value": Array [
-                Object {
-                  "name": "primitive",
-                  "value": "\\"new\\"",
-                },
-                Object {
-                  "name": "variable",
-                  "value": "$",
-                },
-              ],
+          Object {
+            "end": Object {
+              "column": 32,
+              "line": 1,
+              "offset": 31,
             },
-          ],
+            "name": "simpleList",
+            "start": Object {
+              "column": 24,
+              "line": 1,
+              "offset": 23,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"new\\"",
+                  },
+                  Object {
+                    "name": "variable",
+                    "value": "$",
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     },
@@ -4351,27 +4966,40 @@ Object {
                   "offset": 9,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "tuple",
-                      "value": Array [
-                        Object {
-                          "name": "primitive",
-                          "value": "\\"original\\"",
-                        },
-                        Object {
-                          "name": "valueProp",
-                          "value": Object {
-                            "left": Object {
-                              "name": "variable",
-                              "value": "$",
-                            },
-                            "right": ".foo",
-                          },
-                        },
-                      ],
+                  Object {
+                    "end": Object {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
                     },
-                  ],
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 11,
+                      "line": 1,
+                      "offset": 10,
+                    },
+                    "value": Array [
+                      Object {
+                        "name": "tuple",
+                        "value": Array [
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"original\\"",
+                          },
+                          Object {
+                            "name": "valueProp",
+                            "value": Object {
+                              "left": Object {
+                                "name": "variable",
+                                "value": "$",
+                              },
+                              "right": ".foo",
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                  },
                 ],
               },
               "variable": "input",
@@ -4427,27 +5055,40 @@ Object {
                   "offset": 9,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "tuple",
-                      "value": Array [
-                        Object {
-                          "name": "primitive",
-                          "value": "\\"original\\"",
-                        },
-                        Object {
-                          "name": "valueProp",
-                          "value": Object {
-                            "left": Object {
-                              "name": "variable",
-                              "value": "$",
-                            },
-                            "right": ".foo",
-                          },
-                        },
-                      ],
+                  Object {
+                    "end": Object {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
                     },
-                  ],
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 11,
+                      "line": 1,
+                      "offset": 10,
+                    },
+                    "value": Array [
+                      Object {
+                        "name": "tuple",
+                        "value": Array [
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"original\\"",
+                          },
+                          Object {
+                            "name": "valueProp",
+                            "value": Object {
+                              "left": Object {
+                                "name": "variable",
+                                "value": "$",
+                              },
+                              "right": ".foo",
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                  },
                 ],
               },
               "variable": "input",
@@ -4488,21 +5129,34 @@ Object {
                   "offset": 39,
                 },
                 "value": Array [
-                  Array [
-                    Object {
-                      "name": "tuple",
-                      "value": Array [
-                        Object {
-                          "name": "primitive",
-                          "value": "\\"new\\"",
-                        },
-                        Object {
-                          "name": "variable",
-                          "value": "$",
-                        },
-                      ],
+                  Object {
+                    "end": Object {
+                      "column": 49,
+                      "line": 1,
+                      "offset": 48,
                     },
-                  ],
+                    "name": "simpleList",
+                    "start": Object {
+                      "column": 41,
+                      "line": 1,
+                      "offset": 40,
+                    },
+                    "value": Array [
+                      Object {
+                        "name": "tuple",
+                        "value": Array [
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"new\\"",
+                          },
+                          Object {
+                            "name": "variable",
+                            "value": "$",
+                          },
+                        ],
+                      },
+                    ],
+                  },
                 ],
               },
               "variable": "input",
@@ -4551,12 +5205,25 @@ Object {
               "offset": 12,
             },
             "value": Array [
-              Array [
-                Object {
-                  "name": "variable",
-                  "value": "$foo",
+              Object {
+                "end": Object {
+                  "column": 18,
+                  "line": 1,
+                  "offset": 17,
                 },
-              ],
+                "name": "simpleList",
+                "start": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "value": Array [
+                  Object {
+                    "name": "variable",
+                    "value": "$foo",
+                  },
+                ],
+              },
             ],
           },
           "variable": "foo",

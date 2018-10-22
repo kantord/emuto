@@ -18,7 +18,7 @@ describe('functionCall generator', () => {
           },
           right: {
             name: 'list',
-            value: [[]]
+            value: [{ name: 'simpleList', value: [] }]
           }
         }
       })

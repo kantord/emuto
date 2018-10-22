@@ -46,7 +46,15 @@ export type InputPropNodeType = {|
   value: string
 |};
 
-export type ListCoreSegmentType = Array<NodeType>; // eslint-disable-line no-use-before-define
+export type SimpleListSegmentType = {|
+  name: 'simpleList',
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
+|};
+export type SpreadListSegmentType = {|
+  name: 'spread',
+  value: NodeType // eslint-disable-line no-use-before-define
+|};
+export type ListCoreSegmentType = SimpleListSegmentType | SpreadListSegmentType;
 export type ListCoreValueType = Array<ListCoreSegmentType>;
 
 export type ListCoreNodeType = {|
