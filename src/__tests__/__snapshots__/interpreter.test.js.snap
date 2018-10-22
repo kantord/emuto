@@ -119,6 +119,8 @@ exports[`interpreter correct target code null 1`] = `"(function(_) { return (fun
 
 exports[`interpreter correct target code null: true 1`] = `"(function(_) { return (function(input) { return [null,true]})})"`;
 
+exports[`interpreter correct target code reduce ($a => $b => $a + $b): 0 1`] = `"(function(_) { return (function(input) { return _.reduce([((function(a) {_ = _.assign('a', a, _); return (function(b) {_ = _.assign('b', b, _); return _.get('a')+_.get('b')})})),0])(input)})})"`;
+
 exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return input.name}))(input)})(_.sortBy((function(input) {return input.age}))(input))})})"`;
 
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
@@ -4537,6 +4539,92 @@ Object {
         "value": "true",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree reduce ($a => $b => $a + $b): 0 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "functionCall",
+    "value": Object {
+      "left": Object {
+        "name": "identifier",
+        "value": "reduce",
+      },
+      "right": Object {
+        "name": "tuple",
+        "value": Array [
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 28,
+                "line": 1,
+                "offset": 27,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 9,
+                "line": 1,
+                "offset": 8,
+              },
+              "value": Object {
+                "definition": Object {
+                  "end": Object {
+                    "column": 28,
+                    "line": 1,
+                    "offset": 27,
+                  },
+                  "name": "lambda",
+                  "start": Object {
+                    "column": 15,
+                    "line": 1,
+                    "offset": 14,
+                  },
+                  "value": Object {
+                    "definition": Object {
+                      "name": "binaryOperation",
+                      "value": Array [
+                        Object {
+                          "name": "variable",
+                          "value": "$a",
+                        },
+                        Object {
+                          "end": Object {
+                            "column": 25,
+                            "line": 1,
+                            "offset": 24,
+                          },
+                          "name": "primitive",
+                          "start": Object {
+                            "column": 24,
+                            "line": 1,
+                            "offset": 23,
+                          },
+                          "value": "+",
+                        },
+                        Object {
+                          "name": "variable",
+                          "value": "$b",
+                        },
+                      ],
+                    },
+                    "variable": "b",
+                  },
+                },
+                "variable": "a",
+              },
+            },
+          },
+          Object {
+            "name": "primitive",
+            "value": "0",
+          },
+        ],
+      },
+    },
   },
 }
 `;
