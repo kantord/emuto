@@ -1,34 +1,34 @@
 import list from '../list'
 
+const segment = {
+  name: 'simpleList',
+  value: [
+    {
+      name: 'variable',
+      value: '$'
+    },
+    {
+      name: 'variable',
+      value: '$'
+    },
+    {
+      name: 'list',
+      value: [
+        {
+          name: 'simpleList',
+          value: [{ name: 'primitive', value: 'null' }]
+        }
+      ]
+    }
+  ]
+}
+
 describe('list generator', () => {
   it('generates correct code', () => {
     expect(
       list({
         name: 'list',
-        value: [
-          {
-            name: 'simpleList',
-            value: [
-              {
-                name: 'variable',
-                value: '$'
-              },
-              {
-                name: 'variable',
-                value: '$'
-              },
-              {
-                name: 'list',
-                value: [
-                  {
-                    name: 'simpleList',
-                    value: [{ name: 'primitive', value: 'null' }]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        value: [segment]
       })
     ).toEqual('[input, input, [null]]')
   })
@@ -38,28 +38,7 @@ describe('list generator', () => {
       list({
         name: 'list',
         value: [
-          {
-            name: 'simpleList',
-            value: [
-              {
-                name: 'variable',
-                value: '$'
-              },
-              {
-                name: 'variable',
-                value: '$'
-              },
-              {
-                name: 'list',
-                value: [
-                  {
-                    name: 'simpleList',
-                    value: [{ name: 'primitive', value: 'null' }]
-                  }
-                ]
-              }
-            ]
-          },
+          segment,
           {
             name: 'spread',
             value: {

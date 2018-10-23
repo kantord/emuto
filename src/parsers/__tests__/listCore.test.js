@@ -1,5 +1,19 @@
 import parser from '../listCore'
 
+const segment = {
+  name: 'simpleList',
+  value: [
+    {
+      name: 'variable',
+      value: '$'
+    },
+    {
+      name: 'variable',
+      value: '$'
+    }
+  ]
+}
+
 describe('listCore parser', () => {
   it('parses null  , false', () => {
     expect(parser.parse('null  , false').status).toBe(true)
@@ -15,19 +29,7 @@ describe('listCore parser', () => {
     expect(parser.parse('$,$,...$,$').value).toMatchObject({
       name: 'listCore',
       value: [
-        {
-          name: 'simpleList',
-          value: [
-            {
-              name: 'variable',
-              value: '$'
-            },
-            {
-              name: 'variable',
-              value: '$'
-            }
-          ]
-        },
+        segment,
         { name: 'spread', value: { name: 'variable', value: '$' } },
         {
           name: 'simpleList',
@@ -45,21 +47,7 @@ describe('listCore parser', () => {
   it('returns correct value', () => {
     expect(parser.parse('$,$').value).toMatchObject({
       name: 'listCore',
-      value: [
-        {
-          name: 'simpleList',
-          value: [
-            {
-              name: 'variable',
-              value: '$'
-            },
-            {
-              name: 'variable',
-              value: '$'
-            }
-          ]
-        }
-      ]
+      value: [segment]
     })
   })
   it('returns correct value', () => {
