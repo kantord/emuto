@@ -15,35 +15,51 @@ const {
   split,
   values,
   combinations,
-  product
+  product,
+  __opt__
 } = builtIns
 
 describe('built ins', () => {
   describe('projection', () => {
     it('handles non-negative numbers', () => {
-      expect(projection([1, 2], [1])).toEqual(2)
+      expect(projection([1, 2], [1], false)).toEqual(2)
     })
     it('handles string', () => {
-      expect(projection({ foo: 'bar' }, ['foo'])).toEqual('bar')
+      expect(projection({ foo: 'bar' }, ['foo'], false)).toEqual('bar')
     })
     it('handles list of strings', () => {
-      expect(projection({ foo: 'bar' }, ['foo', 'baz'])).toEqual(['bar', null])
+      expect(projection({ foo: 'bar' }, ['foo', 'baz'], false)).toEqual([
+        'bar',
+        null
+      ])
     })
     it('handles negative numbers', () => {
-      expect(projection([1, 2, 3], [-1])).toEqual(3)
-      expect(projection([1, 2, 3], [-2])).toEqual(2)
-      expect(projection([1, 2, 3], [-3])).toEqual(1)
+      expect(projection([1, 2, 3], [-1], false)).toEqual(3)
+      expect(projection([1, 2, 3], [-2], false)).toEqual(2)
+      expect(projection([1, 2, 3], [-3], false)).toEqual(1)
     })
     it('handles list of numbers', () => {
-      expect(projection([1, 2, 3], [-1, 0])).toEqual([3, 1])
+      expect(projection([1, 2, 3], [-1, 0], false)).toEqual([3, 1])
     })
     it('handles empty projection', () => {
-      expect(projection([1, 2, 3], [])).toEqual([])
+      expect(projection([1, 2, 3], [], false)).toEqual([])
     })
     it('handles falsy list items', () => {
-      expect(projection([0], [0])).toEqual(0)
-      expect(projection([false], [0])).toEqual(false)
+      expect(projection([0], [0], false)).toEqual(0)
+      expect(projection([false], [0], false)).toEqual(false)
     })
+    it('handles optional projection', () => {
+      expect(projection(undefined, [], true)).toEqual(null)
+      expect(projection(null, [], true)).toEqual(null)
+      expect(projection([], [], true)).toEqual([])
+    })
+  })
+
+  describe('__opt__', () => {
+    const f = x => 'Hello'; // eslint-disable-line
+    expect(__opt__(undefined, f)).toEqual(null)
+    expect(__opt__(null, f)).toEqual(null)
+    expect(__opt__([], f)).toEqual('Hello')
   })
 
   describe('join', () => {

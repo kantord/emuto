@@ -89,6 +89,7 @@ export type PipeNodeType = {|
 export type ValuePropNodeType = {|
   name: 'valueProp',
   value: {
+    optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
     right: string
   }
@@ -115,6 +116,7 @@ export type LambdaNodeType = {|
 export type ProjectionNodeType = {|
   name: 'projection',
   value: {
+    optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
     right: ListNodeType // eslint-disable-line no-use-before-define
   },
