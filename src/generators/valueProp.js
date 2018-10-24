@@ -7,4 +7,8 @@ export default (
 ): (ValuePropNodeType => GeneratedCodeType) => ({
   value
 }: ValuePropNodeType): GeneratedCodeType =>
-  `${Generator(value.left)}${value.right}`
+  value.optional
+    ? `_.__opt__(${Generator(value.left)}, function(x) {return x${
+      value.right
+    }})`
+    : `${Generator(value.left)}${value.right}`

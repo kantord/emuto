@@ -306,6 +306,23 @@ const tests = [
     sourceCode: `[1, ...$, 3, ...$]`,
     input: [1, 2],
     output: [1, 1, 2, 3, 1, 2]
+  },
+  {
+    sourceCode: `$.uno?.dos?.tres`,
+    input: {
+      uno: {}
+    },
+    output: null
+  },
+  {
+    sourceCode: `$?[3]`,
+    input: undefined,
+    output: null
+  },
+  {
+    sourceCode: `$?[3]`,
+    input: [1, 2, 3],
+    output: null
   }
 ]
 

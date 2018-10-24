@@ -7,4 +7,6 @@ export default (
 ): (ProjectionNodeType => GeneratedCodeType) => ({
   value
 }: ProjectionNodeType): GeneratedCodeType =>
-  `_.projection(${Generator(value.left)}, ${Generator(value.right)})`
+  `_.projection(${Generator(value.left)}, ${Generator(value.right)}, ${
+    value.optional ? 'true' : 'false'
+  })`

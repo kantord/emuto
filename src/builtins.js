@@ -10,6 +10,9 @@ type ProjectionRulesType = Array<ProjectionRuleType>;
 const convertUndefined = (value: ?mixed): mixed | null =>
   value === undefined ? null : value
 
+const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
+  convertUndefined(value) === null ? null : f(value)
+
 const handleProjectionItem = (
   projectable: ProjectableType
 ): (ProjectionRuleType => mixed) => (
@@ -37,10 +40,16 @@ export default {
     },
     {}),
 
-  projection: (left: ProjectableType, right: ProjectionRulesType): mixed =>
+  __opt__: handleOptional,
+
+  projection: (
+    left: ProjectableType,
+    right: ProjectionRulesType,
+    optinal: boolean
+  ): mixed =>
     right.length === 1
-      ? handleProjection(left)(right)[0]
-      : handleProjection(left)(right),
+      ? handleOptional(left, (): mixed => handleProjection(left)(right)[0])
+      : handleOptional(left, (): mixed => handleProjection(left)(right)),
 
   split: (separator: string): (string => Array<string>) => (
     input: string
