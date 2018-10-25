@@ -19,7 +19,7 @@ describe('listCore parser', () => {
     expect(parser.parse('null  , false').status).toBe(true)
   })
 
-  it('parses spread operatoor', () => {
+  it('parses spread operator', () => {
     expect(parser.parse('null  , ...$').status).toBe(true)
     expect(parser.parse('...$').status).toBe(true)
     expect(parser.parse('...$, ...[1, 2, 3]').status).toBe(true)
