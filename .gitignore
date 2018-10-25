@@ -2,6 +2,7 @@
 /lib
 /graph.svg
 /coverage/
+node_modules/
 docs/_site
 stats.json
 /src/parsers/assignment.js=
