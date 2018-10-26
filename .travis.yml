@@ -24,7 +24,7 @@ branches:
     - /^v\d+\.\d+\.\d+$/
 
 deploy:
-  provider:
+  provider: script
   script: ./.deploy-docs.sh
   on:
     branch: master
