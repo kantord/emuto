@@ -5,7 +5,7 @@ title: Functions
 
 ## Functions
 
-### `join`
+### join
 
 Takes an array as input and joins them into a single string using the supplied
 separator.
@@ -22,7 +22,7 @@ Output:
 "Hello World!"
 ```
 
-### `map \`
+### map \
 
 Takes an array as input and joins them into a single string using the supplied
 separator.
@@ -41,7 +41,7 @@ Output:
 
 Alternatively, you can also use this syntax: `["Hello", "World!"] | map \ {"word": $}`
 
-### `sortBy \`
+### sortBy \
 
 Takes an array as input and sorts it using the supplied function.
 
@@ -51,7 +51,7 @@ For example:
 sortBy $ => .age | map $ => .name
 ```
 
-### `filter \`
+### filter \
 
 Takes an array as input and returns a new array with all elements that match
 the given criterion.
