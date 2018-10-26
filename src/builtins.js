@@ -42,6 +42,9 @@ export default {
 
   __opt__: handleOptional,
 
+  __spread__: (input: mixed): mixed =>
+    Array.isArray(input) ? input : Object.entries(input),
+
   projection: (
     left: ProjectableType,
     right: ProjectionRulesType,

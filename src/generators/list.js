@@ -14,7 +14,9 @@ const CompileListSegmentItem = (item: NodeType): GeneratedCodeType => {
   return Generator(item)
 }
 
-const CompileSimpleListSegment = (segment: SimpleListSegmentType): GeneratedCodeType =>
+const CompileSimpleListSegment = (
+  segment: SimpleListSegmentType
+): GeneratedCodeType =>
   `[${segment.value.map(CompileListSegmentItem).join(', ')}]`
 
 const CompileListSegment = (segment: ListCoreSegmentType): GeneratedCodeType =>
@@ -25,7 +27,7 @@ const CompileListSegment = (segment: ListCoreSegmentType): GeneratedCodeType =>
 const CompileListSegments = (segments: ListCoreValueType): GeneratedCodeType =>
   segments.reduce(
     (a: GeneratedCodeType, b: ListCoreSegmentType): GeneratedCodeType =>
-      `${a}.concat(${CompileListSegment(b)})`,
+      `${a}.concat(_.__spread__(${CompileListSegment(b)}))`,
     ''
   )
 

@@ -16,7 +16,8 @@ const {
   values,
   combinations,
   product,
-  __opt__
+  __opt__,
+  __spread__
 } = builtIns
 
 describe('built ins', () => {
@@ -60,6 +61,12 @@ describe('built ins', () => {
     expect(__opt__(undefined, f)).toEqual(null)
     expect(__opt__(null, f)).toEqual(null)
     expect(__opt__([], f)).toEqual('Hello')
+  })
+
+  describe('__spread__', () => {
+    const f = x => 'Hello'; // eslint-disable-line
+    expect(__spread__([1, 2])).toEqual([1, 2])
+    expect(__spread__({ a: 'b', c: 3 })).toEqual([['a', 'b'], ['c', 3]])
   })
 
   describe('join', () => {

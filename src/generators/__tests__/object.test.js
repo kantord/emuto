@@ -34,6 +34,8 @@ describe('object generator', () => {
           }
         ]
       })
-    ).toEqual('(_.objectify([["foo","bar"], ["baz",4]].concat(input)))')
+    ).toEqual(
+      '(_.objectify([["foo","bar"], ["baz",4]].concat(_.__spread__(input))))'
+    )
   })
 })

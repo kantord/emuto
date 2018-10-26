@@ -52,7 +52,7 @@ exports[`interpreter correct target code [0,1,2][1,2][1,1][0] 1`] = `"(function(
 
 exports[`interpreter correct target code [0.14, true, "true 2"] 1`] = `"(function(_) { return (function(input) { return [0.14, true, \\"true 2\\"]})})"`;
 
-exports[`interpreter correct target code [1, ...$, 3, ...$] 1`] = `"(function(_) { return (function(input) { return [1].concat(input).concat([3]).concat(input)})})"`;
+exports[`interpreter correct target code [1, ...$, 3, ...$] 1`] = `"(function(_) { return (function(input) { return [1].concat(_.__spread__(input)).concat(_.__spread__([3])).concat(_.__spread__(input))})})"`;
 
 exports[`interpreter correct target code [3, 2][0] : [3, 2][1] 1`] = `"(function(_) { return (function(input) { return [_.projection([3, 2], [0], false),_.projection([3, 2], [1], false)]})})"`;
 
@@ -72,6 +72,8 @@ exports[`interpreter correct target code {"foo": ("bar" | "baz")} 1`] = `"(funct
 exports[`interpreter correct target code {"foo": ("bar" | "baz")}["foo"] 1`] = `"(function(_) { return (function(input) { return _.projection((_.objectify([[\\"foo\\",((function (input) {return \\"baz\\"})(\\"bar\\"))]])), [\\"foo\\"], false)})})"`;
 
 exports[`interpreter correct target code {"foo": [{"bar": "baz"}]} | $.foo[0].bar 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.projection(input.foo, [0], false).bar})((_.objectify([[\\"foo\\",[(_.objectify([[\\"bar\\",\\"baz\\"]]))]]])))})})"`;
+
+exports[`interpreter correct target code {"foo": 3} | {"bar": "baz", ...$} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.objectify([[\\"bar\\",\\"baz\\"]].concat(_.__spread__(input))))})((_.objectify([[\\"foo\\",3]])))})})"`;
 
 exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return (_.objectify([[\\"new\\",input]]))})((_.objectify([[\\"original\\",input.foo]])))})})"`;
 
@@ -3177,6 +3179,120 @@ Object {
           "optional": false,
           "right": ".bar",
         },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree {"foo": 3} | {"bar": "baz", ...$} 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "pipe",
+    "value": Object {
+      "left": Object {
+        "end": Object {
+          "column": 11,
+          "line": 1,
+          "offset": 10,
+        },
+        "name": "object",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 10,
+              "line": 1,
+              "offset": 9,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"foo\\"",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "right": Object {
+        "end": Object {
+          "column": 34,
+          "line": 1,
+          "offset": 33,
+        },
+        "name": "object",
+        "start": Object {
+          "column": 14,
+          "line": 1,
+          "offset": 13,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 27,
+              "line": 1,
+              "offset": 26,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"bar\\"",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"baz\\"",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "end": Object {
+              "column": 33,
+              "line": 1,
+              "offset": 32,
+            },
+            "name": "spread",
+            "start": Object {
+              "column": 29,
+              "line": 1,
+              "offset": 28,
+            },
+            "value": Object {
+              "name": "variable",
+              "value": "$",
+            },
+          },
+        ],
       },
     },
   },
