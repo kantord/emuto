@@ -3,9 +3,7 @@ id: functions
 title: Functions
 ---
 
-## Functions
-
-### join
+## join
 
 Takes an array as input and joins them into a single string using the supplied
 separator.
@@ -22,7 +20,7 @@ Output:
 "Hello World!"
 ```
 
-### map \
+## map \
 
 Takes an array as input and joins them into a single string using the supplied
 separator.
@@ -41,7 +39,7 @@ Output:
 
 Alternatively, you can also use this syntax: `["Hello", "World!"] | map \ {"word": $}`
 
-### sortBy \
+## sortBy \
 
 Takes an array as input and sorts it using the supplied function.
 
@@ -51,7 +49,7 @@ For example:
 sortBy $ => .age | map $ => .name
 ```
 
-### filter \
+## filter \
 
 Takes an array as input and returns a new array with all elements that match
 the given criterion.
@@ -62,38 +60,38 @@ For example:
 filter $ => .age >= 18
 ```
 
-### length
+## length
 
 Returns the length of the input:
 
 ```javascript
-[1, 0, 1] | length
+[1, 0, 1] | length;
 ```
 
 ```javascript
-3
+3;
 ```
 
-### reverse
+## reverse
 
 Reverses the input:
 
 ```javascript
-[1, 2, 3] | reverse
+[1, 2, 3] | reverse;
 ```
 
 ```javascript
-[3, 2, 1]
+[3, 2, 1];
 ```
 
-### reduce \
+## reduce \
 
 Compresses multiple items into a single item using the provided function and
 initial value.
 
 Coming soon.
 
-### keys
+## keys
 
 Returns the keys of an object:
 
@@ -102,10 +100,10 @@ Returns the keys of an object:
 ```
 
 ```javascript
-['foo', 'baz']
+['foo', 'baz'];
 ```
 
-### values
+## values
 
 Returns the values of an object:
 
@@ -114,10 +112,10 @@ Returns the values of an object:
 ```
 
 ```javascript
-['bar', 42]
+['bar', 42];
 ```
 
-### combinations
+## combinations
 
 Returns all combinations of each possible choice of r elements of the input:
 
@@ -126,18 +124,17 @@ Returns all combinations of each possible choice of r elements of the input:
 ```
 
 ```javascript
-[['A', 'B'], ['A', 'C'], ['A', 'D'], ['B', 'C'], ['B', 'D'], ['C', 'D']]
+[['A', 'B'], ['A', 'C'], ['A', 'D'], ['B', 'C'], ['B', 'D'], ['C', 'D']];
 ```
 
-### product
+## product
 
 Computes the product of the iterables in the input:
 
 ```javascript
-[['a', 'b'], ['1', '2']] | product
+[['a', 'b'], ['1', '2']] | product;
 ```
 
 ```javascript
-[['a', '1'], ['a', '2'], ['b', '1'], ['b', '2']]
+[['a', '1'], ['a', '2'], ['b', '1'], ['b', '2']];
 ```
-
