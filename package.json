@@ -38,6 +38,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.84.0",
     "jest": "^23.6.0",
+    "jscpd": "^0.6.25",
     "madge": "^3.2.0",
     "regenerator-runtime": "^0.12.1",
     "semantic-release": "^15.10.5",
