@@ -55,6 +55,8 @@ describe('list generator', () => {
           }
         ]
       })
-    ).toEqual('[input, input, [null]].concat(input).concat(input)')
+    ).toEqual(
+      '[input, input, [null]].concat(_.__spread__(input)).concat(_.__spread__(input))'
+    )
   })
 })
