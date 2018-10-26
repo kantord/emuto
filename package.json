@@ -15,6 +15,11 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && yarn checks"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -37,6 +42,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.84.0",
+    "husky": "^1.1.2",
     "jest": "^23.6.0",
     "jscpd": "^0.6.25",
     "madge": "^3.2.0",
