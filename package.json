@@ -5,15 +5,13 @@
   "license": "MIT",
   "scripts": {
     "analyze": "yarn build --json | tac | tac | tail -n +3 > stats.json",
-    "analyze-bundle":
-      "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
+    "analyze-bundle": "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest ./src",
     "build": "yarn webpack && yarn babel src/ -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0 && rm -r lib",
+    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b --limit 0 && rm -r lib",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
@@ -40,6 +38,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "flow-bin": "^0.84.0",
     "jest": "^23.6.0",
+    "madge": "^3.2.0",
     "regenerator-runtime": "^0.12.1",
     "semantic-release": "^15.10.5",
     "travis-deploy-once": "^5.0.9",
