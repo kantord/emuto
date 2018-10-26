@@ -5,17 +5,35 @@
     "previous": "Previous",
     "tagline": "a lightweight JSON processor",
     "docs": {
-      "docs": {
+      "basic-filters": {
+        "title": "Basic filters"
+      },
+      "chaining-filters": {
+        "title": "Chaining filters"
+      },
+      "commenting": {
+        "title": "Commenting your code"
+      },
+      "functions": {
+        "title": "Functions"
+      },
+      "getting-started": {
         "title": "Getting Started with Emuto"
+      },
+      "setup": {
+        "title": "Setup"
+      },
+      "variables": {
+        "title": "Variables"
       }
     },
     "links": {
+      "Getting started": "Getting started",
       "Docs": "Docs"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Getting Started": "Getting Started",
+      "Documentation": "Documentation"
     }
   },
   "pages-strings": {
