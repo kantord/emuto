@@ -1,0 +1,12 @@
+{
+  "docs": {
+    "Getting Started": ["getting-started"],
+    "Documentation": [
+      "basic-filters",
+      "functions",
+      "chaining_filters",
+      "variables",
+      "commenting"
+    ]
+  }
+}

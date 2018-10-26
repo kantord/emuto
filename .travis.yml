@@ -16,8 +16,15 @@ script:
   - yarn test:flow
   - yarn test --coverage
   - codecov
+
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+
+deploy:
+  provider: script
+  script: ./.deploy-docs.sh
+  on:
+    branch: master

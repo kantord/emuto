@@ -308,6 +308,13 @@ const tests = [
     output: [1, 1, 2, 3, 1, 2]
   },
   {
+    sourceCode: `{"foo": 3} | {"bar": "baz", ...$}`,
+    output: {
+      foo: 3,
+      bar: 'baz'
+    }
+  },
+  {
     sourceCode: `$.uno?.dos?.tres`,
     input: {
       uno: {}
