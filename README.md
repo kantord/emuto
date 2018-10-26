@@ -1,4 +1,4 @@
-# emuto ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)  ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/emuto.svg)
+# emuto ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/emuto.svg)
 
 emuto is a lightweight JSON processor inspired by and nearly porting [jq](https://stedolan.github.io/jq/)
 
@@ -29,3 +29,7 @@ And return a result like this:
 ```
 
 [Click here to try it live](https://kantord.github.io/emuto-demo/)
+
+## [Contributing Guide](CONTRIBUTING.md)
+
+Read our [contributing guide](CONTRIBUTING.md) to learn about our development process, how to create bugfixes and improvements, and how to build and test your changes to emuto.
