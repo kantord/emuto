@@ -20,8 +20,8 @@
       "getting-started": {
         "title": "Getting Started with Emuto"
       },
-      "setup": {
-        "title": "Setup"
+      "setup-webpack": {
+        "title": "Webpack"
       },
       "variables": {
         "title": "Variables"

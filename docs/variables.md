@@ -3,8 +3,6 @@ id: variables
 title: Variables
 ---
 
-## Variables
-
 You can use the where clause to reuse values:
 
 ```javascript
