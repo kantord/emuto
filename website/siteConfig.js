@@ -42,6 +42,12 @@ const siteConfig = {
     {doc: 'basic-filters', label: 'Docs'},
   ],
 
+  algolia: {
+    apiKey: '5c2bde5b82aef26ca0949001be26db90',
+    indexName: 'emuto',
+    algoliaOptions: {}, // Optional, if provided by Algolia
+  },
+
   // If you have users set above, you add it here:
   users,
 
