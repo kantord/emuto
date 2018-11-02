@@ -371,6 +371,17 @@ const tests = [
       ]
     },
     output: [3, 34, 33]
+  },
+  {
+    sourceCode: `[each .author.name in .articles if .author.age >= 30 sortBy $ => .author.age]`,
+    input: {
+      articles: [
+        { author: { age: 3, name: 'Jonas' } },
+        { author: { age: 34, name: 'John' } },
+        { author: { age: 33, name: 'Mary' } }
+      ]
+    },
+    output: ['Mary', 'John']
   }
 ]
 

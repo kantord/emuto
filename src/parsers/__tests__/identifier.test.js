@@ -31,4 +31,7 @@ describe('identifier parser', () => {
   it('does not parse null', () => {
     expect(parser.parse('null').status).toBe(false)
   })
+  it('does not parse if', () => {
+    expect(parser.parse('if').status).toBe(false)
+  })
 })

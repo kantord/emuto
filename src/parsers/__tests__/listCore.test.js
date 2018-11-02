@@ -48,6 +48,12 @@ describe('listCore parser', () => {
     expect(parser.parse('each .about.name in .user').status).toBe(true)
   })
 
+  it('parses each .about.name in .user if .user.age >= 3 (comprehension)', () => {
+    expect(
+      parser.parse('each .about.name in .user if .user.age >= 3').status
+    ).toBe(true)
+  })
+
   it('parses each $[0] in $ sortBy $ => $.size (comprehension)', () => {
     expect(parser.parse('each $[0] in $ sortBy $ => $.size').status).toBe(true)
   })
@@ -129,6 +135,72 @@ describe('listCore parser', () => {
                         definition: {
                           name: 'primitive',
                           value: '3'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    })
+  })
+
+  it('returns correct value', () => {
+    expect(parser.parse('each -1 in 8 if true').value).toMatchObject({
+      name: 'listCore',
+      value: [
+        {
+          name: 'spread',
+          value: {
+            name: 'parentheses',
+            value: {
+              name: 'pipe',
+              value: {
+                left: {
+                  name: 'pipe',
+                  value: {
+                    left: {
+                      name: 'primitive',
+                      value: '8'
+                    },
+                    right: {
+                      name: 'functionCall',
+                      value: {
+                        left: {
+                          name: 'identifier',
+                          value: 'filter'
+                        },
+                        right: {
+                          name: 'lambda',
+                          value: {
+                            variable: 'input',
+                            definition: {
+                              name: 'primitive',
+                              value: 'true'
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                right: {
+                  name: 'functionCall',
+                  value: {
+                    left: {
+                      name: 'identifier',
+                      value: 'map'
+                    },
+                    right: {
+                      name: 'lambda',
+                      value: {
+                        variable: 'input',
+                        definition: {
+                          name: 'primitive',
+                          value: '-1'
                         }
                       }
                     }
