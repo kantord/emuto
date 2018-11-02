@@ -15,21 +15,23 @@ const UnaryOperatorParser = P.lazy((): ParserType => {
     .trim(crap)
     .node('primitive')
   const OperandParser = require('./operand').default
-  return P.seq(OperatorParser.atLeast(1), OperandParser).map(
-    ([operators, operand]: [Array<PrimitiveNodeType>, NodeType]): NodeType =>
-      operators.length > 0
-        ? operators.reduce(
-          (a: NodeType, b: PrimitiveNodeType): UnaryOperationNodeType => ({
-            name: 'unaryOperation',
-            value: {
-              operator: b,
-              operand: a
-            }
-          }),
-          operand
-        )
-        : operand
-  )
+  return P.seq(OperatorParser.atLeast(1), OperandParser)
+    .map(
+      ([operators, operand]: [Array<PrimitiveNodeType>, NodeType]): NodeType =>
+        operators.length > 0
+          ? operators.reduce(
+            (a: NodeType, b: PrimitiveNodeType): UnaryOperationNodeType => ({
+              name: 'unaryOperation',
+              value: {
+                operator: b,
+                operand: a
+              }
+            }),
+            operand
+          )
+          : operand
+    )
+    .desc('unaryOperator')
 })
 
 export default UnaryOperatorParser
