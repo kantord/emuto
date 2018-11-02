@@ -382,6 +382,11 @@ const tests = [
       ]
     },
     output: ['Mary', 'John']
+  },
+  {
+    sourceCode: `{each $: (length) in $}`,
+    input: ['bo', 'boo'],
+    output: { bo: 2, boo: 3 }
   }
 ]
 
