@@ -338,6 +338,39 @@ const tests = [
   {
     sourceCode: `3 : 4 if null else [-12] | [$[0]]`,
     output: [-12]
+  },
+  {
+    sourceCode: `[each .author.name in .articles sortBy $ => .author.age]`,
+    input: {
+      articles: [
+        { author: { age: 3, name: 'Jonas' } },
+        { author: { age: 34, name: 'John' } },
+        { author: { age: 33, name: 'Mary' } }
+      ]
+    },
+    output: ['Jonas', 'Mary', 'John']
+  },
+  {
+    sourceCode: `[each .author.age in .articles reverse]`,
+    input: {
+      articles: [
+        { author: { age: 3, name: 'Jonas' } },
+        { author: { age: 34, name: 'John' } },
+        { author: { age: 33, name: 'Mary' } }
+      ]
+    },
+    output: [33, 34, 3]
+  },
+  {
+    sourceCode: `[each .author.age in .articles]`,
+    input: {
+      articles: [
+        { author: { age: 3, name: 'Jonas' } },
+        { author: { age: 34, name: 'John' } },
+        { author: { age: 33, name: 'Mary' } }
+      ]
+    },
+    output: [3, 34, 33]
   }
 ]
 

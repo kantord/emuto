@@ -44,6 +44,104 @@ describe('listCore parser', () => {
     })
   })
 
+  it('parses each .about.name in .user (comprehension)', () => {
+    expect(parser.parse('each .about.name in .user').status).toBe(true)
+  })
+
+  it('parses each $[0] in $ sortBy $ => $.size (comprehension)', () => {
+    expect(parser.parse('each $[0] in $ sortBy $ => $.size').status).toBe(true)
+  })
+
+  it('returns correct value', () => {
+    expect(parser.parse('each 9 in 1 11').value).toMatchObject({
+      name: 'listCore',
+      value: [
+        {
+          name: 'spread',
+          value: {
+            name: 'parentheses',
+            value: {
+              name: 'pipe',
+              value: {
+                left: {
+                  name: 'pipe',
+                  value: {
+                    left: { name: 'primitive', value: '1' },
+                    right: {
+                      name: 'primitive',
+                      value: '11'
+                    }
+                  }
+                },
+                right: {
+                  name: 'functionCall',
+                  value: {
+                    left: {
+                      name: 'identifier',
+                      value: 'map'
+                    },
+                    right: {
+                      name: 'lambda',
+                      value: {
+                        variable: 'input',
+                        definition: {
+                          name: 'primitive',
+                          value: '9'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    })
+  })
+
+  it('returns correct value', () => {
+    expect(parser.parse('each 3 in 8').value).toMatchObject({
+      name: 'listCore',
+      value: [
+        {
+          name: 'spread',
+          value: {
+            name: 'parentheses',
+            value: {
+              name: 'pipe',
+              value: {
+                left: {
+                  name: 'primitive',
+                  value: '8'
+                },
+                right: {
+                  name: 'functionCall',
+                  value: {
+                    left: {
+                      name: 'identifier',
+                      value: 'map'
+                    },
+                    right: {
+                      name: 'lambda',
+                      value: {
+                        variable: 'input',
+                        definition: {
+                          name: 'primitive',
+                          value: '3'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    })
+  })
+
   it('returns correct value', () => {
     expect(parser.parse('$,$').value).toMatchObject({
       name: 'listCore',
