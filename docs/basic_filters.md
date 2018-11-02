@@ -46,6 +46,19 @@ Retrieves a certain property of the input.
 
 `.foo.bar` is equivalent to `.foo | .bar`
 
+Property access can be made optional using a `?`:
+
+```$?.foo?.bar```
+
+The effect of this is that when the left hand side of `?.` is `undefined` or
+`null`, no error will be thrown. Instead, `null` will be returned.
+
+This code does not produce an error:
+
+```
+{"foo": 4}?.bar?.foo
+```
+
 ## Projection  `$[3]`, `$[0, -1]`, `$["foo", "bar"]`
 
 Retrieve a single element from an object or array, or retrieve a list of
