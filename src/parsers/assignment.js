@@ -37,3 +37,4 @@ export default P.seq(
     })
   )
   .node('assignment')
+  .desc('assignment')

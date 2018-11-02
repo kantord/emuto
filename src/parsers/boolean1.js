@@ -5,4 +5,8 @@ import P from 'parsimmon'
 import AdditiveParser from './additive'
 import BinaryOperatorParser from './abstract/binaryOperator'
 
-export default BinaryOperatorParser(AdditiveParser, P.regexp(/[<>]=?/))
+export default BinaryOperatorParser(
+  AdditiveParser,
+  P.regexp(/[<>]=?/),
+  'boolean1'
+)

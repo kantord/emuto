@@ -7,5 +7,6 @@ import BinaryOperatorParser from './abstract/binaryOperator'
 
 export default BinaryOperatorParser(
   Boolean1,
-  P.regexp(/[=!]=/).map((x: string): string => x + '=')
+  P.regexp(/[=!]=/).map((x: string): string => x + '='),
+  'boolean2'
 )

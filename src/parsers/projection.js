@@ -87,7 +87,7 @@ const ProjectionParser = P.lazy((): mixed => {
     P.alt(ProjectionParser, PropertyParser)
       .skip(crap)
       .atLeast(1)
-  ).map(unpack)
+  ).map(unpack).desc('projection')
 })
 
 export default ProjectionParser

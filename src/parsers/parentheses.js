@@ -6,12 +6,10 @@ import type { ParenthesesNodeType, ParserType } from '../types'
 
 export default P.lazy((): ParserType => {
   const ProgramParser = require('./program').default
-  return P.seq(
-    P.string('('),
-    ProgramParser,
-    P.string(')')
-  ).map((value: [mixed, ParenthesesNodeType, mixed]): ParenthesesNodeType => ({
-    name: 'parentheses',
-    value: value[1]
-  }))
+  return P.seq(P.string('('), ProgramParser, P.string(')'))
+    .map((value: [mixed, ParenthesesNodeType, mixed]): ParenthesesNodeType => ({
+      name: 'parentheses',
+      value: value[1]
+    }))
+    .desc('parentheses')
 })

@@ -20,3 +20,4 @@ export default ({
     .wrap(P.string(open), P.string(close))
     .map((value: {value: ListCoreNodeType}): ListCoreNodeType => value.value)
     .node(name)
+    .desc(name)

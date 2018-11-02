@@ -11,3 +11,4 @@ export default P.string('$')
     name: 'variable',
     value: value && value.length ? `$${value[0].value}` : '$'
   }))
+  .desc('variable')

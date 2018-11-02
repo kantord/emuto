@@ -8,5 +8,6 @@ import BinaryOperatorParser from './abstract/binaryOperator'
 
 export default BinaryOperatorParser(
   P.alt(OperandParser, UnaryOperatorParser),
-  P.regexp(/[*/%]/)
+  P.regexp(/[*/%]/),
+  'multiplicative'
 )

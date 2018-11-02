@@ -9,5 +9,6 @@ export default BinaryOperatorParser(
   Boolean2,
   P.regexp(/(\|\||&&|or|and)/).map(
     (x: string): string => (x === 'or' ? '||' : x === 'and' ? '&&' : x)
-  )
+  ),
+  'boolean3'
 )

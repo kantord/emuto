@@ -24,4 +24,5 @@ export default P.lazy((): ParserType => {
       ]): TernaryNodeValueType => ({ left, middle, right })
     )
     .node('ternary')
+    .desc('ternary')
 })

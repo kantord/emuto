@@ -33,3 +33,4 @@ export default P.alt(
 )
   .trim(crap)
   .node('lambda')
+  .desc('lambda')
