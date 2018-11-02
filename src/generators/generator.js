@@ -12,6 +12,7 @@ import pipe from './pipe'
 import functionCall from './functionCall'
 import binaryOperator from './binaryOperator'
 import unaryOperator from './unaryOperator'
+import ternary from './ternary'
 import assignment from './assignment'
 import lambda from './lambda'
 import variable from './variable'
@@ -49,6 +50,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return unaryOperator(node)
     case 'assignment':
       return assignment(Generator)(node)
+    case 'ternary':
+      return ternary(node)
     default:
       throw new Error(`Unknown node name '${node.name}'`)
   }

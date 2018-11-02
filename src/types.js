@@ -138,6 +138,18 @@ export type UnaryOperationNodeType = {|
   ...?NodeLocationType
 |};
 
+export type TernaryNodeValueType = {|
+  left: NodeType, // eslint-disable-line no-use-before-define
+  middle: NodeType, // eslint-disable-line no-use-before-define
+  right: NodeType // eslint-disable-line no-use-before-define
+|};
+
+export type TernaryNodeType = {|
+  name: 'ternary',
+  value: TernaryNodeValueType,
+  ...?NodeLocationType
+|};
+
 export type AssignmentNodeValueType = {|
   program: NodeType, // eslint-disable-line no-use-before-define
   assignments: AssignmentsType // eslint-disable-line no-use-before-define
@@ -163,7 +175,8 @@ export type NodeType =
   | OperationNodeType
   | UnaryOperationNodeType
   | AssignmentNodeType
-  | ProjectionNodeType;
+  | ProjectionNodeType
+  | TernaryNodeType;
 
 export type ValueNodeType =
   | PrimitiveNodeType

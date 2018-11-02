@@ -330,6 +330,14 @@ const tests = [
     sourceCode: `$?[3]`,
     input: [1, 2, 3],
     output: null
+  },
+  {
+    sourceCode: `3 + 4 if 2 <= 3 else -12`,
+    output: 7
+  },
+  {
+    sourceCode: `3 : 4 if null else [-12] | [$[0]]`,
+    output: [-12]
   }
 ]
 
