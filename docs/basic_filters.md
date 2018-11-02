@@ -27,6 +27,15 @@ The following Python-style operators are also available as an alternative:
 
 `or`, `and`
 
+## Spread operator
+
+The spread operator `...` allows an iterable (like an array or string) to be
+expanded where zero or more elements are expected:
+
+```
+[1, 2, ...[3, 4], 5]
+```
+
 ## Identity `$`
 
 Takes an input and returns it unchanged.
