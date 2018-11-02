@@ -14,6 +14,9 @@
       "commenting": {
         "title": "Commenting your code"
       },
+      "comprehensions": {
+        "title": "Comprehensions"
+      },
       "functions": {
         "title": "Functions"
       },
@@ -21,7 +24,7 @@
         "title": "Getting Started with Emuto"
       },
       "setup-webpack": {
-        "title": "Webpack"
+        "title": "Building using Webpack"
       },
       "variables": {
         "title": "Variables"

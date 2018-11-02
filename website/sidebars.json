@@ -13,7 +13,8 @@
       "functions",
       "chaining_filters",
       "variables",
-      "commenting"
+      "commenting",
+      "comprehensions"
     ]
   }
 }
