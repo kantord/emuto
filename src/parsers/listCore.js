@@ -37,13 +37,55 @@ const ComprehensionParser = P.lazy((): mixed => {
       .then(crap)
       .then(TupleParser),
     crap.then(P.string('in')).then(crap.then(TupleParser)),
+    crap
+      .then(P.string('if'))
+      .then(crap.then(TupleParser))
+      .atMost(1),
     crap.then(ProgramParser).atMost(1)
   ).map(
-    ([left, middle, right]: [
+    ([left, middle, condition, right]: [
       TupleNodeType,
       TupleNodeType,
+      [NodeType],
       [NodeType]
     ]): ListCoreNodeType => {
+      const extractionPart =
+        right.length === 1
+          ? {
+            name: 'pipe',
+            value: {
+              left: middle,
+              right: right[0]
+            }
+          }
+          : middle
+
+      const extractionPartWithOptionalCondition =
+        condition.length === 1
+          ? {
+            name: 'pipe',
+            value: {
+              left: extractionPart,
+              right: {
+                name: 'functionCall',
+                value: {
+                  left: {
+                    name: 'identifier',
+                    value: 'filter'
+                  },
+                  right: {
+                    name: 'lambda',
+                    value: {
+                      variable: 'input',
+                      definition: condition[0]
+                    }
+                  }
+                }
+              }
+            }
+          }
+          : extractionPart
+
       const mapPart = {
         name: 'functionCall',
         value: {
@@ -61,17 +103,6 @@ const ComprehensionParser = P.lazy((): mixed => {
         }
       }
 
-      const extractionPart =
-        right.length === 1
-          ? {
-            name: 'pipe',
-            value: {
-              left: middle,
-              right: right[0]
-            }
-          }
-          : middle
-
       return {
         name: 'listCore',
         value: [
@@ -82,7 +113,7 @@ const ComprehensionParser = P.lazy((): mixed => {
               value: {
                 name: 'pipe',
                 value: {
-                  left: extractionPart,
+                  left: extractionPartWithOptionalCondition,
                   right: mapPart
                 }
               }
