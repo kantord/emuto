@@ -68,3 +68,11 @@ When the projection has a single element (e. g. `$["name"]`) that property is
 returned.
 
 In any other case, a list of each requested element is returned.
+
+Just like with property access, optional chaining can be used with projection
+too. In this example, no error is produced. Instead, a `null` is returned.
+
+```
+null ?[3, 4]
+```
+
