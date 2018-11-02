@@ -106,13 +106,13 @@ const Features = () => (
   <Block layout="fourColumn">
     {[
       {
-        image: imgUrl('code_concise.svg'),
+        image: imgUrl('code_concise.png'),
         imageAlign: 'top',
         content: 'Designed with one-liners in mind',
         title: 'Simple and concise',
       },
       {
-        image: imgUrl('code_functional.svg'),
+        image: imgUrl('code_functional.png'),
         imageAlign: 'top',
         content: 'Composable filters. No side-effects.',
         title: 'Purely functional',
