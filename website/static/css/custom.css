@@ -4,6 +4,14 @@
   width: 10em;
 }
 
+.blockImage {
+  max-width: 35em !important;
+  height: 10em;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 

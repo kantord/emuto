@@ -82,7 +82,9 @@ class HomeSplash extends React.Component {
             <Button href={docUrl('getting-started#try-emuto', language)}>
               Try it out
             </Button>
-            <Button href={docUrl('getting-started', language)}>Get started</Button>
+            <Button href={docUrl('getting-started', language)}>
+              Get started
+            </Button>
             <Button href={siteConfig.repoUrl}>GitHub</Button>
           </PromoSection>
         </div>
@@ -104,11 +106,15 @@ const Features = () => (
   <Block layout="fourColumn">
     {[
       {
+        image: imgUrl('code_concise.svg'),
+        imageAlign: 'top',
         content: 'Designed with one-liners in mind',
         title: 'Simple and concise',
       },
       {
-        content: 'No side-effects',
+        image: imgUrl('code_functional.svg'),
+        imageAlign: 'top',
+        content: 'Composable filters. No side-effects.',
         title: 'Purely functional',
       },
     ]}
