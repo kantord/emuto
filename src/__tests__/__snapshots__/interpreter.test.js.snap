@@ -60,6 +60,12 @@ exports[`interpreter correct target code [3, 2][0] | [3, 2][1] 1`] = `"(function
 
 exports[`interpreter correct target code [3, 2][0] 1`] = `"(function(_) { return (function(input) { return _.projection([3, 2], [0], false)})})"`;
 
+exports[`interpreter correct target code [each .author.age in .articles reverse] 1`] = `"(function(_) { return (function(input) { return ((function (input) {return _.map((function(input) {return input.author.age}))(input)})((function (input) {return _.reverse(input)})(input.articles)))})})"`;
+
+exports[`interpreter correct target code [each .author.age in .articles] 1`] = `"(function(_) { return (function(input) { return ((function (input) {return _.map((function(input) {return input.author.age}))(input)})(input.articles))})})"`;
+
+exports[`interpreter correct target code [each .author.name in .articles sortBy $ => .author.age] 1`] = `"(function(_) { return (function(input) { return ((function (input) {return _.map((function(input) {return input.author.name}))(input)})((function (input) {return _.sortBy((function(input) {return input.author.age}))(input)})(input.articles)))})})"`;
+
 exports[`interpreter correct target code {
       "foo": [-42, $],
       "bar": {
@@ -2702,6 +2708,248 @@ Object {
         ],
       },
     },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [each .author.age in .articles reverse] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 40,
+      "line": 1,
+      "offset": 39,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "name": "spread",
+        "value": Object {
+          "name": "parentheses",
+          "value": Object {
+            "name": "pipe",
+            "value": Object {
+              "left": Object {
+                "name": "pipe",
+                "value": Object {
+                  "left": Object {
+                    "name": "inputProp",
+                    "value": ".articles",
+                  },
+                  "right": Object {
+                    "name": "functionCall",
+                    "value": Object {
+                      "left": Object {
+                        "name": "identifier",
+                        "value": "reverse",
+                      },
+                      "right": null,
+                    },
+                  },
+                },
+              },
+              "right": Object {
+                "name": "functionCall",
+                "value": Object {
+                  "left": Object {
+                    "name": "identifier",
+                    "value": "map",
+                  },
+                  "right": Object {
+                    "name": "lambda",
+                    "value": Object {
+                      "definition": Object {
+                        "name": "valueProp",
+                        "value": Object {
+                          "left": Object {
+                            "name": "inputProp",
+                            "value": ".author",
+                          },
+                          "optional": false,
+                          "right": ".age",
+                        },
+                      },
+                      "variable": "input",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [each .author.age in .articles] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 32,
+      "line": 1,
+      "offset": 31,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "name": "spread",
+        "value": Object {
+          "name": "parentheses",
+          "value": Object {
+            "name": "pipe",
+            "value": Object {
+              "left": Object {
+                "name": "inputProp",
+                "value": ".articles",
+              },
+              "right": Object {
+                "name": "functionCall",
+                "value": Object {
+                  "left": Object {
+                    "name": "identifier",
+                    "value": "map",
+                  },
+                  "right": Object {
+                    "name": "lambda",
+                    "value": Object {
+                      "definition": Object {
+                        "name": "valueProp",
+                        "value": Object {
+                          "left": Object {
+                            "name": "inputProp",
+                            "value": ".author",
+                          },
+                          "optional": false,
+                          "right": ".age",
+                        },
+                      },
+                      "variable": "input",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [each .author.name in .articles sortBy $ => .author.age] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 57,
+      "line": 1,
+      "offset": 56,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "name": "spread",
+        "value": Object {
+          "name": "parentheses",
+          "value": Object {
+            "name": "pipe",
+            "value": Object {
+              "left": Object {
+                "name": "pipe",
+                "value": Object {
+                  "left": Object {
+                    "name": "inputProp",
+                    "value": ".articles",
+                  },
+                  "right": Object {
+                    "name": "functionCall",
+                    "value": Object {
+                      "left": Object {
+                        "name": "identifier",
+                        "value": "sortBy",
+                      },
+                      "right": Object {
+                        "end": Object {
+                          "column": 56,
+                          "line": 1,
+                          "offset": 55,
+                        },
+                        "name": "lambda",
+                        "start": Object {
+                          "column": 40,
+                          "line": 1,
+                          "offset": 39,
+                        },
+                        "value": Object {
+                          "definition": Object {
+                            "name": "valueProp",
+                            "value": Object {
+                              "left": Object {
+                                "name": "inputProp",
+                                "value": ".author",
+                              },
+                              "optional": false,
+                              "right": ".age",
+                            },
+                          },
+                          "variable": "input",
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              "right": Object {
+                "name": "functionCall",
+                "value": Object {
+                  "left": Object {
+                    "name": "identifier",
+                    "value": "map",
+                  },
+                  "right": Object {
+                    "name": "lambda",
+                    "value": Object {
+                      "definition": Object {
+                        "name": "valueProp",
+                        "value": Object {
+                          "left": Object {
+                            "name": "inputProp",
+                            "value": ".author",
+                          },
+                          "optional": false,
+                          "right": ".name",
+                        },
+                      },
+                      "variable": "input",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    ],
   },
 }
 `;
