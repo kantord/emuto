@@ -387,6 +387,11 @@ const tests = [
     sourceCode: `{each $: (length) in $}`,
     input: ['bo', 'boo'],
     output: { bo: 2, boo: 3 }
+  },
+  {
+    sourceCode: `$[1:3]`,
+    input: [1, 2, 3, 4],
+    output: [2, 3]
   }
 ]
 

@@ -20,7 +20,9 @@ const handleProjectionItem = (
 ): mixed =>
   Number.isInteger(projectionRule)
     ? convertUndefined(projectable.slice(projectionRule)[0])
-    : convertUndefined(projectable[projectionRule])
+    : Array.isArray(projectionRule)
+      ? convertUndefined(projectable.slice(...projectionRule))
+      : convertUndefined(projectable[projectionRule])
 
 const handleProjection = (
   projectable: ProjectableType
