@@ -42,6 +42,9 @@ describe('built ins', () => {
     it('handles list of numbers', () => {
       expect(projection([1, 2, 3], [-1, 0], false)).toEqual([3, 1])
     })
+    it('handles sliceing of numbers', () => {
+      expect(projection([1, 2, 3, 4], [[1, 3]], false)).toEqual([2, 3])
+    })
     it('handles empty projection', () => {
       expect(projection([1, 2, 3], [], false)).toEqual([])
     })

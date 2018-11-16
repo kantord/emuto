@@ -18,6 +18,8 @@ exports[`interpreter correct target code $?[3] 1`] = `"(function(_) { return (fu
 
 exports[`interpreter correct target code $?[3] 2`] = `"(function(_) { return (function(input) { return _.projection(input, [3], true)})})"`;
 
+exports[`interpreter correct target code $[1:3] 1`] = `"(function(_) { return (function(input) { return _.projection(input, [[1,3]], false)})})"`;
+
 exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((_.get('x')+1)), _); return (((function (input) {return [input, _.get('foobar')]})(_.get('x')+_.get('foobar'))))})())})})"`;
 
 exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (_.get('reverse')), _); return (((function (input) {return _.foo(input)})([1, 2])))})())})})"`;
@@ -764,6 +766,65 @@ Object {
               Object {
                 "name": "primitive",
                 "value": "3",
+              },
+            ],
+          },
+        ],
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree $[1:3] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "projection",
+    "value": Object {
+      "left": Object {
+        "name": "variable",
+        "value": "$",
+      },
+      "optional": false,
+      "right": Object {
+        "end": Object {
+          "column": 7,
+          "line": 1,
+          "offset": 6,
+        },
+        "name": "list",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "1",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "3",
+                  },
+                ],
               },
             ],
           },
