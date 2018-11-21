@@ -78,6 +78,12 @@ export default {
           f(a) < f(b) ? -1 : f(a) > f(b) ? 1 : 0
       ),
 
+  has: (
+    key: string | number
+  ): ((Array<mixed> | {[mixed]: mixed}) => boolean) => (
+    input: Array<mixed> | {[mixed]: mixed}
+  ): boolean => key in input,
+
   filter: (f: mixed => boolean): ((Array<mixed>) => Array<mixed>) => (
     input: Array<mixed>
   ): Array<mixed> => input.filter(f),

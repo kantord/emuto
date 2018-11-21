@@ -17,7 +17,8 @@ const {
   combinations,
   product,
   __opt__,
-  __spread__
+  __spread__,
+  has
 } = builtIns
 
 describe('built ins', () => {
@@ -137,6 +138,15 @@ describe('built ins', () => {
         { foo: 0 },
         { foo: 3 }
       ])
+    })
+
+    describe('has', () => {
+      it('returns correct value', () => {
+        expect(has(0)(['c', 'a', 'b'])).toEqual(true)
+        expect(has(10)(['c', 'a', 'b'])).toEqual(false)
+        expect(has('foo')({ foo: false })).toEqual(true)
+        expect(has('bar')({ foo: false })).toEqual(false)
+      })
     })
 
     it('does not mutate original array', () => {
