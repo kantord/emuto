@@ -2,25 +2,6 @@
 # yarn lockfile v1
 
 
-"@aureooms/js-collections-deque@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@aureooms/js-collections-deque/-/js-collections-deque-3.1.0.tgz#2df0f28883f1367c979232d8c3964aede93d2ded"
-  integrity sha1-LfDyiIPxNnyXkjLYw5ZK7ek9Le0=
-  dependencies:
-    "@aureooms/js-error" "^3.0.0"
-
-"@aureooms/js-error@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@aureooms/js-error/-/js-error-3.0.0.tgz#c06a455569c4cb26c3792ab9c9f075da707823de"
-  integrity sha1-wGpFVWnEyybDeSq5yfB12nB4I94=
-
-"@aureooms/js-itertools@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@aureooms/js-itertools/-/js-itertools-3.4.0.tgz#2140cd62e5ae706402afef2e82f924658e0403e2"
-  integrity sha512-lVOnOr1Fo+fdaT20wBEz2q+KOQ145yFB0WNbqY6FkeB2xQrW+Xi9bzwG1kQ9fP5eOQnhyXvBdpYK90AkkZufmA==
-  dependencies:
-    "@aureooms/js-collections-deque" "^3.1.0"
-
 "@babel/cli@^7.1.5":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.1.5.tgz#4ccf0a8cdabeefdd8ce955384530f050935bc4d7"
@@ -2691,6 +2672,13 @@ cardinal@^2.1.1:
     ansicolors "~0.3.2"
     redeyed "~2.1.0"
 
+cartesian-product-generator@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/cartesian-product-generator/-/cartesian-product-generator-1.1.0.tgz#8bc32b44b7406eeadac5acfbeb42d6a1acfa433c"
+  integrity sha512-wKHdWUaIrqY4lgnmyCN5Oac0Xb1+Fvo6vUrsrEuRvpO/RTKrqFmZACDDNTctRBnuqnSNc/D0fsBuqYxi13ltOg==
+  dependencies:
+    ind2sub "^2.0.0"
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -2975,6 +2963,11 @@ columnify@~1.5.4:
   dependencies:
     strip-ansi "^3.0.0"
     wcwidth "^1.0.0"
+
+combinations-generator@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/combinations-generator/-/combinations-generator-1.0.1.tgz#f0cb4da0cbcb55cce3bbe18612d19323fb939d14"
+  integrity sha1-8MtNoMvLVczju+GGEtGTI/uTnRQ=
 
 combined-stream@1.0.6, combined-stream@~1.0.5:
   version "1.0.6"
@@ -5421,6 +5414,11 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
+
+ind2sub@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ind2sub/-/ind2sub-2.0.0.tgz#323158a584fb4ed494ec600508b87af2fcd38219"
+  integrity sha512-xvb/V5SoBlJ36hYYzn5ZXGEPeGi6qDwFQu/luxa4eEoHYwlZFZChESsPl2cQVPE4kAsBHg5OQ5alEWtyktYXBg==
 
 indent-string@^3.0.0:
   version "3.2.0"
