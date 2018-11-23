@@ -32,4 +32,6 @@ const CompileListSegments = (segments: ListCoreValueType): GeneratedCodeType =>
   )
 
 export default ({ value }: ListNodeType): GeneratedCodeType =>
-  `${CompileListSegment(value[0])}${CompileListSegments(value.slice(1))}`
+  `Array.from(${CompileListSegment(value[0])}${CompileListSegments(
+    value.slice(1)
+  )})`

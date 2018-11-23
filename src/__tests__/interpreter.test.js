@@ -392,6 +392,14 @@ const tests = [
     sourceCode: `$[1:3]`,
     input: [1, 2, 3, 4],
     output: [2, 3]
+  },
+  {
+    sourceCode: `[0, ..."Hello"]`,
+    output: [0, 'H', 'e', 'l', 'l', 'o']
+  },
+  {
+    sourceCode: `[...$foo] where $foo = "Hello"`,
+    output: ['H', 'e', 'l', 'l', 'o']
   }
 ]
 
