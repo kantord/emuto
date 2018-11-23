@@ -233,8 +233,8 @@ describe('built ins', () => {
       expect(product([['a', 'b'], []])).toEqual([])
       expect(product([['a', 'b'], ['1', '2']])).toEqual([
         ['a', '1'],
-        ['a', '2'],
         ['b', '1'],
+        ['a', '2'],
         ['b', '2']
       ])
     })
