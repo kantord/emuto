@@ -45,7 +45,11 @@ export default {
   __opt__: handleOptional,
 
   __spread__: (input: mixed): mixed =>
-    Array.isArray(input) ? input : Object.entries(input),
+    Array.isArray(input)
+      ? input
+      : typeof input === 'string' || input instanceof String
+        ? input.split('')
+        : Object.entries(input),
 
   projection: (
     left: ProjectableType,

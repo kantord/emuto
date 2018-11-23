@@ -71,6 +71,7 @@ describe('built ins', () => {
     const f = x => 'Hello'; // eslint-disable-line
     expect(__spread__([1, 2])).toEqual([1, 2])
     expect(__spread__({ a: 'b', c: 3 })).toEqual([['a', 'b'], ['c', 3]])
+    expect(__spread__('ab')).toEqual(['a', 'b'])
   })
 
   describe('join', () => {

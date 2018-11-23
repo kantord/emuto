@@ -35,7 +35,7 @@ describe('object generator', () => {
         ]
       })
     ).toEqual(
-      '(_.objectify([["foo","bar"], ["baz",4]].concat(_.__spread__(input))))'
+      '(_.objectify(Array.from([["foo","bar"], ["baz",4]].concat(_.__spread__(input)))))'
     )
   })
 })
