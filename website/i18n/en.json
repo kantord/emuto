@@ -26,6 +26,9 @@
       "setup-webpack": {
         "title": "Building using Webpack"
       },
+      "tutorial": {
+        "title": "Tutorial"
+      },
       "variables": {
         "title": "Variables"
       }
@@ -33,6 +36,7 @@
     "links": {
       "Getting started": "Getting started",
       "Docs": "Docs",
+      "Tutorial": "Tutorial",
       "GitHub": "GitHub"
     },
     "categories": {
