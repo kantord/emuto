@@ -122,5 +122,9 @@ export default {
   ): Array<Array<mixed>> => Array.from(combinations(input, r)),
 
   product: (input: Array<mixed> | string): Array<Array<mixed>> =>
-    Array.from(product(...input))
+    Array.from(product(...input)),
+
+  error: (message: string): (mixed => void) => (input: mixed) => {
+    throw new Error(message)
+  }
 }

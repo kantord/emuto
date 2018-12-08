@@ -344,11 +344,11 @@ const tests = [
     input: {
       articles: [
         { author: { age: 3, name: 'Jonas' } },
-        { author: { age: 34, name: 'John' } },
+        { author: { age: 34, name: 'Johnny' } },
         { author: { age: 33, name: 'Mary' } }
       ]
     },
-    output: ['Jonas', 'Mary', 'John']
+    output: ['Jonas', 'Mary', 'Johnny']
   },
   {
     sourceCode: `[each .author.age in .articles reverse]`,
@@ -366,8 +366,8 @@ const tests = [
     input: {
       articles: [
         { author: { age: 3, name: 'Jonas' } },
-        { author: { age: 34, name: 'John' } },
-        { author: { age: 33, name: 'Mary' } }
+        { author: { age: 34, name: 'Johnny' } },
+        { author: { age: 33, name: 'Maria' } }
       ]
     },
     output: [3, 34, 33]
@@ -376,7 +376,7 @@ const tests = [
     sourceCode: `[each .author.name in .articles if .author.age >= 30 sortBy $ => .author.age]`,
     input: {
       articles: [
-        { author: { age: 3, name: 'Jonas' } },
+        { author: { age: 3, name: 'Jones' } },
         { author: { age: 34, name: 'John' } },
         { author: { age: 33, name: 'Mary' } }
       ]
@@ -400,10 +400,22 @@ const tests = [
   {
     sourceCode: `[...$foo] where $foo = "Hello"`,
     output: ['H', 'e', 'l', 'l', 'o']
+  },
+  {
+    sourceCode: `error "Hello" if false else "asdfgb"`,
+    output: 'asdfgb'
+  },
+  {
+    sourceCode: `[($ => error "asd" | "f")]`,
+    output: ['f']
   }
 ]
 
 describe('interpreter', () => {
+  it('handles errors correctly', () => {
+    expect((): mixed => execute(`error "x"`)()).toThrow('x')
+  })
+
   tests.forEach(
     ({
       sourceCode,

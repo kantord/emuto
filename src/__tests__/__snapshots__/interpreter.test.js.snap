@@ -46,6 +46,8 @@ exports[`interpreter correct target code .foo | .bar | .baz 1`] = `"(function(_)
 
 exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { return (function(input) { return (function (input) {return input.bar})(input.foo)})})"`;
 
+exports[`interpreter correct target code [($ => error "asd" | "f")] 1`] = `"(function(_) { return (function(input) { return Array.from([((function (input) {return \\"f\\"})((function(input) {return _.error(\\"asd\\")(input)})))])})})"`;
+
 exports[`interpreter correct target code [...$foo] where $foo = "Hello" 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (\\"Hello\\"), _); return (Array.from(_.get('foo')))})())})})"`;
 
 exports[`interpreter correct target code [[false], [true, null]] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([false]), Array.from([true, null])])})})"`;
@@ -130,6 +132,8 @@ exports[`interpreter correct target code 8 + 3.14 * 2 1`] = `"(function(_) { ret
 exports[`interpreter correct target code 8 - (3.14 * 2) 1`] = `"(function(_) { return (function(input) { return 8-(3.14*2)})})"`;
 
 exports[`interpreter correct target code 8314 % 34 -3 1`] = `"(function(_) { return (function(input) { return 8314%34-3})})"`;
+
+exports[`interpreter correct target code error "Hello" if false else "asdfgb" 1`] = `"(function(_) { return (function(input) { return ((false) ? (_.error(\\"Hello\\")(input)) : (\\"asdfgb\\"))})})"`;
 
 exports[`interpreter correct target code false | true 1`] = `"(function(_) { return (function(input) { return (function (input) {return true})(false)})})"`;
 
@@ -1758,6 +1762,83 @@ Object {
         "value": ".bar",
       },
     },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [($ => error "asd" | "f")] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 27,
+      "line": 1,
+      "offset": 26,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "end": Object {
+          "column": 26,
+          "line": 1,
+          "offset": 25,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "name": "pipe",
+              "value": Object {
+                "left": Object {
+                  "end": Object {
+                    "column": 20,
+                    "line": 1,
+                    "offset": 19,
+                  },
+                  "name": "lambda",
+                  "start": Object {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                  "value": Object {
+                    "definition": Object {
+                      "name": "functionCall",
+                      "value": Object {
+                        "left": Object {
+                          "name": "identifier",
+                          "value": "error",
+                        },
+                        "right": Object {
+                          "name": "primitive",
+                          "value": "\\"asd\\"",
+                        },
+                      },
+                    },
+                    "variable": "input",
+                  },
+                },
+                "right": Object {
+                  "name": "primitive",
+                  "value": "\\"f\\"",
+                },
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
 }
 `;
@@ -5968,6 +6049,48 @@ Object {
         "value": "3",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree error "Hello" if false else "asdfgb" 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 37,
+      "line": 1,
+      "offset": 36,
+    },
+    "name": "ternary",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "left": Object {
+        "name": "functionCall",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "error",
+          },
+          "right": Object {
+            "name": "primitive",
+            "value": "\\"Hello\\"",
+          },
+        },
+      },
+      "middle": Object {
+        "name": "primitive",
+        "value": "false",
+      },
+      "right": Object {
+        "name": "primitive",
+        "value": "\\"asdfgb\\"",
+      },
+    },
   },
 }
 `;
