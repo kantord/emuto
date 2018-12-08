@@ -18,7 +18,8 @@ const {
   product,
   __opt__,
   __spread__,
-  has
+  has,
+  error
 } = builtIns
 
 describe('built ins', () => {
@@ -238,6 +239,19 @@ describe('built ins', () => {
         ['a', '2'],
         ['b', '2']
       ])
+    })
+  })
+
+  describe('error', () => {
+    it('works correctly 1', () => {
+      expect(() => {
+        error('Hello World')()
+      }).toThrow('Hello World')
+    })
+    it('works correctly 2', () => {
+      expect(() => {
+        error('foo')()
+      }).toThrow('foo')
     })
   })
 })
