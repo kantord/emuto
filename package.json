@@ -49,7 +49,7 @@
     "flow-bin": "^0.89.0",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
-    "jscpd": "^1.1.0",
+    "jscpd": "^1.2.0",
     "madge": "^3.3.0",
     "regenerator-runtime": "^0.13.1",
     "semantic-release": "^15.12.5",
