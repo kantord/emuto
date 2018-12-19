@@ -52,7 +52,7 @@
     "jscpd": "^1.2.0",
     "madge": "^3.3.0",
     "regenerator-runtime": "^0.13.1",
-    "semantic-release": "^15.12.5",
+    "semantic-release": "^15.13.1",
     "travis-deploy-once": "^5.0.11",
     "webpack": "^4.27.1",
     "webpack-bundle-analyzer": "^3.0.3",
