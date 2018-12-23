@@ -2,7 +2,7 @@
 
 import P from 'parsimmon'
 import crap from './crap'
-import TupleParser from './tuple/tuple'
+import TupleParser from './collections/tuple'
 import IdentifierParser from './identifier'
 
 import type { LambdaNodeValueType, NodeType, VariableNodeType } from '../types'

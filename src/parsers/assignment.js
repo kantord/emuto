@@ -3,7 +3,7 @@
 import P from 'parsimmon'
 import SectionParser from './section'
 import IdentifierParser from './identifier'
-import TupleParser from './tuple/tuple'
+import TupleParser from './collections/tuple'
 import crap from './crap'
 
 import type {
