@@ -1,7 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
-import PipeParser from './pipe/pipe'
+import PipeParser from './pipe'
 import AssignmentParser from './assignment'
 import type { NodeType } from '../types'
 import crap from './crap'

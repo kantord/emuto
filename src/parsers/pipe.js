@@ -2,11 +2,11 @@
 
 import P from 'parsimmon'
 
-import type { NodeType } from '../../types'
+import type { NodeType } from '../types'
 
 const PipeParser = P.lazy((): mixed => {
-  const TupleParser = require('../collections/tuple').default
-  const TernaryParser = require('../ternary').default
+  const TupleParser = require('./collections/tuple').default
+  const TernaryParser = require('./ternary').default
   return P.alt(TernaryParser, TupleParser)
     .sepBy1(P.regexp(/\s*\|\s*/))
     .map((value: Array<NodeType>): NodeType =>
