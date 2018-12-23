@@ -5965,17 +5965,7 @@ exports[`interpreter correct target tree 3 + 4 if 2 <= 3 else -12 1`] = `
 Object {
   "status": true,
   "value": Object {
-    "end": Object {
-      "column": 25,
-      "line": 1,
-      "offset": 24,
-    },
     "name": "ternary",
-    "start": Object {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
     "value": Object {
       "left": Object {
         "name": "binaryOperation",
@@ -6047,17 +6037,7 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "end": Object {
-          "column": 25,
-          "line": 1,
-          "offset": 24,
-        },
         "name": "ternary",
-        "start": Object {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
         "value": Object {
           "left": Object {
             "name": "tuple",
@@ -6417,17 +6397,7 @@ exports[`interpreter correct target tree error "Hello" if false else "asdfgb" 1`
 Object {
   "status": true,
   "value": Object {
-    "end": Object {
-      "column": 37,
-      "line": 1,
-      "offset": 36,
-    },
     "name": "ternary",
-    "start": Object {
-      "column": 1,
-      "line": 1,
-      "offset": 0,
-    },
     "value": Object {
       "left": Object {
         "name": "functionCall",
