@@ -54,7 +54,9 @@ export type SpreadListSegmentType = {|
   name: 'spread',
   value: NodeType // eslint-disable-line no-use-before-define
 |};
-export type CollectionCoreSegmentType = SimpleListSegmentType | SpreadListSegmentType;
+export type CollectionCoreSegmentType =
+  | SimpleListSegmentType
+  | SpreadListSegmentType;
 export type CollectionCoreValueType = Array<CollectionCoreSegmentType>;
 
 export type CollectionCoreNodeType = {|

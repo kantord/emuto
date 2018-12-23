@@ -30,7 +30,7 @@ exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`
 
 exports[`interpreter correct target code ([1] | foo 4) where $foo = ($ => $ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return (function(input) {return 4})}))), _); return (((function (input) {return _.foo(4)(input)})(Array.from([1]))))})())})})"`;
 
-exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return 4}))), _); return (((function (input) {return (function (input) {return _.projection(input, Array.from([0]), false)})(_.map(_.get('foo'))(input))})(Array.from([1]))))})())})})"`;
+exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return 4}))), _); return (((function (input) {return _.projection(input, Array.from([0]), false)})((function (input) {return _.map(_.get('foo'))(input)})(Array.from([1])))))})())})})"`;
 
 exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foobar', (input), _); return (((function (input) {return Array.from([input, _.get('foobar')])})(3+_.get('foobar'))))})())})})"`;
 
@@ -46,7 +46,7 @@ exports[`interpreter correct target code .apple.pear.bar 1`] = `"(function(_) { 
 
 exports[`interpreter correct target code .bar 1`] = `"(function(_) { return (function(input) { return input.bar})})"`;
 
-exports[`interpreter correct target code .foo | .bar | .baz 1`] = `"(function(_) { return (function(input) { return (function (input) {return (function (input) {return input.baz})(input.bar)})(input.foo)})})"`;
+exports[`interpreter correct target code .foo | .bar | .baz 1`] = `"(function(_) { return (function(input) { return (function (input) {return input.baz})((function (input) {return input.bar})(input.foo))})})"`;
 
 exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { return (function(input) { return (function (input) {return input.bar})(input.foo)})})"`;
 
@@ -1295,43 +1295,43 @@ Object {
           "name": "pipe",
           "value": Object {
             "left": Object {
-              "end": Object {
-                "column": 5,
-                "line": 1,
-                "offset": 4,
-              },
-              "name": "list",
-              "start": Object {
-                "column": 2,
-                "line": 1,
-                "offset": 1,
-              },
-              "value": Array [
-                Object {
-                  "end": Object {
-                    "column": 4,
-                    "line": 1,
-                    "offset": 3,
-                  },
-                  "name": "simpleList",
-                  "start": Object {
-                    "column": 3,
-                    "line": 1,
-                    "offset": 2,
-                  },
-                  "value": Array [
-                    Object {
-                      "name": "primitive",
-                      "value": "1",
-                    },
-                  ],
-                },
-              ],
-            },
-            "right": Object {
               "name": "pipe",
               "value": Object {
                 "left": Object {
+                  "end": Object {
+                    "column": 5,
+                    "line": 1,
+                    "offset": 4,
+                  },
+                  "name": "list",
+                  "start": Object {
+                    "column": 2,
+                    "line": 1,
+                    "offset": 1,
+                  },
+                  "value": Array [
+                    Object {
+                      "end": Object {
+                        "column": 4,
+                        "line": 1,
+                        "offset": 3,
+                      },
+                      "name": "simpleList",
+                      "start": Object {
+                        "column": 3,
+                        "line": 1,
+                        "offset": 2,
+                      },
+                      "value": Array [
+                        Object {
+                          "name": "primitive",
+                          "value": "1",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "right": Object {
                   "name": "functionCall",
                   "value": Object {
                     "left": Object {
@@ -1344,49 +1344,49 @@ Object {
                     },
                   },
                 },
+              },
+            },
+            "right": Object {
+              "name": "projection",
+              "value": Object {
+                "left": Object {
+                  "name": "variable",
+                  "value": "$",
+                },
+                "optional": false,
                 "right": Object {
-                  "name": "projection",
-                  "value": Object {
-                    "left": Object {
-                      "name": "variable",
-                      "value": "$",
-                    },
-                    "optional": false,
-                    "right": Object {
+                  "end": Object {
+                    "column": 23,
+                    "line": 1,
+                    "offset": 22,
+                  },
+                  "name": "list",
+                  "start": Object {
+                    "column": 20,
+                    "line": 1,
+                    "offset": 19,
+                  },
+                  "value": Array [
+                    Object {
                       "end": Object {
-                        "column": 23,
+                        "column": 22,
                         "line": 1,
-                        "offset": 22,
+                        "offset": 21,
                       },
-                      "name": "list",
+                      "name": "simpleList",
                       "start": Object {
-                        "column": 20,
+                        "column": 21,
                         "line": 1,
-                        "offset": 19,
+                        "offset": 20,
                       },
                       "value": Array [
                         Object {
-                          "end": Object {
-                            "column": 22,
-                            "line": 1,
-                            "offset": 21,
-                          },
-                          "name": "simpleList",
-                          "start": Object {
-                            "column": 21,
-                            "line": 1,
-                            "offset": 20,
-                          },
-                          "value": Array [
-                            Object {
-                              "name": "primitive",
-                              "value": "0",
-                            },
-                          ],
+                          "name": "primitive",
+                          "value": "0",
                         },
                       ],
                     },
-                  },
+                  ],
                 },
               },
             },
@@ -1771,21 +1771,21 @@ Object {
     "name": "pipe",
     "value": Object {
       "left": Object {
-        "name": "inputProp",
-        "value": ".foo",
-      },
-      "right": Object {
         "name": "pipe",
         "value": Object {
           "left": Object {
             "name": "inputProp",
-            "value": ".bar",
+            "value": ".foo",
           },
           "right": Object {
             "name": "inputProp",
-            "value": ".baz",
+            "value": ".bar",
           },
         },
+      },
+      "right": Object {
+        "name": "inputProp",
+        "value": ".baz",
       },
     },
   },
