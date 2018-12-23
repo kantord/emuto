@@ -20,7 +20,11 @@ exports[`interpreter correct target code $?[3] 2`] = `"(function(_) { return (fu
 
 exports[`interpreter correct target code $[1:3] 1`] = `"(function(_) { return (function(input) { return _.projection(input, Array.from([[1,3]]), false)})})"`;
 
+exports[`interpreter correct target code ( ((3))) 1`] = `"(function(_) { return (function(input) { return (((3)))})})"`;
+
 exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((_.get('x')+1)), _); return (((function (input) {return Array.from([input, _.get('foobar')])})(_.get('x')+_.get('foobar'))))})())})})"`;
+
+exports[`interpreter correct target code ((3)) 1`] = `"(function(_) { return (function(input) { return ((3))})})"`;
 
 exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (_.get('reverse')), _); return (((function (input) {return _.foo(input)})(Array.from([1, 2]))))})())})})"`;
 
@@ -46,9 +50,15 @@ exports[`interpreter correct target code .foo | .bar | .baz 1`] = `"(function(_)
 
 exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { return (function(input) { return (function (input) {return input.bar})(input.foo)})})"`;
 
+exports[`interpreter correct target code [ [  [ [  [ ] ]]]  ] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([Array.from([Array.from([Array.from([])])])])])})})"`;
+
 exports[`interpreter correct target code [($ => error "asd" | "f")] 1`] = `"(function(_) { return (function(input) { return Array.from([((function (input) {return \\"f\\"})((function(input) {return _.error(\\"asd\\")(input)})))])})})"`;
 
 exports[`interpreter correct target code [...$foo] where $foo = "Hello" 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('foo', (\\"Hello\\"), _); return (Array.from(_.get('foo')))})())})})"`;
+
+exports[`interpreter correct target code [[[]]] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([Array.from([])])])})})"`;
+
+exports[`interpreter correct target code [[]] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([])])})})"`;
 
 exports[`interpreter correct target code [[false], [true, null]] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([false]), Array.from([true, null])])})})"`;
 
@@ -843,6 +853,25 @@ Object {
 }
 `;
 
+exports[`interpreter correct target tree ( ((3))) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "parentheses",
+    "value": Object {
+      "name": "parentheses",
+      "value": Object {
+        "name": "parentheses",
+        "value": Object {
+          "name": "primitive",
+          "value": "3",
+        },
+      },
+    },
+  },
+}
+`;
+
 exports[`interpreter correct target tree ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `
 Object {
   "status": true,
@@ -979,6 +1008,22 @@ Object {
             },
           },
         },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree ((3)) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "parentheses",
+    "value": Object {
+      "name": "parentheses",
+      "value": Object {
+        "name": "primitive",
+        "value": "3",
       },
     },
   },
@@ -1766,6 +1811,161 @@ Object {
 }
 `;
 
+exports[`interpreter correct target tree [ [  [ [  [ ] ]]]  ] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 21,
+      "line": 1,
+      "offset": 20,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "end": Object {
+          "column": 18,
+          "line": 1,
+          "offset": 17,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 3,
+          "line": 1,
+          "offset": 2,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+            "value": Array [
+              Object {
+                "end": Object {
+                  "column": 17,
+                  "line": 1,
+                  "offset": 16,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 6,
+                  "line": 1,
+                  "offset": 5,
+                },
+                "value": Array [
+                  Object {
+                    "end": Object {
+                      "column": 17,
+                      "line": 1,
+                      "offset": 16,
+                    },
+                    "name": "list",
+                    "start": Object {
+                      "column": 6,
+                      "line": 1,
+                      "offset": 5,
+                    },
+                    "value": Array [
+                      Object {
+                        "end": Object {
+                          "column": 16,
+                          "line": 1,
+                          "offset": 15,
+                        },
+                        "name": "simpleList",
+                        "start": Object {
+                          "column": 8,
+                          "line": 1,
+                          "offset": 7,
+                        },
+                        "value": Array [
+                          Object {
+                            "end": Object {
+                              "column": 16,
+                              "line": 1,
+                              "offset": 15,
+                            },
+                            "name": "list",
+                            "start": Object {
+                              "column": 8,
+                              "line": 1,
+                              "offset": 7,
+                            },
+                            "value": Array [
+                              Object {
+                                "end": Object {
+                                  "column": 14,
+                                  "line": 1,
+                                  "offset": 13,
+                                },
+                                "name": "simpleList",
+                                "start": Object {
+                                  "column": 11,
+                                  "line": 1,
+                                  "offset": 10,
+                                },
+                                "value": Array [
+                                  Object {
+                                    "end": Object {
+                                      "column": 14,
+                                      "line": 1,
+                                      "offset": 13,
+                                    },
+                                    "name": "list",
+                                    "start": Object {
+                                      "column": 11,
+                                      "line": 1,
+                                      "offset": 10,
+                                    },
+                                    "value": Array [
+                                      Object {
+                                        "end": Object {
+                                          "column": 13,
+                                          "line": 1,
+                                          "offset": 12,
+                                        },
+                                        "name": "simpleList",
+                                        "start": Object {
+                                          "column": 13,
+                                          "line": 1,
+                                          "offset": 12,
+                                        },
+                                        "value": Array [],
+                                      },
+                                    ],
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
 exports[`interpreter correct target tree [($ => error "asd" | "f")] 1`] = `
 Object {
   "status": true,
@@ -1904,6 +2104,166 @@ Object {
         ],
       },
     },
+  },
+}
+`;
+
+exports[`interpreter correct target tree [[[]]] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 7,
+      "line": 1,
+      "offset": 6,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "end": Object {
+          "column": 6,
+          "line": 1,
+          "offset": 5,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 6,
+              "line": 1,
+              "offset": 5,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "end": Object {
+                  "column": 5,
+                  "line": 1,
+                  "offset": 4,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+                "value": Array [
+                  Object {
+                    "end": Object {
+                      "column": 5,
+                      "line": 1,
+                      "offset": 4,
+                    },
+                    "name": "list",
+                    "start": Object {
+                      "column": 3,
+                      "line": 1,
+                      "offset": 2,
+                    },
+                    "value": Array [
+                      Object {
+                        "end": Object {
+                          "column": 4,
+                          "line": 1,
+                          "offset": 3,
+                        },
+                        "name": "simpleList",
+                        "start": Object {
+                          "column": 4,
+                          "line": 1,
+                          "offset": 3,
+                        },
+                        "value": Array [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree [[]] 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 5,
+      "line": 1,
+      "offset": 4,
+    },
+    "name": "list",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Array [
+      Object {
+        "end": Object {
+          "column": 4,
+          "line": 1,
+          "offset": 3,
+        },
+        "name": "simpleList",
+        "start": Object {
+          "column": 2,
+          "line": 1,
+          "offset": 1,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 4,
+              "line": 1,
+              "offset": 3,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "end": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 3,
+                  "line": 1,
+                  "offset": 2,
+                },
+                "value": Array [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
 }
 `;

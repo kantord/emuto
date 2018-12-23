@@ -408,6 +408,26 @@ const tests = [
   {
     sourceCode: `[($ => error "asd" | "f")]`,
     output: ['f']
+  },
+  {
+    sourceCode: `((3))`,
+    output: 3
+  },
+  {
+    sourceCode: `( ((3)))`,
+    output: 3
+  },
+  {
+    sourceCode: `[[]]`,
+    output: [[]]
+  },
+  {
+    sourceCode: `[[[]]]`,
+    output: [[[]]]
+  },
+  {
+    sourceCode: `[ [  [ [  [ ] ]]]  ]`,
+    output: [[[[[]]]]]
   }
 ]
 
