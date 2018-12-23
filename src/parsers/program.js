@@ -1,7 +1,7 @@
 // @flow
 
 import P from 'parsimmon'
-import TupleParser from './tuple/tuple'
+import TupleParser from './collections/tuple'
 import PipeParser from './pipe/pipe'
 import TernaryParser from './ternary'
 import AssignmentParser from './assignment'

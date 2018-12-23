@@ -10,7 +10,7 @@ import type {
 } from '../types'
 
 const FunctionCallParser = P.lazy((): mixed => {
-  const TupleParser = require('./tuple/tuple').default
+  const TupleParser = require('./collections/tuple').default
   const IdentifierParser = require('./identifier').default
   return P.seq(IdentifierParser, crap, TupleParser.atMost(1)).map(
     ([left, _, right]: [

@@ -6,7 +6,7 @@ import crap from './crap'
 import type { TupleNodeType, TernaryNodeValueType, ParserType } from '../types'
 
 export default P.lazy((): ParserType => {
-  const TupleParser = require('./tuple/tuple').default
+  const TupleParser = require('./collections/tuple').default
   return P.seq(
     TupleParser,
     P.string('if')

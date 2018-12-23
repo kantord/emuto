@@ -13,7 +13,7 @@ import type {
 const SeparatorParser = P.string(',').trim(crap)
 
 const ListCoreLiteralParser = P.lazy((): mixed => {
-  const TupleParser = require('./tuple/tuple').default
+  const TupleParser = require('./collections/tuple').default
   const SpreadParser = P.string('...')
     .then(crap)
     .then(TupleParser)
@@ -30,7 +30,7 @@ const ListCoreLiteralParser = P.lazy((): mixed => {
 })
 
 const ComprehensionParser = P.lazy((): mixed => {
-  const TupleParser = require('./tuple/tuple').default
+  const TupleParser = require('./collections/tuple').default
   const ProgramParser = require('./program').default
   return P.seq(
     P.string('each')

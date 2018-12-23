@@ -5,7 +5,7 @@ import P from 'parsimmon'
 import type { PipeNodeType, NodeType } from '../../types'
 
 const PipeParser = P.lazy((): mixed => {
-  const TupleParser = require('../tuple/tuple').default
+  const TupleParser = require('../collections/tuple').default
   const TernaryParser = require('../ternary').default
   const ProgramParser = require('../program').default
   return P.seq(
