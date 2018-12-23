@@ -1,7 +1,7 @@
 // @flow
-import listLike from './abstract/listLike'
+import collection from './abstract/collection'
 
-export default listLike({
+export default collection({
   name: 'object',
   open: '{',
   close: '}'
