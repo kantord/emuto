@@ -6,7 +6,6 @@ const path = require('path')
 const exclude = [
   '__tests__',
   'abstract',
-  'pipe',
   'tuple',
   'primitives',
   'operand.js',
@@ -20,7 +19,8 @@ const exclude = [
   'projectable.js',
   'program.js',
   'operands',
-  'collections'
+  'collections',
+  'pipe.js'
 ]
 const files = fs
   .readdirSync(path.join(__dirname, '..', 'parsers'))
