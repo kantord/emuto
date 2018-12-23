@@ -10,7 +10,7 @@ const exclude = [
   'tuple',
   'primitives',
   'operand.js',
-  'listCore.js',
+  'collectionCore.js',
   'crap.js',
   'functionCall.js',
   'parser.js',

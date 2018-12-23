@@ -1,4 +1,4 @@
-import parser from '../listCore'
+import parser from '../collectionCore'
 
 const segment = {
   name: 'simpleList',
@@ -14,7 +14,7 @@ const segment = {
   ]
 }
 
-describe('listCore parser', () => {
+describe('collectionCore parser', () => {
   it('parses null  , false', () => {
     expect(parser.parse('null  , false').status).toBe(true)
   })
@@ -27,7 +27,7 @@ describe('listCore parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$,$,...$,$').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [
         segment,
         { name: 'spread', value: { name: 'variable', value: '$' } },
@@ -60,7 +60,7 @@ describe('listCore parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('each 9 in 1 11').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [
         {
           name: 'spread',
@@ -108,7 +108,7 @@ describe('listCore parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('each 3 in 8').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [
         {
           name: 'spread',
@@ -150,13 +150,13 @@ describe('listCore parser', () => {
 
   it('returns correct value', () => {
     expect(parser.parse('$,$').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [segment]
     })
   })
   it('returns correct value', () => {
     expect(parser.parse('$,$, null').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [
         {
           name: 'simpleList',
@@ -180,7 +180,7 @@ describe('listCore parser', () => {
   })
   it('returns correct value', () => {
     expect(parser.parse('true, [false, false]').value).toMatchObject({
-      name: 'listCore',
+      name: 'collectionCore',
       value: [
         {
           name: 'simpleList',

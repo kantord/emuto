@@ -54,17 +54,17 @@ export type SpreadListSegmentType = {|
   name: 'spread',
   value: NodeType // eslint-disable-line no-use-before-define
 |};
-export type ListCoreSegmentType = SimpleListSegmentType | SpreadListSegmentType;
-export type ListCoreValueType = Array<ListCoreSegmentType>;
+export type CollectionCoreSegmentType = SimpleListSegmentType | SpreadListSegmentType;
+export type CollectionCoreValueType = Array<CollectionCoreSegmentType>;
 
-export type ListCoreNodeType = {|
-  name: 'listCore',
-  value: ListCoreValueType
+export type CollectionCoreNodeType = {|
+  name: 'collectionCore',
+  value: CollectionCoreValueType
 |};
 
 export type ListNodeType = {|
   name: 'list',
-  value: ListCoreValueType, // eslint-disable-line no-use-before-define
+  value: CollectionCoreValueType, // eslint-disable-line no-use-before-define
   ...NodeLocationType
 |};
 
@@ -75,7 +75,7 @@ export type ParenthesesNodeType = {|
 
 export type ObjectNodeType = {|
   name: 'object',
-  value: ListCoreValueType // eslint-disable-line no-use-before-define
+  value: CollectionCoreValueType // eslint-disable-line no-use-before-define
 |};
 
 export type PipeNodeType = {|

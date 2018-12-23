@@ -1,19 +1,19 @@
 // @flow
 
 import P from 'parsimmon'
-import crap from './crap'
+import crap from '../crap'
 
 import type {
-  ListCoreNodeType,
-  ListCoreValueType,
+  CollectionCoreNodeType,
+  CollectionCoreValueType,
   TupleNodeType,
   NodeType
-} from '../types'
+} from '../../types'
 
 const SeparatorParser = P.string(',').trim(crap)
 
-const ListCoreLiteralParser = P.lazy((): mixed => {
-  const TupleParser = require('./collections/tuple').default
+const CollectionCoreLiteralParser = P.lazy((): mixed => {
+  const TupleParser = require('./tuple').default
   const SpreadParser = P.string('...')
     .then(crap)
     .then(TupleParser)
@@ -22,16 +22,16 @@ const ListCoreLiteralParser = P.lazy((): mixed => {
     'simpleList'
   )
   return P.sepBy(P.alt(SpreadParser, SimpleListParser), SeparatorParser).map(
-    (value: ListCoreValueType): ListCoreNodeType => ({
-      name: 'listCore',
+    (value: CollectionCoreValueType): CollectionCoreNodeType => ({
+      name: 'collectionCore',
       value
     })
   )
 })
 
 const ComprehensionParser = P.lazy((): mixed => {
-  const TupleParser = require('./collections/tuple').default
-  const ProgramParser = require('./program').default
+  const TupleParser = require('./tuple').default
+  const ProgramParser = require('../program').default
   return P.seq(
     P.string('each')
       .then(crap)
@@ -48,7 +48,7 @@ const ComprehensionParser = P.lazy((): mixed => {
       TupleNodeType,
       [NodeType],
       [NodeType]
-    ]): ListCoreNodeType => {
+    ]): CollectionCoreNodeType => {
       const extractionPart =
         right.length === 1
           ? {
@@ -104,7 +104,7 @@ const ComprehensionParser = P.lazy((): mixed => {
       }
 
       return {
-        name: 'listCore',
+        name: 'collectionCore',
         value: [
           {
             name: 'spread',
@@ -125,4 +125,4 @@ const ComprehensionParser = P.lazy((): mixed => {
   )
 })
 
-export default P.alt(ComprehensionParser, ListCoreLiteralParser)
+export default P.alt(ComprehensionParser, CollectionCoreLiteralParser)
