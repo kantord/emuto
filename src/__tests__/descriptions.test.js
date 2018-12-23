@@ -19,7 +19,8 @@ const exclude = [
   'section.js',
   'projectable.js',
   'program.js',
-  'operands'
+  'operands',
+  'collections'
 ]
 const files = fs
   .readdirSync(path.join(__dirname, '..', 'parsers'))
