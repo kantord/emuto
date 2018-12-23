@@ -9,10 +9,10 @@ import ParenthesesParser from './parentheses'
 
 export default P.alt(
   ParenthesesParser,
+  ListParser,
   ObjectParser,
-  PrimitiveParser,
-  InputPropParser,
   LambdaParser,
+  InputPropParser,
   VariableParser,
-  ListParser
+  PrimitiveParser
 )

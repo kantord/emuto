@@ -5,9 +5,4 @@ import NullParser from './primitives/null'
 import StringParser from './primitives/string'
 import NumberParser from './primitives/number'
 
-export default P.alt(
-  BooleanParser,
-  NullParser,
-  StringParser,
-  NumberParser
-)
+export default P.alt(NullParser, BooleanParser, StringParser, NumberParser)
