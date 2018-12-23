@@ -10,6 +10,6 @@ import crap from './crap'
 
 export default P.seq(
   crap,
-  P.alt(AssignmentParser, PipeParser, P.alt(TernaryParser, TupleParser)),
+  P.alt(AssignmentParser, PipeParser, TernaryParser, TupleParser),
   crap
 ).map((value: [mixed, NodeType, mixed]): NodeType => value[1])
