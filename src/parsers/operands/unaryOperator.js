@@ -1,20 +1,20 @@
 // @flow
 
 import P from 'parsimmon'
-import crap from './crap'
+import crap from '../crap'
 
 import type {
   NodeType,
   ParserType,
   UnaryOperationNodeType,
   PrimitiveNodeType
-} from '../types'
+} from '../../types'
 
 const UnaryOperatorParser = P.lazy((): ParserType => {
   const OperatorParser = P.oneOf('+-!')
     .trim(crap)
     .node('primitive')
-  const OperandParser = require('./operand').default
+  const OperandParser = require('../operand').default
   return P.seq(OperatorParser.atLeast(1), OperandParser)
     .map(
       ([operators, operand]: [Array<PrimitiveNodeType>, NodeType]): NodeType =>
