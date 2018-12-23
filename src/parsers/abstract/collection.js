@@ -1,9 +1,9 @@
 // @flow
 
 import P from 'parsimmon'
-import ListCoreParser from '../listCore'
+import CollectionCoreParser from '../collections/collectionCore'
 import crap from '../crap'
-import type { ListCoreNodeType, ParserType } from '../../types'
+import type { CollectionCoreNodeType, ParserType } from '../../types'
 
 type ListLikeParserDefinitionType = {|
   name: string,
@@ -16,8 +16,8 @@ export default ({
   open,
   close
 }: ListLikeParserDefinitionType): ParserType =>
-  ListCoreParser.trim(crap)
+  CollectionCoreParser.trim(crap)
     .wrap(P.string(open), P.string(close))
-    .map((value: {value: ListCoreNodeType}): ListCoreNodeType => value.value)
+    .map((value: {value: CollectionCoreNodeType}): CollectionCoreNodeType => value.value)
     .node(name)
     .desc(name)

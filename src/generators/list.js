@@ -4,8 +4,8 @@ import type {
   ListNodeType,
   GeneratedCodeType,
   NodeType,
-  ListCoreValueType,
-  ListCoreSegmentType,
+  CollectionCoreValueType,
+  CollectionCoreSegmentType,
   SimpleListSegmentType
 } from '../types'
 
@@ -19,14 +19,14 @@ const CompileSimpleListSegment = (
 ): GeneratedCodeType =>
   `[${segment.value.map(CompileListSegmentItem).join(', ')}]`
 
-const CompileListSegment = (segment: ListCoreSegmentType): GeneratedCodeType =>
+const CompileListSegment = (segment: CollectionCoreSegmentType): GeneratedCodeType =>
   segment.name === 'simpleList'
     ? CompileSimpleListSegment(segment)
     : CompileListSegmentItem(segment.value)
 
-const CompileListSegments = (segments: ListCoreValueType): GeneratedCodeType =>
+const CompileListSegments = (segments: CollectionCoreValueType): GeneratedCodeType =>
   segments.reduce(
-    (a: GeneratedCodeType, b: ListCoreSegmentType): GeneratedCodeType =>
+    (a: GeneratedCodeType, b: CollectionCoreSegmentType): GeneratedCodeType =>
       `${a}.concat(_.__spread__(${CompileListSegment(b)}))`,
     ''
   )
