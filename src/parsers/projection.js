@@ -67,7 +67,7 @@ const unpack = ([projectable, projections]: [
 
 const ProjectionParser = P.lazy((): mixed => {
   const ProjectableParser = require('./projectable').default
-  const ListParser = require('./list').default.map(packList)
+  const ListParser = require('./collections/list').default.map(packList)
   const ProjectionParser = P.seq(P.string('?').atMost(1), ListParser).map(
     ([optional, value]: [
       [] | [mixed],

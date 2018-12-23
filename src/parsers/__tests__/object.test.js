@@ -1,4 +1,4 @@
-import parser from '../object'
+import parser from '../collections/object'
 
 describe('object parser', () => {
   it('parses {"foo": 1, "bar": null}', () => {

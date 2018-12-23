@@ -1,5 +1,5 @@
 // @flow
-import collection from './abstract/collection'
+import collection from '../abstract/collection'
 
 export default collection({
   name: 'object',
