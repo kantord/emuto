@@ -20,7 +20,8 @@ const exclude = [
   'program.js',
   'operands',
   'collections',
-  'pipe.js'
+  'pipe.js',
+  'ternary.js'
 ]
 const files = fs
   .readdirSync(path.join(__dirname, '..', 'parsers'))

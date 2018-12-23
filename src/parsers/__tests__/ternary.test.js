@@ -18,4 +18,11 @@ describe('ternary parser', () => {
       }
     })
   })
+
+  it('handles tuple correctly', () => {
+    expect(parser.parse('0').value).toMatchObject({
+      name: 'primitive',
+      value: '0'
+    })
+  })
 })
