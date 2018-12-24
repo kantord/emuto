@@ -2,8 +2,31 @@
 
 import P from 'parsimmon'
 
-import Boolean2 from '../operators/boolean2'
 import BinaryOperatorParser from '../abstract/binaryOperator'
+import UnaryOperatorParser from './unaryOperator'
+
+const MultiplicativeParser = BinaryOperatorParser(
+  P.alt(UnaryOperatorParser),
+  P.regexp(/[*/%]/),
+  'multiplicative'
+)
+
+const AdditiveParser = BinaryOperatorParser(
+  MultiplicativeParser,
+  P.regexp(/[+-]/),
+  'additive'
+)
+
+const Boolean1 = BinaryOperatorParser(
+  AdditiveParser,
+  P.regexp(/[<>]=?/),
+  'boolean1'
+)
+const Boolean2 = BinaryOperatorParser(
+  Boolean1,
+  P.regexp(/[=!]=/).map((x: string): string => x + '='),
+  'boolean2'
+)
 
 export default BinaryOperatorParser(
   Boolean2,
