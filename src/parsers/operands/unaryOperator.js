@@ -14,8 +14,8 @@ const UnaryOperatorParser = P.lazy((): ParserType => {
   const OperatorParser = P.oneOf('+-!')
     .trim(crap)
     .node('primitive')
-  const OperandParser = require('../operand').default
-  return P.seq(OperatorParser.many(), OperandParser)
+  const ProjectionParser = require('../projection').default
+  return P.seq(OperatorParser.many(), ProjectionParser)
     .map(
       ([operators, operand]: [Array<PrimitiveNodeType>, NodeType]): NodeType =>
         operators.length > 0

@@ -82,12 +82,15 @@ const ProjectionParser = P.lazy((): mixed => {
     packProperty
   )
 
-  return P.seq(
-    ProjectableParser.skip(crap),
-    P.alt(ProjectionParser, PropertyParser)
-      .skip(crap)
-      .atLeast(1)
-  ).map(unpack).desc('projection')
+  return P.alt(
+    P.seq(
+      ProjectableParser.skip(crap),
+      P.alt(ProjectionParser, PropertyParser)
+        .skip(crap)
+        .atLeast(1)
+    ).map(unpack),
+    ProjectableParser
+  ).desc('projection')
 })
 
 export default ProjectionParser
