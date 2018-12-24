@@ -17,7 +17,7 @@
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "profile":
-      "yarn jest ./src/__tests__/interpreter.test.js --verbose -t \"correct target tree\" 2>&1 | grep \"correct target tree\" | grep \"\u2713\" | sed \"s/    \u2713 correct target tree //\" | sed 's|(\\([0-9]*\\)ms)$|~\\1|'| grep '~' | sort --field-separator=\"~\" --key=2 --numeric-sort | tail -n 20"
+      "yarn jest ./src/__tests__/interpreter.test.js --verbose -t \"correct target code\" 2>&1 | grep \"correct target code\" | grep \"\u2713\" | sed \"s/    \u2713 correct target code //\" | sed 's|(\\([0-9]*\\)ms)$|~\\1|'| grep '~' | sort --field-separator=\"~\" --key=2 --numeric-sort | tail -n 20"
   },
   "husky": {
     "hooks": {

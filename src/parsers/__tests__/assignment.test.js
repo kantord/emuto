@@ -16,7 +16,7 @@ describe('assignment parser', () => {
 
   it('returns correct value', () => {
     expect(
-      parser.parse('44 where $a34234 = (5 + -4) $x = (5 * -4)').value
+      parser.parse('44 where $a34234 = (5 + 4) $x = (5 * 4)').value
     ).toMatchObject({
       name: 'assignment',
       value: {
@@ -45,7 +45,7 @@ describe('assignment parser', () => {
                   },
                   {
                     name: 'primitive',
-                    value: '-4'
+                    value: '4'
                   }
                 ]
               }
@@ -71,7 +71,7 @@ describe('assignment parser', () => {
                   },
                   {
                     name: 'primitive',
-                    value: '-4'
+                    value: '4'
                   }
                 ]
               }
