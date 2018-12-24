@@ -460,6 +460,20 @@ describe('interpreter', () => {
     }
   )
 
+  it(`allow passing single variable`, () => {
+    expect(execute('$foo')(null, { foo: 3 })).toEqual(3)
+  })
+
+  it(`allow passing multiple variables`, () => {
+    expect(execute('$foo + $bar')(null, { foo: 4, bar: -2 })).toEqual(2)
+  })
+
+  it(`doesn't allow passing functions`, () => {
+    expect((): mixed =>
+      execute('foo 4')(null, { foo: (x: ?mixed): number => 3 })
+    ).toThrow()
+  })
+
   it('throws syntax error on invalid source code', () => {
     expect(() => {
       execute('¡')
