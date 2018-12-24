@@ -194,7 +194,7 @@ export type ProjectableNodeType =
 
 export type AssignmentType = [PrimitiveNodeType, NodeType];
 export type AssignmentsType = Array<AssignmentType>;
-export type OutputType = mixed => mixed;
+export type OutputType = (input: mixed, variables?: {[string]: mixed}) => mixed;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;
 export type ParserType = SourceCodeType => ParserReturnValueType;
