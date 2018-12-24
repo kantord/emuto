@@ -1,6 +1,6 @@
 import P from 'parsimmon'
 import ObjectParser from './collections/object'
-import PrimitiveParser from './primitive'
+import PrimitiveParser from './primitives/primitive'
 import InputPropParser from './inputProp'
 import ListParser from './collections/list'
 import VariableParser from './variable'
