@@ -1,4 +1,4 @@
-import parser from '../boolean3'
+import parser from '../math'
 
 describe('multiplicative parser', () => {
   it('parses 42 / 22 * 12 / 3', () => {

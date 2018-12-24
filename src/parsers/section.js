@@ -1,5 +1,5 @@
 import P from 'parsimmon'
 import FunctionCallParser from './functionCall'
-import Boolean3Parser from './operators/boolean3'
+import MathParser from './math/math'
 
-export default P.alt(Boolean3Parser, FunctionCallParser)
+export default P.alt(MathParser, FunctionCallParser)
