@@ -2,7 +2,7 @@
 
 import P from 'parsimmon'
 
-import Boolean1 from '../operands/boolean1'
+import Boolean1 from '../operators/boolean1'
 import BinaryOperatorParser from '../abstract/binaryOperator'
 
 export default BinaryOperatorParser(

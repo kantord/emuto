@@ -18,7 +18,7 @@ const exclude = [
   'section.js',
   'projectable.js',
   'program.js',
-  'operands',
+  'operators',
   'collections',
   'pipe.js',
   'ternary.js'
