@@ -5,6 +5,10 @@ describe('projection parser', () => {
     expect(parser.parse('[5, 6, 7][5]').status).toBe(true)
   })
 
+  it('parses null', () => {
+    expect(parser.parse('null').status).toBe(true)
+  })
+
   it('parses {"foo": "bar"}["foo"]', () => {
     expect(parser.parse('{"foo": "bar"}["foo"]').status).toBe(true)
   })
@@ -23,6 +27,13 @@ describe('projection parser', () => {
 
   it('parses [5, 6, 7]?.foo?.bar', () => {
     expect(parser.parse('[5, 6, 7]?.foo?.bar').status).toBe(true)
+  })
+
+  it('returns correct value', () => {
+    expect(parser.parse('false').value).toMatchObject({
+      name: 'primitive',
+      value: 'false'
+    })
   })
 
   it('returns correct value', () => {
