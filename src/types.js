@@ -23,7 +23,8 @@ export type ParserReturnValueType = {|
 
 export type PrimitiveNodeType = {|
   name: 'primitive',
-  value: string
+  value: string,
+  ...?NodeLocationType
 |};
 
 export type VariableNodeType = {|
@@ -38,7 +39,7 @@ export type IdentifierNodeType = {|
 
 export type TupleNodeType = {|
   name: 'tuple',
-  value: [PrimitiveNodeType, PrimitiveNodeType]
+  value: [NodeType, NodeType] // eslint-disable-line no-use-before-define
 |};
 
 export type InputPropNodeType = {|

@@ -25,4 +25,10 @@ describe('tuple parser', () => {
       ]
     })
   })
+  it('returns primitive', () => {
+    expect(parser.parse('null').value).toEqual({
+      name: 'primitive',
+      value: 'null'
+    })
+  })
 })
