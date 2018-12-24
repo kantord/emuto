@@ -1,4 +1,4 @@
-import parser from '../multiplicative'
+import parser from '../additive'
 
 describe('multiplicative parser', () => {
   it('parses 42 / 22 * 12 / 3', () => {
