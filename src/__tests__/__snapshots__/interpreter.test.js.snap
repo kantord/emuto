@@ -1905,9 +1905,9 @@ Object {
     "value": Array [
       Object {
         "end": Object {
-          "column": 18,
+          "column": 20,
           "line": 1,
-          "offset": 17,
+          "offset": 19,
         },
         "name": "simpleList",
         "start": Object {
@@ -1983,9 +1983,9 @@ Object {
                             "value": Array [
                               Object {
                                 "end": Object {
-                                  "column": 14,
+                                  "column": 15,
                                   "line": 1,
-                                  "offset": 13,
+                                  "offset": 14,
                                 },
                                 "name": "simpleList",
                                 "start": Object {
@@ -3842,9 +3842,9 @@ Object {
     "value": Array [
       Object {
         "end": Object {
-          "column": 8,
-          "line": 5,
-          "offset": 80,
+          "column": 5,
+          "line": 6,
+          "offset": 85,
         },
         "name": "simpleList",
         "start": Object {
@@ -3941,9 +3941,9 @@ Object {
                 "value": Array [
                   Object {
                     "end": Object {
-                      "column": 33,
-                      "line": 4,
-                      "offset": 72,
+                      "column": 7,
+                      "line": 5,
+                      "offset": 79,
                     },
                     "name": "simpleList",
                     "start": Object {

@@ -7,7 +7,8 @@ import type {
   ListNodeType,
   ProjectionNodeType,
   ValuePropNodeType,
-  ProjectableNodeType
+  ProjectableNodeType,
+  NodeType
 } from '../types'
 
 type WrappedProjectionNodeType =
@@ -82,15 +83,19 @@ const ProjectionParser = P.lazy((): mixed => {
     packProperty
   )
 
-  return P.alt(
-    P.seq(
-      ProjectableParser.skip(crap),
-      P.alt(ProjectionParser, PropertyParser)
-        .skip(crap)
-        .atLeast(1)
-    ).map(unpack),
-    ProjectableParser
-  ).desc('projection')
+  return P.seq(
+    ProjectableParser.skip(crap),
+    P.alt(ProjectionParser, PropertyParser)
+      .skip(crap)
+      .many()
+  )
+    .map(
+      ([left, right]: [
+        ProjectableNodeType,
+        Array<WrappedProjectionNodeWithOptionalType>
+      ]): NodeType => (right.length === 0 ? left : unpack([left, right]))
+    )
+    .desc('projection')
 })
 
 export default ProjectionParser
