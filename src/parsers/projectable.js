@@ -5,7 +5,7 @@ import InputPropParser from './inputProp'
 import ListParser from './collections/list'
 import VariableParser from './variable'
 import LambdaParser from './lambda'
-import ParenthesesParser from './parentheses'
+import ParenthesesParser from './math/parentheses'
 
 export default P.alt(
   ParenthesesParser,
