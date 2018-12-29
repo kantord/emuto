@@ -3,7 +3,7 @@
 /* eslint no-useless-escape: 0 */
 
 import P from 'parsimmon'
-import type { NodeType } from '../../types'
+import type { NodeType } from '../types'
 
 const KeywordParser = P.regex(/(null|true|false)/).map(
   (value: string): NodeType => ({
