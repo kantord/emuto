@@ -173,6 +173,14 @@ export default {
   error: (message: string): (mixed => void) => (input: mixed) => {
     throw new Error(message)
   },
+
+  __map_generator__: function * (
+    xs: Iterable<mixed>,
+    f: mixed => mixed
+  ): Iterable<mixed> {
+    for (let x of xs) yield f(x)
+  },
+
   __add__,
   __subtract__,
   __multiply__,
