@@ -5,19 +5,19 @@ import compile from '../compiler'
 const tests = [
   {
     input: `null`,
-    output: `(function(_) { return (function(input) { return null})})`
+    output: `(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return null}))}})`
   },
   {
     input: `true`,
-    output: `(function(_) { return (function(input) { return true})})`
+    output: `(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return true}))}})`
   },
   {
     input: `$`,
-    output: `(function(_) { return (function(input) { return input})})`
+    output: `(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return input}))}})`
   },
   {
     input: `.hello`,
-    output: `(function(_) { return (function(input) { return input.hello})})`
+    output: `(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return input.hello}))}})`
   }
 ]
 
