@@ -1,3 +1,6 @@
+/* eslint flowtype/require-return-type: 0 */
+/* eslint flowtype/require-parameter-type: 0 */
+
 import builtIns from '../builtins'
 
 const {
@@ -24,7 +27,8 @@ const {
   __subtract__,
   __multiply__,
   __divide__,
-  __ternary__
+  __ternary__,
+  __pipe__
 } = builtIns
 
 describe('built ins', () => {
@@ -330,5 +334,51 @@ describe('built ins', () => {
     it('returns correct value', () =>
       // eslint-disable-next-line
       expect(__ternary__(false, () => 2, () => 0)).toEqual(0));
+  })
+
+  describe('__pipe__', () => {
+    const _ = (...items) =>
+      function * () {
+        for (let item of items) yield item
+      }
+
+    const __ = f =>
+      function * (items) {
+        for (let item of items) yield f(item)
+      }
+
+    const ___ = function * (items) {
+      for (let item of items) {
+        yield item
+        yield item
+      }
+    }
+
+    it('returns correct value 1', () => {
+      expect(Array.from(__pipe__(_(0))(null))).toEqual([0])
+    })
+
+    it('returns correct value 2', () => {
+      expect(Array.from(__pipe__()([0, 'f']))).toEqual([0, 'f'])
+    })
+
+    it('returns correct value 2', () => {
+      expect(
+        Array.from(__pipe__(__(x => x * 2), __(x => x + 1))([-1, 0, 1]))
+      ).toEqual([-1, 1, 3])
+    })
+
+    it('returns correct value 2', () => {
+      expect(
+        Array.from(
+          __pipe__(
+            __(x => `Hi ${x}`),
+            __(x => `${x}!`),
+            ___,
+            __(x => `(${x})`)
+          )(['foo', 'bar'])
+        )
+      ).toEqual(['(Hi foo!)', '(Hi foo!)', '(Hi bar!)', '(Hi bar!)'])
+    })
   })
 })

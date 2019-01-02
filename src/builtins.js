@@ -59,6 +59,19 @@ const __ternary__ = (a: boolean, b: () => mixed, c: () => mixed): mixed => {
   }
 }
 
+const __pipe__ = (
+  ...fs: Array<(Iterable<mixed>) => Iterable<mixed>>
+): ((Iterable<mixed>) => Iterable<mixed>) => (
+  inputs: Iterable<mixed>
+): Iterable<mixed> => {
+  if (fs.length === 0) return inputs
+  if (fs.length === 1) return fs[0](inputs)
+
+  const [start, ...rest] = fs
+
+  return __pipe__(...rest)(start(inputs))
+}
+
 const handleProjectionItem = (
   projectable: ProjectableType
 ): (ProjectionRuleType => mixed) => (
@@ -197,5 +210,6 @@ export default {
   __not__,
   __negateNumber__,
   __id__,
-  __ternary__
+  __ternary__,
+  __pipe__
 }
