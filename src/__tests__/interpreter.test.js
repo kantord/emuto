@@ -428,6 +428,11 @@ const tests = [
   {
     sourceCode: `[ [  [ [  [ ] ]]]  ]`,
     output: [[[[[]]]]]
+  },
+  {
+    sourceCode: `(([$] | [$x, $y] | [$]) where $x = (.foo | [$] | $[0]) $y =(.bar | ["z", $] | [$] | $[0][0])) | $[0]`,
+    input: { foo: 'a', bar: 'b' },
+    output: ['a', 'z']
   }
 ]
 

@@ -68,18 +68,23 @@ describe('collectionCore parser', () => {
             name: 'parentheses',
             value: {
               name: 'pipe',
-              value: {
-                left: {
+              value: [
+                {
                   name: 'pipe',
-                  value: {
-                    left: { name: 'primitive', value: '1' },
-                    right: {
-                      name: 'primitive',
-                      value: '11'
+                  value: [
+                    { name: 'primitive', value: '1' },
+                    {
+                      name: 'pipe',
+                      value: [
+                        {
+                          name: 'primitive',
+                          value: '11'
+                        }
+                      ]
                     }
-                  }
+                  ]
                 },
-                right: {
+                {
                   name: 'functionCall',
                   value: {
                     left: {
@@ -98,7 +103,7 @@ describe('collectionCore parser', () => {
                     }
                   }
                 }
-              }
+              ]
             }
           }
         }
@@ -116,12 +121,12 @@ describe('collectionCore parser', () => {
             name: 'parentheses',
             value: {
               name: 'pipe',
-              value: {
-                left: {
+              value: [
+                {
                   name: 'primitive',
                   value: '8'
                 },
-                right: {
+                {
                   name: 'functionCall',
                   value: {
                     left: {
@@ -140,7 +145,7 @@ describe('collectionCore parser', () => {
                     }
                   }
                 }
-              }
+              ]
             }
           }
         }

@@ -8,10 +8,10 @@ describe('pipe parser', () => {
   it('returns correct value', () => {
     expect(parser.parse(codeExamples[0]).value).toMatchObject({
       name: 'pipe',
-      value: {
-        left: { name: 'variable', value: '$' },
-        right: { name: 'primitive', value: 'false' }
-      }
+      value: [
+        { name: 'variable', value: '$' },
+        { name: 'primitive', value: 'false' }
+      ]
     })
   })
   codeExamples.forEach((codeExample: string) => {

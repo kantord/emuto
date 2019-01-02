@@ -5,16 +5,16 @@ describe('pipe generator', () => {
     expect(
       pipe({
         name: 'pipe',
-        value: {
-          left: {
+        value: [
+          {
             name: 'variable',
             value: '$'
           },
-          right: {
+          {
             name: 'primitive',
             value: 'false'
           }
-        }
+        ]
       })
     ).toEqual('(function (input) {return false})(input)')
   })
@@ -22,17 +22,37 @@ describe('pipe generator', () => {
     expect(
       pipe({
         name: 'pipe',
-        value: {
-          left: {
+        value: [
+          {
             name: 'primitive',
             value: 'true'
           },
-          right: {
+          {
             name: 'primitive',
             value: 'null'
+          },
+          {
+            name: 'primitive',
+            value: 'false'
           }
-        }
+        ]
       })
-    ).toEqual('(function (input) {return null})(true)')
+    ).toEqual(
+      '(function (input) {return false})((function (input) {return null})(true))'
+    )
+  })
+
+  it('generates correct code 3', () => {
+    expect(
+      pipe({
+        name: 'pipe',
+        value: [
+          {
+            name: 'variable',
+            value: '$'
+          }
+        ]
+      })
+    ).toEqual('input')
   })
 })
