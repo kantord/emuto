@@ -13,6 +13,19 @@ const convertUndefined = (value: ?mixed): mixed | null =>
 const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
   convertUndefined(value) === null ? null : f(value)
 
+const __pipe__ = (
+  ...fs: Array<(Iterable<mixed>) => Iterable<mixed>>
+): ((Iterable<mixed>) => Iterable<mixed>) => (
+  inputs: Iterable<mixed>
+): Iterable<mixed> => {
+  if (fs.length === 0) return inputs
+  if (fs.length === 1) return fs[0](inputs)
+
+  const [start, ...rest] = fs
+
+  return __pipe__(...rest)(start(inputs))
+}
+
 const handleProjectionItem = (
   projectable: ProjectableType
 ): (ProjectionRuleType => mixed) => (
@@ -133,5 +146,7 @@ export default {
     f: mixed => mixed
   ): Iterable<mixed> {
     for (let x of xs) yield f(x)
-  }
+  },
+
+  __pipe__
 }
