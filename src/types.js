@@ -83,10 +83,7 @@ export type ObjectNodeType = {|
 
 export type PipeNodeType = {|
   name: 'pipe',
-  value: {|
-    left: NodeType, // eslint-disable-line no-use-before-define
-    right: NodeType // eslint-disable-line no-use-before-define
-  |}
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
 export type ValuePropNodeType = {|

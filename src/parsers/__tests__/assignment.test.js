@@ -33,19 +33,24 @@ describe('assignment parser', () => {
             {
               name: 'parentheses',
               value: {
-                name: 'binaryOperation',
+                name: 'pipe',
                 value: [
                   {
-                    name: 'primitive',
-                    value: '5'
-                  },
-                  {
-                    name: 'primitive',
-                    value: '+'
-                  },
-                  {
-                    name: 'primitive',
-                    value: '4'
+                    name: 'binaryOperation',
+                    value: [
+                      {
+                        name: 'primitive',
+                        value: '5'
+                      },
+                      {
+                        name: 'primitive',
+                        value: '+'
+                      },
+                      {
+                        name: 'primitive',
+                        value: '4'
+                      }
+                    ]
                   }
                 ]
               }
@@ -59,19 +64,24 @@ describe('assignment parser', () => {
             {
               name: 'parentheses',
               value: {
-                name: 'binaryOperation',
+                name: 'pipe',
                 value: [
                   {
-                    name: 'primitive',
-                    value: '5'
-                  },
-                  {
-                    name: 'primitive',
-                    value: '*'
-                  },
-                  {
-                    name: 'primitive',
-                    value: '4'
+                    name: 'binaryOperation',
+                    value: [
+                      {
+                        name: 'primitive',
+                        value: '5'
+                      },
+                      {
+                        name: 'primitive',
+                        value: '*'
+                      },
+                      {
+                        name: 'primitive',
+                        value: '4'
+                      }
+                    ]
                   }
                 ]
               }
