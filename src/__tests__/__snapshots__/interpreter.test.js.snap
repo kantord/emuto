@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`interpreter correct target code !(3 * .foo -1 > -1.34 * .bar) && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((3*input.foo-1>(-(1.34))*input.bar)))&&true}))}})"`;
+exports[`interpreter correct target code !(3 * .foo -1 > -1.34 * .bar) && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*input.foo-1>(-(1.34))*input.bar}))})))&&true}))}})"`;
 
-exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((3*2-1>(-(1.34))*3)))&&true}))}})"`;
+exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2-1>(-(1.34))*3}))})))&&true}))}})"`;
 
-exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) and true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((3*2-1>(-(1.34))*3)))&&true}))}})"`;
+exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) and true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (!((function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2-1>(-(1.34))*3}))})))&&true}))}})"`;
 
 exports[`interpreter correct target code "1" == 1 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return \\"1\\"===1}))}})"`;
 
@@ -20,25 +20,25 @@ exports[`interpreter correct target code $?[3] 2`] = `"(function(_) { return fun
 
 exports[`interpreter correct target code $[1:3] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.projection(input, Array.from([[1,3]]), false)}))}})"`;
 
-exports[`interpreter correct target code ( ((3))) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (((3)))}))}})"`;
+exports[`interpreter correct target code ( ((3))) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3}))})}))})}))})}))}})"`;
 
-exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((_.get('x')+1)), _); return (((function (input) {return Array.from([input, _.get('foobar')])})(_.get('x')+_.get('foobar'))))})())}))}})"`;
+exports[`interpreter correct target code ($x + $foobar | [$, $foobar]) where $x = 3 $foobar = ($x + 1) 1`] = `"(function(_) { return ((function() {_ = _.assign('x', (3), _); _ = _.assign('foobar', ((function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.get('x')+1}))})), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return Array.from([input, _.get('foobar')])})(_.get('x')+_.get('foobar'))}))})}))})})())})"`;
 
-exports[`interpreter correct target code (([$] | [$x, $y] | [$]) where $x = (.foo | [$] | $[0]) $y =(.bar | ["z", $] | [$] | $[0][0])) | $[0] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(input, Array.from([0]), false)})((((function() {_ = _.assign('x', (((function (input) {return _.projection(input, Array.from([0]), false)})((function (input) {return Array.from([input])})(input.foo)))), _); _ = _.assign('y', (((function (input) {return _.projection(_.projection(input, Array.from([0]), false), Array.from([0]), false)})((function (input) {return Array.from([input])})((function (input) {return Array.from([\\"z\\", input])})(input.bar))))), _); return (((function (input) {return Array.from([input])})((function (input) {return Array.from([_.get('x'), _.get('y')])})(Array.from([input])))))})())))}))}})"`;
+exports[`interpreter correct target code (([$] | [$x, $y] | [$]) where $x = (.foo | [$] | $[0]) $y =(.bar | ["z", $] | [$] | $[0][0])) | $[0] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(input, Array.from([0]), false)})((((function() {_ = _.assign('x', ((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(input, Array.from([0]), false)})((function (input) {return Array.from([input])})(input.foo))}))})), _); _ = _.assign('y', ((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(_.projection(input, Array.from([0]), false), Array.from([0]), false)})((function (input) {return Array.from([input])})((function (input) {return Array.from([\\"z\\", input])})(input.bar)))}))})), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return Array.from([input])})((function (input) {return Array.from([_.get('x'), _.get('y')])})(Array.from([input])))}))})}))})})())))}))}})"`;
 
-exports[`interpreter correct target code ((3)) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((3))}))}})"`;
+exports[`interpreter correct target code ((3)) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3}))})}))})}))}})"`;
 
-exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foo', (_.get('reverse')), _); return (((function (input) {return _.foo(input)})(Array.from([1, 2]))))})())}))}})"`;
+exports[`interpreter correct target code ([1, 2] | foo) where $foo = $reverse 1`] = `"(function(_) { return ((function() {_ = _.assign('foo', (_.get('reverse')), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.foo(input)})(Array.from([1, 2]))}))})}))})})())})"`;
 
-exports[`interpreter correct target code ([1] | foo 4) where $foo = ($ => $ => 4) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return (function(input) {return 4})}))), _); return (((function (input) {return _.foo(4)(input)})(Array.from([1]))))})())}))}})"`;
+exports[`interpreter correct target code ([1] | foo 4) where $foo = ($ => $ => 4) 1`] = `"(function(_) { return ((function() {_ = _.assign('foo', ((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(input) {return (function(input) {return 4})})}))})), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.foo(4)(input)})(Array.from([1]))}))})}))})})())})"`;
 
-exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foo', (((function(input) {return 4}))), _); return (((function (input) {return _.projection(input, Array.from([0]), false)})((function (input) {return _.map(_.get('foo'))(input)})(Array.from([1])))))})())}))}})"`;
+exports[`interpreter correct target code ([1] | map $foo | $[0]) where $foo = ($ => 4) 1`] = `"(function(_) { return ((function() {_ = _.assign('foo', ((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(input) {return 4})}))})), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(input, Array.from([0]), false)})((function (input) {return _.map(_.get('foo'))(input)})(Array.from([1])))}))})}))})})())})"`;
 
-exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foobar', (input), _); return (((function (input) {return Array.from([input, _.get('foobar')])})(3+_.get('foobar'))))})())}))}})"`;
+exports[`interpreter correct target code (3 + $foobar | [$, $foobar]) where $foobar = $ 1`] = `"(function(_) { return ((function() {_ = _.assign('foobar', (input), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return Array.from([input, _.get('foobar')])})(3+_.get('foobar'))}))})}))})})())})"`;
 
-exports[`interpreter correct target code (8 + 3.14) * 2 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (8+3.14)*2}))}})"`;
+exports[`interpreter correct target code (8 + 3.14) * 2 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return 8+3.14}))})*2}))}})"`;
 
-exports[`interpreter correct target code +(3 * 2) -1 > -1.34 * 3 && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (+((3*2)))-1>(-(1.34))*3&&true}))}})"`;
+exports[`interpreter correct target code +(3 * 2) -1 > -1.34 * 3 && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (+((function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2}))})))-1>(-(1.34))*3&&true}))}})"`;
 
 exports[`interpreter correct target code .$shit 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return input.$shit}))}})"`;
 
@@ -54,9 +54,9 @@ exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { retu
 
 exports[`interpreter correct target code [ [  [ [  [ ] ]]]  ] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from([Array.from([Array.from([Array.from([Array.from([])])])])])}))}})"`;
 
-exports[`interpreter correct target code [($ => error "asd" | "f")] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from([((function (input) {return \\"f\\"})((function(input) {return _.error(\\"asd\\")(input)})))])}))}})"`;
+exports[`interpreter correct target code [($ => error "asd" | "f")] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from([(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return \\"f\\"})((function(input) {return _.error(\\"asd\\")(input)}))}))})])}))}})"`;
 
-exports[`interpreter correct target code [...$foo] where $foo = "Hello" 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foo', (\\"Hello\\"), _); return (Array.from(_.get('foo')))})())}))}})"`;
+exports[`interpreter correct target code [...$foo] where $foo = "Hello" 1`] = `"(function(_) { return ((function() {_ = _.assign('foo', (\\"Hello\\"), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from(_.get('foo'))}))})})())})"`;
 
 exports[`interpreter correct target code [[[]]] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from([Array.from([Array.from([])])])}))}})"`;
 
@@ -80,13 +80,13 @@ exports[`interpreter correct target code [3, 2][0] | [3, 2][1] 1`] = `"(function
 
 exports[`interpreter correct target code [3, 2][0] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.projection(Array.from([3, 2]), Array.from([0]), false)}))}})"`;
 
-exports[`interpreter correct target code [each .author.age in .articles reverse] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from(((function (input) {return _.map((function(input) {return input.author.age}))(input)})((function (input) {return _.reverse(input)})(input.articles))))}))}})"`;
+exports[`interpreter correct target code [each .author.age in .articles reverse] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return input.author.age}))(input)})(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.reverse(input)}))}})(input.articles)}))})}))}))}))}})"`;
 
-exports[`interpreter correct target code [each .author.age in .articles] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from(((function (input) {return _.map((function(input) {return input.author.age}))(input)})(input.articles)))}))}})"`;
+exports[`interpreter correct target code [each .author.age in .articles] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return input.author.age}))(input)})(input.articles)}))}))}))}})"`;
 
-exports[`interpreter correct target code [each .author.name in .articles if .author.age >= 30 sortBy $ => .author.age] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from(((function (input) {return _.map((function(input) {return input.author.name}))(input)})((function (input) {return _.filter((function(input) {return input.author.age>=30}))(input)})((function (input) {return _.sortBy((function(input) {return input.author.age}))(input)})(input.articles)))))}))}})"`;
+exports[`interpreter correct target code [each .author.name in .articles if .author.age >= 30 sortBy $ => .author.age] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return input.author.name}))(input)})(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.filter((function(input) {return input.author.age>=30}))(input)})(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.sortBy((function(input) {return input.author.age}))(input)}))}})(input.articles)}))})}))})}))}))}))}})"`;
 
-exports[`interpreter correct target code [each .author.name in .articles sortBy $ => .author.age] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from(((function (input) {return _.map((function(input) {return input.author.name}))(input)})((function (input) {return _.sortBy((function(input) {return input.author.age}))(input)})(input.articles))))}))}})"`;
+exports[`interpreter correct target code [each .author.name in .articles sortBy $ => .author.age] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return Array.from((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return input.author.name}))(input)})(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.sortBy((function(input) {return input.author.age}))(input)}))}})(input.articles)}))})}))}))}))}})"`;
 
 exports[`interpreter correct target code {
       "foo": [-42, $],
@@ -95,9 +95,9 @@ exports[`interpreter correct target code {
       }
     } 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (_.objectify(Array.from([[\\"foo\\",Array.from([(-(42)), input])], [\\"bar\\",(_.objectify(Array.from([[\\"message\\",\\"Hello World\\"]])))]])))}))}})"`;
 
-exports[`interpreter correct target code {"foo": ("bar" | "baz")} 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (_.objectify(Array.from([[\\"foo\\",((function (input) {return \\"baz\\"})(\\"bar\\"))]])))}))}})"`;
+exports[`interpreter correct target code {"foo": ("bar" | "baz")} 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (_.objectify(Array.from([[\\"foo\\",(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return \\"baz\\"})(\\"bar\\")}))})]])))}))}})"`;
 
-exports[`interpreter correct target code {"foo": ("bar" | "baz")}["foo"] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.projection((_.objectify(Array.from([[\\"foo\\",((function (input) {return \\"baz\\"})(\\"bar\\"))]]))), Array.from([\\"foo\\"]), false)}))}})"`;
+exports[`interpreter correct target code {"foo": ("bar" | "baz")}["foo"] 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.projection((_.objectify(Array.from([[\\"foo\\",(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return \\"baz\\"})(\\"bar\\")}))})]]))), Array.from([\\"foo\\"]), false)}))}})"`;
 
 exports[`interpreter correct target code {"foo": [{"bar": "baz"}]} | $.foo[0].bar 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.projection(input.foo, Array.from([0]), false).bar})((_.objectify(Array.from([[\\"foo\\",Array.from([(_.objectify(Array.from([[\\"bar\\",\\"baz\\"]])))])]]))))}))}})"`;
 
@@ -105,9 +105,9 @@ exports[`interpreter correct target code {"foo": 3} | {"bar": "baz", ...$} 1`] =
 
 exports[`interpreter correct target code {"original": $.foo} | {"new": $} 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return (_.objectify(Array.from([[\\"new\\",input]])))})((_.objectify(Array.from([[\\"original\\",input.foo]]))))}))}})"`;
 
-exports[`interpreter correct target code {each $: (length) in $} 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (_.objectify(Array.from(((function (input) {return _.map((function(input) {return [input,(_.length(input))]}))(input)})(input)))))}))}})"`;
+exports[`interpreter correct target code {each $: (length) in $} 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (_.objectify(Array.from((function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return [input,(function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.length(input)}))})]}))(input)})(input)}))}))))}))}})"`;
 
-exports[`interpreter correct target code -(3 * 2) -1 > -1.34 * 3 && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (-((3*2)))-1>(-(1.34))*3&&true}))}})"`;
+exports[`interpreter correct target code -(3 * 2) -1 > -1.34 * 3 && true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (-((function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2}))})))-1>(-(1.34))*3&&true}))}})"`;
 
 exports[`interpreter correct target code 3 * 2 -1 != -1.34 * 3 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2-1!==(-(1.34))*3}))}})"`;
 
@@ -131,7 +131,7 @@ exports[`interpreter correct target code 3 * 2 -1 > -1.34 * 3 or true 1`] = `"(f
 
 exports[`interpreter correct target code 3 * 2 -1 >= -1.34 * 3 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3*2-1>=(-(1.34))*3}))}})"`;
 
-exports[`interpreter correct target code 3 + $foobar where $foobar = 4 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((function() {_ = _.assign('foobar', (4), _); return (3+_.get('foobar'))})())}))}})"`;
+exports[`interpreter correct target code 3 + $foobar where $foobar = 4 1`] = `"(function(_) { return ((function() {_ = _.assign('foobar', (4), _); return (function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3+_.get('foobar')}))})})())})"`;
 
 exports[`interpreter correct target code 3 + 4 if 2 <= 3 else -12 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return ((2<=3) ? (3+4) : ((-(12))))}))}})"`;
 
@@ -141,7 +141,7 @@ exports[`interpreter correct target code 8 * 3.14 / 2 1`] = `"(function(_) { ret
 
 exports[`interpreter correct target code 8 + 3.14 * 2 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 8+3.14*2}))}})"`;
 
-exports[`interpreter correct target code 8 - (3.14 * 2) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 8-(3.14*2)}))}})"`;
+exports[`interpreter correct target code 8 - (3.14 * 2) 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 8-(function(inputs) {return _.__map_generator__(inputs, (function(input) { return 3.14*2}))})}))}})"`;
 
 exports[`interpreter correct target code 8314 % 34 -3 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return 8314%34-3}))}})"`;
 
@@ -165,7 +165,7 @@ exports[`interpreter correct target code null 1`] = `"(function(_) { return func
 
 exports[`interpreter correct target code null: true 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return [null,true]}))}})"`;
 
-exports[`interpreter correct target code reduce ($a => $b => $a + $b): 0 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.reduce([((function(a) {_ = _.assign('a', a, _); return (function(b) {_ = _.assign('b', b, _); return _.get('a')+_.get('b')})})),0])(input)}))}})"`;
+exports[`interpreter correct target code reduce ($a => $b => $a + $b): 0 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return _.reduce([(function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function(a) {_ = _.assign('a', a, _); return (function(b) {_ = _.assign('b', b, _); return _.get('a')+_.get('b')})})}))}),0])(input)}))}})"`;
 
 exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return function(inputs) {return _.__map_generator__(inputs, (function(input) { return (function (input) {return _.map((function(input) {return input.name}))(input)})(_.sortBy((function(input) {return input.age}))(input))}))}})"`;
 
