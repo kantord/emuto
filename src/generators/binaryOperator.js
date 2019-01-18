@@ -1,30 +1,27 @@
 // @flow
 
 import type { OperationNodeType, GeneratedCodeType, NodeType } from '../types'
+import _compileOperator from './common/compileOperator'
+
+const compileOperator = _compileOperator({
+  '+': 'add',
+  '-': 'subtract',
+  '*': 'multiply',
+  '/': 'divide',
+  '<=': 'lte',
+  '>=': 'gte',
+  '<': 'lt',
+  '>': 'gt',
+  '&&': 'and',
+  '||': 'or',
+  '===': 'equals',
+  '!==': 'notEqual',
+  '%': 'mod'
+})
 
 const Generator = ({ value }: OperationNodeType): GeneratedCodeType => {
   const compile = require('./generator').default
-  const operators = {
-    '+': 'add',
-    '-': 'subtract',
-    '*': 'multiply',
-    '/': 'divide',
-    '<=': 'lte',
-    '>=': 'gte',
-    '<': 'lt',
-    '>': 'gt',
-    '&&': 'and',
-    '||': 'or',
-    '===': 'equals',
-    '!==': 'notEqual',
-    '%': 'mod'
-  }
 
-  const compileOperator = (operator: NodeType): GeneratedCodeType => {
-    if (!('value' in operator)) throw new Error()
-    if (typeof operator.value !== 'string') throw new Error()
-    return operators[operator.value]
-  }
   const buildCode = (node: Array<NodeType>): GeneratedCodeType =>
     node.length === 1
       ? compile(node[0])
