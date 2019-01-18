@@ -19,7 +19,12 @@ const {
   __opt__,
   __spread__,
   has,
-  error
+  error,
+  __add__,
+  __subtract__,
+  __multiply__,
+  __divide__,
+  __ternary__
 } = builtIns
 
 describe('built ins', () => {
@@ -253,5 +258,77 @@ describe('built ins', () => {
         error('foo')()
       }).toThrow('foo')
     })
+  })
+
+  const operatorTests = [
+    {
+      operator: __add__,
+      testCases: [
+        { left: 0, right: 0, result: 0 },
+        { left: -1, right: 1, result: 0 },
+        { left: -1, right: 2, result: 1 },
+        { left: 10, right: 5, result: 15 },
+        { left: -10, right: -5, result: -15 },
+        { left: -10, right: 5, result: -5 }
+      ]
+    },
+    {
+      operator: __subtract__,
+      testCases: [
+        { left: 0, right: 0, result: 0 },
+        { left: -1, right: 1, result: -2 },
+        { left: -1, right: 2, result: -3 },
+        { left: 10, right: 5, result: 5 },
+        { left: -10, right: -5, result: -5 },
+        { left: -10, right: 5, result: -15 }
+      ]
+    },
+    {
+      operator: __multiply__,
+      testCases: [
+        { left: 0, right: 0, result: 0 },
+        { left: -1, right: 1, result: -1 },
+        { left: -1, right: 2, result: -2 },
+        { left: 10, right: 5, result: 50 },
+        { left: -10, right: -5, result: 50 },
+        { left: -10, right: 5, result: -50 }
+      ]
+    },
+    {
+      operator: __divide__,
+      testCases: [
+        { left: 0, right: 0, result: NaN },
+        { left: -1, right: 1, result: -1 },
+        { left: -1, right: 2, result: -0.5 },
+        { left: 10, right: 5, result: 2 },
+        { left: -10, right: -5, result: 2 },
+        { left: -10, right: 5, result: -2 }
+      ]
+    }
+  ]
+
+  // eslint-disable-next-line
+  operatorTests.forEach(({operator, testCases}) => {
+    describe(operator.name, () => {
+      // eslint-disable-next-line
+      testCases.forEach(({left, right, result}) => {
+        it(`${left} ${right} => ${result}`, () => {
+          expect(operator(left)(right)).toEqual(result)
+        })
+      })
+    })
+  })
+
+  // eslint-disable-next-line
+  describe('__ternary__', () => {
+    // eslint-disable-next-line
+    it('returns correct value', () =>
+      // eslint-disable-next-line
+      expect(__ternary__(true, () => 2, () => 0)).toEqual(2));
+
+    // eslint-disable-next-line
+    it('returns correct value', () =>
+      // eslint-disable-next-line
+      expect(__ternary__(false, () => 2, () => 0)).toEqual(0));
   })
 })

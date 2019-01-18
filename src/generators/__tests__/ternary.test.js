@@ -11,6 +11,8 @@ describe('ternary generator', () => {
           right: { name: 'primitive', value: '2' }
         }
       })
-    ).toEqual('((1) ? (0) : (2))')
+    ).toEqual(
+      '(_.__ternary__((1),function(){return(0)},function(){return(2)}))'
+    )
   })
 })
