@@ -56,7 +56,7 @@
     "regenerator-runtime": "^0.13.1",
     "semantic-release": "^15.13.3",
     "travis-deploy-once": "^5.0.11",
-    "webpack": "^4.28.4",
+    "webpack": "^4.29.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.2.1"
   },
