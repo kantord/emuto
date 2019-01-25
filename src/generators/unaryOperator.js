@@ -1,17 +1,23 @@
 // @flow
 
-import _compileOperator from './common/compileOperator'
-import type { UnaryOperationNodeType, GeneratedCodeType } from '../types'
-
-const compileOperator = _compileOperator({
-  '+': 'id',
-  '-': 'negateNumber',
-  '!': 'not'
-})
+import type {
+  UnaryOperationNodeType,
+  GeneratedCodeType,
+  NodeType
+} from '../types'
 
 export default ({ value }: UnaryOperationNodeType): GeneratedCodeType => {
   const Generator = require('./generator').default
-
+  const operators = {
+    '+': 'id',
+    '-': 'negateNumber',
+    '!': 'not'
+  }
+  const compileOperator = (operator: NodeType): GeneratedCodeType => {
+    if (!('value' in operator)) throw new Error()
+    if (typeof operator.value !== 'string') throw new Error()
+    return operators[operator.value]
+  }
   return `(_.__${compileOperator(value.operator)}__(${Generator(
     value.operand
   )}))`
