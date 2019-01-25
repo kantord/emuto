@@ -22,7 +22,10 @@ export default (
     assignments: AssignmentsType
   ): GeneratedCodeType => assignments.map(compileOneAssignment).join('; ')
 
+  const withMapGenerator = x =>
+    `function(inputs) {return _.__map_generator__(inputs, (function(input) { return ${x}}))}`
+
   return `((function() {${compileAssignments(
     value.assignments
-  )}; return (${Generator(value.program)})})())`
+  )}; return (${withMapGenerator(Generator(value.program))})})())`
 }

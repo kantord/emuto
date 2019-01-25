@@ -83,10 +83,7 @@ export type ObjectNodeType = {|
 
 export type PipeNodeType = {|
   name: 'pipe',
-  value: {|
-    left: NodeType, // eslint-disable-line no-use-before-define
-    right: NodeType // eslint-disable-line no-use-before-define
-  |}
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 
 export type ValuePropNodeType = {|
@@ -195,6 +192,10 @@ export type ProjectableNodeType =
 export type AssignmentType = [PrimitiveNodeType, NodeType];
 export type AssignmentsType = Array<AssignmentType>;
 export type OutputType = (input: mixed, variables?: {[string]: mixed}) => mixed;
+export type GeneratorOutputType = (
+  input: Iterable<mixed>,
+  variables?: {[string]: mixed},
+) => Iterable<mixed>;
 export type SourceCodeType = string;
 export type GeneratedCodeType = string;
 export type ParserType = SourceCodeType => ParserReturnValueType;

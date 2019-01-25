@@ -9,8 +9,13 @@ describe('parentheses parser', () => {
     expect(parser.parse('("Hello World")').value).toEqual({
       name: 'parentheses',
       value: {
-        name: 'primitive',
-        value: '"Hello World"'
+        name: 'pipe',
+        value: [
+          {
+            name: 'primitive',
+            value: '"Hello World"'
+          }
+        ]
       }
     })
   })
