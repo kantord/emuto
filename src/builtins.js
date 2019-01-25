@@ -13,52 +13,6 @@ const convertUndefined = (value: ?mixed): mixed | null =>
 const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
   convertUndefined(value) === null ? null : f(value)
 
-const __add__ = (left: number): (number => number) => (right: number): number =>
-  left + right
-const __subtract__ = (left: number): (number => number) => (
-  right: number
-): number => left - right
-const __multiply__ = (left: number): (number => number) => (
-  right: number
-): number => left * right
-const __divide__ = (left: number): (number => number) => (
-  right: number
-): number => left / right
-const __lte__ = (left: number): (number => boolean) => (
-  right: number
-): boolean => left <= right
-const __gte__ = (left: number): (number => boolean) => (
-  right: number
-): boolean => left >= right
-const __lt__ = (left: number): (number => boolean) => (
-  right: number
-): boolean => left < right
-const __gt__ = (left: number): (number => boolean) => (
-  right: number
-): boolean => left > right
-const __and__ = (left: mixed): (mixed => mixed) => (right: mixed): mixed =>
-  left && right
-const __or__ = (left: mixed): (mixed => mixed) => (right: mixed): mixed =>
-  left || right
-const __equals__ = (left: mixed): (mixed => mixed) => (right: mixed): mixed =>
-  left === right
-const __notEqual__ = (left: mixed): (mixed => mixed) => (right: mixed): mixed =>
-  left !== right
-const __mod__ = (left: number): (number => number) => (right: number): number =>
-  left % right
-
-const __id__ = (x: mixed): mixed => x
-const __negateNumber__ = (x: number): number => -x
-const __not__ = (x: boolean): boolean => !x
-
-const __ternary__ = (a: boolean, b: () => mixed, c: () => mixed): mixed => {
-  if (a) {
-    return b()
-  } else {
-    return c()
-  }
-}
-
 const handleProjectionItem = (
   projectable: ProjectableType
 ): (ProjectionRuleType => mixed) => (
@@ -172,22 +126,5 @@ export default {
 
   error: (message: string): (mixed => void) => (input: mixed) => {
     throw new Error(message)
-  },
-  __add__,
-  __subtract__,
-  __multiply__,
-  __divide__,
-  __lte__,
-  __gte__,
-  __lt__,
-  __gt__,
-  __and__,
-  __or__,
-  __equals__,
-  __notEqual__,
-  __mod__,
-  __not__,
-  __negateNumber__,
-  __id__,
-  __ternary__
+  }
 }
