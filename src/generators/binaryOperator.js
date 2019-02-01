@@ -22,12 +22,21 @@ const compileOperator = _compileOperator({
 const Generator = ({value}: OperationNodeType): GeneratedCodeType => {
   const compile = require('./generator').default;
 
-  const buildCode = (node: Array<NodeType>): GeneratedCodeType =>
-    node.length === 1
-      ? compile(node[0])
-      : `_.__${compileOperator(node[1])}__(${buildCode(
-          node.slice(2),
-        )})(${compile(node[0])})`;
+  const buildCode = (node: Array<NodeType>): GeneratedCodeType => {
+    if (node.length === 1) {
+      return compile(node[0]);
+    }
+
+    if (node.length === 3) {
+      return `_.__${compileOperator(node[1])}__(${compile(node[0])})(${compile(
+        node[2],
+      )})`;
+    }
+
+    return `_.__${compileOperator(node[node.length - 2])}__(${buildCode(
+      node.slice(0, node.length - 2),
+    )})(${compile(node[node.length - 1])})`;
+  };
   return buildCode(value);
 };
 

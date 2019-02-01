@@ -36,7 +36,10 @@ const {
   __or__,
   __and__,
   __negateNumber__,
+  __not__,
+  __id__,
   __primitive__,
+  __first__,
 } = builtIns;
 
 describe('built ins', () => {
@@ -87,9 +90,12 @@ describe('built ins', () => {
 
   describe('__spread__', () => {
     const f = x => 'Hello'; // eslint-disable-line
-    expect(__spread__([1, 2])).toEqual([1, 2]);
-    expect(__spread__({a: 'b', c: 3})).toEqual([['a', 'b'], ['c', 3]]);
-    expect(__spread__('ab')).toEqual(['a', 'b']);
+    expect(__spread__(__primitive__([1, 2]))).toEqual([1, 2]);
+    expect(__spread__(__primitive__({a: 'b', c: 3}))).toEqual([
+      ['a', 'b'],
+      ['c', 3],
+    ]);
+    expect(__spread__(__primitive__('ab'))).toEqual(['a', 'b']);
   });
 
   describe('join', () => {
@@ -388,12 +394,28 @@ describe('built ins', () => {
     // eslint-disable-next-line
     it('returns correct value', () =>
       // eslint-disable-next-line
-      expect(__ternary__(true, () => 2, () => 0)).toEqual(2));
+      expect(
+        Array.from(
+          __ternary__(
+            __primitive__(true),
+            () => __primitive__(2),
+            () => __primitive__(0),
+          ),
+        ),
+      ).toEqual([2]));
 
     // eslint-disable-next-line
     it('returns correct value', () =>
       // eslint-disable-next-line
-      expect(__ternary__(false, () => 2, () => 0)).toEqual(0));
+      expect(
+        Array.from(
+          __ternary__(
+            __primitive__(false),
+            () => __primitive__(2),
+            () => __primitive__(0),
+          ),
+        ),
+      ).toEqual([0]));
   });
 
   // eslint-disable-next-line
@@ -403,6 +425,26 @@ describe('built ins', () => {
       // eslint-disable-next-line
       expect(Array.from(__negateNumber__(__primitive__(-2)))).toEqual(
         Array.from(__primitive__(2)),
+      ));
+  });
+
+  // eslint-disable-next-line
+  describe('__id__', () => {
+    // eslint-disable-next-line
+    it('returns correct value', () =>
+      // eslint-disable-next-line
+      expect(Array.from(__id__(__primitive__(-2)))).toEqual(
+        Array.from(__primitive__(-2)),
+      ));
+  });
+
+  // eslint-disable-next-line
+  describe('__not__', () => {
+    // eslint-disable-next-line
+    it('returns correct value', () =>
+      // eslint-disable-next-line
+      expect(Array.from(__not__(__primitive__(false)))).toEqual(
+        Array.from(__primitive__(true)),
       ));
   });
 
@@ -455,6 +497,16 @@ describe('built ins', () => {
   describe('__primitive__', () => {
     it('returns correct value', () => {
       expect(Array.from(__primitive__(5))).toEqual([5]);
+    });
+  });
+
+  describe('__first__', () => {
+    it('returns correct value', () => {
+      expect(__first__(__primitive__(5))).toEqual(5);
+    });
+
+    it('returns correct value 2', () => {
+      expect(__first__(__primitive__([5, -3]))).toEqual([5, -3]);
     });
   });
 });

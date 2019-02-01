@@ -59,25 +59,36 @@ const binaryOp = function(f) {
   };
 };
 
-const __id__ = (x: mixed): mixed => x;
-const __negateNumber__ = function*(input: Iterable<number>) {
-  for (let number of input) {
-    yield -number;
-    return;
-  }
+const unaryOp = function(f) {
+  return function*(input) {
+    for (let inputValue of input) {
+      yield f(inputValue);
+    }
+  };
 };
-const __not__ = (x: boolean): boolean => !x;
 
-const __ternary__ = (a: boolean, b: () => mixed, c: () => mixed): mixed => {
-  if (a) {
-    return b();
-  } else {
-    return c();
+const __id__ = unaryOp(x => x);
+const __negateNumber__ = unaryOp(x => -x);
+const __not__ = unaryOp(x => !x);
+
+const __ternary__ = function(a, b, c) {
+  for (let aValue of a) {
+    if (aValue) {
+      return b();
+    } else {
+      return c();
+    }
   }
 };
 
 const __primitive__ = function*(value) {
   yield value;
+};
+
+const __first__ = function(values) {
+  for (let value of values) {
+    return value;
+  }
 };
 
 const __pipe__ = (
@@ -124,12 +135,13 @@ export default {
 
   __opt__: handleOptional,
 
-  __spread__: (input: mixed): mixed =>
-    Array.isArray(input)
+  __spread__: (input: mixed): mixed => {
+    return Array.isArray(input)
       ? input
       : typeof input === 'string' || input instanceof String
         ? input.split('')
-        : Object.entries(input),
+        : Object.entries(input);
+  },
 
   projection: (
     left: ProjectableType,
@@ -234,4 +246,5 @@ export default {
   __ternary__,
   __pipe__,
   __primitive__,
+  __first__,
 };

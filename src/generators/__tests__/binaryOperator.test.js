@@ -17,43 +17,40 @@ describe('binaryOperator generator', () => {
           },
         ],
       }),
-    ).toEqual('_.__add__(input)(input)');
+    ).toEqual('_.__add__(_.__primitive__(input))(_.__primitive__(input))');
   });
 
-  it('generates correct code - multiple operations', () => {
+  it('generates correct code - multiple operations 2', () => {
     expect(
       binaryOperator({
-        name: 'additive',
-        value: [
-          {
-            name: 'variable',
-            value: '$',
-          },
-          {name: 'primitive', value: '+'},
-          {
-            name: 'variable',
-            value: '$',
-          },
-          {name: 'primitive', value: '-'},
-          {
-            name: 'variable',
-            value: '$',
-          },
-        ],
-      }),
-    ).toEqual('_.__add__(_.__subtract__(input)(input))(input)');
-  });
-
-  it('generates correct code - `10 - 10 - 10 - 10`', () => {
-    expect(
-      binaryOperator({
-        name: 'additive',
+        name: 'multiplicative',
         value: [
           {
             name: 'primitive',
-            value: '10',
+            value: '8',
           },
-          {name: 'primitive', value: '-'},
+          {name: 'primitive', value: '*'},
+          {
+            name: 'primitive',
+            value: '3.14',
+          },
+          {name: 'primitive', value: '/'},
+          {
+            name: 'primitive',
+            value: '2',
+          },
+        ],
+      }),
+    ).toEqual(
+      '_.__divide__(_.__multiply__(_.__primitive__(8))(_.__primitive__(3.14)))(_.__primitive__(2))',
+    );
+  });
+
+  it('generates correct code - `10 - 10 - 10`', () => {
+    expect(
+      binaryOperator({
+        name: 'additive',
+        value: [
           {
             name: 'primitive',
             value: '10',
@@ -70,7 +67,9 @@ describe('binaryOperator generator', () => {
           },
         ],
       }),
-    ).toEqual('_.__subtract__(_.__subtract__(_.__subtract__(10)(10))(10))(10)');
+    ).toEqual(
+      '_.__subtract__(_.__subtract__(_.__primitive__(10))(_.__primitive__(10)))(_.__primitive__(10))',
+    );
   });
 
   it('generates correct code - no operation', () => {
@@ -84,6 +83,6 @@ describe('binaryOperator generator', () => {
           },
         ],
       }),
-    ).toEqual('input');
+    ).toEqual('_.__primitive__(input)');
   });
 });

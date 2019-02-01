@@ -440,6 +440,11 @@ const tests = [
     sourceCode: X,
     output: eval(X),
   },
+  {
+    sourceCode: `[...$]`,
+    input: [1, -1],
+    output: [1, -1],
+  },
 ];
 
 describe('interpreter', () => {
