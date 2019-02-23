@@ -3,57 +3,57 @@
 export type CodeLocationType = {|
   column: number,
   line: number,
-  offset: number,
+  offset: number
 |};
 
 export type NodeLocationType = {|
   end?: CodeLocationType,
-  start?: CodeLocationType,
+  start?: CodeLocationType
 |};
 
 export type ParserReturnValueType = {|
   status?: boolean,
   index?: {|
     line: number,
-    column: number,
+    column: number
   |},
   expected?: Array<SourceCodeType>, // eslint-disable-line no-use-before-define
-  value: NodeType, // eslint-disable-line no-use-before-define
+  value: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type PrimitiveNodeType = {|
   name: 'primitive',
   value: string,
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type VariableNodeType = {|
   name: 'variable',
-  value: string,
+  value: string
 |};
 
 export type IdentifierNodeType = {|
   name: 'identifier',
-  value: string,
+  value: string
 |};
 
 export type TupleNodeType = {|
   name: 'tuple',
-  value: [NodeType, NodeType], // eslint-disable-line no-use-before-define
+  value: [NodeType, NodeType] // eslint-disable-line no-use-before-define
 |};
 
 export type InputPropNodeType = {|
   name: 'inputProp',
-  value: string,
+  value: string
 |};
 
 export type SimpleListSegmentType = {|
   name: 'simpleList',
-  value: Array<NodeType>, // eslint-disable-line no-use-before-define
+  value: Array<NodeType> // eslint-disable-line no-use-before-define
 |};
 export type SpreadListSegmentType = {|
   name: 'spread',
-  value: NodeType, // eslint-disable-line no-use-before-define
+  value: NodeType // eslint-disable-line no-use-before-define
 |};
 export type CollectionCoreSegmentType =
   | SimpleListSegmentType
@@ -62,31 +62,31 @@ export type CollectionCoreValueType = Array<CollectionCoreSegmentType>;
 
 export type CollectionCoreNodeType = {|
   name: 'collectionCore',
-  value: CollectionCoreValueType,
+  value: CollectionCoreValueType
 |};
 
 export type ListNodeType = {|
   name: 'list',
   value: CollectionCoreValueType, // eslint-disable-line no-use-before-define
-  ...NodeLocationType,
+  ...NodeLocationType
 |};
 
 export type ParenthesesNodeType = {|
   name: 'parentheses',
-  value: NodeType, // eslint-disable-line no-use-before-define
+  value: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type ObjectNodeType = {|
   name: 'object',
-  value: CollectionCoreValueType, // eslint-disable-line no-use-before-define
+  value: CollectionCoreValueType // eslint-disable-line no-use-before-define
 |};
 
 export type PipeNodeType = {|
   name: 'pipe',
   value: {|
     left: NodeType, // eslint-disable-line no-use-before-define
-    right: NodeType, // eslint-disable-line no-use-before-define
-  |},
+    right: NodeType // eslint-disable-line no-use-before-define
+  |}
 |};
 
 export type ValuePropNodeType = {|
@@ -94,26 +94,26 @@ export type ValuePropNodeType = {|
   value: {
     optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
-    right: string,
-  },
+    right: string
+  }
 |};
 
 export type FunctionCallNodeType = {|
   name: 'functionCall',
   value: {
     left: IdentifierNodeType,
-    right: ?NodeType, // eslint-disable-line no-use-before-define
-  },
+    right: ?NodeType // eslint-disable-line no-use-before-define
+  }
 |};
 
 export type LambdaNodeValueType = {|
   variable: string,
-  definition: NodeType, // eslint-disable-line no-use-before-define
+  definition: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type LambdaNodeType = {|
   name: 'lambda',
-  value: LambdaNodeValueType,
+  value: LambdaNodeValueType
 |};
 
 export type ProjectionNodeType = {|
@@ -121,9 +121,9 @@ export type ProjectionNodeType = {|
   value: {
     optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
-    right: ListNodeType, // eslint-disable-line no-use-before-define
+    right: ListNodeType // eslint-disable-line no-use-before-define
   },
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type ObjectProjectionNodeType = {|
@@ -131,46 +131,46 @@ export type ObjectProjectionNodeType = {|
   value: {
     optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
-    right: Array<string>, // eslint-disable-line no-use-before-define
+    right: Array<string> // eslint-disable-line no-use-before-define
   },
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type OperationNodeType = {|
   name: 'binaryOperation',
   value: Array<NodeType>, // eslint-disable-line no-use-before-define
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type UnaryOperationNodeType = {|
   name: 'unaryOperation',
   value: {
     operator: PrimitiveNodeType,
-    operand: NodeType, // eslint-disable-line no-use-before-define
+    operand: NodeType // eslint-disable-line no-use-before-define
   },
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type TernaryNodeValueType = {|
   left: NodeType, // eslint-disable-line no-use-before-define
   middle: NodeType, // eslint-disable-line no-use-before-define
-  right: NodeType, // eslint-disable-line no-use-before-define
+  right: NodeType // eslint-disable-line no-use-before-define
 |};
 
 export type TernaryNodeType = {|
   name: 'ternary',
   value: TernaryNodeValueType,
-  ...?NodeLocationType,
+  ...?NodeLocationType
 |};
 
 export type AssignmentNodeValueType = {|
   program: NodeType, // eslint-disable-line no-use-before-define
-  assignments: AssignmentsType, // eslint-disable-line no-use-before-define
+  assignments: AssignmentsType // eslint-disable-line no-use-before-define
 |};
 
 export type AssignmentNodeType = {|
   name: 'assignment',
-  value: AssignmentNodeValueType,
+  value: AssignmentNodeValueType
 |};
 
 export type NodeType =
@@ -183,6 +183,7 @@ export type NodeType =
   | ParenthesesNodeType
   | ObjectNodeType
   | ValuePropNodeType
+  | ObjectProjectionNodeType
   | FunctionCallNodeType
   | LambdaNodeType
   | OperationNodeType

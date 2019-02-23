@@ -1,8 +1,8 @@
 // @flow
 
-import projection from '../projection';
-import objectProjection from '../objectProjection';
-import type {ProjectionNodeType} from '../../types';
+import projection from '../projection'
+import objectProjection from '../objectProjection'
+import type { ProjectionNodeType } from '../../types'
 
 const example = (optional: boolean): ProjectionNodeType => ({
   name: 'projection',
@@ -10,33 +10,33 @@ const example = (optional: boolean): ProjectionNodeType => ({
     optional,
     left: {
       name: 'inputProp',
-      value: '.foo',
+      value: '.foo'
     },
     right: {
       name: 'list',
-      value: [{name: 'simpleList', value: []}],
-    },
-  },
-});
+      value: [{ name: 'simpleList', value: [] }]
+    }
+  }
+})
 
 describe('projection generator', () => {
   it('.foo.bar', () => {
     const fakeGenerator = (
-      {name}, // eslint-disable-line flowtype/require-parameter-type
-    ): string => (name === 'inputProp' ? 'input.foo' : '[4]');
+      { name } // eslint-disable-line flowtype/require-parameter-type
+    ): string => (name === 'inputProp' ? 'input.foo' : '[4]')
     expect(projection(fakeGenerator)(example(false))).toEqual(
-      '_.projection(input.foo, [4], false)',
-    );
-  });
+      '_.projection(input.foo, [4], false)'
+    )
+  })
 
   it('.foo?.bar', () => {
     const fakeGenerator = (
-      {name}, // eslint-disable-line flowtype/require-parameter-type
-    ): string => (name === 'inputProp' ? 'input.foo' : '[4]');
+      { name } // eslint-disable-line flowtype/require-parameter-type
+    ): string => (name === 'inputProp' ? 'input.foo' : '[4]')
     expect(projection(fakeGenerator)(example(true))).toEqual(
-      '_.projection(input.foo, [4], true)',
-    );
-  });
+      '_.projection(input.foo, [4], true)'
+    )
+  })
 
   it('object projection', () => {
     const tree = {
@@ -51,24 +51,24 @@ describe('projection generator', () => {
               value: [
                 {
                   name: 'primitive',
-                  value: '3',
+                  value: '3'
                 },
                 {
                   name: 'primitive',
-                  value: '2',
-                },
-              ],
-            },
-          ],
+                  value: '2'
+                }
+              ]
+            }
+          ]
         },
-        right: ['foo', 'bar', 'baz'],
-      },
-    };
+        right: ['foo', 'bar', 'baz']
+      }
+    }
 
-    const fakeGenerator = (): string => 'input.foo';
+    const fakeGenerator = (): string => 'input.foo'
 
     expect(objectProjection(fakeGenerator)(tree)).toEqual(
-      '_.__objectProjection__(input.foo, ["foo","bar","baz"], false)',
-    );
-  });
-});
+      '_.__objectProjection__(input.foo, ["foo","bar","baz"], false)'
+    )
+  })
+})
