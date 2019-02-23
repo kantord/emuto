@@ -1,57 +1,111 @@
-import parser from '../projection'
+import parser from '../projection';
 
 describe('projection parser', () => {
   it('parses [5, 6, 7][5]', () => {
-    expect(parser.parse('[5, 6, 7][5]').status).toBe(true)
-  })
+    expect(parser.parse('[5, 6, 7][5]').status).toBe(true);
+  });
 
   it('parses null', () => {
-    expect(parser.parse('null').status).toBe(true)
-  })
+    expect(parser.parse('null').status).toBe(true);
+  });
 
   it('parses {"foo": "bar"}["foo"]', () => {
-    expect(parser.parse('{"foo": "bar"}["foo"]').status).toBe(true)
-  })
+    expect(parser.parse('{"foo": "bar"}["foo"]').status).toBe(true);
+  });
+
+  it('parses {"foo": "bar"}{"foo"}', () => {
+    expect(parser.parse('{"foo": "bar"}{"foo"}').status).toBe(true);
+  });
+
+  it('parses {"foo": "bar"}{"foo", bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{"foo", bar}').status).toBe(true);
+  });
+
+  it('parses {"foo": "bar"}{baz, foo,bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{baz, foo,bar}').status).toBe(true);
+  });
+
+  it('parses {"foo": "bar"}{baz, foo,bar} (multiline)', () => {
+    expect(
+      parser.parse(`{"foo": "bar"}{
+          baz
+          foo
+          bar
+      }`).status,
+    ).toBe(true);
+  });
 
   it('parses {"foo": "bar"}["foo"]', () => {
-    expect(parser.parse('{"foo": "bar"}["foo", -3]').status).toBe(true)
-  })
+    expect(parser.parse('{"foo": "bar"}["foo", -3]').status).toBe(true);
+  });
 
   it('parses [5, 6, 7]  [5]', () => {
-    expect(parser.parse('[5, 6, 7]  [5:2, 4]').status).toBe(true)
-  })
+    expect(parser.parse('[5, 6, 7]  [5:2, 4]').status).toBe(true);
+  });
 
   it('parses [5, 6, 7]?[5]', () => {
-    expect(parser.parse('[5, 6, 7]?[5]').status).toBe(true)
-  })
+    expect(parser.parse('[5, 6, 7]?[5]').status).toBe(true);
+  });
 
   it('parses [5, 6, 7]?.foo?.bar', () => {
-    expect(parser.parse('[5, 6, 7]?.foo?.bar').status).toBe(true)
-  })
+    expect(parser.parse('[5, 6, 7]?.foo?.bar').status).toBe(true);
+  });
 
   it('returns correct value', () => {
     expect(parser.parse('false').value).toMatchObject({
       name: 'primitive',
-      value: 'false'
-    })
-  })
+      value: 'false',
+    });
+  });
 
   it('returns correct value', () => {
     expect(parser.parse('$?.foo').value).toMatchObject({
       value: {
         optional: true,
-        right: '.foo'
-      }
-    })
-  })
+        right: '.foo',
+      },
+    });
+  });
 
   it('returns correct value', () => {
     expect(parser.parse('$?[]').value).toMatchObject({
       value: {
-        optional: true
-      }
-    })
-  })
+        optional: true,
+      },
+    });
+  });
+
+  it('returns correct value - object projection', () => {
+    expect(
+      parser.parse(`[3, 2]{foo,"bar"
+          baz
+          }`).value,
+    ).toMatchObject({
+      name: 'objectProjection',
+      value: {
+        optional: false,
+        left: {
+          name: 'list',
+          value: [
+            {
+              name: 'simpleList',
+              value: [
+                {
+                  name: 'primitive',
+                  value: '3',
+                },
+                {
+                  name: 'primitive',
+                  value: '2',
+                },
+              ],
+            },
+          ],
+        },
+        right: ['foo', 'bar', 'baz'],
+      },
+    });
+  });
 
   it('returns correct value', () => {
     expect(parser.parse('[3, 2][3]').value).toMatchObject({
@@ -66,15 +120,15 @@ describe('projection parser', () => {
               value: [
                 {
                   name: 'primitive',
-                  value: '3'
+                  value: '3',
                 },
                 {
                   name: 'primitive',
-                  value: '2'
-                }
-              ]
-            }
-          ]
+                  value: '2',
+                },
+              ],
+            },
+          ],
         },
         right: {
           name: 'list',
@@ -84,13 +138,13 @@ describe('projection parser', () => {
               value: [
                 {
                   name: 'primitive',
-                  value: '3'
-                }
-              ]
-            }
-          ]
-        }
-      }
-    })
-  })
-})
+                  value: '3',
+                },
+              ],
+            },
+          ],
+        },
+      },
+    });
+  });
+});
