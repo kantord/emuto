@@ -9,16 +9,18 @@ import type {
   ListNodeType,
   ProjectionNodeType,
   ObjectProjectionNodeType,
+  SimpleObjectProjectionItemType,
   ValuePropNodeType,
   ProjectableNodeType,
   NodeType,
   ObjectProjectionItemType
 } from '../types'
 
+type WrappedObjectProjectionNodeType = {name: 'objectProjection', value: Array<ObjectProjectionItemType>};
 type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
   | {name: 'valueProp', value: string}
-  | {name: 'objectProjection', value: Array<ObjectProjectionItemType>};
+    | WrappedObjectProjectionNodeType;
 
 type WrappedProjectionNodeWithOptionalType =
   | {
@@ -84,23 +86,32 @@ const PropertyParser = P.regexp(/\??(\.[$A-Z_][0-9A-Z_$]*)+/i).map(
   packProperty
 )
 
-const ObjectProjectionParser = P.sepBy(
-  P.alt(
+const ObjectProjectionParser = P.lazy((): mixed => {
+  const SimpleItemParser = P.alt(
     P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
     IdentifierParser.map(({ value }: {value: string}): string => value)
   ).map((value: string): ObjectProjectionItemType => ({
     type: 'SimpleItem',
     value
-  })),
-  P.string(',')
-    .atMost(1)
-    .trim(crap)
-)
-  .wrap(P.string('{').then(crap), crap.then(P.string('}')))
-  .map((value: Array<ObjectProjectionItemType>): WrappedProjectionNodeType => ({
-    name: 'objectProjection',
-    value
   }))
+  const RecursiveItemParser = P.seq(SimpleItemParser, crap.then(ObjectProjectionParser.atMost(1)))
+    .map((segments: [SimpleObjectProjectionItemType, [WrappedObjectProjectionNodeType]]): ObjectProjectionItemType => segments[1].length === 0 ? segments[0] : {
+      type: 'RecursiveItem',
+      name: segments[0].value,
+      value: segments[1][0]
+    })
+  return P.sepBy(
+    RecursiveItemParser,
+    P.string(',')
+      .atMost(1)
+      .trim(crap)
+  )
+    .wrap(P.string('{').then(crap), crap.then(P.string('}')))
+    .map((value: Array<ObjectProjectionItemType>): WrappedProjectionNodeType => ({
+      name: 'objectProjection',
+      value
+    }))
+})
 
 const unpack = ([projectable, projections]: [
   ProjectableNodeType,

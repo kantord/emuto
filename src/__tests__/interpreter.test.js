@@ -434,6 +434,52 @@ const tests = [
         b
     }`,
     output: { b: 'b' }
+  },
+  {
+    sourceCode: `$ {
+            user {
+                name {
+                    firstName
+                }
+                city
+                email
+            }
+
+            post {
+                content{ long }
+            }
+        }`,
+    input: {
+      user: {
+        name: {
+          firstName: 'John',
+          lastName: 'Doe'
+        },
+        city: 'London',
+        gender: 'male'
+      },
+      post: {
+        title: 'foo bar',
+        content: {
+          'short': 'baz',
+          'long': 'bazzzz'
+        }
+      }
+    },
+    output: {
+      user: {
+        name: {
+          firstName: 'John'
+        },
+        city: 'London',
+        email: null
+      },
+      post: {
+        content: {
+          'long': 'bazzzz'
+        }
+      }
+    }
   }
 ]
 

@@ -126,9 +126,17 @@ export type ProjectionNodeType = {|
   ...?NodeLocationType
 |};
 
-export type ObjectProjectionItemType = {|
+export type SimpleObjectProjectionItemType = {|
     type: 'SimpleItem',
     value: string
+|};
+export type ObjectProjectionItemType = SimpleObjectProjectionItemType | {|
+    type: 'RecursiveItem',
+    name: string,
+    value: {
+        name: 'objectProjection',
+        value: Array<ObjectProjectionItemType> // eslint-disable-line no-use-before-define
+    }
 |};
 
 export type ObjectProjectionNodeType = {|

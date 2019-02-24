@@ -25,18 +25,20 @@ const {
 
 describe('built ins', () => {
   describe('__objectProjection__', () => {
+    // eslint-disable-next-line
+    const _ = texts => texts.map(text => ({ type: 'SimpleItem', value: text }))
     it('empty object empty projection', () => {
       expect(__objectProjection__({}, [], false)).toEqual({})
     })
 
     it('empty object non-empty projection', () => {
-      expect(__objectProjection__({}, ['foo'], false)).toEqual({
+      expect(__objectProjection__({}, _(['foo']), false)).toEqual({
         foo: null
       })
     })
 
     it('non-empty object non-empty projection', () => {
-      expect(__objectProjection__({ foo: 3 }, ['foo'], false)).toEqual({
+      expect(__objectProjection__({ foo: 3 }, _(['foo']), false)).toEqual({
         foo: 3
       })
     })
@@ -45,7 +47,7 @@ describe('built ins', () => {
       expect(
         __objectProjection__(
           { foo: 'f', bar: '2' },
-          ['foo', 'bar', 'baz'],
+          _(['foo', 'bar', 'baz']),
           false
         )
       ).toEqual({
@@ -53,6 +55,56 @@ describe('built ins', () => {
         bar: '2',
         baz: null
       })
+    })
+
+    it('nesting nonexistent data', () => {
+      expect(__objectProjection__({}, [{ type: 'RecursiveItem',
+        name: 'foo',
+        value: {
+          name: 'objectProjection',
+          value: []
+        } }], false)).toEqual({
+        foo: null
+      })
+    })
+
+    it('nesting example', () => {
+      expect(
+        __objectProjection__(
+          { h: 'e',
+            iii: '4',
+            foo: {
+              bar: 4,
+              baz: {
+                x: 'foo',
+                y: -3
+              }
+            } },
+          [
+
+            { type: 'SimpleItem', value: 'iii' },
+            { type: 'RecursiveItem',
+              name: 'foo',
+              value: { name: 'objectProjection',
+                value: [
+                  { type: 'SimpleItem', value: 'bar' },
+                  { type: 'RecursiveItem',
+                    name: 'baz',
+                    value: { name: 'objectProjection',
+                      value: [
+                        { type: 'SimpleItem', value: 'x' }
+                      ] } }
+                ] } }],
+
+          false
+        )
+      ).toEqual({ iii: '4',
+        foo: {
+          bar: 4,
+          baz: {
+            x: 'foo'
+          }
+        } })
     })
   })
   describe('projection', () => {
