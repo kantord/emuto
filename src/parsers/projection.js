@@ -2,10 +2,13 @@
 
 import P from 'parsimmon'
 import crap from './crap'
+import { StringParserRegExp } from './primitive'
+import IdentifierParser from './identifier'
 
 import type {
   ListNodeType,
   ProjectionNodeType,
+  ObjectProjectionNodeType,
   ValuePropNodeType,
   ProjectableNodeType,
   NodeType
@@ -13,7 +16,8 @@ import type {
 
 type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
-  | {name: 'valueProp', value: string};
+  | {name: 'valueProp', value: string}
+  | {name: 'objectProjection', value: Array<string>};
 
 type WrappedProjectionNodeWithOptionalType =
   | {
@@ -21,7 +25,8 @@ type WrappedProjectionNodeWithOptionalType =
       value: {name: 'projection', value: ListNodeType},
       optional: boolean
     }
-  | {name: 'valueProp', value: string, optional: boolean};
+  | {name: 'valueProp', value: string, optional: boolean}
+  | {name: 'objectProjection', value: Array<string>, optional: boolean};
 
 const packList = (x: ListNodeType): WrappedProjectionNodeType => ({
   value: x,
@@ -34,20 +39,24 @@ const packProperty = (x: string): WrappedProjectionNodeType => ({
 })
 
 const unpackOne = (
-  projectable: ProjectableNodeType | ProjectionNodeType | ValuePropNodeType,
+  projectable: ProjectableNodeType | ProjectionNodeType | ValuePropNodeType | ObjectProjectionNodeType,
   projection: WrappedProjectionNodeWithOptionalType
-): ProjectionNodeType | ValuePropNodeType | ProjectableNodeType =>
-  projection.name === 'projection'
-    ? {
-      name: 'projection',
-      value: {
-        optional: projection.optional,
-        left: projectable,
-        right: projection.value.value
+): | ProjectionNodeType
+  | ValuePropNodeType
+  | ProjectableNodeType
+  | ObjectProjectionNodeType => {
+  switch (projection.name) {
+    case 'projection':
+      return {
+        name: 'projection',
+        value: {
+          optional: projection.optional,
+          left: projectable,
+          right: projection.value.value
+        }
       }
-    }
-    : projection.name === 'valueProp'
-      ? {
+    case 'valueProp':
+      return {
         name: 'valueProp',
         value: {
           optional: projection.value[0] === '?',
@@ -58,12 +67,22 @@ const unpackOne = (
                 : projection.value
         }
       }
-      : projectable
+    default :
+      return {
+        name: 'objectProjection',
+        value: {
+          left: projectable,
+          optional: false,
+          right: projection.value
+        }
+      }
+  }
+}
 
 const unpack = ([projectable, projections]: [
   ProjectableNodeType,
   Array<WrappedProjectionNodeWithOptionalType>
-]): ProjectionNodeType | ValuePropNodeType | ProjectableNodeType =>
+]): ProjectionNodeType | ValuePropNodeType | ProjectableNodeType | ObjectProjectionNodeType =>
   projections.reduce(unpackOne, projectable)
 
 const ProjectionParser = P.lazy((): mixed => {
@@ -83,9 +102,24 @@ const ProjectionParser = P.lazy((): mixed => {
     packProperty
   )
 
+  const ObjectProjectionParser = P.sepBy(
+    P.alt(
+      P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
+      IdentifierParser.map(({ value }: {value: string}): string => value)
+    ),
+    P.string(',')
+      .atMost(1)
+      .trim(crap)
+  )
+    .wrap(P.string('{').then(crap), crap.then(P.string('}')))
+    .map((value: Array<string>): WrappedProjectionNodeType => ({
+      name: 'objectProjection',
+      value
+    }))
+
   return P.seq(
     ProjectableParser.skip(crap),
-    P.alt(ProjectionParser, PropertyParser)
+    P.alt(ProjectionParser, PropertyParser, ObjectProjectionParser)
       .skip(crap)
       .many()
   )

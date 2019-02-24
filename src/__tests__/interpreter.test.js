@@ -428,6 +428,12 @@ const tests = [
   {
     sourceCode: `[ [  [ [  [ ] ]]]  ]`,
     output: [[[[[]]]]]
+  },
+  {
+    sourceCode: `{"a": [2], "b": "b"} {
+        b
+    }`,
+    output: { b: 'b' }
   }
 ]
 

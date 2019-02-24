@@ -60,6 +60,23 @@ export default {
       ? handleOptional(left, (): mixed => handleProjection(left)(right)[0])
       : handleOptional(left, (): mixed => handleProjection(left)(right)),
 
+  __objectProjection__: (
+    left: ProjectableType,
+    right: ProjectionRulesType,
+    optinal: boolean
+  ): mixed => {
+    const newObject = {}
+    right.forEach((key: string) => {
+      if (key in left) {
+        newObject[key] = left[key]
+      } else {
+        newObject[key] = null
+      }
+    })
+
+    return newObject
+  },
+
   split: (separator: string): (string => Array<string>) => (
     input: string
   ): Array<string> => input.split(separator),

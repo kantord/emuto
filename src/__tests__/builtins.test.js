@@ -19,10 +19,42 @@ const {
   __opt__,
   __spread__,
   has,
-  error
+  error,
+  __objectProjection__
 } = builtIns
 
 describe('built ins', () => {
+  describe('__objectProjection__', () => {
+    it('empty object empty projection', () => {
+      expect(__objectProjection__({}, [], false)).toEqual({})
+    })
+
+    it('empty object non-empty projection', () => {
+      expect(__objectProjection__({}, ['foo'], false)).toEqual({
+        foo: null
+      })
+    })
+
+    it('non-empty object non-empty projection', () => {
+      expect(__objectProjection__({ foo: 3 }, ['foo'], false)).toEqual({
+        foo: 3
+      })
+    })
+
+    it('more complex example', () => {
+      expect(
+        __objectProjection__(
+          { foo: 'f', bar: '2' },
+          ['foo', 'bar', 'baz'],
+          false
+        )
+      ).toEqual({
+        foo: 'f',
+        bar: '2',
+        baz: null
+      })
+    })
+  })
   describe('projection', () => {
     it('handles non-negative numbers', () => {
       expect(projection([1, 2], [1], false)).toEqual(2)

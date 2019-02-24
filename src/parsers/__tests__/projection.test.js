@@ -13,6 +13,28 @@ describe('projection parser', () => {
     expect(parser.parse('{"foo": "bar"}["foo"]').status).toBe(true)
   })
 
+  it('parses {"foo": "bar"}{"foo"}', () => {
+    expect(parser.parse('{"foo": "bar"}{"foo"}').status).toBe(true)
+  })
+
+  it('parses {"foo": "bar"}{"foo", bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{"foo", bar}').status).toBe(true)
+  })
+
+  it('parses {"foo": "bar"}{baz, foo,bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{baz, foo,bar}').status).toBe(true)
+  })
+
+  it('parses {"foo": "bar"}{baz, foo,bar} (multiline)', () => {
+    expect(
+      parser.parse(`{"foo": "bar"}{
+          baz
+          foo
+          bar
+      }`).status
+    ).toBe(true)
+  })
+
   it('parses {"foo": "bar"}["foo"]', () => {
     expect(parser.parse('{"foo": "bar"}["foo", -3]').status).toBe(true)
   })
@@ -49,6 +71,38 @@ describe('projection parser', () => {
     expect(parser.parse('$?[]').value).toMatchObject({
       value: {
         optional: true
+      }
+    })
+  })
+
+  it('returns correct value - object projection', () => {
+    expect(
+      parser.parse(`[3, 2]{foo,"bar"
+          baz
+          }`).value
+    ).toMatchObject({
+      name: 'objectProjection',
+      value: {
+        optional: false,
+        left: {
+          name: 'list',
+          value: [
+            {
+              name: 'simpleList',
+              value: [
+                {
+                  name: 'primitive',
+                  value: '3'
+                },
+                {
+                  name: 'primitive',
+                  value: '2'
+                }
+              ]
+            }
+          ]
+        },
+        right: ['foo', 'bar', 'baz']
       }
     })
   })

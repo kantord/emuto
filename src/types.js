@@ -126,6 +126,16 @@ export type ProjectionNodeType = {|
   ...?NodeLocationType
 |};
 
+export type ObjectProjectionNodeType = {|
+  name: 'objectProjection',
+  value: {
+    optional: boolean,
+    left: NodeType, // eslint-disable-line no-use-before-define
+    right: Array<string> // eslint-disable-line no-use-before-define
+  },
+  ...?NodeLocationType
+|};
+
 export type OperationNodeType = {|
   name: 'binaryOperation',
   value: Array<NodeType>, // eslint-disable-line no-use-before-define
@@ -173,6 +183,7 @@ export type NodeType =
   | ParenthesesNodeType
   | ObjectNodeType
   | ValuePropNodeType
+  | ObjectProjectionNodeType
   | FunctionCallNodeType
   | LambdaNodeType
   | OperationNodeType

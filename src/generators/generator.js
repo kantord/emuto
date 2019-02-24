@@ -8,6 +8,7 @@ import list from './list'
 import parentheses from './parentheses'
 import object from './object'
 import projection from './projection'
+import objectProjection from './objectProjection'
 import pipe from './pipe'
 import functionCall from './functionCall'
 import binaryOperator from './binaryOperator'
@@ -40,6 +41,8 @@ const Generator = (node: NodeType): GeneratedCodeType => {
       return parentheses(node)
     case 'projection':
       return projection(Generator)(node)
+    case 'objectProjection':
+      return objectProjection(Generator)(node)
     case 'functionCall':
       return functionCall(Generator)(node)
     case 'lambda':
