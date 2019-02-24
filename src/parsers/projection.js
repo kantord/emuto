@@ -14,10 +14,12 @@ import type {
   NodeType
 } from '../types'
 
+type ObjectProjectionItemType = string;
+
 type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
   | {name: 'valueProp', value: string}
-  | {name: 'objectProjection', value: Array<string>};
+  | {name: 'objectProjection', value: Array<ObjectProjectionItemType>};
 
 type WrappedProjectionNodeWithOptionalType =
   | {
