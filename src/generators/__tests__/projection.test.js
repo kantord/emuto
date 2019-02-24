@@ -71,7 +71,40 @@ describe('projection generator', () => {
     const fakeGenerator = (): string => 'input.foo'
 
     expect(objectProjection(fakeGenerator)(tree)).toEqual(
-      '_.__objectProjection__(input.foo, ["foo","bar","baz"], false)'
+      '_.__objectProjection__(input.foo, [{"type":"SimpleItem","value":"foo"},{"type":"SimpleItem","value":"bar"},{"type":"SimpleItem","value":"baz"}], false)'
+    )
+  })
+
+  it('object projection - nested', () => {
+    const tree = {
+      name: 'objectProjection',
+      value: {
+        optional: false,
+        left: {
+          name: 'variable',
+          value: '$'
+        },
+        right: [
+          { type: 'RecursiveItem',
+            name: 'foo',
+            value: { name: 'objectProjection',
+              value: [
+                { type: 'SimpleItem', value: 'bar' },
+                { type: 'RecursiveItem',
+                  name: 'baz',
+                  value: { name: 'objectProjection',
+                    value: [
+                      { type: 'SimpleItem', value: 'x' }
+                    ] } }
+              ] } }
+        ]
+      }
+    }
+
+    const fakeGenerator = (): string => 'input.foo'
+
+    expect(objectProjection(fakeGenerator)(tree)).toEqual(
+      '_.__objectProjection__(input.foo, [{"type":"RecursiveItem","name":"foo","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"bar"},{"type":"RecursiveItem","name":"baz","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"x"}]}}]}}], false)'
     )
   })
 })

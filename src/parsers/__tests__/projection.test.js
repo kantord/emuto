@@ -1,6 +1,10 @@
 import parser from '../projection'
 
 describe('projection parser', () => {
+  it('does not parse incorrect nesting', () => {
+    expect(parser.parse('{}{foo{bar}{baz}}').status).toBe(false)
+  })
+
   it('parses [5, 6, 7][5]', () => {
     expect(parser.parse('[5, 6, 7][5]').status).toBe(true)
   })
@@ -25,12 +29,30 @@ describe('projection parser', () => {
     expect(parser.parse('{"foo": "bar"}{baz, foo,bar}').status).toBe(true)
   })
 
+  it('parses {"foo": "bar"}{baz, foo{one, two}, bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{baz, foo{one, two}, bar}').status).toBe(true)
+  })
+
   it('parses {"foo": "bar"}{baz, foo,bar} (multiline)', () => {
     expect(
       parser.parse(`{"foo": "bar"}{
           baz
           foo
           bar
+      }`).status
+    ).toBe(true)
+  })
+
+  it('parses multiline nested example', () => {
+    expect(
+      parser.parse(`\${
+        foo {
+            bar {}
+            baz {
+                one { two, three { four} }
+                baz
+            }
+        }
       }`).status
     ).toBe(true)
   })
@@ -109,6 +131,10 @@ describe('projection parser', () => {
         ]
       }
     })
+  })
+
+  it('returns correct value - recursive object projection', () => {
+    expect(parser.parse('{}{ foo { bar, baz {x} }}').value).toMatchObject({ 'name': 'objectProjection', 'value': { 'left': { 'end': { 'column': 3, 'line': 1, 'offset': 2 }, 'name': 'object', 'start': { 'column': 1, 'line': 1, 'offset': 0 }, 'value': [{ 'end': { 'column': 2, 'line': 1, 'offset': 1 }, 'name': 'simpleList', 'start': { 'column': 2, 'line': 1, 'offset': 1 }, 'value': [] }] }, 'optional': false, 'right': [{ 'name': 'foo', 'type': 'RecursiveItem', 'value': { 'name': 'objectProjection', 'value': [{ 'type': 'SimpleItem', 'value': 'bar' }, { 'name': 'baz', 'type': 'RecursiveItem', 'value': { 'name': 'objectProjection', 'value': [{ 'type': 'SimpleItem', 'value': 'x' }] } }] } }] } })
   })
 
   it('returns correct value', () => {

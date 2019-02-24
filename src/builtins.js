@@ -2,10 +2,14 @@
 
 import combinations from 'combinations-generator'
 import { product } from 'cartesian-product-generator'
+import type { ObjectProjectionItemType } from './types'
 
 type ProjectableType = Array<mixed> & {[string]: mixed};
 type ProjectionRuleType = number & string;
 type ProjectionRulesType = Array<ProjectionRuleType>;
+type ProjectableObjectType = {
+    [string]: ProjectableObjectType
+};
 
 const convertUndefined = (value: ?mixed): mixed | null =>
   value === undefined ? null : value
@@ -23,6 +27,37 @@ const handleProjectionItem = (
     : Array.isArray(projectionRule)
       ? convertUndefined(projectable.slice(...projectionRule))
       : convertUndefined(projectable[projectionRule])
+
+const __objectProjection__ = (
+  left: ProjectableObjectType,
+  right: Array<ObjectProjectionItemType>,
+  optional: boolean
+): mixed => {
+  const newObject = {}
+  right.forEach((rule: ObjectProjectionItemType) => {
+    let key
+    if (rule.type === 'SimpleItem') {
+      key = rule.value
+      if (key in left) {
+        newObject[key] = left[key]
+      } else {
+        newObject[key] = null
+      }
+    }
+
+    if (rule.type === 'RecursiveItem') {
+      key = rule.name
+      const rules = rule.value.value
+      if (key in left) {
+        newObject[key] = __objectProjection__(left[key], rules, false)
+      } else {
+        newObject[key] = null
+      }
+    }
+  })
+
+  return newObject
+}
 
 const handleProjection = (
   projectable: ProjectableType
@@ -60,22 +95,7 @@ export default {
       ? handleOptional(left, (): mixed => handleProjection(left)(right)[0])
       : handleOptional(left, (): mixed => handleProjection(left)(right)),
 
-  __objectProjection__: (
-    left: ProjectableType,
-    right: ProjectionRulesType,
-    optinal: boolean
-  ): mixed => {
-    const newObject = {}
-    right.forEach((key: string) => {
-      if (key in left) {
-        newObject[key] = left[key]
-      } else {
-        newObject[key] = null
-      }
-    })
-
-    return newObject
-  },
+  __objectProjection__,
 
   split: (separator: string): (string => Array<string>) => (
     input: string

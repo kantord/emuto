@@ -1,6 +1,6 @@
 // @flow
 
-import type { ObjectProjectionNodeType, GeneratedCodeType, NodeType, ObjectProjectionItemType } from '../types'
+import type { ObjectProjectionNodeType, GeneratedCodeType, NodeType } from '../types'
 
 export default (
   Generator: NodeType => GeneratedCodeType
@@ -8,5 +8,4 @@ export default (
   value
 }: ObjectProjectionNodeType): GeneratedCodeType =>
   `_.__objectProjection__(${Generator(value.left)}, ${JSON.stringify(
-    value.right.map(({ value }: ObjectProjectionItemType): string => value)
-  )}, ${value.optional ? 'true' : 'false'})`
+    value.right)}, ${value.optional ? 'true' : 'false'})`
