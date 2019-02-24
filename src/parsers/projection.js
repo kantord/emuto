@@ -11,10 +11,9 @@ import type {
   ObjectProjectionNodeType,
   ValuePropNodeType,
   ProjectableNodeType,
-  NodeType
+  NodeType,
+  ObjectProjectionItemType
 } from '../types'
-
-type ObjectProjectionItemType = string;
 
 type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
@@ -28,7 +27,7 @@ type WrappedProjectionNodeWithOptionalType =
       optional: boolean
     }
   | {name: 'valueProp', value: string, optional: boolean}
-  | {name: 'objectProjection', value: Array<string>, optional: boolean};
+  | {name: 'objectProjection', value: Array<ObjectProjectionItemType>, optional: boolean};
 
 const packList = (x: ListNodeType): WrappedProjectionNodeType => ({
   value: x,
@@ -89,13 +88,16 @@ const ObjectProjectionParser = P.sepBy(
   P.alt(
     P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
     IdentifierParser.map(({ value }: {value: string}): string => value)
-  ),
+  ).map((value: string): ObjectProjectionItemType => ({
+    type: 'SimpleItem',
+    value
+  })),
   P.string(',')
     .atMost(1)
     .trim(crap)
 )
   .wrap(P.string('{').then(crap), crap.then(P.string('}')))
-  .map((value: Array<string>): WrappedProjectionNodeType => ({
+  .map((value: Array<ObjectProjectionItemType>): WrappedProjectionNodeType => ({
     name: 'objectProjection',
     value
   }))
