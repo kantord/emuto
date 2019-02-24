@@ -126,12 +126,17 @@ export type ProjectionNodeType = {|
   ...?NodeLocationType
 |};
 
+export type ObjectProjectionItemType = {|
+    type: 'SimpleItem',
+    value: string
+|};
+
 export type ObjectProjectionNodeType = {|
   name: 'objectProjection',
   value: {
     optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
-    right: Array<string> // eslint-disable-line no-use-before-define
+    right: Array<ObjectProjectionItemType> // eslint-disable-line no-use-before-define
   },
   ...?NodeLocationType
 |};

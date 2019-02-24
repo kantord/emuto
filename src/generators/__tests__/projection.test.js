@@ -2,7 +2,7 @@
 
 import projection from '../projection'
 import objectProjection from '../objectProjection'
-import type { ProjectionNodeType } from '../../types'
+import type { ProjectionNodeType, ObjectProjectionItemType } from '../../types'
 
 const example = (optional: boolean): ProjectionNodeType => ({
   name: 'projection',
@@ -61,7 +61,10 @@ describe('projection generator', () => {
             }
           ]
         },
-        right: ['foo', 'bar', 'baz']
+        right: ['foo', 'bar', 'baz'].map((item: string): ObjectProjectionItemType => ({
+          type: 'SimpleItem',
+          value: item
+        }))
       }
     }
 

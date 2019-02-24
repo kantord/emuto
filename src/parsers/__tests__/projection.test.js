@@ -102,7 +102,11 @@ describe('projection parser', () => {
             }
           ]
         },
-        right: ['foo', 'bar', 'baz']
+        right: [
+          { type: 'SimpleItem', value: 'foo' },
+          { type: 'SimpleItem', value: 'bar' },
+          { type: 'SimpleItem', value: 'baz' }
+        ]
       }
     })
   })

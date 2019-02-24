@@ -4078,7 +4078,10 @@ Object {
       },
       "optional": false,
       "right": Array [
-        "b",
+        Object {
+          "type": "SimpleItem",
+          "value": "b",
+        },
       ],
     },
   },
