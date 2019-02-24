@@ -79,16 +79,34 @@ const unpackOne = (
   }
 }
 
+const PropertyParser = P.regexp(/\??(\.[$A-Z_][0-9A-Z_$]*)+/i).map(
+  packProperty
+)
+
+const ObjectProjectionParser = P.sepBy(
+  P.alt(
+    P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
+    IdentifierParser.map(({ value }: {value: string}): string => value)
+  ),
+  P.string(',')
+    .atMost(1)
+    .trim(crap)
+)
+  .wrap(P.string('{').then(crap), crap.then(P.string('}')))
+  .map((value: Array<string>): WrappedProjectionNodeType => ({
+    name: 'objectProjection',
+    value
+  }))
+
 const unpack = ([projectable, projections]: [
   ProjectableNodeType,
   Array<WrappedProjectionNodeWithOptionalType>
 ]): ProjectionNodeType | ValuePropNodeType | ProjectableNodeType | ObjectProjectionNodeType =>
   projections.reduce(unpackOne, projectable)
 
-const ProjectionParser = P.lazy((): mixed => {
-  const ProjectableParser = require('./projectable').default
+const SimpleProjectionParser = P.lazy((): mixed => {
   const ListParser = require('./collections/list').default.map(packList)
-  const ProjectionParser = P.seq(P.string('?').atMost(1), ListParser).map(
+  const SimpleProjectionParser = P.seq(P.string('?').atMost(1), ListParser).map(
     ([optional, value]: [
       [] | [mixed],
       ListNodeType
@@ -98,28 +116,16 @@ const ProjectionParser = P.lazy((): mixed => {
       value: value
     })
   )
-  const PropertyParser = P.regexp(/\??(\.[$A-Z_][0-9A-Z_$]*)+/i).map(
-    packProperty
-  )
 
-  const ObjectProjectionParser = P.sepBy(
-    P.alt(
-      P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
-      IdentifierParser.map(({ value }: {value: string}): string => value)
-    ),
-    P.string(',')
-      .atMost(1)
-      .trim(crap)
-  )
-    .wrap(P.string('{').then(crap), crap.then(P.string('}')))
-    .map((value: Array<string>): WrappedProjectionNodeType => ({
-      name: 'objectProjection',
-      value
-    }))
+  return SimpleProjectionParser
+})
+
+const ProjectionParser = P.lazy((): mixed => {
+  const ProjectableParser = require('./projectable').default
 
   return P.seq(
     ProjectableParser.skip(crap),
-    P.alt(ProjectionParser, PropertyParser, ObjectProjectionParser)
+    P.alt(SimpleProjectionParser, PropertyParser, ObjectProjectionParser)
       .skip(crap)
       .many()
   )
