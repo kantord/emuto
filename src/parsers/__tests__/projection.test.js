@@ -30,7 +30,15 @@ describe('projection parser', () => {
   })
 
   it('parses {"foo": "bar"}{baz, foo{one, two}, bar}', () => {
-    expect(parser.parse('{"foo": "bar"}{baz, foo{one, two}, bar}').status).toBe(true)
+    expect(parser.parse('{"foo": "bar"}{baz, foo{one, two}, bar}').status).toBe(
+      true
+    )
+  })
+
+  it('parses {"foo": "bar"}{baz, foo{one, two}, bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{fooBar: foo_bar, baz}').status).toBe(
+      true
+    )
   })
 
   it('parses {"foo": "bar"}{baz, foo,bar} (multiline)', () => {
@@ -97,6 +105,47 @@ describe('projection parser', () => {
     })
   })
 
+  it('returns correct value - object projection with aliases', () => {
+    expect(
+      parser.parse(`[3, 2]{ foo: bar, bar: foo { baz } }`).value
+    ).toMatchObject({
+      name: 'objectProjection',
+      value: {
+        optional: false,
+        left: {
+          name: 'list',
+          value: [
+            {
+              name: 'simpleList',
+              value: [
+                {
+                  name: 'primitive',
+                  value: '3'
+                },
+                {
+                  name: 'primitive',
+                  value: '2'
+                }
+              ]
+            }
+          ]
+        },
+        right: [
+          { type: 'SimpleItem', value: 'bar', alias: 'foo' },
+          {
+            name: 'foo',
+            type: 'RecursiveItem',
+            alias: 'bar',
+            value: {
+              name: 'objectProjection',
+              value: [{ type: 'SimpleItem', value: 'baz' }]
+            }
+          }
+        ]
+      }
+    })
+  })
+
   it('returns correct value - object projection', () => {
     expect(
       parser.parse(`[3, 2]{foo,"bar"
@@ -134,7 +183,45 @@ describe('projection parser', () => {
   })
 
   it('returns correct value - recursive object projection', () => {
-    expect(parser.parse('{}{ foo { bar, baz {x} }}').value).toMatchObject({ 'name': 'objectProjection', 'value': { 'left': { 'end': { 'column': 3, 'line': 1, 'offset': 2 }, 'name': 'object', 'start': { 'column': 1, 'line': 1, 'offset': 0 }, 'value': [{ 'end': { 'column': 2, 'line': 1, 'offset': 1 }, 'name': 'simpleList', 'start': { 'column': 2, 'line': 1, 'offset': 1 }, 'value': [] }] }, 'optional': false, 'right': [{ 'name': 'foo', 'type': 'RecursiveItem', 'value': { 'name': 'objectProjection', 'value': [{ 'type': 'SimpleItem', 'value': 'bar' }, { 'name': 'baz', 'type': 'RecursiveItem', 'value': { 'name': 'objectProjection', 'value': [{ 'type': 'SimpleItem', 'value': 'x' }] } }] } }] } })
+    expect(parser.parse('{}{ foo { bar, baz {x} }}').value).toMatchObject({
+      name: 'objectProjection',
+      value: {
+        left: {
+          end: { column: 3, line: 1, offset: 2 },
+          name: 'object',
+          start: { column: 1, line: 1, offset: 0 },
+          value: [
+            {
+              end: { column: 2, line: 1, offset: 1 },
+              name: 'simpleList',
+              start: { column: 2, line: 1, offset: 1 },
+              value: []
+            }
+          ]
+        },
+        optional: false,
+        right: [
+          {
+            name: 'foo',
+            type: 'RecursiveItem',
+            value: {
+              name: 'objectProjection',
+              value: [
+                { type: 'SimpleItem', value: 'bar' },
+                {
+                  name: 'baz',
+                  type: 'RecursiveItem',
+                  value: {
+                    name: 'objectProjection',
+                    value: [{ type: 'SimpleItem', value: 'x' }]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    })
   })
 
   it('returns correct value', () => {

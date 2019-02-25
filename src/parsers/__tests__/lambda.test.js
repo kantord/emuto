@@ -18,8 +18,26 @@ describe('lambda parser', () => {
     expect(parser.parse(`\\1`).status).toBe(true)
   })
 
+  it('parses correct string - syntax 3', () => {
+    expect(parser.parse(`(fn():3 + 4)`).status).toBe(true)
+    expect(parser.parse(`( fn ():1 )`).status).toBe(true)
+  })
+
   it('returns correct string', () => {
     expect(parser.parse('$ => 4').value).toMatchObject({
+      name: 'lambda',
+      value: {
+        variable: 'input',
+        definition: {
+          name: 'primitive',
+          value: '4'
+        }
+      }
+    })
+  })
+
+  it('returns correct string', () => {
+    expect(parser.parse('( fn () : 4 )').value).toMatchObject({
       name: 'lambda',
       value: {
         variable: 'input',

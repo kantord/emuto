@@ -9,6 +9,20 @@ exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) and true 1`] = 
 exports[`interpreter correct target code "1" == 1 1`] = `"(function(_) { return (function(input) { return \\"1\\"===1})})"`;
 
 exports[`interpreter correct target code $ {
+            Person: user {
+                name {
+                    first_name: firstName
+                }
+                city
+                email
+            }
+
+            Post: post {
+                content{ long }
+            }
+        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\",\\"alias\\":\\"first_name\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]},\\"alias\\":\\"Person\\"},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]},\\"alias\\":\\"Post\\"}], false)})})"`;
+
+exports[`interpreter correct target code $ {
             user {
                 name {
                     firstName
@@ -174,6 +188,8 @@ exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`
 exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return (_.objectify(Array.from([[\\"new\\",input]])))}))(input)})(_.map((function(input) {return (_.objectify(Array.from([[\\"original\\",input.foo]])))}))(input))})})"`;
 
 exports[`interpreter correct target code map $foo => [$foo] 1`] = `"(function(_) { return (function(input) { return _.map((function(foo) {_ = _.assign('foo', foo, _); return Array.from([_.get('foo')])}))(input)})})"`;
+
+exports[`interpreter correct target code map (fn(): [$]) 1`] = `"(function(_) { return (function(input) { return _.map((function(input) {return Array.from([input])}))(input)})})"`;
 
 exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return _.map((function(input) {return \\" \\"}))(input)})})"`;
 
@@ -714,6 +730,91 @@ Object {
         "value": "1",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree $ {
+            Person: user {
+                name {
+                    first_name: firstName
+                }
+                city
+                email
+            }
+
+            Post: post {
+                content{ long }
+            }
+        } 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "objectProjection",
+    "value": Object {
+      "left": Object {
+        "name": "variable",
+        "value": "$",
+      },
+      "optional": false,
+      "right": Array [
+        Object {
+          "alias": "Person",
+          "name": "user",
+          "type": "RecursiveItem",
+          "value": Object {
+            "name": "objectProjection",
+            "value": Array [
+              Object {
+                "name": "name",
+                "type": "RecursiveItem",
+                "value": Object {
+                  "name": "objectProjection",
+                  "value": Array [
+                    Object {
+                      "alias": "first_name",
+                      "type": "SimpleItem",
+                      "value": "firstName",
+                    },
+                  ],
+                },
+              },
+              Object {
+                "type": "SimpleItem",
+                "value": "city",
+              },
+              Object {
+                "type": "SimpleItem",
+                "value": "email",
+              },
+            ],
+          },
+        },
+        Object {
+          "alias": "Post",
+          "name": "post",
+          "type": "RecursiveItem",
+          "value": Object {
+            "name": "objectProjection",
+            "value": Array [
+              Object {
+                "name": "content",
+                "type": "RecursiveItem",
+                "value": Object {
+                  "name": "objectProjection",
+                  "value": Array [
+                    Object {
+                      "type": "SimpleItem",
+                      "value": "long",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
 }
 `;
@@ -7424,6 +7525,71 @@ Object {
             ],
           },
           "variable": "foo",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map (fn(): [$]) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "functionCall",
+    "value": Object {
+      "left": Object {
+        "name": "identifier",
+        "value": "map",
+      },
+      "right": Object {
+        "end": Object {
+          "column": 16,
+          "line": 1,
+          "offset": 15,
+        },
+        "name": "lambda",
+        "start": Object {
+          "column": 5,
+          "line": 1,
+          "offset": 4,
+        },
+        "value": Object {
+          "definition": Object {
+            "end": Object {
+              "column": 15,
+              "line": 1,
+              "offset": 14,
+            },
+            "name": "list",
+            "start": Object {
+              "column": 12,
+              "line": 1,
+              "offset": 11,
+            },
+            "value": Array [
+              Object {
+                "end": Object {
+                  "column": 14,
+                  "line": 1,
+                  "offset": 13,
+                },
+                "name": "simpleList",
+                "start": Object {
+                  "column": 13,
+                  "line": 1,
+                  "offset": 12,
+                },
+                "value": Array [
+                  Object {
+                    "name": "variable",
+                    "value": "$",
+                  },
+                ],
+              },
+            ],
+          },
+          "variable": "input",
         },
       },
     },

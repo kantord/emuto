@@ -16,11 +16,14 @@ import type {
   ObjectProjectionItemType
 } from '../types'
 
-type WrappedObjectProjectionNodeType = {name: 'objectProjection', value: Array<ObjectProjectionItemType>};
+type WrappedObjectProjectionNodeType = {
+  name: 'objectProjection',
+  value: Array<ObjectProjectionItemType>
+};
 type WrappedProjectionNodeType =
   | {name: 'projection', value: ListNodeType}
   | {name: 'valueProp', value: string}
-    | WrappedObjectProjectionNodeType;
+  | WrappedObjectProjectionNodeType;
 
 type WrappedProjectionNodeWithOptionalType =
   | {
@@ -29,7 +32,11 @@ type WrappedProjectionNodeWithOptionalType =
       optional: boolean
     }
   | {name: 'valueProp', value: string, optional: boolean}
-  | {name: 'objectProjection', value: Array<ObjectProjectionItemType>, optional: boolean};
+  | {
+      name: 'objectProjection',
+      value: Array<ObjectProjectionItemType>,
+      optional: boolean
+    };
 
 const packList = (x: ListNodeType): WrappedProjectionNodeType => ({
   value: x,
@@ -42,7 +49,10 @@ const packProperty = (x: string): WrappedProjectionNodeType => ({
 })
 
 const unpackOne = (
-  projectable: ProjectableNodeType | ProjectionNodeType | ValuePropNodeType | ObjectProjectionNodeType,
+  projectable: | ProjectableNodeType
+    | ProjectionNodeType
+    | ValuePropNodeType
+    | ObjectProjectionNodeType,
   projection: WrappedProjectionNodeWithOptionalType
 ): | ProjectionNodeType
   | ValuePropNodeType
@@ -65,12 +75,12 @@ const unpackOne = (
           optional: projection.value[0] === '?',
           left: projectable,
           right:
-              projection.value[0] === '?'
-                ? projection.value.slice(1)
-                : projection.value
+            projection.value[0] === '?'
+              ? projection.value.slice(1)
+              : projection.value
         }
       }
-    default :
+    default:
       return {
         name: 'objectProjection',
         value: {
@@ -88,36 +98,68 @@ const PropertyParser = P.regexp(/\??(\.[$A-Z_][0-9A-Z_$]*)+/i).map(
 
 const ObjectProjectionParser = P.lazy((): mixed => {
   const SimpleItemParser = P.alt(
-    P.regex(StringParserRegExp).map((value: string): string => value.slice(1, -1)),
+    P.regex(StringParserRegExp).map((value: string): string =>
+      value.slice(1, -1)
+    ),
     IdentifierParser.map(({ value }: {value: string}): string => value)
   ).map((value: string): ObjectProjectionItemType => ({
     type: 'SimpleItem',
     value
   }))
-  const RecursiveItemParser = P.seq(SimpleItemParser, crap.then(ObjectProjectionParser.atMost(1)))
-    .map((segments: [SimpleObjectProjectionItemType, [WrappedObjectProjectionNodeType]]): ObjectProjectionItemType => segments[1].length === 0 ? segments[0] : {
-      type: 'RecursiveItem',
-      name: segments[0].value,
-      value: segments[1][0]
-    })
+  const RecursiveItemParser = P.seq(
+    SimpleItemParser,
+    crap.then(ObjectProjectionParser.atMost(1))
+  ).map(
+    (
+      segments: [
+        SimpleObjectProjectionItemType,
+        [WrappedObjectProjectionNodeType]
+      ]
+    ): ObjectProjectionItemType =>
+      segments[1].length === 0
+        ? segments[0]
+        : {
+          type: 'RecursiveItem',
+          name: segments[0].value,
+          value: segments[1][0]
+        }
+  )
+
+  const AliasParser = P.seq(SimpleItemParser, P.string(':').trim(crap))
+
+  const AliasableItemParser = P.seq(
+    AliasParser.atMost(1),
+    RecursiveItemParser
+  ).map(
+    ([alias, item]: [
+      [ObjectProjectionNodeType, string],
+      ObjectProjectionNodeType
+    ]): ObjectProjectionNodeType =>
+      alias.length === 1 ? { ...item, alias: alias[0][0].value } : item
+  )
+
   return P.sepBy(
-    RecursiveItemParser,
+    AliasableItemParser,
     P.string(',')
       .atMost(1)
       .trim(crap)
   )
     .wrap(P.string('{').then(crap), crap.then(P.string('}')))
-    .map((value: Array<ObjectProjectionItemType>): WrappedProjectionNodeType => ({
-      name: 'objectProjection',
-      value
-    }))
+    .map(
+      (value: Array<ObjectProjectionItemType>): WrappedProjectionNodeType => ({
+        name: 'objectProjection',
+        value
+      })
+    )
 })
 
 const unpack = ([projectable, projections]: [
   ProjectableNodeType,
   Array<WrappedProjectionNodeWithOptionalType>
-]): ProjectionNodeType | ValuePropNodeType | ProjectableNodeType | ObjectProjectionNodeType =>
-  projections.reduce(unpackOne, projectable)
+]): | ProjectionNodeType
+  | ValuePropNodeType
+  | ProjectableNodeType
+  | ObjectProjectionNodeType => projections.reduce(unpackOne, projectable)
 
 const SimpleProjectionParser = P.lazy((): mixed => {
   const ListParser = require('./collections/list').default.map(packList)

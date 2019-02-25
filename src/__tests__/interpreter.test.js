@@ -298,6 +298,11 @@ const tests = [
     output: [[1], [2]]
   },
   {
+    sourceCode: `map (fn(): [$])`,
+    input: [1, 2],
+    output: [[1], [2]]
+  },
+  {
     sourceCode: `reduce ($a => $b => $a + $b): 0`,
     input: [1, 2, -1, 3],
     output: 5
@@ -461,8 +466,8 @@ const tests = [
       post: {
         title: 'foo bar',
         content: {
-          'short': 'baz',
-          'long': 'bazzzz'
+          short: 'baz',
+          long: 'bazzzz'
         }
       }
     },
@@ -476,7 +481,53 @@ const tests = [
       },
       post: {
         content: {
-          'long': 'bazzzz'
+          long: 'bazzzz'
+        }
+      }
+    }
+  },
+  {
+    sourceCode: `$ {
+            Person: user {
+                name {
+                    first_name: firstName
+                }
+                city
+                email
+            }
+
+            Post: post {
+                content{ long }
+            }
+        }`,
+    input: {
+      user: {
+        name: {
+          firstName: 'John',
+          lastName: 'Doe'
+        },
+        city: 'London',
+        gender: 'male'
+      },
+      post: {
+        title: 'foo bar',
+        content: {
+          short: 'baz',
+          long: 'bazzzz'
+        }
+      }
+    },
+    output: {
+      Person: {
+        name: {
+          first_name: 'John'
+        },
+        city: 'London',
+        email: null
+      },
+      Post: {
+        content: {
+          long: 'bazzzz'
         }
       }
     }

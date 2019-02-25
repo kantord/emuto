@@ -29,6 +29,19 @@ export default P.alt(
     .map((definition: NodeType): LambdaNodeValueType => ({
       variable: 'input',
       definition
+    })),
+
+  P.string('(')
+    .then(crap)
+    .then(P.string('fn'))
+    .then(crap.then(P.string('(')))
+    .then(crap.then(P.string(')').then(crap)))
+    .then(P.string(':').trim(crap))
+    .then(TupleParser)
+    .skip(crap.then(P.string(')')))
+    .map((definition: NodeType): LambdaNodeValueType => ({
+      variable: 'input',
+      definition
     }))
 )
   .trim(crap)

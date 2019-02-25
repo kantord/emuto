@@ -26,7 +26,7 @@ const {
 describe('built ins', () => {
   describe('__objectProjection__', () => {
     // eslint-disable-next-line
-    const _ = texts => texts.map(text => ({ type: 'SimpleItem', value: text }))
+    const _ = texts => texts.map(text => ({type: 'SimpleItem', value: text}));
     it('empty object empty projection', () => {
       expect(__objectProjection__({}, [], false)).toEqual({})
     })
@@ -58,20 +58,31 @@ describe('built ins', () => {
     })
 
     it('nesting nonexistent data', () => {
-      expect(__objectProjection__({}, [{ type: 'RecursiveItem',
-        name: 'foo',
-        value: {
-          name: 'objectProjection',
-          value: []
-        } }], false)).toEqual({
+      expect(
+        __objectProjection__(
+          {},
+          [
+            {
+              type: 'RecursiveItem',
+              name: 'foo',
+              value: {
+                name: 'objectProjection',
+                value: []
+              }
+            }
+          ],
+          false
+        )
+      ).toEqual({
         foo: null
       })
     })
 
-    it('nesting example', () => {
+    it('aliases', () => {
       expect(
         __objectProjection__(
-          { h: 'e',
+          {
+            h: 'e',
             iii: '4',
             foo: {
               bar: 4,
@@ -79,32 +90,90 @@ describe('built ins', () => {
                 x: 'foo',
                 y: -3
               }
-            } },
+            }
+          },
           [
-
-            { type: 'SimpleItem', value: 'iii' },
-            { type: 'RecursiveItem',
+            { type: 'SimpleItem', value: 'iii', alias: 'thing' },
+            {
+              type: 'RecursiveItem',
               name: 'foo',
-              value: { name: 'objectProjection',
+              value: {
+                name: 'objectProjection',
                 value: [
-                  { type: 'SimpleItem', value: 'bar' },
-                  { type: 'RecursiveItem',
+                  { type: 'SimpleItem', value: 'bar', alias: 'Bar' },
+                  {
+                    type: 'RecursiveItem',
                     name: 'baz',
-                    value: { name: 'objectProjection',
-                      value: [
-                        { type: 'SimpleItem', value: 'x' }
-                      ] } }
-                ] } }],
+                    value: {
+                      name: 'objectProjection',
+                      value: [{ type: 'SimpleItem', value: 'x' }]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
 
           false
         )
-      ).toEqual({ iii: '4',
+      ).toEqual({
+        thing: '4',
+        foo: {
+          Bar: 4,
+          baz: {
+            x: 'foo'
+          }
+        }
+      })
+    })
+
+    it('nesting example', () => {
+      expect(
+        __objectProjection__(
+          {
+            h: 'e',
+            iii: '4',
+            foo: {
+              bar: 4,
+              baz: {
+                x: 'foo',
+                y: -3
+              }
+            }
+          },
+          [
+            { type: 'SimpleItem', value: 'iii' },
+            {
+              type: 'RecursiveItem',
+              name: 'foo',
+              value: {
+                name: 'objectProjection',
+                value: [
+                  { type: 'SimpleItem', value: 'bar' },
+                  {
+                    type: 'RecursiveItem',
+                    name: 'baz',
+                    value: {
+                      name: 'objectProjection',
+                      value: [{ type: 'SimpleItem', value: 'x' }]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+
+          false
+        )
+      ).toEqual({
+        iii: '4',
         foo: {
           bar: 4,
           baz: {
             x: 'foo'
           }
-        } })
+        }
+      })
     })
   })
   describe('projection', () => {
