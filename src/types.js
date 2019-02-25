@@ -127,20 +127,25 @@ export type ProjectionNodeType = {|
 |};
 
 export type SimpleObjectProjectionItemType = {|
-    type: 'SimpleItem',
-    value: string
+  type: 'SimpleItem',
+  alias?: string,
+  value: string
 |};
-export type ObjectProjectionItemType = SimpleObjectProjectionItemType | {|
-    type: 'RecursiveItem',
-    name: string,
-    value: {
+export type ObjectProjectionItemType =
+  | SimpleObjectProjectionItemType
+  | {|
+      type: 'RecursiveItem',
+      name: string,
+      alias?: string,
+      value: {
         name: 'objectProjection',
         value: Array<ObjectProjectionItemType> // eslint-disable-line no-use-before-define
-    }
-|};
+      }
+    |};
 
 export type ObjectProjectionNodeType = {|
   name: 'objectProjection',
+  alias?: string,
   value: {
     optional: boolean,
     left: NodeType, // eslint-disable-line no-use-before-define
