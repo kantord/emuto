@@ -61,10 +61,12 @@ describe('projection generator', () => {
             }
           ]
         },
-        right: ['foo', 'bar', 'baz'].map((item: string): ObjectProjectionItemType => ({
-          type: 'SimpleItem',
-          value: item
-        }))
+        right: ['foo', 'bar', 'baz'].map(
+          (item: string): ObjectProjectionItemType => ({
+            type: 'SimpleItem',
+            value: item
+          })
+        )
       }
     }
 
@@ -85,18 +87,24 @@ describe('projection generator', () => {
           value: '$'
         },
         right: [
-          { type: 'RecursiveItem',
+          {
+            type: 'RecursiveItem',
             name: 'foo',
-            value: { name: 'objectProjection',
+            value: {
+              name: 'objectProjection',
               value: [
-                { type: 'SimpleItem', value: 'bar' },
-                { type: 'RecursiveItem',
+                { type: 'SimpleItem', value: 'bar', alias: 'baz' },
+                {
+                  type: 'RecursiveItem',
                   name: 'baz',
-                  value: { name: 'objectProjection',
-                    value: [
-                      { type: 'SimpleItem', value: 'x' }
-                    ] } }
-              ] } }
+                  value: {
+                    name: 'objectProjection',
+                    value: [{ type: 'SimpleItem', value: 'x' }]
+                  }
+                }
+              ]
+            }
+          }
         ]
       }
     }
@@ -104,7 +112,7 @@ describe('projection generator', () => {
     const fakeGenerator = (): string => 'input.foo'
 
     expect(objectProjection(fakeGenerator)(tree)).toEqual(
-      '_.__objectProjection__(input.foo, [{"type":"RecursiveItem","name":"foo","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"bar"},{"type":"RecursiveItem","name":"baz","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"x"}]}}]}}], false)'
+      '_.__objectProjection__(input.foo, [{"type":"RecursiveItem","name":"foo","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"bar","alias":"baz"},{"type":"RecursiveItem","name":"baz","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"x"}]}}]}}], false)'
     )
   })
 })

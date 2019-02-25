@@ -8,7 +8,7 @@ type ProjectableType = Array<mixed> & {[string]: mixed};
 type ProjectionRuleType = number & string;
 type ProjectionRulesType = Array<ProjectionRuleType>;
 type ProjectableObjectType = {
-    [string]: ProjectableObjectType
+  [string]: ProjectableObjectType
 };
 
 const convertUndefined = (value: ?mixed): mixed | null =>
@@ -36,22 +36,25 @@ const __objectProjection__ = (
   const newObject = {}
   right.forEach((rule: ObjectProjectionItemType) => {
     let key
+    let finalKey
     if (rule.type === 'SimpleItem') {
       key = rule.value
+      finalKey = rule.alias || key
       if (key in left) {
-        newObject[key] = left[key]
+        newObject[finalKey] = left[key]
       } else {
-        newObject[key] = null
+        newObject[finalKey] = null
       }
     }
 
     if (rule.type === 'RecursiveItem') {
       key = rule.name
+      finalKey = rule.alias || key
       const rules = rule.value.value
       if (key in left) {
-        newObject[key] = __objectProjection__(left[key], rules, false)
+        newObject[finalKey] = __objectProjection__(left[key], rules, false)
       } else {
-        newObject[key] = null
+        newObject[finalKey] = null
       }
     }
   })

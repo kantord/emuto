@@ -9,6 +9,20 @@ exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) and true 1`] = 
 exports[`interpreter correct target code "1" == 1 1`] = `"(function(_) { return (function(input) { return \\"1\\"===1})})"`;
 
 exports[`interpreter correct target code $ {
+            Person: user {
+                name {
+                    first_name: firstName
+                }
+                city
+                email
+            }
+
+            Post: post {
+                content{ long }
+            }
+        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\",\\"alias\\":\\"first_name\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]},\\"alias\\":\\"Person\\"},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]},\\"alias\\":\\"Post\\"}], false)})})"`;
+
+exports[`interpreter correct target code $ {
             user {
                 name {
                     firstName
@@ -714,6 +728,91 @@ Object {
         "value": "1",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree $ {
+            Person: user {
+                name {
+                    first_name: firstName
+                }
+                city
+                email
+            }
+
+            Post: post {
+                content{ long }
+            }
+        } 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "objectProjection",
+    "value": Object {
+      "left": Object {
+        "name": "variable",
+        "value": "$",
+      },
+      "optional": false,
+      "right": Array [
+        Object {
+          "alias": "Person",
+          "name": "user",
+          "type": "RecursiveItem",
+          "value": Object {
+            "name": "objectProjection",
+            "value": Array [
+              Object {
+                "name": "name",
+                "type": "RecursiveItem",
+                "value": Object {
+                  "name": "objectProjection",
+                  "value": Array [
+                    Object {
+                      "alias": "first_name",
+                      "type": "SimpleItem",
+                      "value": "firstName",
+                    },
+                  ],
+                },
+              },
+              Object {
+                "type": "SimpleItem",
+                "value": "city",
+              },
+              Object {
+                "type": "SimpleItem",
+                "value": "email",
+              },
+            ],
+          },
+        },
+        Object {
+          "alias": "Post",
+          "name": "post",
+          "type": "RecursiveItem",
+          "value": Object {
+            "name": "objectProjection",
+            "value": Array [
+              Object {
+                "name": "content",
+                "type": "RecursiveItem",
+                "value": Object {
+                  "name": "objectProjection",
+                  "value": Array [
+                    Object {
+                      "type": "SimpleItem",
+                      "value": "long",
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
 }
 `;
