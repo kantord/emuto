@@ -6101,10 +6101,10 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jscpd@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/jscpd/-/jscpd-2.0.10.tgz#8ba297d86d099cd633dd7a8c258cf7f63a32d4a0"
-  integrity sha512-HSEJhzI/Sr+/uZFpeh2MMncQV9M/7B2wJcOO025sdBHorQrSgnVz1nq1C/QIJ0dZbhm3Gav48Q9hiJxdfWt+Vw==
+jscpd@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/jscpd/-/jscpd-2.0.11.tgz#159189839813fda3339c5be8d45a977395ce2888"
+  integrity sha512-vC2i4+RAor/zzhn5EZPg7/1itK9c6ivR/aI9eyYWtrhT/EIro3jU6WVm09L8+spJmpGh0TXQDgCTT6bcUrDEjA==
   dependencies:
     blamer "^0.1.13"
     bytes "^3.0.0"
