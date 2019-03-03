@@ -40,6 +40,7 @@ const siteConfig = {
   headerLinks: [
     {doc: 'getting-started', label: 'Getting started'},
     {doc: 'basic-filters', label: 'Docs'},
+    { href: 'https://github.com/kantord/emuto', label: 'GitHub' }
   ],
 
   algolia: {
