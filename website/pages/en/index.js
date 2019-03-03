@@ -103,7 +103,7 @@ const Block = props => (
 );
 
 const Features = () => (
-  <Block layout="fourColumn">
+  <Block layout="twoColumn">
     {[
       {
         image: imgUrl('code_concise.png'),
@@ -116,6 +116,14 @@ const Features = () => (
         imageAlign: 'top',
         content: 'Composable filters. No side-effects.',
         title: 'Purely functional',
+      },
+      {
+        content: 'Compile emuto queries to JS using Webpack',
+        title: 'Compile to JavaScript',
+      },
+      {
+        content: 'Combine emuto with well-known utilities such as `curl`, `awk`',
+        title: 'Command line tool',
       },
     ]}
   </Block>
@@ -130,45 +138,6 @@ const FeatureCallout = () => (
       Convert, transform, filter, slice JSON files in node or in the browser
     </MarkdownBlock>
   </div>
-);
-
-const LearnHow = () => (
-  <Block background="light">
-    {[
-      {
-        content: 'Talk about learning how to use this',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Learn How',
-      },
-    ]}
-  </Block>
-);
-
-const TryOut = () => (
-  <Block id="try">
-    {[
-      {
-        content: 'Talk about trying this out',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'left',
-        title: 'Try it Out',
-      },
-    ]}
-  </Block>
-);
-
-const Description = () => (
-  <Block background="dark">
-    {[
-      {
-        content: 'This is another description of how this project is useful',
-        image: imgUrl('docusaurus.svg'),
-        imageAlign: 'right',
-        title: 'Description',
-      },
-    ]}
-  </Block>
 );
 
 const Showcase = props => {
