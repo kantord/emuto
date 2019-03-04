@@ -106,14 +106,10 @@ const Features = () => (
   <Block layout="twoColumn">
     {[
       {
-        image: imgUrl('code_concise.png'),
-        imageAlign: 'top',
         content: 'Designed with one-liners in mind',
         title: 'Simple and concise',
       },
       {
-        image: imgUrl('code_functional.png'),
-        imageAlign: 'top',
         content: 'Composable filters. No side-effects.',
         title: 'Purely functional',
       },
@@ -173,6 +169,7 @@ class Index extends React.Component {
       <div>
         <HomeSplash language={language} />
         <div className="mainContainer">
+          <img src={imgUrl('demo.gif')} alt="" style={{margin: "auto", display: "block"}} />
           <Features />
           <FeatureCallout />
         </div>
