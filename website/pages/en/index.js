@@ -114,12 +114,18 @@ const Features = () => (
         title: 'Purely functional',
       },
       {
-        content: 'Compile emuto queries to JS using Webpack',
-        title: 'Compile to JavaScript',
+        content: `Compile emuto queries to JS using Webpack
+
+Setup:
+\`yarn add --dev emuto emuto-loader\``,
+        title: `Compile to JavaScript`,
       },
       {
-        content: 'Combine emuto with well-known utilities such as `curl`, `awk`',
-        title: 'Command line tool',
+        content: `Combine emuto with well-known utilities such as \`curl\`, \`awk\`
+
+Setup:
+\`yarn global add emuto emuto-cli\``,
+        title: `Command line tool`,
       },
     ]}
   </Block>
