@@ -1,5 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`interpreter correct target code 
+            $ {
+                ...Stuff
+                hello
+                more {
+                  ...Stuff
+                }
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+         1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('Stuff', (((function(input) {return _.__objectProjection__(input, [{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"foo\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"bar\\"}], false, _)}))), _); return (_.__objectProjection__(input, [{\\"type\\":\\"FragmentItem\\",\\"value\\":\\"Stuff\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"hello\\"},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"more\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"FragmentItem\\",\\"value\\":\\"Stuff\\"}]}}], false, _))})())})})"`;
+
+exports[`interpreter correct target code 
+            $ {
+                ...Stuff
+                hello
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+         1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('Stuff', (((function(input) {return _.__objectProjection__(input, [{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"foo\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"bar\\"}], false, _)}))), _); return (_.__objectProjection__(input, [{\\"type\\":\\"FragmentItem\\",\\"value\\":\\"Stuff\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"hello\\"}], false, _))})())})})"`;
+
 exports[`interpreter correct target code !(3 * .foo -1 > -1.34 * .bar) && true 1`] = `"(function(_) { return (function(input) { return (!((3*input.foo-1>(-(1.34))*input.bar)))&&true})})"`;
 
 exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) && true 1`] = `"(function(_) { return (function(input) { return (!((3*2-1>(-(1.34))*3)))&&true})})"`;
@@ -20,7 +53,7 @@ exports[`interpreter correct target code $ {
             Post: post {
                 content{ long }
             }
-        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\",\\"alias\\":\\"first_name\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]},\\"alias\\":\\"Person\\"},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]},\\"alias\\":\\"Post\\"}], false)})})"`;
+        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\",\\"alias\\":\\"first_name\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]},\\"alias\\":\\"Person\\"},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]},\\"alias\\":\\"Post\\"}], false, _)})})"`;
 
 exports[`interpreter correct target code $ {
             user {
@@ -34,7 +67,9 @@ exports[`interpreter correct target code $ {
             post {
                 content{ long }
             }
-        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]}},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]}}], false)})})"`;
+        } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__(input, [{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"user\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"name\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"firstName\\"}]}},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"city\\"},{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"email\\"}]}},{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"post\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"RecursiveItem\\",\\"name\\":\\"content\\",\\"value\\":{\\"name\\":\\"objectProjection\\",\\"value\\":[{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"long\\"}]}}]}}], false, _)})})"`;
+
+exports[`interpreter correct target code $ {...x} where $x = ($ => {"y": 0}) 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.assign('x', (((function(input) {return (_.objectify(Array.from([[\\"y\\",0]])))}))), _); return (_.__objectProjection__(input, [{\\"type\\":\\"FragmentItem\\",\\"value\\":\\"x\\"}], false, _))})())})})"`;
 
 exports[`interpreter correct target code $ 1`] = `"(function(_) { return (function(input) { return input})})"`;
 
@@ -123,7 +158,7 @@ exports[`interpreter correct target code {
 
 exports[`interpreter correct target code {"a": [2], "b": "b"} {
         b
-    } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__((_.objectify(Array.from([[\\"a\\",Array.from([2])], [\\"b\\",\\"b\\"]]))), [{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"b\\"}], false)})})"`;
+    } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__((_.objectify(Array.from([[\\"a\\",Array.from([2])], [\\"b\\",\\"b\\"]]))), [{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"b\\"}], false, _)})})"`;
 
 exports[`interpreter correct target code {"foo": ("bar" | "baz")} 1`] = `"(function(_) { return (function(input) { return (_.objectify(Array.from([[\\"foo\\",((function (input) {return \\"baz\\"})(\\"bar\\"))]])))})})"`;
 
@@ -200,6 +235,224 @@ exports[`interpreter correct target code reduce ($a => $b => $a + $b): 0 1`] = `
 exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return input.name}))(input)})(_.sortBy((function(input) {return input.age}))(input))})})"`;
 
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
+
+exports[`interpreter correct target tree 
+            $ {
+                ...Stuff
+                hello
+                more {
+                  ...Stuff
+                }
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+         1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 9,
+      "line": 17,
+      "offset": 321,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 13,
+      "line": 2,
+      "offset": 13,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "Stuff",
+          },
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 17,
+                "line": 16,
+                "offset": 311,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 21,
+                "line": 12,
+                "offset": 212,
+              },
+              "value": Object {
+                "definition": Object {
+                  "name": "objectProjection",
+                  "value": Object {
+                    "left": Object {
+                      "name": "variable",
+                      "value": "$",
+                    },
+                    "optional": false,
+                    "right": Array [
+                      Object {
+                        "type": "SimpleItem",
+                        "value": "foo",
+                      },
+                      Object {
+                        "type": "SimpleItem",
+                        "value": "bar",
+                      },
+                    ],
+                  },
+                },
+                "variable": "input",
+              },
+            },
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "objectProjection",
+        "value": Object {
+          "left": Object {
+            "name": "variable",
+            "value": "$",
+          },
+          "optional": false,
+          "right": Array [
+            Object {
+              "type": "FragmentItem",
+              "value": "Stuff",
+            },
+            Object {
+              "type": "SimpleItem",
+              "value": "hello",
+            },
+            Object {
+              "name": "more",
+              "type": "RecursiveItem",
+              "value": Object {
+                "name": "objectProjection",
+                "value": Array [
+                  Object {
+                    "type": "FragmentItem",
+                    "value": "Stuff",
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree 
+            $ {
+                ...Stuff
+                hello
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+         1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 9,
+      "line": 14,
+      "offset": 253,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 13,
+      "line": 2,
+      "offset": 13,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "Stuff",
+          },
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 17,
+                "line": 13,
+                "offset": 243,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 21,
+                "line": 9,
+                "offset": 144,
+              },
+              "value": Object {
+                "definition": Object {
+                  "name": "objectProjection",
+                  "value": Object {
+                    "left": Object {
+                      "name": "variable",
+                      "value": "$",
+                    },
+                    "optional": false,
+                    "right": Array [
+                      Object {
+                        "type": "SimpleItem",
+                        "value": "foo",
+                      },
+                      Object {
+                        "type": "SimpleItem",
+                        "value": "bar",
+                      },
+                    ],
+                  },
+                },
+                "variable": "input",
+              },
+            },
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "objectProjection",
+        "value": Object {
+          "left": Object {
+            "name": "variable",
+            "value": "$",
+          },
+          "optional": false,
+          "right": Array [
+            Object {
+              "type": "FragmentItem",
+              "value": "Stuff",
+            },
+            Object {
+              "type": "SimpleItem",
+              "value": "hello",
+            },
+          ],
+        },
+      },
+    },
+  },
+}
+`;
 
 exports[`interpreter correct target tree !(3 * .foo -1 > -1.34 * .bar) && true 1`] = `
 Object {
@@ -894,6 +1147,113 @@ Object {
           },
         },
       ],
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree $ {...x} where $x = ($ => {"y": 0}) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "end": Object {
+      "column": 36,
+      "line": 1,
+      "offset": 35,
+    },
+    "name": "assignment",
+    "start": Object {
+      "column": 1,
+      "line": 1,
+      "offset": 0,
+    },
+    "value": Object {
+      "assignments": Array [
+        Array [
+          Object {
+            "name": "identifier",
+            "value": "x",
+          },
+          Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 35,
+                "line": 1,
+                "offset": 34,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 22,
+                "line": 1,
+                "offset": 21,
+              },
+              "value": Object {
+                "definition": Object {
+                  "end": Object {
+                    "column": 35,
+                    "line": 1,
+                    "offset": 34,
+                  },
+                  "name": "object",
+                  "start": Object {
+                    "column": 27,
+                    "line": 1,
+                    "offset": 26,
+                  },
+                  "value": Array [
+                    Object {
+                      "end": Object {
+                        "column": 34,
+                        "line": 1,
+                        "offset": 33,
+                      },
+                      "name": "simpleList",
+                      "start": Object {
+                        "column": 28,
+                        "line": 1,
+                        "offset": 27,
+                      },
+                      "value": Array [
+                        Object {
+                          "name": "tuple",
+                          "value": Array [
+                            Object {
+                              "name": "primitive",
+                              "value": "\\"y\\"",
+                            },
+                            Object {
+                              "name": "primitive",
+                              "value": "0",
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                "variable": "input",
+              },
+            },
+          },
+        ],
+      ],
+      "program": Object {
+        "name": "objectProjection",
+        "value": Object {
+          "left": Object {
+            "name": "variable",
+            "value": "$",
+          },
+          "optional": false,
+          "right": Array [
+            Object {
+              "type": "FragmentItem",
+              "value": "x",
+            },
+          ],
+        },
+      },
     },
   },
 }

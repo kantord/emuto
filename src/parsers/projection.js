@@ -13,7 +13,8 @@ import type {
   ValuePropNodeType,
   ProjectableNodeType,
   NodeType,
-  ObjectProjectionItemType
+  ObjectProjectionItemType,
+  FragmentObjectProjectionItemType
 } from '../types'
 
 type WrappedObjectProjectionNodeType = {
@@ -138,8 +139,16 @@ const ObjectProjectionParser = P.lazy((): mixed => {
       alias.length === 1 ? { ...item, alias: alias[0][0].value } : item
   )
 
+  const FragmentParser = P.string('...')
+    .then(crap)
+    .then(IdentifierParser)
+    .map((value: {value: string}): FragmentObjectProjectionItemType => ({
+      type: 'FragmentItem',
+      value: value.value
+    }))
+
   return P.sepBy(
-    AliasableItemParser,
+    P.alt(AliasableItemParser, FragmentParser),
     P.string(',')
       .atMost(1)
       .trim(crap)

@@ -73,7 +73,7 @@ describe('projection generator', () => {
     const fakeGenerator = (): string => 'input.foo'
 
     expect(objectProjection(fakeGenerator)(tree)).toEqual(
-      '_.__objectProjection__(input.foo, [{"type":"SimpleItem","value":"foo"},{"type":"SimpleItem","value":"bar"},{"type":"SimpleItem","value":"baz"}], false)'
+      '_.__objectProjection__(input.foo, [{"type":"SimpleItem","value":"foo"},{"type":"SimpleItem","value":"bar"},{"type":"SimpleItem","value":"baz"}], false, _)'
     )
   })
 
@@ -112,7 +112,7 @@ describe('projection generator', () => {
     const fakeGenerator = (): string => 'input.foo'
 
     expect(objectProjection(fakeGenerator)(tree)).toEqual(
-      '_.__objectProjection__(input.foo, [{"type":"RecursiveItem","name":"foo","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"bar","alias":"baz"},{"type":"RecursiveItem","name":"baz","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"x"}]}}]}}], false)'
+      '_.__objectProjection__(input.foo, [{"type":"RecursiveItem","name":"foo","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"bar","alias":"baz"},{"type":"RecursiveItem","name":"baz","value":{"name":"objectProjection","value":[{"type":"SimpleItem","value":"x"}]}}]}}], false, _)'
     )
   })
 })
