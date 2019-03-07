@@ -29,43 +29,43 @@
 <p>Takes an array as input and joins them into a single string using the supplied
 separator.</p>
 <p>Input:</p>
-<pre><code class="hljs css language-javascript">[<span class="hljs-string">"Hello"</span>, <span class="hljs-string">"World!"</span>] | join <span class="hljs-string">" "</span>
+<pre><code class="hljs">[<span class="hljs-meta"><span class="hljs-meta-string">"Hello"</span>, <span class="hljs-meta-string">"World!"</span></span>] | <span class="hljs-keyword">join</span> <span class="hljs-string">" "</span>
 </code></pre>
 <p>Output:</p>
-<pre><code class="hljs css language-json"><span class="hljs-string">"Hello World!"</span>
+<pre><code class="hljs"><span class="hljs-string">"Hello World!"</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="map"></a><a href="#map" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>map \</h2>
 <p>Takes an array as input and joins them into a single string using the supplied
 separator.</p>
 <p>Input:</p>
-<pre><code class="hljs css language-javascript">[<span class="hljs-string">"Hello"</span>, <span class="hljs-string">"World!"</span>] | map $ =&gt; {<span class="hljs-string">"word"</span>: $}
+<pre><code class="hljs">[<span class="hljs-string">"Hello"</span>, <span class="hljs-string">"World!"</span>] | <span class="hljs-type">map</span> $ =&gt; {<span class="hljs-string">"word"</span>: $}
 </code></pre>
 <p>Output:</p>
-<pre><code class="hljs css language-json">[{<span class="hljs-attr">"word"</span>: <span class="hljs-string">"Hello"</span>}, {<span class="hljs-attr">"word"</span>: <span class="hljs-string">"World!"</span>}]
+<pre><code class="hljs">[{<span class="hljs-attr">"word"</span>: <span class="hljs-string">"Hello"</span>}, {<span class="hljs-attr">"word"</span>: <span class="hljs-string">"World!"</span>}]
 </code></pre>
 <p>Alternatively, you can also use this syntax: <code>[&quot;Hello&quot;, &quot;World!&quot;] | map \ {&quot;word&quot;: $}</code></p>
 <h2><a class="anchor" aria-hidden="true" id="sortby"></a><a href="#sortby" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sortBy \</h2>
 <p>Takes an array as input and sorts it using the supplied function.</p>
 <p>For example:</p>
-<pre><code class="hljs css language-javascript">sortBy $ =&gt; .age | map $ =&gt; .name
+<pre><code class="hljs">sortBy $ =&gt; .age | <span class="hljs-type">map</span> $ =&gt; .name
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="filter"></a><a href="#filter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>filter \</h2>
 <p>Takes an array as input and returns a new array with all elements that match
 the given criterion.</p>
 <p>For example:</p>
-<pre><code class="hljs css language-javascript">filter $ =&gt; .age &gt;= <span class="hljs-number">18</span>
+<pre><code class="hljs">filter $ =&gt; .age &gt;= <span class="hljs-number">18</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="length"></a><a href="#length" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>length</h2>
 <p>Returns the length of the input:</p>
-<pre><code class="hljs css language-javascript">[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>] | length;
+<pre><code class="hljs">[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>] | length;
 </code></pre>
-<pre><code class="hljs css language-javascript"><span class="hljs-number">3</span>;
+<pre><code class="hljs"><span class="hljs-number">3</span><span class="hljs-comment">;</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="reverse"></a><a href="#reverse" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>reverse</h2>
 <p>Reverses the input:</p>
-<pre><code class="hljs css language-javascript">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] | reverse;
+<pre><code class="hljs">[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] | reverse;
 </code></pre>
-<pre><code class="hljs css language-javascript">[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>];
+<pre><code class="hljs">[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>];
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="reduce"></a><a href="#reduce" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>reduce \</h2>
 <p>Compresses multiple items into a single item using the provided function and
@@ -73,27 +73,27 @@ initial value.</p>
 <p>Coming soon.</p>
 <h2><a class="anchor" aria-hidden="true" id="keys"></a><a href="#keys" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>keys</h2>
 <p>Returns the keys of an object:</p>
-<pre><code class="hljs css language-javascript">{<span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>: <span class="hljs-number">42</span>} | keys
+<pre><code class="hljs">{<span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>: <span class="hljs-number">42</span>} <span class="hljs-string">| keys</span>
 </code></pre>
-<pre><code class="hljs css language-javascript">[<span class="hljs-string">'foo'</span>, <span class="hljs-string">'baz'</span>];
+<pre><code class="hljs">[<span class="hljs-symbol">'foo</span>', <span class="hljs-symbol">'baz</span>']<span class="hljs-comment">;</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="values"></a><a href="#values" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>values</h2>
 <p>Returns the values of an object:</p>
-<pre><code class="hljs css language-javascript">{<span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>: <span class="hljs-number">42</span>} | values
+<pre><code class="hljs">{<span class="hljs-string">"foo"</span>: <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>: <span class="hljs-number">42</span>} <span class="hljs-string">| values</span>
 </code></pre>
-<pre><code class="hljs css language-javascript">[<span class="hljs-string">'bar'</span>, <span class="hljs-number">42</span>];
+<pre><code class="hljs">[<span class="hljs-symbol">'bar</span>', <span class="hljs-number">42</span>]<span class="hljs-comment">;</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="combinations"></a><a href="#combinations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>combinations</h2>
 <p>Returns all combinations of each possible choice of r elements of the input:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-string">"ABCD"</span> | combinations <span class="hljs-number">2</span>
+<pre><code class="hljs"><span class="hljs-string">"ABCD"</span> <span class="hljs-string">| combinations 2</span>
 </code></pre>
-<pre><code class="hljs css language-javascript">[[<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>], [<span class="hljs-string">'A'</span>, <span class="hljs-string">'C'</span>], [<span class="hljs-string">'A'</span>, <span class="hljs-string">'D'</span>], [<span class="hljs-string">'B'</span>, <span class="hljs-string">'C'</span>], [<span class="hljs-string">'B'</span>, <span class="hljs-string">'D'</span>], [<span class="hljs-string">'C'</span>, <span class="hljs-string">'D'</span>]];
+<pre><code class="hljs">[[<span class="hljs-symbol">'A</span>', <span class="hljs-symbol">'B</span>'], [<span class="hljs-symbol">'A</span>', <span class="hljs-symbol">'C</span>'], [<span class="hljs-symbol">'A</span>', <span class="hljs-symbol">'D</span>'], [<span class="hljs-symbol">'B</span>', <span class="hljs-symbol">'C</span>'], [<span class="hljs-symbol">'B</span>', <span class="hljs-symbol">'D</span>'], [<span class="hljs-symbol">'C</span>', <span class="hljs-symbol">'D</span>']]<span class="hljs-comment">;</span>
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="product"></a><a href="#product" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>product</h2>
 <p>Computes the product of the iterables in the input:</p>
-<pre><code class="hljs css language-javascript">[[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>], [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>]] | product;
+<pre><code class="hljs">[[<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>], [<span class="hljs-string">'1'</span>, <span class="hljs-string">'2'</span>]] | product;
 </code></pre>
-<pre><code class="hljs css language-javascript">[[<span class="hljs-string">'a'</span>, <span class="hljs-string">'1'</span>], [<span class="hljs-string">'a'</span>, <span class="hljs-string">'2'</span>], [<span class="hljs-string">'b'</span>, <span class="hljs-string">'1'</span>], [<span class="hljs-string">'b'</span>, <span class="hljs-string">'2'</span>]];
+<pre><code class="hljs">[[<span class="hljs-symbol">'a</span>', <span class="hljs-symbol">'1</span>'], [<span class="hljs-symbol">'a</span>', <span class="hljs-symbol">'2</span>'], [<span class="hljs-symbol">'b</span>', <span class="hljs-symbol">'1</span>'], [<span class="hljs-symbol">'b</span>', <span class="hljs-symbol">'2</span>']]<span class="hljs-comment">;</span>
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/emuto/docs/basic-filters"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/emuto/docs/chaining_filters"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#join">join</a></li><li><a href="#map">map \</a></li><li><a href="#sortby">sortBy \</a></li><li><a href="#filter">filter \</a></li><li><a href="#length">length</a></li><li><a href="#reverse">reverse</a></li><li><a href="#reduce">reduce \</a></li><li><a href="#keys">keys</a></li><li><a href="#values">values</a></li><li><a href="#combinations">combinations</a></li><li><a href="#product">product</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/emuto/" class="nav-home"></a><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/kantord/emuto" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Dániel Kántor</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
                 document.addEventListener('keyup', function(e) {

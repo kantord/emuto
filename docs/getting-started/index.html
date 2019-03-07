@@ -29,10 +29,10 @@
 <p>emuto is written in JavaScript and can be used in the browser and in node as
 well.</p>
 <p>The following emuto script</p>
-<pre><code class="hljs css language-javascript">  [.article.title, .user.name.full_name, .user.age] | { <span class="hljs-string">"compressed_article_info"</span>: $}
+<pre><code class="hljs">  [<span class="hljs-string">.article.title</span>, <span class="hljs-string">.user.name.full_name</span>, <span class="hljs-string">.user.age</span>] | { <span class="hljs-string">"compressed_article_info"</span>: $}
 </code></pre>
 <p>would take an input like this:</p>
-<pre><code class="hljs css language-json">{
+<pre><code class="hljs">{
   <span class="hljs-attr">"user"</span>: {
     <span class="hljs-attr">"name"</span>: {<span class="hljs-attr">"nickname"</span>: <span class="hljs-string">"john3"</span>, <span class="hljs-attr">"full_name"</span>: <span class="hljs-string">"John Doe"</span>},
     <span class="hljs-attr">"age"</span>: <span class="hljs-number">32</span>
@@ -41,7 +41,7 @@ well.</p>
 }
 </code></pre>
 <p>And return a result like this:</p>
-<pre><code class="hljs css language-json">{
+<pre><code class="hljs">{
   <span class="hljs-attr">"compressed_article_info"</span>: [<span class="hljs-string">"Hello World"</span>, <span class="hljs-string">"John Doe"</span>, <span class="hljs-number">32</span>]
 }
 </code></pre>
