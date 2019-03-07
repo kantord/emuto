@@ -26,7 +26,7 @@ npm install --save-dev emuto emuto-loader
 
 You need to modify your webpack config:
 
-```javascript
+```
 // webpack.config.js
 module.exports = {
   ...
@@ -43,7 +43,7 @@ module.exports = {
 
 You'll now be able to import emuto scripts:
 
-```javascript
+```
 // index.js
 import GreetUser from './greeting.emu';
 

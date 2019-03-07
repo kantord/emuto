@@ -10,13 +10,13 @@ separator.
 
 Input:
 
-```javascript
+```
 ["Hello", "World!"] | join " "
 ```
 
 Output:
 
-```json
+```
 "Hello World!"
 ```
 
@@ -27,13 +27,13 @@ separator.
 
 Input:
 
-```javascript
+```
 ["Hello", "World!"] | map $ => {"word": $}
 ```
 
 Output:
 
-```json
+```
 [{"word": "Hello"}, {"word": "World!"}]
 ```
 
@@ -45,7 +45,7 @@ Takes an array as input and sorts it using the supplied function.
 
 For example:
 
-```javascript
+```
 sortBy $ => .age | map $ => .name
 ```
 
@@ -56,7 +56,7 @@ the given criterion.
 
 For example:
 
-```javascript
+```
 filter $ => .age >= 18
 ```
 
@@ -64,11 +64,11 @@ filter $ => .age >= 18
 
 Returns the length of the input:
 
-```javascript
+```
 [1, 0, 1] | length;
 ```
 
-```javascript
+```
 3;
 ```
 
@@ -76,11 +76,11 @@ Returns the length of the input:
 
 Reverses the input:
 
-```javascript
+```
 [1, 2, 3] | reverse;
 ```
 
-```javascript
+```
 [3, 2, 1];
 ```
 
@@ -95,11 +95,11 @@ Coming soon.
 
 Returns the keys of an object:
 
-```javascript
+```
 {"foo": "bar", "baz": 42} | keys
 ```
 
-```javascript
+```
 ['foo', 'baz'];
 ```
 
@@ -107,11 +107,11 @@ Returns the keys of an object:
 
 Returns the values of an object:
 
-```javascript
+```
 {"foo": "bar", "baz": 42} | values
 ```
 
-```javascript
+```
 ['bar', 42];
 ```
 
@@ -119,11 +119,11 @@ Returns the values of an object:
 
 Returns all combinations of each possible choice of r elements of the input:
 
-```javascript
+```
 "ABCD" | combinations 2
 ```
 
-```javascript
+```
 [['A', 'B'], ['A', 'C'], ['A', 'D'], ['B', 'C'], ['B', 'D'], ['C', 'D']];
 ```
 
@@ -131,10 +131,10 @@ Returns all combinations of each possible choice of r elements of the input:
 
 Computes the product of the iterables in the input:
 
-```javascript
+```
 [['a', 'b'], ['1', '2']] | product;
 ```
 
-```javascript
+```
 [['a', '1'], ['a', '2'], ['b', '1'], ['b', '2']];
 ```
