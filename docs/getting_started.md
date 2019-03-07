@@ -10,13 +10,13 @@ well.
 
 The following emuto script
 
-```javascript
+```
   [.article.title, .user.name.full_name, .user.age] | { "compressed_article_info": $}
 ```
 
 would take an input like this:
 
-```json
+```
 {
   "user": {
     "name": {"nickname": "john3", "full_name": "John Doe"},
@@ -28,7 +28,7 @@ would take an input like this:
 
 And return a result like this:
 
-```json
+```
 {
   "compressed_article_info": ["Hello World", "John Doe", 32]
 }
