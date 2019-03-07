@@ -29,6 +29,14 @@ describe('projection parser', () => {
     expect(parser.parse('{"foo": "bar"}{baz, foo,bar}').status).toBe(true)
   })
 
+  it('parses {"foo": "bar"}{baz, ...foo,bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{baz, ...foo,bar}').status).toBe(true)
+  })
+
+  it('parses {"foo": "bar"}{baz, ... Bar,bar}', () => {
+    expect(parser.parse('{"foo": "bar"}{baz, ... Bar,bar}').status).toBe(true)
+  })
+
   it('parses {"foo": "bar"}{baz, foo{one, two}, bar}', () => {
     expect(parser.parse('{"foo": "bar"}{baz, foo{one, two}, bar}').status).toBe(
       true
@@ -183,7 +191,7 @@ describe('projection parser', () => {
   })
 
   it('returns correct value - recursive object projection', () => {
-    expect(parser.parse('{}{ foo { bar, baz {x} }}').value).toMatchObject({
+    expect(parser.parse('{}{ foo { ...bar, baz {x} }}').value).toMatchObject({
       name: 'objectProjection',
       value: {
         left: {
@@ -207,7 +215,7 @@ describe('projection parser', () => {
             value: {
               name: 'objectProjection',
               value: [
-                { type: 'SimpleItem', value: 'bar' },
+                { type: 'FragmentItem', value: 'bar' },
                 {
                   name: 'baz',
                   type: 'RecursiveItem',

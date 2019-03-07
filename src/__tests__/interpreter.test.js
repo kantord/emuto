@@ -526,6 +526,78 @@ const tests = [
         }
       }
     }
+  },
+  {
+    sourceCode: `$ {...x} where $x = ($ => {"y": 0})`,
+    input: null,
+    output: { y: 0 }
+  },
+  {
+    sourceCode: `
+            $ {
+                ...Stuff
+                hello
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+        `,
+    input: {
+      foo: 4,
+      bar: 'baz',
+      baz: 'thing',
+      hello: 'world',
+      more: {
+        foo: 5
+      }
+    },
+    output: {
+      foo: 4,
+      bar: 'baz',
+      hello: 'world'
+    }
+  },
+  {
+    sourceCode: `
+            $ {
+                ...Stuff
+                hello
+                more {
+                  ...Stuff
+                }
+            }
+
+            where
+                $Stuff = (
+                    $ => $ {
+                      foo
+                      bar
+                    }
+                )
+        `,
+    input: {
+      foo: 4,
+      bar: 'baz',
+      baz: 'thing',
+      hello: 'world',
+      more: {
+        foo: 5
+      }
+    },
+    output: {
+      foo: 4,
+      bar: 'baz',
+      hello: 'world',
+      more: {
+        foo: 5,
+        bar: null
+      }
+    }
   }
 ]
 

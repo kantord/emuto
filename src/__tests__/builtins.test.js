@@ -43,6 +43,19 @@ describe('built ins', () => {
       })
     })
 
+    it('fragments', () => {
+      expect(
+        __objectProjection__(
+          { foo: 3 },
+          [{ type: 'FragmentItem', value: 'F' }],
+          false,
+            { F: x => ({ foo: 3 }) } // eslint-disable-line
+        )
+      ).toEqual({
+        foo: 3
+      })
+    })
+
     it('more complex example', () => {
       expect(
         __objectProjection__(

@@ -8,4 +8,4 @@ export default (
   value
 }: ObjectProjectionNodeType): GeneratedCodeType =>
   `_.__objectProjection__(${Generator(value.left)}, ${JSON.stringify(
-    value.right)}, ${value.optional ? 'true' : 'false'})`
+    value.right)}, ${value.optional ? 'true' : 'false'}, _)`

@@ -31,7 +31,8 @@ const handleProjectionItem = (
 const __objectProjection__ = (
   left: ProjectableObjectType,
   right: Array<ObjectProjectionItemType>,
-  optional: boolean
+  optional: boolean,
+  _: Object
 ): mixed => {
   const newObject = {}
   right.forEach((rule: ObjectProjectionItemType) => {
@@ -47,12 +48,16 @@ const __objectProjection__ = (
       }
     }
 
+    if (rule.type === 'FragmentItem') {
+      Object.assign(newObject, _[rule.value](left))
+    }
+
     if (rule.type === 'RecursiveItem') {
       key = rule.name
       finalKey = rule.alias || key
       const rules = rule.value.value
       if (key in left) {
-        newObject[finalKey] = __objectProjection__(left[key], rules, false)
+        newObject[finalKey] = __objectProjection__(left[key], rules, false, _)
       } else {
         newObject[finalKey] = null
       }

@@ -131,17 +131,26 @@ export type SimpleObjectProjectionItemType = {|
   alias?: string,
   value: string
 |};
+
+export type RecursiveObjectProjecitonItemType = {|
+  type: 'RecursiveItem',
+  name: string,
+  alias?: string,
+  value: {
+    name: 'objectProjection',
+    value: Array<ObjectProjectionItemType> // eslint-disable-line no-use-before-define
+  }
+|};
+
+export type FragmentObjectProjectionItemType = {|
+  type: 'FragmentItem',
+  value: string
+|};
+
 export type ObjectProjectionItemType =
   | SimpleObjectProjectionItemType
-  | {|
-      type: 'RecursiveItem',
-      name: string,
-      alias?: string,
-      value: {
-        name: 'objectProjection',
-        value: Array<ObjectProjectionItemType> // eslint-disable-line no-use-before-define
-      }
-    |};
+  | RecursiveObjectProjecitonItemType
+  | FragmentObjectProjectionItemType;
 
 export type ObjectProjectionNodeType = {|
   name: 'objectProjection',
