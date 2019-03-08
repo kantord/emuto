@@ -38,7 +38,6 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'getting-started', label: 'Getting started'},
     {doc: 'basic-filters', label: 'Docs'},
     {doc: 'tutorial', label: 'Tutorial'},
     { href: 'https://github.com/kantord/emuto', label: 'GitHub' }
