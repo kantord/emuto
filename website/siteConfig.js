@@ -40,7 +40,7 @@ const siteConfig = {
   headerLinks: [
     {doc: 'basic-filters', label: 'Docs'},
     {doc: 'tutorial', label: 'Tutorial'},
-    { href: 'https://github.com/kantord/emuto', label: 'GitHub' }
+    {href: 'https://github.com/kantord/emuto', label: 'GitHub'},
   ],
 
   algolia: {
@@ -91,6 +91,9 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/kantord/emuto',
+
+  ogImage: '/img/demo.gif',
+  twitterImage: '/img/demo.gif',
 };
 
 module.exports = siteConfig;
