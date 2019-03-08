@@ -6,8 +6,8 @@
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/commenting</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/commenting" /> </url>
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/comprehensions</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/comprehensions" /> </url>
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/functions</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/functions" /> </url>
-<url> <loc>https://kantord.github.io/emuto/emuto/docs/getting-started</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/getting-started" /> </url>
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/setup-webpack</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/setup-webpack" /> </url>
+<url> <loc>https://kantord.github.io/emuto/emuto/docs/try_emuto</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/try_emuto" /> </url>
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/tutorial</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/tutorial" /> </url>
 <url> <loc>https://kantord.github.io/emuto/emuto/docs/variables</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://kantord.github.io/emuto/emuto/docs/variables" /> </url>
 </urlset>
