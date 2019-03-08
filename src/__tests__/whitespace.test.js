@@ -97,10 +97,15 @@ const examples = [
     `
 ]
 
+const extendedExamples = [
+  ...examples,
+  ...examples.map((example: string): string => example.replace('//', '#'))
+]
+
 describe('whitespace tests', () => {
-  examples.forEach((example: string): void =>
+  extendedExamples.forEach((example: string) => {
     it(`parses '${example.slice(0, 25)}'`, () => {
       parse(example)
     })
-  )
+  })
 })
