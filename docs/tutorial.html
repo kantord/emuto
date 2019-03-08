@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Tutorial · emuto</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Setup"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Tutorial · emuto"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kantord.github.io/emuto//emuto/index.html"/><meta property="og:description" content="## Setup"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/emuto/undefined"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/emuto/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/emuto/"><h2 class="headerTitle">emuto</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/emuto/docs/getting-started" target="_self">Getting started</a></li><li class="siteNavGroupActive"><a href="/emuto/docs/basic-filters" target="_self">Docs</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/emuto/docs/tutorial" target="_self">Tutorial</a></li><li class=""><a href="https://github.com/kantord/emuto" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting Started</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/emuto/docs/getting-started">Getting Started with Emuto</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Setup</h4><ul><li class="navListItem"><a class="navItem" href="/emuto/docs/setup-webpack">Building using Webpack</a></li></ul></div><li class="navListItem navListItemActive"><a class="navItem" href="/emuto/docs/tutorial">Tutorial</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/emuto/docs/basic-filters">Basic filters</a></li><li class="navListItem"><a class="navItem" href="/emuto/docs/functions">Functions</a></li><li class="navListItem"><a class="navItem" href="/emuto/docs/variables">Variables</a></li><li class="navListItem"><a class="navItem" href="/emuto/docs/commenting">Commenting your code</a></li><li class="navListItem"><a class="navItem" href="/emuto/docs/comprehensions">Comprehensions</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Tutorial</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="setup"></a><a href="#setup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup</h2>
+<p>To follow this tutorial, you will need <code>emuto</code> and <code>emuto-cli</code>. Don't worry,
+you can install them really easily:</p>
+<pre><code class="hljs css language-bash">npm install -g emuto emuto-cli
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="requesting-data-from-an-api"></a><a href="#requesting-data-from-an-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requesting data from an API</h2>
+<p>In this tutorial we'll play with this fun little Star Wars API:</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span>
+</code></pre>
+<pre><code class="hljs css language-text">{"name":"Luke Skywalker","height":"172","mass":"77","hair_color":"blond","skin_color":"fair","eye_color":"blue","birth_year":"19BBY","gender":"male","homeworld":"https://swapi.co/api/planets/1/","films":["https://swapi.co/api/films/2/","https://swapi.co/api/films/6/","https://swapi.co/api/films/3/","https://swapi.co/api/films/1/","https://swapi.co/api/films/7/"],"species":["https://swapi.co/api/species/1/"],"vehicles":["https://swapi.co/api/vehicles/14/","https://swapi.co/api/vehicles/30/"],"starships":["https://swapi.co/api/starships/12/","https://swapi.co/api/starships/22/"],"created":"2014-12-09T13:50:51.644000Z","edited":"2014-12-20T21:17:56.891000Z","url":"https://swapi.co/api/people/1/"}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="pretty-printing-the-json-with-emuto"></a><a href="#pretty-printing-the-json-with-emuto" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pretty-printing the JSON with emuto</h2>
+<p>Just pipe the results to emuto. It will automatically convert it to a much more
+readable and pleasant format:</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto
+</code></pre>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luke Skywalker"</span>,
+  <span class="hljs-attr">"height"</span>: <span class="hljs-string">"172"</span>,
+  <span class="hljs-attr">"mass"</span>: <span class="hljs-string">"77"</span>,
+  <span class="hljs-attr">"hair_color"</span>: <span class="hljs-string">"blond"</span>,
+  <span class="hljs-attr">"skin_color"</span>: <span class="hljs-string">"fair"</span>,
+  <span class="hljs-attr">"eye_color"</span>: <span class="hljs-string">"blue"</span>,
+  <span class="hljs-attr">"birth_year"</span>: <span class="hljs-string">"19BBY"</span>,
+  <span class="hljs-attr">"gender"</span>: <span class="hljs-string">"male"</span>,
+  <span class="hljs-attr">"homeworld"</span>: <span class="hljs-string">"https://swapi.co/api/planets/1/"</span>,
+  <span class="hljs-attr">"films"</span>: [
+    <span class="hljs-string">"https://swapi.co/api/films/2/"</span>,
+    <span class="hljs-string">"https://swapi.co/api/films/6/"</span>,
+    <span class="hljs-string">"https://swapi.co/api/films/3/"</span>,
+    <span class="hljs-string">"https://swapi.co/api/films/1/"</span>,
+    <span class="hljs-string">"https://swapi.co/api/films/7/"</span>
+  ],
+  <span class="hljs-attr">"species"</span>: [ <span class="hljs-string">"https://swapi.co/api/species/1/"</span> ],
+  <span class="hljs-attr">"vehicles"</span>: [ <span class="hljs-string">"https://swapi.co/api/vehicles/14/"</span>, <span class="hljs-string">"https://swapi.co/api/vehicles/30/"</span> ],
+  <span class="hljs-attr">"starships"</span>: [ <span class="hljs-string">"https://swapi.co/api/starships/12/"</span>, <span class="hljs-string">"https://swapi.co/api/starships/22/"</span> ],
+  <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2014-12-09T13:50:51.644000Z"</span>,
+  <span class="hljs-attr">"edited"</span>: <span class="hljs-string">"2014-12-20T21:17:56.891000Z"</span>,
+  <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://swapi.co/api/people/1/"</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="let-s-start-filtering-data"></a><a href="#let-s-start-filtering-data" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Let's start filtering data</h2>
+<p>That's way more data than we actually need. Let's just return the character's
+name:</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto <span class="hljs-string">'$.name'</span>
+</code></pre>
+<pre><code class="hljs css language-js"><span class="hljs-string">"Luke Skywalker"</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="let-s-start-filtering-data-1"></a><a href="#let-s-start-filtering-data-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Let's start filtering data</h2>
+<p>That's way more data than we actually need. Let's just return the character's
+name:</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto <span class="hljs-string">'$.name'</span>
+</code></pre>
+<pre><code class="hljs css language-js"><span class="hljs-string">"Luke Skywalker"</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="creating-new-data-structures"></a><a href="#creating-new-data-structures" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Creating new data structures</h2>
+<p>Let's create a new data structure by combining the filters <code>$.name</code> and
+<code>$.gender</code>:</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto <span class="hljs-string">'{"name": $.name, "gender": $.gender}'</span>
+</code></pre>
+<pre><code class="hljs css language-json">{ <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luke Skywalker"</span>, <span class="hljs-attr">"gender"</span>: <span class="hljs-string">"male"</span> }
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="chaining-filters"></a><a href="#chaining-filters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chaining filters</h2>
+<p>It's possible to chain two filters together using the pipe character <code>|</code>. Let's
+chain <code>$.films</code> and <code>length</code> together to find how many films our character
+appeared in.</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto <span class="hljs-string">'$.films | length'</span>
+</code></pre>
+<pre><code class="hljs"><span class="hljs-number">5</span>
+</code></pre>
+<p>Now there's nothing stopping us from putting that into our new data structure
+as well! (I omitted gender for simplicity's sake)</p>
+<pre><code class="hljs css language-bash">curl <span class="hljs-string">"https://swapi.co/api/people/1/"</span> | emuto <span class="hljs-string">'{"name": $.name, "films": ($.films | length)}'</span>
+</code></pre>
+<pre><code class="hljs css language-json">{ <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Luke Skywalker"</span>, <span class="hljs-attr">"films"</span>: <span class="hljs-number">5</span> }
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/emuto/docs/setup-webpack"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/emuto/docs/basic-filters"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#setup">Setup</a></li><li><a href="#requesting-data-from-an-api">Requesting data from an API</a></li><li><a href="#pretty-printing-the-json-with-emuto">Pretty-printing the JSON with emuto</a></li><li><a href="#let-s-start-filtering-data">Let's start filtering data</a></li><li><a href="#let-s-start-filtering-data-1">Let's start filtering data</a></li><li><a href="#creating-new-data-structures">Creating new data structures</a></li><li><a href="#chaining-filters">Chaining filters</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/emuto/" class="nav-home"></a><div><h5>More</h5><a href="https://github.com/">GitHub</a><a class="github-button" href="https://github.com/kantord/emuto" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Dániel Kántor</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '5c2bde5b82aef26ca0949001be26db90',
+                indexName: 'emuto',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
