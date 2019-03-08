@@ -20,11 +20,11 @@
       "functions": {
         "title": "Functions"
       },
-      "getting-started": {
-        "title": "Getting Started with Emuto"
-      },
       "setup-webpack": {
         "title": "Building using Webpack"
+      },
+      "try_emuto": {
+        "title": "Try emuto"
       },
       "tutorial": {
         "title": "Tutorial"
@@ -34,7 +34,6 @@
       }
     },
     "links": {
-      "Getting started": "Getting started",
       "Docs": "Docs",
       "Tutorial": "Tutorial",
       "GitHub": "GitHub"

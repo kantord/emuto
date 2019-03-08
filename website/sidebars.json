@@ -1,13 +1,12 @@
 {
   "docs": {
     "Getting Started": [
-      "getting-started",
+      "tutorial",
       {
         "type": "subcategory",
         "label": "Setup",
         "ids": ["setup-webpack"]
-      },
-      "tutorial"
+      }
     ],
     "Documentation": [
       "basic-filters",
