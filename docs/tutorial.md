@@ -76,20 +76,6 @@ curl "https://swapi.co/api/people/1/" | emuto '$.name'
 ```
 
 
-## Let's start filtering data
-
-That's way more data than we actually need. Let's just return the character's
-name:
-
-```bash
-curl "https://swapi.co/api/people/1/" | emuto '$.name'
-```
-
-```js
-"Luke Skywalker"
-```
-
-
 ## Creating new data structures
 
 Let's create a new data structure by combining the filters `$.name` and
