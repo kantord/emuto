@@ -6,7 +6,8 @@
         "type": "subcategory",
         "label": "Setup",
         "ids": ["setup-webpack"]
-      }
+      },
+      "comparison_with_other_languages"
     ],
     "Documentation": [
       "basic-filters",
