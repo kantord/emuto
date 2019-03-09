@@ -94,6 +94,7 @@ const siteConfig = {
 
   ogImage: '/img/demo.gif',
   twitterImage: '/img/demo.gif',
+  gaTrackingId: "UA-115481527-2",
 };
 
 module.exports = siteConfig;
