@@ -106,12 +106,20 @@ const Features = () => (
   <Block layout="twoColumn">
     {[
       {
-        content: 'Designed with one-liners in mind',
-        title: 'Simple and concise',
+        title: 'Transform JSON data',
+        content: 'Restructure, transform, and manipulate JSON files effortlessly',
       },
       {
-        content: 'Composable filters. No side-effects.',
-        title: 'Purely functional',
+        title: 'Inspired by jq and GraphQL',
+        content: "[Compare emuto to jq and GraphQL](/emuto/docs/comparison_with_other_languages)",
+      },
+      {
+        title: 'Interface between applications',
+        content: "Emuto can be used as an interface between applications that take different data structures",
+      },
+      {
+        title: 'Consume APIs in the command line',
+        content: ` \`curl "https://swapi.co/api/people/1/" | emuto '$.name'\``
       },
       {
         content: `Compile emuto queries to JS using Webpack
@@ -179,6 +187,10 @@ class Index extends React.Component {
           <Features />
           <FeatureCallout />
         </div>
+        <style dangerouslySetInnerHTML={{__html:`
+            .blockContent a {
+                text-decoration: underline;
+            }`}} />
       </div>
     );
   }
