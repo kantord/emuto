@@ -1,38 +1,43 @@
 <p align="center">
+  <img src="https://kantord.github.io/emuto/img/emuto.svg" height="100">
+</p>
+
+<p align="center">
+  <a href="https://kantord.github.io/emuto/">Website</a> •
+  <a href="https://kantord.github.io/emuto/docs/tutorial">Tutorial</a> •
+  <a href="https://kantord.github.io/emuto/docs/try_emuto">Live demo</a> •
+  <a href="#emuto-as-a-cli-tool">CLI version</a> •
+  <a href="#webpack-loader-for-emuto">Compile-to-JS version</a>
+</p>
+
+---
+
+Emuto is a small language for manipulating and restructuring JSON and other data files. [Emuto is inspired by jq and GraphQL](https://kantord.github.io/emuto/docs/comparison_with_other_languages)
+
+
+<p align="center">
   <img  src="https://kantord.github.io/emuto/img/demo.gif">
 </p>
 
-# emuto ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)
+![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)
 
-emuto is a lightweight JSON processor inspired by and nearly porting [jq](https://stedolan.github.io/jq/)
+## Getting started
 
-The following emuto script
+### Emuto as a CLI tool
 
-```javascript
-  [.article.title, .user.name.full_name, .user.age] | { "compressed_article_info": $}
+```
+npm install -g emuto emuto-cli
 ```
 
-would take an input like this:
+[Read more in the tutorial](https://kantord.github.io/emuto/docs/tutorial)
 
-```json
-{
-  "user": {
-    "name": {"nickname": "john3", "full_name": "John Doe"},
-    "age": 32
-  },
-  "article": {"title": "Hello World"}
-}
+### Webpack loader for emuto
+
+```
+yarn add --dev emuto emuto-loader
 ```
 
-And return a result like this:
-
-```json
-{
-  "compressed_article_info": ["Hello World", "John Doe", 32]
-}
-```
-
-[Click here to try it live](https://kantord.github.io/emuto-demo/)
+[Read more in the Webpack guide](https://kantord.github.io/emuto/docs/setup-webpack)
 
 ## [Contributing Guide](CONTRIBUTING.md)
 
