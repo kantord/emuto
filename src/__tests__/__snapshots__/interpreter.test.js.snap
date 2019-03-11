@@ -41,6 +41,8 @@ exports[`interpreter correct target code !(3 * 2 -1 > -1.34 * 3) and true 1`] = 
 
 exports[`interpreter correct target code "1" == 1 1`] = `"(function(_) { return (function(input) { return \\"1\\"===1})})"`;
 
+exports[`interpreter correct target code "Hello\\" World\\'\\nx" 1`] = `"(function(_) { return (function(input) { return \\"Hello\\\\\\" World\\\\'\\\\nx\\"})})"`;
+
 exports[`interpreter correct target code $ {
             Person: user {
                 name {
@@ -983,6 +985,16 @@ Object {
         "value": "1",
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree "Hello\\" World\\'\\nx" 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "primitive",
+    "value": "\\"Hello\\\\\\" World\\\\'\\\\nx\\"",
   },
 }
 `;
