@@ -88,6 +88,11 @@ const tests = [
     output: [null, true]
   },
   {
+    sourceCode: `"Hello\\" World\\'\\nx"`,
+    output: `Hello" World'
+x`
+  },
+  {
     sourceCode: `{
       "foo": [-42, $],
       "bar": {
