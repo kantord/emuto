@@ -26,8 +26,14 @@
       "functions": {
         "title": "Functions"
       },
+      "object_projections": {
+        "title": "GrahpQL-style projections"
+      },
       "setup-webpack": {
         "title": "Building using Webpack"
+      },
+      "shebang": {
+        "title": "Creating scripts using emuto"
       },
       "try_emuto": {
         "title": "Try emuto"
