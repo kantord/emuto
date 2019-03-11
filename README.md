@@ -19,7 +19,7 @@ Emuto is a small language for manipulating and restructuring JSON and other data
   <img  src="https://kantord.github.io/emuto/img/demo.gif">
 </p>
 
-![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg)
+![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg) ![David](https://img.shields.io/david/kantord/emuto.svg)
 
 ## Getting started
 
