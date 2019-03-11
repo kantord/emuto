@@ -6,7 +6,9 @@ import P from 'parsimmon'
 import type { NodeType } from '../types'
 
 const keywords = ['null', 'true', 'false']
-export const StringParserRegExp = /("(((?=\\)\\(["\\\/bfnrt]|u[0-9a-fA-F]{4}))|[^"\\\0-\x1F\x7F]+)*")/
+const DoubleQuoteStringRegexp = /("(((?=\\)\\(["\\\/bfnrt]|u[0-9a-fA-F]{4}))|[^"\\\0-\x1F\x7F]+)*")/
+const SingleQuoteStringRegexp = /('(((?=\\)\\(['\\\/bfnrt]|u[0-9a-fA-F]{4}))|[^'\\\0-\x1F\x7F]+)*')/
+export const StringParserRegExp = new RegExp(`(${DoubleQuoteStringRegexp.source}|${SingleQuoteStringRegexp.source})`)
 const NumberParserRegExp = /(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/
 
 const options = [

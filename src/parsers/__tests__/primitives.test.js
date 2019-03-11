@@ -17,7 +17,7 @@ const testExample = (parser: ParserType): (SourceCodeType => void) => (
   })
 }
 
-const stringExamples = [`""`, `"foo"`, `"Fo bar ²¡ü"`]
+const stringExamples = [`""`, `"foo"`, `"Fo ba'r' ²¡ü"`, `'asd "go" asd'`]
 const numberExamples = ['3.14', '42', '0', '111.111', '0.33']
 const examples = [...stringExamples, ...numberExamples]
 

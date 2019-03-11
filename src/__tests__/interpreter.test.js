@@ -107,6 +107,12 @@ const tests = [
     }
   },
   {
+    sourceCode: `{'foo': ('bar' | 'baz')}`,
+    output: {
+      foo: 'baz'
+    }
+  },
+  {
     sourceCode: `{"foo": ("bar" | "baz")}["foo"]`,
     output: 'baz'
   },
