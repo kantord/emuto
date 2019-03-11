@@ -20,6 +20,9 @@
       "comprehensions": {
         "title": "Comprehensions"
       },
+      "examples": {
+        "title": "Examples"
+      },
       "functions": {
         "title": "Functions"
       },
@@ -39,6 +42,7 @@
     "links": {
       "Docs": "Docs",
       "Tutorial": "Tutorial",
+      "Examples": "Examples",
       "GitHub": "GitHub"
     },
     "categories": {
