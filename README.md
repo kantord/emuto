@@ -39,6 +39,63 @@ yarn add --dev emuto emuto-loader
 
 [Read more in the Webpack guide](https://kantord.github.io/emuto/docs/setup-webpack)
 
+
+## What is emuto good for? Examples
+
+### Number of items in JSON file
+
+```bash
+curl my_file.json | emuto 'length'
+```
+
+### Your karma on HackerNews
+
+```bash
+curl https://hacker-news.firebaseio.com/v0/user/kantord.json -s | emuto '$.karma'
+```
+
+### See number of NPM dependencies
+
+```bash
+cat package.json | emuto -c '$.dependencies | keys | length'
+```
+
+### List available scripts in package.json
+
+```bash
+cat package.json | emuto -c '$.scripts | keys | join " · "'
+```
+
+### Get only the relevant data from a huge JSON file
+
+```bash
+curl https://api.github.com/repos/stedolan/jq/commits |\
+emuto -c 'map ($ => $ { commit { message } committer { login } } )'
+```
+
+### Automate the restructuring of data by creating scripts with emuto
+
+restructure.emu
+
+```text
+#! emuto -s
+
+$
+  | map ($ => $ { commit { message } committer { login } } )
+  | map ($ => {
+      "committer": $.committer.login,
+      "message":   $.commit.message,
+    })
+```
+
+Calling your script
+
+```bash
+curl https://api.github.com/repos/stedolan/jq/commits | ./restructure.emu
+```
+
+
+
 ## [Contributing Guide](CONTRIBUTING.md)
 
 Read our [contributing guide](CONTRIBUTING.md) to learn about our development process, how to create bugfixes and improvements, and how to build and test your changes to emuto.
