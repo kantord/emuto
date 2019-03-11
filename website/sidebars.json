@@ -5,7 +5,7 @@
       {
         "type": "subcategory",
         "label": "Setup",
-        "ids": ["setup-webpack"]
+        "ids": ["setup-webpack", "shebang"]
       },
       "comparison_with_other_languages",
       "examples"
@@ -16,7 +16,8 @@
       "chaining_filters",
       "variables",
       "commenting",
-      "comprehensions"
+      "comprehensions",
+      "object_projections"
     ]
   }
 }
