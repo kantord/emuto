@@ -40,6 +40,7 @@ const siteConfig = {
   headerLinks: [
     {doc: 'basic-filters', label: 'Docs'},
     {doc: 'tutorial', label: 'Tutorial'},
+    {doc: 'examples', label: 'Examples'},
     {href: 'https://github.com/kantord/emuto', label: 'GitHub'},
   ],
 

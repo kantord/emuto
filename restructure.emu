@@ -1,0 +1,8 @@
+#! emuto -s
+
+$
+  | map ($ => $ { commit { message } committer { login } } )
+  | map ($ => {
+      "committer": $.committer.login,
+      "message":   $.commit.message,
+    })
