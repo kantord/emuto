@@ -51,7 +51,7 @@ describe('assignment generator', () => {
         }
       })
     ).toEqual(
-      "((function() {_ = _.assign('a34234', (3 + 4), _); _ = _.assign('a', (3 + 4), _); return (3 + 4)})())"
+      "((function() {_ = _.__assign__('a34234', (3 + 4), _); _ = _.__assign__('a', (3 + 4), _); return (3 + 4)})())"
     )
   })
 })

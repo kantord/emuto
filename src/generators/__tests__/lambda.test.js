@@ -44,7 +44,7 @@ describe('lambda generator', () => {
         }
       })
     ).toEqual(
-      `(function(foobar3) {_ = _.assign('foobar3', foobar3, _); return 8})`
+      `(function(foobar3) {_ = _.__assign__('foobar3', foobar3, _); return 8})`
     )
   })
 })
