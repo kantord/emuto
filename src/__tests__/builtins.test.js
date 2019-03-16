@@ -7,7 +7,7 @@ const {
   sortBy,
   filter,
   get,
-  assign,
+  __assign__,
   reverse,
   reduce,
   length,
@@ -26,7 +26,7 @@ const {
 describe('built ins', () => {
   describe('__objectProjection__', () => {
     // eslint-disable-next-line
-    const _ = texts => texts.map(text => ({type: 'SimpleItem', value: text}));
+    const _ = texts => texts.map(text => ({ type: 'SimpleItem', value: text }))
     it('empty object empty projection', () => {
       expect(__objectProjection__({}, [], false)).toEqual({})
     })
@@ -49,7 +49,7 @@ describe('built ins', () => {
           { foo: 3 },
           [{ type: 'FragmentItem', value: 'F' }],
           false,
-            { F: x => ({ foo: 3 }) } // eslint-disable-line
+          { F: x => ({ foo: 3 }) } // eslint-disable-line
         )
       ).toEqual({
         foo: 3
@@ -228,14 +228,14 @@ describe('built ins', () => {
   })
 
   describe('__opt__', () => {
-    const f = x => 'Hello'; // eslint-disable-line
+    const f = x => 'Hello' // eslint-disable-line
     expect(__opt__(undefined, f)).toEqual(null)
     expect(__opt__(null, f)).toEqual(null)
     expect(__opt__([], f)).toEqual('Hello')
   })
 
   describe('__spread__', () => {
-    const f = x => 'Hello'; // eslint-disable-line
+    const f = x => 'Hello' // eslint-disable-line
     expect(__spread__([1, 2])).toEqual([1, 2])
     expect(__spread__({ a: 'b', c: 3 })).toEqual([['a', 'b'], ['c', 3]])
     expect(__spread__('ab')).toEqual(['a', 'b'])
@@ -257,8 +257,8 @@ describe('built ins', () => {
 
   describe('map', () => {
     it('returns correct value', () => {
-      const id = a => a; // eslint-disable-line
-      const foo = a => 'foo'; // eslint-disable-line
+      const id = a => a // eslint-disable-line
+      const foo = a => 'foo' // eslint-disable-line
       expect(map(id)(['Hello', 'World'])).toEqual(['Hello', 'World'])
       expect(map(foo)(['Hello', 'World'])).toEqual(['foo', 'foo'])
     })
@@ -266,7 +266,7 @@ describe('built ins', () => {
 
   describe('reduce', () => {
     it('returns correct value', () => {
-      const x = a => b => a * b + 1; // eslint-disable-line
+      const x = a => b => a * b + 1 // eslint-disable-line
       expect(reduce([x, 4])([1, 2])).toEqual(11)
     })
   })
@@ -298,8 +298,8 @@ describe('built ins', () => {
 
   describe('sortBy', () => {
     it('returns correct value', () => {
-      const id = a => a; // eslint-disable-line
-      const foo = a => a.foo; // eslint-disable-line
+      const id = a => a // eslint-disable-line
+      const foo = a => a.foo // eslint-disable-line
       expect(sortBy(id)(['c', 'a', 'b'])).toEqual(['a', 'b', 'c'])
       expect(sortBy(foo)([{ foo: 3 }, { foo: -2 }, { foo: 0 }])).toEqual([
         { foo: -2 },
@@ -318,7 +318,7 @@ describe('built ins', () => {
     })
 
     it('does not mutate original array', () => {
-      const id = a => a; // eslint-disable-line
+      const id = a => a // eslint-disable-line
       const input = ['c', 'a', 'b']
       const originalValue = input.slice()
       sortBy(id)(input)
@@ -341,7 +341,7 @@ describe('built ins', () => {
 
   describe('filter', () => {
     it('returns correct value', () => {
-      const foo = a => a.foo >= 0; // eslint-disable-line
+      const foo = a => a.foo >= 0 // eslint-disable-line
       expect(filter(foo)([{ foo: 3 }, { foo: -2 }, { foo: 0 }])).toEqual([
         { foo: 3 },
         { foo: 0 }
@@ -349,7 +349,7 @@ describe('built ins', () => {
     })
 
     it('does not mutate original array', () => {
-      const f = a => a == 'a'; // eslint-disable-line
+      const f = a => a == 'a' // eslint-disable-line
       const input = ['c', 'a', 'b']
       const originalValue = input.slice()
       filter(f)(input)
@@ -367,11 +367,11 @@ describe('built ins', () => {
     it('assign works', () => {
       const context = {
         get,
-        assign
+        __assign__
       }
-      let _ = assign('foobar', 3.14, context)
+      let _ = __assign__('foobar', 3.14, context)
       expect(_.get('foobar')).toEqual(3.14)
-      _ = _.assign('baz', 'Hello', _)
+      _ = _.__assign__('baz', 'Hello', _)
       expect(_.get('baz')).toEqual('Hello')
     })
   })

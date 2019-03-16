@@ -16,7 +16,9 @@ export default (
   const compileOneAssignment = (
     assignment: AssignmentType
   ): GeneratedCodeType =>
-    `_ = _.assign('${assignment[0].value}', (${Generator(assignment[1])}), _)`
+    `_ = _.__assign__('${assignment[0].value}', (${Generator(
+      assignment[1]
+    )}), _)`
 
   const compileAssignments = (
     assignments: AssignmentsType
