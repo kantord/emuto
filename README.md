@@ -21,6 +21,15 @@ Emuto is a small language for manipulating and restructuring JSON and other data
 
 ![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg) ![David](https://img.shields.io/david/kantord/emuto.svg) ![NPM](https://img.shields.io/npm/l/emuto.svg) ![GitHub release](https://img.shields.io/github/release/kantord/emuto.svg)
 
+## Features
+
+- Transform and query data structures
+- Integrate with unix commands in the command line
+- Conversions between different file formats
+- Supported input formats: JSON, text, csv, tsv, dsv
+- Supported output formats: JSON, text
+- Available as a Webpack loader
+
 ## Getting started
 
 ### Emuto as a CLI tool
