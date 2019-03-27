@@ -39,6 +39,7 @@ npm install -g emuto emuto-cli
 ```
 
 [Read more in the tutorial](https://kantord.github.io/emuto/docs/tutorial)
+
 [For Arch Linux users, also available as an AUR package](https://aur.archlinux.org/packages/emuto/)
 
 ### Webpack loader for emuto
