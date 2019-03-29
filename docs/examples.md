@@ -16,6 +16,12 @@ curl my_file.json | emuto 'length'
 curl https://hacker-news.firebaseio.com/v0/user/kantord.json -s | emuto '$.karma'
 ```
 
+### Convert another command's output to JSON
+
+```bash
+ls | emuto -i=raw '$[0:-1]'
+```
+
 ## See number of NPM dependencies
 
 ```bash
