@@ -8,7 +8,9 @@
   <a href="https://kantord.github.io/emuto/docs/try_emuto">Live demo</a> •
   <a href="#emuto-as-a-cli-tool">CLI version</a> •
   <a href="#webpack-loader-for-emuto">Compile-to-JS version</a>
+
 </p>
+
 
 ---
 
@@ -19,7 +21,7 @@ Emuto is a small language for manipulating and restructuring JSON and other data
   <img  src="https://kantord.github.io/emuto/img/demo.gif">
 </p>
 
-![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg) ![David](https://img.shields.io/david/kantord/emuto.svg) ![NPM](https://img.shields.io/npm/l/emuto.svg) ![GitHub release](https://img.shields.io/github/release/kantord/emuto.svg)
+![build](https://img.shields.io/travis/kantord/emuto/master.svg) ![Codecov](https://img.shields.io/codecov/c/github/kantord/emuto/master.svg) ![David](https://img.shields.io/david/kantord/emuto.svg) ![NPM](https://img.shields.io/npm/l/emuto.svg) ![GitHub release](https://img.shields.io/github/release/kantord/emuto.svg)   [![Twitter URL](https://img.shields.io/twitter/url/https/https://github.com/kantord/emuto.svg?style=social)](https://twitter.com/intent/tweet?text=transform%20%26%20query%20jSON%2C%20CSV%2C%20etc.%20easily%20using%20emuto%20https%3A%2F%2Fgithub.com%2Fkantord%2Femuto)
 
 ## Features
 
