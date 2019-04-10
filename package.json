@@ -5,19 +5,16 @@
   "license": "MIT",
   "scripts": {
     "analyze": "yarn webpack --json | tac | tac | tail -n +2 > stats.json",
-    "analyze-bundle":
-      "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
+    "analyze-bundle": "yarn analyze && yarn webpack-bundle-analyzer stats.json lib/",
     "test": "jest ./src",
     "build": "yarn webpack && yarn babel src/ -d lib/",
     "test:eslint": "yarn eslint src",
     "test:flow": "yarn flow check",
     "prepublish": "yarn run build",
-    "checks":
-      "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b && rm -r lib",
+    "checks": "yarn --ignore-engines && madge --circular src && yarn run test:flow && yarn run test:eslint --fix && jscpd --path src -b && rm -r lib",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
-    "profile":
-      "yarn jest ./src/__tests__/interpreter.test.js --verbose -t \"correct target code\" 2>&1 | grep \"correct target code\" | grep \"\u2713\" | sed \"s/    \u2713 correct target code //\" | sed 's|(\\([0-9]*\\)ms)$|~\\1|'| grep '~' | sort --field-separator=\"~\" --key=2 --numeric-sort | tail -n 20"
+    "profile": "yarn jest ./src/__tests__/interpreter.test.js --verbose -t \"correct target code\" 2>&1 | grep \"correct target code\" | grep \"✓\" | sed \"s/    ✓ correct target code //\" | sed 's|(\\([0-9]*\\)ms)$|~\\1|'| grep '~' | sort --field-separator=\"~\" --key=2 --numeric-sort | tail -n 20"
   },
   "husky": {
     "hooks": {
@@ -63,7 +60,6 @@
   "dependencies": {
     "cartesian-product-generator": "^1.1.0",
     "combinations-generator": "^1.0.1",
-    "flow": "^0.2.3",
     "parsimmon": "^1.12.0"
   },
   "config": {
