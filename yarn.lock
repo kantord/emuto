@@ -6443,10 +6443,10 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jscpd@^2.0.13:
-  version "2.0.13"
-  resolved "https://registry.yarnpkg.com/jscpd/-/jscpd-2.0.13.tgz#ba9e23194b7f00a796f53aa166839d636a8ad785"
-  integrity sha512-HCOyYGYFQO9QTIvQ8d3YPMQzIR7Tv5tg2GI4X1//tRi/ZK1uYYyHnP9KZLNDLmb3MaPwGoLzCuLBZ4+GKfeLNQ==
+jscpd@^2.0.14:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/jscpd/-/jscpd-2.0.14.tgz#37cff7dc5085f5dd5a96e938231c253ad31f7a3f"
+  integrity sha512-+lk83Wk8UwdRDznCcV+v1x6Z4ONXrJRBKqjjl4zz1DPmomHLD85FOAgIjOI5+PZO2FPSJsopJ8FZ2NWFDPHNYg==
   dependencies:
     blamer "^0.1.13"
     bytes "^3.0.0"
