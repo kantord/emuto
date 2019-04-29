@@ -2790,10 +2790,10 @@ cardinal@^2.1.1:
     ansicolors "~0.3.2"
     redeyed "~2.1.0"
 
-cartesian-product-generator@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/cartesian-product-generator/-/cartesian-product-generator-1.1.0.tgz#8bc32b44b7406eeadac5acfbeb42d6a1acfa433c"
-  integrity sha512-wKHdWUaIrqY4lgnmyCN5Oac0Xb1+Fvo6vUrsrEuRvpO/RTKrqFmZACDDNTctRBnuqnSNc/D0fsBuqYxi13ltOg==
+cartesian-product-generator@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/cartesian-product-generator/-/cartesian-product-generator-1.1.1.tgz#5919a8ce051580b1a33238548e9260c98730ed00"
+  integrity sha512-d1KAzT8CO4l3HffHix9LyCInTek6cifNNH3HqT7YeaHDnjNas6wOgd/w2p2aPJQL0pmUS6Z0hb8r42Ch0E0CIA==
   dependencies:
     ind2sub "^2.0.0"
 
