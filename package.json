@@ -58,7 +58,7 @@
     "webpack-cli": "^3.3.1"
   },
   "dependencies": {
-    "cartesian-product-generator": "^1.1.0",
+    "cartesian-product-generator": "^1.1.1",
     "combinations-generator": "^1.0.1",
     "parsimmon": "^1.12.0"
   },
