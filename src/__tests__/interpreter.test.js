@@ -6,6 +6,10 @@ import parse from '../parsers/parser'
 
 const tests = [
   {
+    sourceCode: `3 + 1`,
+    output: 3 + 1
+  },
+  {
     sourceCode: `null`,
     output: null
   },
@@ -177,7 +181,7 @@ x`
   },
   {
     sourceCode: `8 * 3.14 / 2`,
-    output: 8 * 3.14 / 2
+    output: (8 * 3.14) / 2
   },
   {
     sourceCode: `8 + 3.14 * 2`,
@@ -193,7 +197,7 @@ x`
   },
   {
     sourceCode: `8314 % 34 -3`,
-    output: 8314 % 34 - 3
+    output: (8314 % 34) - 3
   },
   {
     sourceCode: `3 * 2 -1 <= -1.34 * 3`,
@@ -627,8 +631,8 @@ describe('interpreter', () => {
       output: mixed,
       input?: mixed
     }) => {
-      it(`executes ${sourceCode}`, () => {
-        expect(execute(sourceCode)(input)).toEqual(output)
+      it(`executes ${sourceCode}`, async () => {
+        expect(await execute(sourceCode)(input)).toEqual(output)
       })
 
       it(`correct target code ${sourceCode}`, () => {
@@ -641,8 +645,8 @@ describe('interpreter', () => {
     }
   )
 
-  it(`allow passing single variable`, () => {
-    expect(execute('$foo')(null, { foo: 3 })).toEqual(3)
+  it(`allow passing single variable`, async () => {
+    expect(await execute('$foo')(null, { foo: 3 })).toEqual(3)
   })
 
   it(`allow passing multiple variables`, () => {
@@ -650,8 +654,9 @@ describe('interpreter', () => {
   })
 
   it(`doesn't allow passing functions`, () => {
-    expect((): mixed =>
-      execute('foo 4')(null, { foo: (x: ?mixed): number => 3 })
+    expect(
+      async (): mixed =>
+        await execute('foo 4')(null, { foo: (x: ?mixed): number => 3 })
     ).toThrow()
   })
 

@@ -19,12 +19,15 @@ import lambda from './lambda'
 import variable from './variable'
 import type { NodeType, GeneratedCodeType } from '../types'
 
+const promisify = generator => node =>
+  `(new Promise(function(resolve) {resolve((${generator(node)}))}))`
+
 const Generator = (node: NodeType): GeneratedCodeType => {
   switch (node.name) {
     case 'primitive':
-      return primitive(node)
+      return promisify(primitive)(node)
     case 'variable':
-      return variable(node)
+      return promisify(variable)(node)
     case 'tuple':
       return tuple(node)
     case 'inputProp':
@@ -50,7 +53,7 @@ const Generator = (node: NodeType): GeneratedCodeType => {
     case 'binaryOperation':
       return binaryOperator(node)
     case 'unaryOperation':
-      return unaryOperator(node)
+      return promisify(unaryOperator)(node)
     case 'assignment':
       return assignment(Generator)(node)
     case 'ternary':
