@@ -39,7 +39,7 @@
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-flowtype": "^3.8.1",
+    "eslint-plugin-flowtype": "^3.8.2",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jest": "^22.5.1",
     "eslint-plugin-node": "^8.0.1",
