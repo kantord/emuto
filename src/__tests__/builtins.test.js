@@ -262,6 +262,20 @@ describe('built ins', () => {
       expect(map(id)(['Hello', 'World'])).toEqual(['Hello', 'World'])
       expect(map(foo)(['Hello', 'World'])).toEqual(['foo', 'foo'])
     })
+
+    it('suppors mapping objects', () => {
+      // eslint-disable-next-line
+      const f = $key => $value => [$key[0], $value * -1]
+
+      const unmapped = {
+        foo: 3,
+        bar: 0
+      }
+      expect(map(f)(unmapped)).toEqual({
+        f: -3,
+        b: -0
+      })
+    })
   })
 
   describe('reduce', () => {

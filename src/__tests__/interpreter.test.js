@@ -177,7 +177,7 @@ x`
   },
   {
     sourceCode: `8 * 3.14 / 2`,
-    output: 8 * 3.14 / 2
+    output: (8 * 3.14) / 2
   },
   {
     sourceCode: `8 + 3.14 * 2`,
@@ -193,7 +193,7 @@ x`
   },
   {
     sourceCode: `8314 % 34 -3`,
-    output: 8314 % 34 - 3
+    output: (8314 % 34) - 3
   },
   {
     sourceCode: `3 * 2 -1 <= -1.34 * 3`,
@@ -608,6 +608,27 @@ x`
         foo: 5,
         bar: null
       }
+    }
+  },
+  {
+    sourceCode: `map ($key => $value => ($key + "_") : ("_" + $value))`,
+    input: {
+      a: 'b',
+      c: 'd',
+      e: 'f'
+    },
+    output: {
+      a_: '_b',
+      c_: '_d',
+      e_: '_f'
+    }
+  },
+  {
+    sourceCode: `{ "Joe": 13, "Marie": 14 } | map ($key => $value => "Age of " + $key : $value)`,
+    input: null,
+    output: {
+      'Age of Joe': 13,
+      'Age of Marie': 14
     }
   }
 ]

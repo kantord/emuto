@@ -158,6 +158,8 @@ exports[`interpreter correct target code {
       }
     } 1`] = `"(function(_) { return (function(input) { return (_.objectify(Array.from([[\\"foo\\",Array.from([(-(42)), input])], [\\"bar\\",(_.objectify(Array.from([[\\"message\\",\\"Hello World\\"]])))]])))})})"`;
 
+exports[`interpreter correct target code { "Joe": 13, "Marie": 14 } | map ($key => $value => "Age of " + $key : $value) 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map(((function(key) {_ = _.__assign__('key', key, _); return (function(value) {_ = _.__assign__('value', value, _); return [\\"Age of \\"+_.get('key'),_.get('value')]})})))(input)})((_.objectify(Array.from([[\\"Joe\\",13], [\\"Marie\\",14]]))))})})"`;
+
 exports[`interpreter correct target code {"a": [2], "b": "b"} {
         b
     } 1`] = `"(function(_) { return (function(input) { return _.__objectProjection__((_.objectify(Array.from([[\\"a\\",Array.from([2])], [\\"b\\",\\"b\\"]]))), [{\\"type\\":\\"SimpleItem\\",\\"value\\":\\"b\\"}], false, _)})})"`;
@@ -227,6 +229,8 @@ exports[`interpreter correct target code map $ => {"original": $.foo} | "foo" 1`
 exports[`interpreter correct target code map $ => {"original": $.foo} | map $=> {"new": $} 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.map((function(input) {return (_.objectify(Array.from([[\\"new\\",input]])))}))(input)})(_.map((function(input) {return (_.objectify(Array.from([[\\"original\\",input.foo]])))}))(input))})})"`;
 
 exports[`interpreter correct target code map $foo => [$foo] 1`] = `"(function(_) { return (function(input) { return _.map((function(foo) {_ = _.__assign__('foo', foo, _); return Array.from([_.get('foo')])}))(input)})})"`;
+
+exports[`interpreter correct target code map ($key => $value => ($key + "_") : ("_" + $value)) 1`] = `"(function(_) { return (function(input) { return _.map(((function(key) {_ = _.__assign__('key', key, _); return (function(value) {_ = _.__assign__('value', value, _); return [(_.get('key')+\\"_\\"),(\\"_\\"+_.get('value'))]})})))(input)})})"`;
 
 exports[`interpreter correct target code map \\" " 1`] = `"(function(_) { return (function(input) { return _.map((function(input) {return \\" \\"}))(input)})})"`;
 
@@ -4551,6 +4555,153 @@ Object {
 }
 `;
 
+exports[`interpreter correct target tree { "Joe": 13, "Marie": 14 } | map ($key => $value => "Age of " + $key : $value) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "pipe",
+    "value": Object {
+      "left": Object {
+        "end": Object {
+          "column": 27,
+          "line": 1,
+          "offset": 26,
+        },
+        "name": "object",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 26,
+              "line": 1,
+              "offset": 25,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 3,
+              "line": 1,
+              "offset": 2,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"Joe\\"",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "13",
+                  },
+                ],
+              },
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "\\"Marie\\"",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "14",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "right": Object {
+        "name": "functionCall",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "map",
+          },
+          "right": Object {
+            "name": "parentheses",
+            "value": Object {
+              "end": Object {
+                "column": 78,
+                "line": 1,
+                "offset": 77,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 35,
+                "line": 1,
+                "offset": 34,
+              },
+              "value": Object {
+                "definition": Object {
+                  "end": Object {
+                    "column": 78,
+                    "line": 1,
+                    "offset": 77,
+                  },
+                  "name": "lambda",
+                  "start": Object {
+                    "column": 43,
+                    "line": 1,
+                    "offset": 42,
+                  },
+                  "value": Object {
+                    "definition": Object {
+                      "name": "tuple",
+                      "value": Array [
+                        Object {
+                          "name": "binaryOperation",
+                          "value": Array [
+                            Object {
+                              "name": "primitive",
+                              "value": "\\"Age of \\"",
+                            },
+                            Object {
+                              "end": Object {
+                                "column": 64,
+                                "line": 1,
+                                "offset": 63,
+                              },
+                              "name": "primitive",
+                              "start": Object {
+                                "column": 63,
+                                "line": 1,
+                                "offset": 62,
+                              },
+                              "value": "+",
+                            },
+                            Object {
+                              "name": "variable",
+                              "value": "$key",
+                            },
+                          ],
+                        },
+                        Object {
+                          "name": "variable",
+                          "value": "$value",
+                        },
+                      ],
+                    },
+                    "variable": "value",
+                  },
+                },
+                "variable": "key",
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
+
 exports[`interpreter correct target tree {"a": [2], "b": "b"} {
         b
     } 1`] = `
@@ -7958,6 +8109,121 @@ Object {
             ],
           },
           "variable": "foo",
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`interpreter correct target tree map ($key => $value => ($key + "_") : ("_" + $value)) 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "functionCall",
+    "value": Object {
+      "left": Object {
+        "name": "identifier",
+        "value": "map",
+      },
+      "right": Object {
+        "name": "parentheses",
+        "value": Object {
+          "end": Object {
+            "column": 53,
+            "line": 1,
+            "offset": 52,
+          },
+          "name": "lambda",
+          "start": Object {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+          "value": Object {
+            "definition": Object {
+              "end": Object {
+                "column": 53,
+                "line": 1,
+                "offset": 52,
+              },
+              "name": "lambda",
+              "start": Object {
+                "column": 14,
+                "line": 1,
+                "offset": 13,
+              },
+              "value": Object {
+                "definition": Object {
+                  "name": "tuple",
+                  "value": Array [
+                    Object {
+                      "name": "parentheses",
+                      "value": Object {
+                        "name": "binaryOperation",
+                        "value": Array [
+                          Object {
+                            "name": "variable",
+                            "value": "$key",
+                          },
+                          Object {
+                            "end": Object {
+                              "column": 31,
+                              "line": 1,
+                              "offset": 30,
+                            },
+                            "name": "primitive",
+                            "start": Object {
+                              "column": 30,
+                              "line": 1,
+                              "offset": 29,
+                            },
+                            "value": "+",
+                          },
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"_\\"",
+                          },
+                        ],
+                      },
+                    },
+                    Object {
+                      "name": "parentheses",
+                      "value": Object {
+                        "name": "binaryOperation",
+                        "value": Array [
+                          Object {
+                            "name": "primitive",
+                            "value": "\\"_\\"",
+                          },
+                          Object {
+                            "end": Object {
+                              "column": 45,
+                              "line": 1,
+                              "offset": 44,
+                            },
+                            "name": "primitive",
+                            "start": Object {
+                              "column": 44,
+                              "line": 1,
+                              "offset": 43,
+                            },
+                            "value": "+",
+                          },
+                          Object {
+                            "name": "variable",
+                            "value": "$value",
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                "variable": "value",
+              },
+            },
+            "variable": "key",
+          },
         },
       },
     },
