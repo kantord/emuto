@@ -37,7 +37,12 @@ Output:
 [{"word": "Hello"}, {"word": "World!"}]
 ```
 
-Alternatively, you can also use this syntax: `["Hello", "World!"] | map \ {"word": $}`
+For mapping objects, use a curried function:
+
+```
+{ "Joe": 13, "Marie": 14 } | map ($key => $value => "Age of " + $key : $value)
+```
+
 
 ## sortBy \
 

@@ -17,6 +17,16 @@ const convertUndefined = (value: ?mixed): mixed | null =>
 const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
   convertUndefined(value) === null ? null : f(value)
 
+const objectify = (input: Array<[string, mixed]>): { [string]: mixed } =>
+  input.reduce(function (
+    a: { [string]: mixed },
+    b: [string, mixed]
+  ): { [string]: mixed } {
+    a[b[0]] = b[1]
+    return a
+  },
+  {})
+
 const handleProjectionItem = (
   projectable: ProjectableType
 ): (ProjectionRuleType => mixed) => (
@@ -75,16 +85,7 @@ const handleProjection = (
   projectionRules.map(handleProjectionItem(projectable))
 
 export default {
-  objectify: (input: Array<[string, mixed]>): { [string]: mixed } =>
-    input.reduce(function (
-      a: { [string]: mixed },
-      b: [string, mixed]
-    ): { [string]: mixed } {
-      a[b[0]] = b[1]
-      return a
-    },
-    {}),
-
+  objectify,
   __opt__: handleOptional,
 
   __spread__: (input: mixed): mixed =>
@@ -113,18 +114,23 @@ export default {
     input: Array<string>
   ): string => input.join(separator),
 
-  map: (f: mixed => mixed): ((Array<mixed>) => Array<mixed>) => (
-    input: Array<mixed>
-  ): Array<mixed> => input.map(f),
+  map: (f: any): ((Array<mixed>) => any) => (
+    input: Array<mixed> | mixed
+  ): Array<mixed> | mixed =>
+    Array.isArray(input)
+      ? input.map(f)
+      : objectify(
+        // eslint-disable-next-line standard/array-bracket-even-spacing
+        Object.entries(input).map(([key, value]: any): any => f(key)(value))
+      ),
 
   sortBy: (f: <T>(mixed) => T): ((Array<mixed>) => Array<mixed>) => (
     input: Array<mixed>
   ): Array<mixed> =>
     input
       .slice()
-      .sort(
-        (a: mixed, b: mixed): 1 | 0 | -1 =>
-          f(a) < f(b) ? -1 : f(a) > f(b) ? 1 : 0
+      .sort((a: mixed, b: mixed): 1 | 0 | -1 =>
+        f(a) < f(b) ? -1 : f(a) > f(b) ? 1 : 0
       ),
 
   has: (
