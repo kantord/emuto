@@ -60,7 +60,7 @@
   "dependencies": {
     "cartesian-product-generator": "^1.1.1",
     "combinations-generator": "^1.0.1",
-    "parsimmon": "^1.12.0"
+    "parsimmon": "^1.12.1"
   },
   "config": {
     "commitizen": {
