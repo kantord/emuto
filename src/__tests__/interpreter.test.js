@@ -630,6 +630,11 @@ x`
       'Age of Joe': 13,
       'Age of Marie': 14
     }
+  },
+  {
+    sourceCode: `100_000 + 101_101`,
+    input: null,
+    output: 201101
   }
 ]
 
@@ -671,8 +676,8 @@ describe('interpreter', () => {
   })
 
   it(`doesn't allow passing functions`, () => {
-    expect((): mixed =>
-      execute('foo 4')(null, { foo: (x: ?mixed): number => 3 })
+    expect(
+      (): mixed => execute('foo 4')(null, { foo: (x: ?mixed): number => 3 })
     ).toThrow()
   })
 

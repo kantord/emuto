@@ -3,6 +3,16 @@ id: basic-filters
 title: Basic filters
 ---
 
+## Primitives
+Primitives mostly work the same way as in JavaScript. 
+
+In emuto, `undefined` doesn't exist but `null` does.
+
+Numbers can be formatted using underscores:
+
+`100_000 = 100000`
+
+
 ## Operators
 
 ### Unary operators

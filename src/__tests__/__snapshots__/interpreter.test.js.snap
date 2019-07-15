@@ -214,6 +214,8 @@ exports[`interpreter correct target code 8 + 3.14 * 2 1`] = `"(function(_) { ret
 
 exports[`interpreter correct target code 8 - (3.14 * 2) 1`] = `"(function(_) { return (function(input) { return 8-(3.14*2)})})"`;
 
+exports[`interpreter correct target code 100_000 + 101_101 1`] = `"(function(_) { return (function(input) { return 100000+101101})})"`;
+
 exports[`interpreter correct target code 8314 % 34 -3 1`] = `"(function(_) { return (function(input) { return 8314%34-3})})"`;
 
 exports[`interpreter correct target code error "Hello" if false else "asdfgb" 1`] = `"(function(_) { return (function(input) { return ((false) ? (_.error(\\"Hello\\")(input)) : (\\"asdfgb\\"))})})"`;
@@ -7583,6 +7585,39 @@ Object {
             },
           ],
         },
+      },
+    ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree 100_000 + 101_101 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "binaryOperation",
+    "value": Array [
+      Object {
+        "name": "primitive",
+        "value": "100000",
+      },
+      Object {
+        "end": Object {
+          "column": 10,
+          "line": 1,
+          "offset": 9,
+        },
+        "name": "primitive",
+        "start": Object {
+          "column": 9,
+          "line": 1,
+          "offset": 8,
+        },
+        "value": "+",
+      },
+      Object {
+        "name": "primitive",
+        "value": "101101",
       },
     ],
   },
