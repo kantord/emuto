@@ -54,7 +54,7 @@
     "semantic-release": "^15.13.18",
     "travis-deploy-once": "^5.0.11",
     "webpack": "^4.38.0",
-    "webpack-bundle-analyzer": "^3.4.0",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
