@@ -167,6 +167,8 @@ export default {
   keys: (input: { [string]: mixed }): Array<string> => Object.keys(input),
 
   values: (input: { [string]: mixed }): Array<mixed> => Object.values(input),
+  entries: (input: { [string]: mixed }): Array<[string, mixed]> =>
+    Object.entries(input),
 
   combinations: (r: number): Array<mixed> | (string => Array<Array<mixed>>) => (
     input: Array<mixed> | string

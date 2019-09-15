@@ -86,11 +86,11 @@ filter $ => .age >= 18
 Returns the length of the input:
 
 ```
-[1, 0, 1] | length;
+[1, 0, 1] | length
 ```
 
 ```
-3;
+3
 ```
 
 ## reverse
@@ -98,11 +98,11 @@ Returns the length of the input:
 Reverses the input:
 
 ```
-[1, 2, 3] | reverse;
+[1, 2, 3] | reverse
 ```
 
 ```
-[3, 2, 1];
+[3, 2, 1]
 ```
 
 ## reduce \
@@ -121,7 +121,7 @@ Returns the keys of an object:
 ```
 
 ```
-['foo', 'baz'];
+['foo', 'baz']
 ```
 
 ## values
@@ -133,7 +133,19 @@ Returns the values of an object:
 ```
 
 ```
-['bar', 42];
+['bar', 42]
+```
+
+## entries
+
+Returns the entries of an object as an array of arrays:
+
+```
+{"foo": "bar", "baz": 42} | entries
+```
+
+```
+[["foo", "bar"], ["baz", 42]]
 ```
 
 ## combinations
@@ -145,7 +157,7 @@ Returns all combinations of each possible choice of r elements of the input:
 ```
 
 ```
-[['A', 'B'], ['A', 'C'], ['A', 'D'], ['B', 'C'], ['B', 'D'], ['C', 'D']];
+[['A', 'B'], ['A', 'C'], ['A', 'D'], ['B', 'C'], ['B', 'D'], ['C', 'D']]
 ```
 
 ## product
@@ -153,9 +165,9 @@ Returns all combinations of each possible choice of r elements of the input:
 Computes the product of the iterables in the input:
 
 ```
-[['a', 'b'], ['1', '2']] | product;
+[['a', 'b'], ['1', '2']] | product
 ```
 
 ```
-[['a', '1'], ['a', '2'], ['b', '1'], ['b', '2']];
+[['a', '1'], ['a', '2'], ['b', '1'], ['b', '2']]
 ```
