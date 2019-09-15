@@ -14,6 +14,7 @@ const {
   keys,
   split,
   values,
+  entries,
   combinations,
   product,
   __opt__,
@@ -306,6 +307,15 @@ describe('built ins', () => {
       expect(values({})).toEqual([])
       expect(new Set(values({ foo: 'bar', baz: 4 }))).toEqual(
         new Set(['bar', 4])
+      )
+    })
+  })
+
+  describe('entries', () => {
+    it('returns correct value', () => {
+      expect(entries({})).toEqual([])
+      expect(new Set(entries({ foo: 'bar', baz: 4 }))).toEqual(
+        new Set([['foo', 'bar'], ['baz', 4]])
       )
     })
   })
