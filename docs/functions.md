@@ -44,6 +44,22 @@ For mapping objects, use a curried function:
 ```
 
 
+### Shorthand for map
+
+For simplifying map calls there is a syntactic sugar: instead of writing `map $ =>` you can write `~`.
+
+For example instead of
+
+```
+["Hello", "World!"] | map $ => {"word": $}
+```
+
+you can write:
+
+```
+["Hello", "World!"] | ~ {"word": $}
+```
+
 ## sortBy \
 
 Takes an array as input and sorts it using the supplied function.

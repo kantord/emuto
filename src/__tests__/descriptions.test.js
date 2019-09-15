@@ -22,6 +22,7 @@ const exclude = [
   'collections',
   'pipe.js',
   'ternary.js',
+  'mapFunctionCall.js',
   'math'
 ]
 const files = fs

@@ -144,12 +144,22 @@ x`
     output: [' ', ' ']
   },
   {
+    sourceCode: `~ " "`,
+    input: ['Hello', 'World'],
+    output: [' ', ' ']
+  },
+  {
     sourceCode: `{"original": $.foo} | {"new": $}`,
     input: { foo: 42 },
     output: { new: { original: 42 } }
   },
   {
     sourceCode: `map $ => {"original": $.foo} | map $=> {"new": $}`,
+    input: [{ foo: 42 }, { foo: 'hello' }],
+    output: [{ new: { original: 42 } }, { new: { original: 'hello' } }]
+  },
+  {
+    sourceCode: `~{"original": $.foo} |~ {"new": $}`,
     input: [{ foo: 42 }, { foo: 'hello' }],
     output: [{ new: { original: 42 } }, { new: { original: 'hello' } }]
   },
