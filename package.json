@@ -55,7 +55,7 @@
     "travis-deploy-once": "^5.0.11",
     "webpack": "^4.40.2",
     "webpack-bundle-analyzer": "^3.5.1",
-    "webpack-cli": "^3.3.8"
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
     "cartesian-product-generator": "^1.1.1",
