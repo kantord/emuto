@@ -83,7 +83,7 @@ filter $ => .age >= 18
 
 ## length
 
-Returns the length of the input:
+Returns the length of the input if it's an array:
 
 ```
 [1, 0, 1] | length
@@ -92,6 +92,20 @@ Returns the length of the input:
 ```
 3
 ```
+
+Returns the count of the elements of an object if the input is an object:
+
+```
+{"foo": "bar"} | length
+```
+
+```
+1
+```
+
+## size
+
+Same as `length`.
 
 ## reverse
 
