@@ -647,6 +647,31 @@ x`
     output: {
       foo: 'bar'
     }
+  },
+  {
+    sourceCode: `{...$}`,
+    input: { foo: 'bar' },
+    output: { foo: 'bar' }
+  },
+  {
+    sourceCode: `{...$, "x": 4}`,
+    input: { foo: 'bar' },
+    output: { foo: 'bar', x: 4 }
+  },
+  {
+    sourceCode: `[...$]`,
+    input: [0, 1, 2],
+    output: [0, 1, 2]
+  },
+  {
+    sourceCode: `[...$, 4, ...$]`,
+    input: [0, 1, 2],
+    output: [0, 1, 2, 4, 0, 1, 2]
+  },
+  {
+    sourceCode: `[{...$}]`,
+    input: { foo: 'bar' },
+    output: [{ foo: 'bar' }]
   }
 ]
 
