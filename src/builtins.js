@@ -17,6 +17,8 @@ const convertUndefined = (value: ?mixed): mixed | null =>
 const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
   convertUndefined(value) === null ? null : f(value)
 
+const parseJSON = JSON.parse
+
 const objectify = (input: Array<[string, mixed]>): { [string]: mixed } =>
   input.reduce(function (
     a: { [string]: mixed },
@@ -179,5 +181,7 @@ export default {
 
   error: (message: string): (mixed => void) => (input: mixed) => {
     throw new Error(message)
-  }
+  },
+
+  parseJSON
 }

@@ -6,6 +6,7 @@ const {
   map,
   sortBy,
   filter,
+  parseJSON,
   get,
   __assign__,
   reverse,
@@ -240,6 +241,13 @@ describe('built ins', () => {
     expect(__spread__([1, 2])).toEqual([1, 2])
     expect(__spread__({ a: 'b', c: 3 })).toEqual([['a', 'b'], ['c', 3]])
     expect(__spread__('ab')).toEqual(['a', 'b'])
+  })
+
+  describe('parseJSON', () => {
+    it('returns correct value', () => {
+      expect(parseJSON('{}')).toEqual({})
+      expect(parseJSON('[0]')).toEqual([0])
+    })
   })
 
   describe('join', () => {

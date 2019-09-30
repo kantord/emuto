@@ -117,6 +117,8 @@ exports[`interpreter correct target code .foo | .bar 1`] = `"(function(_) { retu
 
 exports[`interpreter correct target code [ [  [ [  [ ] ]]]  ] 1`] = `"(function(_) { return (function(input) { return Array.from([Array.from([Array.from([Array.from([Array.from([])])])])])})})"`;
 
+exports[`interpreter correct target code ['{"foo": "bar"}'] | parseJSON 1`] = `"(function(_) { return (function(input) { return (function (input) {return _.parseJSON(input)})(Array.from(['{\\"foo\\": \\"bar\\"}']))})})"`;
+
 exports[`interpreter correct target code [($ => error "asd" | "f")] 1`] = `"(function(_) { return (function(input) { return Array.from([((function (input) {return \\"f\\"})((function(input) {return _.error(\\"asd\\")(input)})))])})})"`;
 
 exports[`interpreter correct target code [...$foo] where $foo = "Hello" 1`] = `"(function(_) { return (function(input) { return ((function() {_ = _.__assign__('foo', (\\"Hello\\"), _); return (Array.from(_.get('foo')))})())})})"`;
@@ -2619,6 +2621,61 @@ Object {
         ],
       },
     ],
+  },
+}
+`;
+
+exports[`interpreter correct target tree ['{"foo": "bar"}'] | parseJSON 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "pipe",
+    "value": Object {
+      "left": Object {
+        "end": Object {
+          "column": 19,
+          "line": 1,
+          "offset": 18,
+        },
+        "name": "list",
+        "start": Object {
+          "column": 1,
+          "line": 1,
+          "offset": 0,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 18,
+              "line": 1,
+              "offset": 17,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 2,
+              "line": 1,
+              "offset": 1,
+            },
+            "value": Array [
+              Object {
+                "name": "primitive",
+                "value": "'{\\"foo\\": \\"bar\\"}'",
+              },
+            ],
+          },
+        ],
+      },
+      "right": Object {
+        "name": "functionCall",
+        "value": Object {
+          "left": Object {
+            "name": "identifier",
+            "value": "parseJSON",
+          },
+          "right": null,
+        },
+      },
+    },
   },
 }
 `;
