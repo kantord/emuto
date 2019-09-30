@@ -640,6 +640,13 @@ x`
       'Age of Joe': 13,
       'Age of Marie': 14
     }
+  },
+  {
+    sourceCode: `['{"foo": "bar"}'] | parseJSON`,
+    input: null,
+    output: {
+      foo: 'bar'
+    }
   }
 ]
 

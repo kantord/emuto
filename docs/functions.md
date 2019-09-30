@@ -105,6 +105,18 @@ Reverses the input:
 [3, 2, 1]
 ```
 
+## parseJSON
+
+Parses a string containing a JSON value
+
+```
+"[1, 2, 3]" | parseJSON
+```
+
+```
+[1, 2, 3]
+```
+
 ## reduce \
 
 Compresses multiple items into a single item using the provided function and
