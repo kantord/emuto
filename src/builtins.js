@@ -17,6 +17,9 @@ const convertUndefined = (value: ?mixed): mixed | null =>
 const handleOptional = (value: ?mixed, f: mixed => mixed): mixed =>
   convertUndefined(value) === null ? null : f(value)
 
+const length = (input: Array<mixed> | Object): number =>
+  Array.isArray(input) ? input.length : Object.keys(input).length
+
 const parseJSON = JSON.parse
 
 const objectify = (input: Array<[string, mixed]>): { [string]: mixed } =>
@@ -164,7 +167,8 @@ export default {
   ) => mixed) => (input: Array<mixed>): mixed =>
     input.reduce((a: mixed, b: mixed): mixed => f(a)(b), x),
 
-  length: (input: Array<mixed>): number => input.length,
+  length,
+  size: length,
 
   keys: (input: { [string]: mixed }): Array<string> => Object.keys(input),
 

@@ -12,6 +12,7 @@ const {
   reverse,
   reduce,
   length,
+  size,
   keys,
   split,
   values,
@@ -298,6 +299,18 @@ describe('built ins', () => {
     it('returns correct value', () => {
       expect(length([1, 2])).toEqual(2)
       expect(length([1, 2, 4])).toEqual(3)
+      expect(length({})).toEqual(0)
+      expect(length({ foo: 'bar' })).toEqual(1)
+    })
+  })
+
+  describe('size', () => {
+    it('returns correct value', () => {
+      expect(size([1, 2])).toEqual(2)
+      expect(size({ foo: 'bar' })).toEqual(1)
+      expect(size({ foo: 'bar', x: 3 })).toEqual(2)
+      expect(size({})).toEqual(0)
+      expect(size([1, 2, 4])).toEqual(3)
     })
   })
 
