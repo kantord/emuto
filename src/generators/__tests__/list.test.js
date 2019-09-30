@@ -30,7 +30,9 @@ describe('list generator', () => {
         name: 'list',
         value: [segment]
       })
-    ).toEqual('Array.from([input, input, Array.from([null])])')
+    ).toEqual(
+      '[].concat(_.__spread__([input, input, [].concat(_.__spread__([null]))]))'
+    )
   })
 
   it('generates correct code - spread', () => {
@@ -56,7 +58,7 @@ describe('list generator', () => {
         ]
       })
     ).toEqual(
-      'Array.from([input, input, Array.from([null])].concat(_.__spread__(input)).concat(_.__spread__(input)))'
+      '[].concat(_.__spread__([input, input, [].concat(_.__spread__([null]))])).concat(_.__spread__(input)).concat(_.__spread__(input))'
     )
   })
 })
