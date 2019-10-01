@@ -672,6 +672,22 @@ x`
     sourceCode: `[{...$}]`,
     input: { foo: 'bar' },
     output: [{ foo: 'bar' }]
+  },
+  {
+    sourceCode: `update {'x': 3.14, 'deps': {'react': '4.5'}}`,
+    input: {
+      deps: {
+        react: '6. 5'
+      },
+      devDeps: []
+    },
+    output: {
+      x: 3.14,
+      deps: {
+        react: '4.5'
+      },
+      devDeps: []
+    }
   }
 ]
 

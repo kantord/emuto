@@ -260,6 +260,8 @@ exports[`interpreter correct target code sortBy \\.age | map \\.name 1`] = `"(fu
 
 exports[`interpreter correct target code true 1`] = `"(function(_) { return (function(input) { return true})})"`;
 
+exports[`interpreter correct target code update {'x': 3.14, 'deps': {'react': '4.5'}} 1`] = `"(function(_) { return (function(input) { return _.update((_.objectify([].concat(_.__spread__([['x',3.14], ['deps',(_.objectify([].concat(_.__spread__([['react','4.5']]))))]])))))(input)})})"`;
+
 exports[`interpreter correct target tree 
             $ {
                 ...Stuff
@@ -8970,6 +8972,116 @@ Object {
   "value": Object {
     "name": "primitive",
     "value": "true",
+  },
+}
+`;
+
+exports[`interpreter correct target tree update {'x': 3.14, 'deps': {'react': '4.5'}} 1`] = `
+Object {
+  "status": true,
+  "value": Object {
+    "name": "functionCall",
+    "value": Object {
+      "left": Object {
+        "name": "identifier",
+        "value": "update",
+      },
+      "right": Object {
+        "end": Object {
+          "column": 45,
+          "line": 1,
+          "offset": 44,
+        },
+        "name": "object",
+        "start": Object {
+          "column": 8,
+          "line": 1,
+          "offset": 7,
+        },
+        "value": Array [
+          Object {
+            "end": Object {
+              "column": 44,
+              "line": 1,
+              "offset": 43,
+            },
+            "name": "simpleList",
+            "start": Object {
+              "column": 9,
+              "line": 1,
+              "offset": 8,
+            },
+            "value": Array [
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "'x'",
+                  },
+                  Object {
+                    "name": "primitive",
+                    "value": "3.14",
+                  },
+                ],
+              },
+              Object {
+                "name": "tuple",
+                "value": Array [
+                  Object {
+                    "name": "primitive",
+                    "value": "'deps'",
+                  },
+                  Object {
+                    "end": Object {
+                      "column": 44,
+                      "line": 1,
+                      "offset": 43,
+                    },
+                    "name": "object",
+                    "start": Object {
+                      "column": 28,
+                      "line": 1,
+                      "offset": 27,
+                    },
+                    "value": Array [
+                      Object {
+                        "end": Object {
+                          "column": 43,
+                          "line": 1,
+                          "offset": 42,
+                        },
+                        "name": "simpleList",
+                        "start": Object {
+                          "column": 29,
+                          "line": 1,
+                          "offset": 28,
+                        },
+                        "value": Array [
+                          Object {
+                            "name": "tuple",
+                            "value": Array [
+                              Object {
+                                "name": "primitive",
+                                "value": "'react'",
+                              },
+                              Object {
+                                "name": "primitive",
+                                "value": "'4.5'",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    },
   },
 }
 `;
