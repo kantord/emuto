@@ -131,6 +131,18 @@ Parses a string containing a JSON value
 [1, 2, 3]
 ```
 
+## update
+
+Performs a deep merge on two objects
+
+```
+{ 'a': [{ 'b': 2 }, { 'd': 4 }] } | update { 'a': [{ 'c': 3 }, { 'e': 5 }] }
+```
+
+```
+{ 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+```
+
 ## reduce \
 
 Compresses multiple items into a single item using the provided function and

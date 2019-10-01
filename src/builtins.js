@@ -3,6 +3,7 @@
 import combinations from 'combinations-generator'
 import { product } from 'cartesian-product-generator'
 import type { ObjectProjectionItemType } from './types'
+import merge from 'lodash.merge'
 
 type ProjectableType = Array<mixed> & { [string]: mixed };
 type ProjectionRuleType = number & string;
@@ -187,5 +188,7 @@ export default {
     throw new Error(message)
   },
 
-  parseJSON
+  parseJSON,
+  update: (updateWith: Object): (Object => Object) => (input: Object): Object =>
+    merge(input, updateWith)
 }
