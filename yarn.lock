@@ -4254,10 +4254,10 @@ eslint-plugin-es@^1.4.1:
     eslint-utils "^1.4.2"
     regexpp "^2.0.1"
 
-eslint-plugin-flowtype@^3.13.0:
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-3.13.0.tgz#e241ebd39c0ce519345a3f074ec1ebde4cf80f2c"
-  integrity sha512-bhewp36P+t7cEV0b6OdmoRWJCBYRiHFlqPZAG1oS3SF+Y0LQkeDvFSM4oxoxvczD1OdONCXMlJfQFiWLcV9urw==
+eslint-plugin-flowtype@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-4.7.0.tgz#903a6ea3eb5cbf4c7ba7fa73cc43fc39ab7e4a70"
+  integrity sha512-M+hxhSCk5QBEValO5/UqrS4UunT+MgplIJK5wA1sCtXjzBcZkpTGRwxmLHhGpbHcrmQecgt6ZL/KDdXWqGB7VA==
   dependencies:
     lodash "^4.17.15"
 
