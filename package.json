@@ -50,7 +50,7 @@
     "jest": "^24.9.0",
     "jscpd": "^2.0.16",
     "madge": "^3.4.4",
-    "regenerator-runtime": "^0.13.2",
+    "regenerator-runtime": "^0.13.6",
     "semantic-release": "^15.13.24",
     "travis-deploy-once": "^5.0.11",
     "webpack": "^4.41.0",
