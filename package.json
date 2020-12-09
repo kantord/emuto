@@ -46,7 +46,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "flow-bin": "^0.96.0",
-    "husky": "^3.0.7",
+    "husky": "^4.3.5",
     "jest": "^24.9.0",
     "jscpd": "^2.0.16",
     "madge": "^3.4.4",
