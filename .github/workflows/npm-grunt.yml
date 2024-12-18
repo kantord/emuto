@@ -21,7 +21,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version-file: "package.json"
-        node-version: ${{ matrix.node-version }}
+        node-versiosdn: ${{ matrix.node-version }}
 
     - name: Build
       run: |
